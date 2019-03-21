@@ -5,11 +5,11 @@ const suburbs = [
     name: "Carnegie",
     description: "very good area, you are welcome to move here",
     rating: {
-      health: 20,
-      education: 79,
+      healthScore: 20,
+      educationScore: 79,
       propertyBuy: 34,
       PropertyRent: 55,
-      jobs: 87
+      jobScore: 87
     }
   },
   {
@@ -18,11 +18,11 @@ const suburbs = [
     name: "Huntly",
     description: "very good area, you are welcome to move here",
     rating: {
-      health: 90,
-      education: 29,
+      healthScore: 90,
+      educationScore: 29,
       propertyBuy: 64,
       PropertyRent: 15,
-      jobs: 77
+      jobScore: 77
     }
   },
   {
@@ -31,11 +31,11 @@ const suburbs = [
     name: "Box Hill",
     description: "very good area, you are welcome to move here",
     rating: {
-      health: 10,
-      education: 29,
+      healthScore: 10,
+      educationScore: 29,
       propertyBuy: 24,
       PropertyRent: 15,
-      jobs: 37
+      jobScore: 37
     }
   },
   {
@@ -44,11 +44,11 @@ const suburbs = [
     name: "Caufield",
     description: "very good area, you are welcome to move here",
     rating: {
-      health: 70,
-      education: 89,
+      healthScore: 70,
+      educationScore: 89,
       propertyBuy: 34,
       PropertyRent: 85,
-      jobs: 60
+      jobScore: 60
     }
   },
   {
@@ -57,11 +57,11 @@ const suburbs = [
     name: "Clayton",
     description: "very good area, you are welcome to move here",
     rating: {
-      health: 30,
-      education: 29,
+      healthScore: 30,
+      educationScore: 29,
       propertyBuy: 90,
       PropertyRent: 15,
-      jobs: 70
+      jobScore: 70
     }
   }
 ];

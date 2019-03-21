@@ -3,15 +3,15 @@ import SidePanel from "../layout/SidePanel";
 import SuburbList from "../Suburbs/SuburbList";
 import { ParameterContext, parameterReducr } from "../context/ParameterContext";
 import { getAllSuburbs } from "./../services/fakeSuburbList";
+import { distance, recommd } from "./../services/recommend";
 
 const Recommender = () => {
-  const [suburbs, setSuburbs] = useState([]);
   // const [state, dispatch] = useReducer(parameterReducr, []);
 
   //read in the data when compomentDidMount
-  useEffect(() => {
-    setSuburbs(getAllSuburbs);
-  }, []);
+  // useEffect(() => {
+  //   getAllSuburbs;
+  // }, []);
 
   //state and reducer to maniplate the slider value
   const [state, dispatch] = useReducer(
@@ -55,10 +55,15 @@ const Recommender = () => {
       jobScore: 0
     }
   );
+  const [initialSuburb, setInitialSuburb] = useState(getAllSuburbs);
+
+  const [suburbs, setSuburbs] = useState([]);
+  console.log(suburbs);
   //cacluate the distance when the state is changed
-  // useEffect(() => {
-  //   return null;
-  // }, state);
+  useEffect(() => {
+    let newList = recommd(state, initialSuburb);
+    setSuburbs(newList);
+  }, [state]);
 
   return (
     <div className="recommender container">

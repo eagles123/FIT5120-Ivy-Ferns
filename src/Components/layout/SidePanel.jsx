@@ -18,7 +18,7 @@ const SidePanel = props => {
   }
   return (
     <React.Fragment>
-      <h5 style={{ paddingTop: 50 }}>Your perference of the following:</h5>
+      <h5 style={{ paddingTop: 50 }}>How much do you care about:</h5>
       <div style={{ margin: 50 }}>
         <h5>Health</h5>
         <span style={fontStyle}>{renderText(props.data.healthScore)}</span>
