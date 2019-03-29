@@ -4,7 +4,7 @@ import { ParameterContext } from "./../context/ParameterContext";
 
 const MySlider = ({ lable }) => {
   const { dispatch } = useContext(ParameterContext);
-  const [local, setLocal] = useState(0);
+  const [local, setLocal] = useState(5);
   function handleChange(e, value) {
     setLocal(value);
     dispatch({ type: lable, payload: local });

@@ -10,7 +10,7 @@ const SidePanel = props => {
     fontFamily: "Comic Sans MS"
   };
   function renderText(data) {
-    if (data >= 0 && data <= 2) return "Very Low";
+    if (data >= 0 && data <= 2) return "Not at all";
     else if (data > 2 && data <= 4) return "Low";
     else if (data > 4 && data <= 6) return "Medium";
     else if (data > 6 && data <= 8) return "High";

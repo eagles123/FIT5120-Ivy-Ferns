@@ -27,7 +27,7 @@
     transform: rotate(360deg);
   }
 }
-path {
+/* path {
   fill: #ccc;
   stroke: #fff;
   stroke-width: 0.5px;
@@ -35,4 +35,4 @@ path {
 
 path:hover {
   fill: red;
-}
+} */

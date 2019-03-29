@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -13,7 +14,7 @@ import StyledButton from "../common/StyleButton";
 const SuburbResult = ({ suburb }) => {
   return (
     <div className="col s12 m12">
-      <Card>
+      <Card style={{ outerWidth: 50 }}>
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" style={{ backgroundColor: "red" }}>
@@ -30,9 +31,11 @@ const SuburbResult = ({ suburb }) => {
         </CardContent>
         <CardActions>
           {/* <Button variant="contained" color="primary" size="small">
-            Learn More
+            Learn Morea
           </Button> */}
-          <StyledButton>Learn More</StyledButton>
+          <Link to="/dashboard" key={suburb.id}>
+            <StyledButton>Learn More</StyledButton>
+          </Link>
         </CardActions>
       </Card>
     </div>
