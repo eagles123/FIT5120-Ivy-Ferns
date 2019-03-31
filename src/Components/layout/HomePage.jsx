@@ -53,7 +53,7 @@ export default function HomePage() {
             </Fade>
           </div>
           <div className="col s5 m5 offset-m1">
-            <Flip left>
+            <Fade duration={2000}>
               <p>
                 eact-gsap lets you use the GreenSock Animation Platform (GSAP)
                 in React in a fully declarative way. It abstracts away the
@@ -67,7 +67,7 @@ export default function HomePage() {
                   Get Started
                 </Fab>
               </Link>
-            </Flip>
+            </Fade>
           </div>
         </div>
         <Parallax bgImage={image3} strength={500}>

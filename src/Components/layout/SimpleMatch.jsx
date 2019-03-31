@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import posed from "react-pose";
 import QuestionModal from "../common/QuestionModal";
 import NavBar from "./NavBar";
 import { Anidiv, AniItem } from "../common/animation/AniComponent";
@@ -14,6 +13,9 @@ export default function SimpleMatch() {
     setMarriage(event.target.value);
   }
 
+  function handleModal() {
+    setOpen(false);
+  }
   function handleCChange(event) {
     setChild(event.target.value);
   }
@@ -49,6 +51,7 @@ export default function SimpleMatch() {
         child={child}
         handleCChange={handleCChange}
         handleMChange={handleMChange}
+        handleModal={handleModal}
       />
     </React.Fragment>
   );

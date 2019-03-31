@@ -17,7 +17,8 @@ export default function QuestionModal({
   marriage,
   child,
   handleCChange,
-  handleMChange
+  handleMChange,
+  handleModal
 }) {
   return (
     <div>
@@ -79,7 +80,9 @@ export default function QuestionModal({
           <Link to="/">
             <Button color="primary">Back</Button>
           </Link>
-          <Button color="primary">Ok</Button>
+          <Button color="primary" onChange={handleModal}>
+            Ok
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

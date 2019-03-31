@@ -7,6 +7,7 @@ import HomePage from "./Components/layout/HomePage";
 import { PoseGroup } from "react-pose";
 import RouteContainer from "./Components/common/RouteContainer";
 import SimpleMatch from "./Components/layout/SimpleMatch";
+import NavBar from "./Components/layout/NavBar";
 
 const App = () => {
   // const [ids, setIds] = useReducer([]);

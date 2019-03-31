@@ -69,6 +69,7 @@ const Recommender = () => {
   return (
     <React.Fragment>
       <NavBar />
+
       <div className="recommender container">
         <div className="row">
           <div className="col s12 m5">
