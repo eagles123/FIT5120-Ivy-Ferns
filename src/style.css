@@ -1,0 +1,25 @@
+.c {
+  position: absolute;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 500px;
+  max-width: 500px;
+  max-height: 400px;
+  width: 50ch;
+  height: 50ch;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.front,
+.back {
+  background-size: cover;
+}
+
+.back {
+  background-image: url("./assets/bendigo.png");
+}
+
+.front {
+  background-image: url("./assets/ballarat.png");
+}

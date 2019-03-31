@@ -1,10 +1,9 @@
-import React, { useState, useReducer, useEffect, useContext } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import SidePanel from "./SidePanel";
 import SuburbList from "../Suburbs/SuburbList";
-import { ParameterContext, parameterReducr } from "../context/ParameterContext";
+import { ParameterContext } from "../context/ParameterContext";
 import { getAllSuburbs } from "../services/fakeSuburbList";
-import { distance, recommd } from "../services/recommend";
-import SuburList from "../Suburbs/SuburbList";
+import { recommd } from "../services/recommend";
 import NavBar from "./NavBar";
 
 const Recommender = () => {

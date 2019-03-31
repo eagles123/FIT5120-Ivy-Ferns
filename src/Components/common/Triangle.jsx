@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import { PropTypes } from "prop-types";
 import { Motion, spring } from "react-motion";
 
 export default class Triangle extends Component {
-  static propTypes = {
-    hover: PropTypes.bool
-  };
-
   render() {
     const { hover, ...others } = this.props;
     // Animate slower than default spring animation a bit.

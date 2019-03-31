@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import BarChart from "./Charts/BarChart";
 import LineChart from "./Charts/LineChart";
 import DonutChart from "./Charts/DonutChart";

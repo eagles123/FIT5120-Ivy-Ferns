@@ -9,7 +9,7 @@ export default class LineChart extends React.Component {
       options: {
         chart: {
           zoom: {
-            enabled: false
+            enabled: true
           }
         },
         dataLabels: {
@@ -19,7 +19,7 @@ export default class LineChart extends React.Component {
           curve: "straight"
         },
         title: {
-          text: "Product Trends by Month",
+          text: "Population Trend",
           align: "left"
         },
         grid: {
@@ -30,22 +30,30 @@ export default class LineChart extends React.Component {
         },
         xaxis: {
           categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep"
+            "2010",
+            "2012",
+            "2013",
+            "2014",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020"
           ]
         }
       },
       series: [
         {
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+          name: "Greater Geelong",
+          data: [30, 41, 35, 51, 49, 62, 69, 91, 148]
+        },
+        {
+          name: "Ballarat",
+          data: [9, 21, 35, 44, 49, 70, 120, 125, 138]
+        },
+        {
+          name: "Greater Bendigo",
+          data: [20, 31, 75, 91, 99, 120, 125, 126, 130]
         }
       ]
     };

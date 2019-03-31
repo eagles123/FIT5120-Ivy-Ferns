@@ -1,21 +1,27 @@
-import React, { Component, useReducer } from "react";
+import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Recommender from "./Components/layout/Recommender";
 import DataDashBoard from "./Components/common/DataDashBoard";
-import MainPage from "./Components/layout/MainPage";
+import HomePage from "./Components/layout/HomePage";
+import { PoseGroup } from "react-pose";
+import RouteContainer from "./Components/common/RouteContainer";
+import SimpleMatch from "./Components/layout/SimpleMatch";
 
 const App = () => {
   // const [ids, setIds] = useReducer([]);
   return (
     <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route exact path="/dashboard" component={DataDashBoard} />
-          <Route exact path="/recommend" component={Recommender} />
-          <Route path="/" component={MainPage} />
-        </Switch>
-      </div>
+      <PoseGroup>
+        <RouteContainer key={Math.random()}>
+          <Switch>
+            <Route exact path="/dashboard" component={DataDashBoard} />
+            <Route exact path="/recommend" component={Recommender} />
+            <Route exact path="/match" component={SimpleMatch} />
+            <Route path="/" component={HomePage} />
+          </Switch>
+        </RouteContainer>
+      </PoseGroup>
     </BrowserRouter>
   );
 };

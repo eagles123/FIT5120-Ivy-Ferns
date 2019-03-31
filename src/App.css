@@ -19,14 +19,67 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h4 {
+  font-size: 25px;
+  padding-left: 10px;
 }
+
+#firstRow {
+  margin-top: 40px;
+  background-color: white;
+}
+
+#secondRow {
+  background-color: white;
+}
+p {
+  padding-top: 20px;
+}
+
+.item {
+  background: #43415f;
+  border-radius: 5px;
+  height: 40px;
+  width: 50%;
+  opacity: 0;
+  margin-bottom: 10px;
+  transform-origin-y: 0%;
+  color: white;
+}
+.item:nth-child(1) {
+  background: #f69a9a;
+}
+
+.item:nth-child(2) {
+  background: #83ae9b;
+}
+
+.item:nth-child(3) {
+  background: #ef4566;
+}
+
+.item:nth-child(4) {
+  background: #f9cdae;
+}
+
+.item:nth-child(5) {
+  background: #c8c8a9;
+}
+/* #im {
+  position: relative;
+}
+
+.text_box {
+  position: absolute;
+  bottom: 20px;
+  right: 800px;
+  background-color: gray;
+  color: red;
+  padding-left: 20px;
+  padding-right: 20px;
+  opacity: 0.8;
+} */
+
 /* path {
   fill: #ccc;
   stroke: #fff;

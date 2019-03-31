@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
 import { Motion, spring } from "react-motion";
@@ -27,10 +26,8 @@ HOLD ON. We need to animate it. Remember? Silly me... =.="
  */
 
 const Container = styled.div`
-  width: 100vw;
+  width: 99vw;
   height: 100vh;
-
-  // Flex-box is awesome :)
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -65,9 +62,6 @@ const StyledSquareCursor = styled(SquareCursor)`
 `;
 
 export default class Video extends Component {
-  static propTypes = {
-    videoUrl: PropTypes.string.isRequired
-  };
   constructor(props) {
     super(props);
     this.state = {

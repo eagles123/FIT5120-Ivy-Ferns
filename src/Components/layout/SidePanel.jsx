@@ -1,5 +1,4 @@
 import React from "react";
-import { StickyContainer, Sticky } from "react-sticky";
 import MySlider from "./../common/MySlider";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";

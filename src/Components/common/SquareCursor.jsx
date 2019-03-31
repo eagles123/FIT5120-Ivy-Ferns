@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Motion, spring } from "react-motion";
 
 export default class SquareCursor extends Component {
-  static propTypes = {};
-
   render() {
     const { show, ...others } = this.props;
     const motionStyle = {
