@@ -1,18 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Banner from "./../common/Banner";
 
 const NavBarLinks = () => {
   return (
     <div>
       <ul className="right">
         <li>
-          <NavLink to="/">Link1</NavLink>
+          <Banner link={"/about"} text={"About Us"} />
         </li>
         <li>
-          <NavLink to="/">Link2</NavLink>
-        </li>
-        <li>
-          <NavLink to="/">Link3</NavLink>
+          <Banner link={"/faqs"} text={"FAQs"} />
         </li>
       </ul>
     </div>

@@ -26,6 +26,7 @@ HOLD ON. We need to animate it. Remember? Silly me... =.="
  */
 
 const Container = styled.div`
+  margin-top: 50px
   width: 99vw;
   height: 100vh;
   display: flex;

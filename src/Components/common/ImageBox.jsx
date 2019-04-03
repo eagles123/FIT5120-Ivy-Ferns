@@ -17,7 +17,7 @@ export default function ImageBox({ quote, image }) {
 
   return (
     <ImageBox>
-      <img src={image} />
+      <img src={"country.png"} />
       <TextBox>
         <h4>Reginal Victoria</h4>
         <span>{quote}</span>

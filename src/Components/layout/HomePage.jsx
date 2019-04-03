@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import ImageBox from "../common/ImageBox";
 import Fab from "@material-ui/core/Fab";
 import Video from "../common/Video";
-import { Fade, LightSpeed, Flip } from "react-reveal";
+import { Fade, Roll } from "react-reveal";
 import LineChart from "../common/Charts/LineChart";
 import { Parallax } from "react-parallax";
 import DonutChart from "./../common/Charts/DonutChart";
+import BarChart from "./../common/Charts/BarChart";
 import { Link } from "react-router-dom";
+import ImageCard from "./../ImageCard";
+import NavBar from "./NavBar";
 
 export default function HomePage() {
   const image1 = require("../../assets/houseparallax.png");
@@ -15,93 +18,67 @@ export default function HomePage() {
 
   return (
     <React.Fragment>
-      <Video videoUrl={require("../../assets/MyVideo.mp4")} />
-      <div className="container-fluid" id="firstRow">
-        <Parallax bgImage={image1} strength={500}>
-          <div style={{ height: 400 }} />
-        </Parallax>
-        <div className="row" id="firstRow">
-          <div className="col s5 m4 offset-m1">
-            <Fade duration={2000}>
-              <p>
-                Regional Victoria (also known as country Victoria) encompasses
-                all the areas of the state of Victoria outside Melbourne.
-                Regional Victoria contains much of Australia’s geographical and
-                biological diversity. Journey through our pristine forests;
-                witness the dramatic scenery of our mountain ranges; taste the
-                exotic flavours of our gourmet produce; walk along our many
-                hiking trails; enjoy our many rivers and lakes; visit our many
-                towns and attractions. There is so much to see and experience in
-                regional Victoria.
-              </p>
+      {/* <div style={{ marginTop: 30 }}>
+        <Video videoUrl={require("../../assets/MyVideo.mp4")} />
+      </div> */}
+      <div className="container-fluid" style={{ marginTop: 100 }}>
+        <h2>ARE YOU FACING ANY OF THESE ISSUES?</h2>
+        <div className="row">
+          <div className="col s10 m4">
+            <Fade>
+              <ImageCard title={"Can't Fit in??"} image={"/home1.png"} />
             </Fade>
           </div>
-          <div className="col s5 m5 offset-m2">
-            <Fade left>
-              <ImageBox quote="this is a image box text" image="country.png" />
+          <div className="col s10 m4">
+            <Fade delay={300}>
+              <ImageCard title={"Can't Afford it??"} image={"/home2.png"} />
             </Fade>
           </div>
-        </div>
-
-        <Parallax bgImage={image2} strength={500}>
-          <div style={{ height: 400 }} />
-        </Parallax>
-        <div className="row" id="secondRow">
-          <div className="col s5 m4 offset-m1">
-            <Fade left>
-              <LineChart />
-            </Fade>
-          </div>
-          <div className="col s5 m5 offset-m1">
-            <Fade duration={2000}>
-              <p>
-                eact-gsap lets you use the GreenSock Animation Platform (GSAP)
-                in React in a fully declarative way. It abstracts away the
-                direct use of the GSAP classes TweenMax and TimelineMax. If you
-                need the full control it's possible by getting low level access
-                to the underlying objects. In addition to that it has it's own
-                SVG drawing Plugin and some useful helper components.
-              </p>
-              <Link to="/match">
-                <Fab variant="extended" aria-label="Add" color="primary">
-                  Get Started
-                </Fab>
-              </Link>
+          <div className="col s10 m4 ">
+            <Fade delay={600}>
+              <ImageCard
+                title={"Being Forced to Move??"}
+                image={"/home3.png"}
+              />
             </Fade>
           </div>
         </div>
-        <Parallax bgImage={image3} strength={500}>
-          <div style={{ height: 400 }} />
-        </Parallax>
-        <div className="row" id="firstRow">
-          <div className="col s5 m4 offset-m1">
-            <LightSpeed duration={1000}>
-              <p>
-                Regional Victoria (also known as country Victoria) encompasses
-                all the areas of the state of Victoria outside Melbourne.
-                Regional Victoria contains much of Australia’s geographical and
-                biological diversity. Journey through our pristine forests;
-                witness the dramatic scenery of our mountain ranges; taste the
-                exotic flavours of our gourmet produce; walk along our many
-                hiking trails; enjoy our many rivers and lakes; visit our many
-                towns and attractions. There is so much to see and experience in
-                regional Victoria.
-              </p>
-              <Link to="/recommend">
-                <Fab variant="extended" aria-label="Add" color="primary">
-                  Advance Search
-                </Fab>
-              </Link>
-            </LightSpeed>
+        <h2>IF YES, LET’S EXPLORE REGIONAL VICTORIA!</h2>
+        <div style={{ margin: 40, textAlign: "center" }}>
+          <Link to="/intro">
+            <Fab variant="extended" aria-label="Add" color="secondary">
+              Get Started
+            </Fab>
+          </Link>
+        </div>
+      </div>
+      <div className="container">
+        <h3 style={{ marginTop: "80px", marginBottom: "80px", color: "white" }}>
+          OUR SERVICES
+        </h3>
+        <div className="row">
+          <div className="col s12 m5 offset-m2">
+            <Roll left>
+              <img src={"carton1.png"} alt="" />
+            </Roll>
+            <h4 style={{ color: "white" }}>User preference based solution</h4>
           </div>
-          <div className="col s5 m5 offset-m2">
-            <Fade left>
-              <DonutChart />
-            </Fade>
+          <div className="col s12 m5">
+            <Roll left>
+              <img src={"carton2.png"} alt="" />
+            </Roll>
+            <h4 style={{ color: "white" }}>
+              Sorted and ranked list of best Suburbs in Greater Geelong, Greater
+              Bendigo and City of Ballarat
+            </h4>
           </div>
         </div>
       </div>
-
+      <footer>
+        <h5 style={{ textAlign: "center", color: "white" }}>
+          Copyright @ IvyFerns – Building Comfort in Regional Victoria
+        </h5>
+      </footer>
       <div />
     </React.Fragment>
   );

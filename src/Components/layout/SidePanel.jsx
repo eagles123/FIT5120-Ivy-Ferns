@@ -1,13 +1,10 @@
-import React from "react";
-import MySlider from "./../common/MySlider";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+import React, { useContext } from "react";
+import { ChoiceContext } from "../context/ParameterContext";
+import SliderElement from "../common/SliderElement";
+import { AniItem } from "../common/animation/AniComponent";
 
-const SidePanel = props => {
-  const fontStyle = {
-    fontSize: 20,
-    fontFamily: "Comic Sans MS"
-  };
+const SidePanel = ({ data }) => {
+  const { choice } = useContext(ChoiceContext);
   function renderText(data) {
     if (data >= 0 && data <= 2) return "Not at all";
     else if (data > 2 && data <= 4) return "Low";
@@ -19,22 +16,45 @@ const SidePanel = props => {
     <React.Fragment>
       <h5 style={{ paddingTop: 50 }}>How much do you care about:</h5>
       <div style={{ margin: 50 }}>
-        <h5>Health</h5>
-        <span style={fontStyle}>{renderText(props.data.healthScore)}</span>
-        <MySlider lable={"HEALTH"} />
-        <h5>Education</h5>
-        <span style={fontStyle}>{renderText(props.data.educationScore)}</span>
-        <MySlider lable={"EDUCATION"} />
-        <h5>Property</h5>
-        <span style={fontStyle}>{renderText(props.data.propertyScore)}</span>
-        <ToggleButtonGroup exclusive={true}>
-          <ToggleButton value="Buy">Buy</ToggleButton>
-          <ToggleButton value="Rent">Rent</ToggleButton>
-        </ToggleButtonGroup>
-        <MySlider lable={"PROPERTY"} />
-        <h5>Jobs</h5>
-        <span style={fontStyle}>{renderText(props.data.jobScore)}</span>
-        <MySlider lable={"JOB"} />
+        {choice.healthField ? (
+          <AniItem className="anislider">
+            <SliderElement
+              key={String(choice.healthField)}
+              text={renderText(data.healthScore)}
+              title={"Health"}
+              lable={"HEALTH"}
+            />
+          </AniItem>
+        ) : null}
+        {choice.educationField ? (
+          <AniItem className="anislider">
+            <SliderElement
+              text={renderText(data.educationScore)}
+              title={"Education"}
+              lable={"EDUCATION"}
+            />
+          </AniItem>
+        ) : null}
+
+        {choice.propertyField ? (
+          <AniItem className="anislider">
+            <SliderElement
+              text={renderText(data.propertyScore)}
+              title={"Property"}
+              lable={"PROPERTY"}
+            />
+          </AniItem>
+        ) : null}
+
+        {choice.jobField ? (
+          <AniItem className="anislider">
+            <SliderElement
+              text={renderText(data.jobScore)}
+              title={"Employment"}
+              lable={"JOB"}
+            />
+          </AniItem>
+        ) : null}
       </div>
     </React.Fragment>
   );

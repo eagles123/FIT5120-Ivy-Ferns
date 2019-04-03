@@ -1,89 +1,98 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useReducer, useEffect, useContext } from "react";
 import SidePanel from "./SidePanel";
 import SuburbList from "../Suburbs/SuburbList";
-import { ParameterContext } from "../context/ParameterContext";
+import { Anidiv } from "../common/animation/AniComponent";
+import { ParameterContext, ChoiceContext } from "../context/ParameterContext";
 import { getAllSuburbs } from "../services/fakeSuburbList";
 import { recommd } from "../services/recommend";
-import NavBar from "./NavBar";
+import { recReducer } from "./../reducer/recReducer";
+import ToggleButtons from "../common/ToggleButtons";
+import CheckList from "./../common/CheckList";
 
 const Recommender = () => {
-  // const [state, dispatch] = useReducer(parameterReducr, []);
+  const { choice, choiceDispatch } = useContext(ChoiceContext);
+  const [animate, setAnimate] = useState(false);
 
+  useEffect(() => {
+    setTimeout(toggle, 600);
+  }, []);
+  function toggle() {
+    setAnimate(true);
+  }
+
+  //dispatch actions to show sliders at Recommder
+  function choseHealth() {
+    choiceDispatch({ type: "HEALTHFIELD", payload: !choice.healthField });
+    stateDispatch({ type: "RESETHEALTH" });
+  }
+
+  function choseEdu() {
+    choiceDispatch({ type: "EDUCATIONFIELD", payload: !choice.educationField });
+    stateDispatch({ type: "RESETEDU" });
+  }
+  function choseProp() {
+    choiceDispatch({ type: "PROPERTYFIELD", payload: !choice.propertyField });
+    stateDispatch({ type: "RESETPROP" });
+  }
+  function choseJob() {
+    choiceDispatch({ type: "JOBFIELD", payload: !choice.jobField });
+    stateDispatch({ type: "RESETJOB" });
+  }
   //read in the data when compomentDidMount
   // useEffect(() => {
   //   getAllSuburbs;
   // }, []);
 
-  //state and reducer to maniplate the slider value
-  const [state, dispatch] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case "HEALTH":
-          return {
-            ...state,
-            healthScore: Math.round(action.payload)
-          };
-        case "EDUCATION":
-          return {
-            ...state,
-            educationScore: Math.round(action.payload)
-          };
-        case "BUYORRENT":
-          return {
-            ...state,
-            propertyType: action.payload
-          };
-        case "PROPERTY":
-          return {
-            ...state,
-            propertyScore: Math.round(action.payload)
-          };
-        case "JOB":
-          return {
-            ...state,
-            jobScore: Math.round(action.payload)
-          };
-        default: {
-          return state;
-        }
-      }
-    },
-    {
-      healthScore: 5,
-      educationScore: 5,
-      propertyType: "buy",
-      propertyScore: 5,
-      jobScore: 5
-    }
-  );
-  const [initialSuburb, setInitialSuburb] = useState(getAllSuburbs);
+  //actions pass to CheckList component
+  const choices = [
+    { label: "Health", chose: choice.healthField, action: choseHealth },
+    { label: "Education", chose: choice.educationField, action: choseEdu },
+    { label: "Property", chose: choice.propertyField, action: choseProp },
+    { label: "Empolyment", chose: choice.jobField, action: choseJob }
+  ];
+  //state and reducer to maniplate the user input slider value
+  const [state, stateDispatch] = useReducer(recReducer, {
+    healthScore: 0,
+    educationScore: 0,
+    propertyType: "buy",
+    propertyScore: 0,
+    jobScore: 0
+  });
+  const [initialSuburb, setInitialSuburb] = useState(1);
 
-  const [suburbs, setSuburbs] = useState([]);
+  const [suburbs, setSuburbs] = useState(getAllSuburbs);
   //cacluate the distance when the state is changed
+
   useEffect(() => {
-    let newList = recommd(state, initialSuburb);
-    setSuburbs([]);
-    setSuburbs(newList);
+    setSuburbs(recommd(state, suburbs));
+    //don't understand this code but add this line suburb list will update immidiately
+    setInitialSuburb(initialSuburb);
+    // let newList = recommd(state, initialSuburb);
+
+    // setSuburbs(newList);
   }, [state]);
 
   return (
     <React.Fragment>
-      <NavBar />
-
-      <div className="recommender container">
+      <div className="recommender container-fluid">
+        <div className="container">
+          <ToggleButtons />
+        </div>
         <div className="row">
-          <div className="col s12 m5">
-            <ParameterContext.Provider value={{ dispatch, state }}>
-              <SidePanel data={state} />
-            </ParameterContext.Provider>
-            {/* <SidePanel health={health} handleChange={handleChange} /> */}
+          <div className="col s12 m2" style={{ marginTop: 100 }}>
+            <Anidiv className=" center" pose={animate ? "open" : "closed"}>
+              <CheckList choices={choices} />
+            </Anidiv>
           </div>
-          <div className="col s12 m5" style={{ marginTop: 50, marginLeft: 20 }}>
-            {suburbs.length === 0 ? (
-              "Nothing"
-            ) : (
-              <SuburbList suburbs={suburbs} />
-            )}
+          <div className="col s12 m4 offset-m1 ">
+            <ParameterContext.Provider value={{ stateDispatch, state }}>
+              <Anidiv className=" center" pose={animate ? "open" : "closed"}>
+                <SidePanel data={state} />
+              </Anidiv>
+            </ParameterContext.Provider>
+          </div>
+          <div className="col s12 m4" style={{ marginTop: 50, marginLeft: 20 }}>
+            {suburbs.length === 0 ? null : <SuburbList suburbs={suburbs} />}
           </div>
         </div>
       </div>

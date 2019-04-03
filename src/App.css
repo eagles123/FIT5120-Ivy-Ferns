@@ -4,16 +4,6 @@
 .suburb-list {
   margin-left: 50px;
 }
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
   color: #61dafb;
@@ -25,46 +15,59 @@ h4 {
 }
 
 #firstRow {
-  margin-top: 40px;
   background-color: white;
 }
 
 #secondRow {
-  background-color: white;
+  background-color: rgb(235, 235, 235);
 }
 p {
   padding-top: 20px;
 }
 
 .item {
-  background: #43415f;
-  border-radius: 5px;
-  height: 40px;
-  width: 50%;
+  border-radius: 10px;
+  height: 30px;
+  width: 20%;
   opacity: 0;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   transform-origin-y: 0%;
   color: white;
 }
-.item:nth-child(1) {
-  background: #f69a9a;
+
+.anislider {
+  text-align: left;
+  width: 80%;
+  opacity: 0;
+  margin-bottom: 20px;
+  color: black;
 }
 
-.item:nth-child(2) {
-  background: #83ae9b;
+.ImageCard {
+  max-width: 500px;
+  margin-left: 50px;
+  border-color: red;
+  border: #61dafb;
 }
 
-.item:nth-child(3) {
-  background: #ef4566;
+.ImageHeader {
+  text-align: center;
 }
 
-.item:nth-child(4) {
-  background: #f9cdae;
+.ImageMedia {
+  height: 300px;
+  padding-top: "56.25%";
 }
 
-.item:nth-child(5) {
-  background: #c8c8a9;
+.container-fluid {
+  align-items: center;
 }
+/* change color here */
+h2 {
+  /* color: white; */
+  text-align: center;
+}
+
 /* #im {
   position: relative;
 }

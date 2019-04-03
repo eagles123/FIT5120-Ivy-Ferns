@@ -8,3 +8,12 @@ const initialScore = {
 };
 
 export const ParameterContext = createContext(initialScore);
+
+const initalChoice = {
+  healthField: false,
+  educationField: false,
+  propertyField: false,
+  jobField: false
+};
+
+export const ChoiceContext = createContext(initalChoice);

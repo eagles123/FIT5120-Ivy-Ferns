@@ -3,11 +3,11 @@ import Slider from "@material-ui/lab/Slider";
 import { ParameterContext } from "./../context/ParameterContext";
 
 const MySlider = ({ lable }) => {
-  const { dispatch } = useContext(ParameterContext);
-  const [local, setLocal] = useState(5);
+  const { stateDispatch } = useContext(ParameterContext);
+  const [local, setLocal] = useState(0);
   function handleChange(e, value) {
+    stateDispatch({ type: lable, payload: value });
     setLocal(value);
-    dispatch({ type: lable, payload: local });
   }
   return (
     <div className="row">
