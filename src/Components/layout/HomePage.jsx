@@ -3,12 +3,12 @@ import Fab from "@material-ui/core/Fab";
 import { Fade, Roll, Flip } from "react-reveal";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
-import ImageCard from "../ImageCard";
+import ImageCard from "./../common/ImageCard";
 import NavBar from "./NavBar";
 
 export default function HomePage() {
-  const image2 = require("../../assets/bg1.png");
-  const image3 = require("../../assets/bg2.png");
+  const image2 = require("../../assets/parallex1.jpg");
+  const image3 = require("../../assets/parallex2.jpg");
 
   return (
     <React.Fragment>
@@ -40,7 +40,13 @@ export default function HomePage() {
         </h2>
         <div style={{ margin: 40, textAlign: "center" }}>
           <Link to="/intro">
-            <Fab variant="extended" aria-label="Add" color="primary">
+            <Fab
+              variant="extended"
+              aria-label="Add"
+              color="primary"
+              style={{ height: "70px", width: "190px" }}
+            >
+              {/* <h5>Get Started</h5> */}
               Get Started
             </Fab>
           </Link>
@@ -94,7 +100,7 @@ export default function HomePage() {
             </div>
             <div className="col s12 m1">
               <a href="https://www.linkedin.com/groups/13700361/">
-                <i style={{ margin: 10 }} class="fab fa-linkedin fa-3x" />
+                <i style={{ margin: 10 }} className="fab fa-linkedin fa-3x" />
               </a>
             </div>
           </div>

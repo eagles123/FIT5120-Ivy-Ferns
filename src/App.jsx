@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { Switch, Route, __RouterContext } from "react-router-dom";
+import { Switch, Route, __RouterContext, Redirect } from "react-router-dom";
 import "./App.css";
 import Recommender from "./Components/layout/Recommender";
 import DataDashBoard from "./Components/common/DataDashBoard";
@@ -43,12 +43,13 @@ const App = () => {
       <Fade top duration={1500} />
       <Switch>
         <ChoiceContext.Provider value={{ choiceDispatch, choice }}>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/faqs" component={FAQs} />
+          <Route path="/about" component={About} />
+          <Route path="/faqs" component={FAQs} />
           <Route path="/recommend" component={Recommender} />
           <Route path="/dashboard" component={DataDashBoard} />
           <Route path="/intro" component={Intro} />
+          <Route path="/" exact component={HomePage} />
+          <Redirect to="/" />
         </ChoiceContext.Provider>
       </Switch>
     </React.Fragment>

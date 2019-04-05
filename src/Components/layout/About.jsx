@@ -18,7 +18,7 @@ export default function About() {
           </h3>
           <br />
           <h3 style={{ paddingLeft: 20 }}>Our Vision</h3>
-          <div class="row">
+          <div className="row">
             <p
               className="col s12 m9 offset-m1"
               style={{ fontSize: 20, marginBottom: 100 }}

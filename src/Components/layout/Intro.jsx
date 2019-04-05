@@ -56,10 +56,10 @@ export default function Intro(props) {
                 <img src={"/carton3.png"} />
               </div>
               <div className="col s1 m1 offset-m1" style={{ color: "white" }}>
-                <i class="fas fa-hospital-symbol fa-3x" />
-                <i class="fas fa-building fa-3x" />
-                <i class="fas fa-hospital-alt fa-3x" />
-                <i class="fas fa-briefcase fa-3x" />
+                <i className="fas fa-hospital-symbol fa-3x" />
+                <i className="fas fa-building fa-3x" />
+                <i className="fas fa-hospital-alt fa-3x" />
+                <i className="fas fa-briefcase fa-3x" />
               </div>
               <div className="col s7 m5 ">
                 {/* <FormControl component="fieldset"> */}

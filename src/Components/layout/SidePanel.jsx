@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { ChoiceContext } from "../context/ParameterContext";
 import SliderElement from "../common/SliderElement";
-import { AniItem } from "../common/animation/AniComponent";
-import NewSlider from "../NewSlider";
 
 const SidePanel = ({ data }) => {
   const { choice } = useContext(ChoiceContext);

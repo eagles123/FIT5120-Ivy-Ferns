@@ -3,6 +3,8 @@ import Radio from "@material-ui/core/Radio";
 import { ChoiceContext } from "../context/ParameterContext";
 
 export default function Radiobut({ text }) {
+  //temperare varibale to make raido not shown in the bigining
+  const [temp, setTemp] = useState("0");
   const { choice, choiceDispatch } = useContext(ChoiceContext);
   // function handleChoice() {
   //   if (value === "yes") {
@@ -20,11 +22,13 @@ export default function Radiobut({ text }) {
 
   function handleYes() {
     setValue("yes");
+    setTemp("1");
     choiceDispatch({ type: text, payload: true });
   }
 
   function handleNo() {
     setValue("no");
+    setTemp("1");
     choiceDispatch({ type: text, payload: false });
   }
 
@@ -40,7 +44,7 @@ export default function Radiobut({ text }) {
       </div>
       <div className="col s3 m3">
         <Radio
-          checked={value === "no"}
+          checked={value === "no" && temp === "1"}
           onClick={handleNo}
           style={{ color: "#fafafa" }}
         />
