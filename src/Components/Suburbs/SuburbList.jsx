@@ -1,17 +1,31 @@
 import React from "react";
 import SuburbResult from "./SuburbResult";
 
-const SuburList = ({ suburbs }) => {
+const SuburList = ({ suburbs, choice }) => {
   return (
     <div className="suburb-list section">
-      {suburbs.length === 0 ? (
-        <h5>"Nothing here"</h5>
-      ) : (
+      {choice.healthField ||
+      choice.educationField ||
+      choice.propertyField ||
+      choice.jobField ? (
         suburbs.map(suburb => (
-          <div key={suburb.id} className="row">
-            <SuburbResult key={suburb.id} suburb={suburb} />
+          <div key={suburb.name} className="row">
+            <SuburbResult key={suburb.name} suburb={suburb} />
           </div>
         ))
+      ) : (
+        <div
+          style={{
+            height: "500px",
+            width: "350px",
+            backgroundColor: "#ff5252",
+            color: "white"
+          }}
+        >
+          <h4 style={{ paddingTop: "100px", textAlign: "center" }}>
+            Please Choose Your Perference First!
+          </h4>
+        </div>
       )}
     </div>
   );

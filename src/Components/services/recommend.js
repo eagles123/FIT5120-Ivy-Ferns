@@ -1,26 +1,29 @@
 // function to caclulate the euclidean-distance between custom and suburb data vector
+import _ from "lodash";
 export function distance(custom, suburb) {
   let healthDiff = Math.pow(
     custom.healthScore * 10 - suburb.rating.healthScore,
     2
   );
+
+  // console.log(healthDiff);
+
   let educationDiff = Math.pow(
     custom.educationScore * 10 - suburb.rating.educationScore,
     2
   );
-  let propertyDiff = 0;
-  if (custom.propertyType === "buy") {
-    propertyDiff = Math.pow(
-      custom.propertyScore * 10 - suburb.rating.propertyBuy,
-      2
-    );
-  } else if (custom.propertyType === "rent") {
-    propertyDiff = Math.pow(
-      custom.propertyScore * 10 - suburb.rating.propertyRent,
-      2
-    );
-  }
+  // console.log(educationDiff);
+
+  // let propertyDiff = Math.pow(
+  //   custom.propertyScore * 10 - suburb.rating.propertyScore
+  // );
+  let propertyDiff = Math.pow(
+    custom.propertyScore * 10 - suburb.rating.propetyScore,
+    2
+  );
+
   let jobDiff = Math.pow(custom.jobScore * 10 - suburb.rating.jobScore, 2);
+  // console.log(jobDiff);
 
   suburb.difScore = Math.sqrt(
     healthDiff + educationDiff + propertyDiff + jobDiff
@@ -34,4 +37,12 @@ export function recommd(customChoice, suburbList) {
     return a.difScore - b.difScore;
   });
   return suburbList;
+}
+
+export function paginate(items, pageNumber, pageSize) {
+  const startIndex = (pageNumber - 1) * pageSize;
+  return _(items)
+    .slice(startIndex)
+    .take(pageSize)
+    .value();
 }

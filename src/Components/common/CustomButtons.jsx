@@ -10,7 +10,7 @@ export default function CustomButton({ text, color, handleChange }) {
         style={{
           backgroundColor: color,
           borderRadius: 20,
-          width: "250px",
+          width: "200px",
           height: "40px",
           fontSize: 20
         }}

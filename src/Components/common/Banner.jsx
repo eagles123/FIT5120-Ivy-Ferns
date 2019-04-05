@@ -51,7 +51,7 @@ export default function Banner({ home, text }) {
         <BannerSpan>
           {home ? (
             <i
-              class="fas fa-home fa-2x"
+              className="fas fa-home fa-2x"
               style={{ marginTop: "0px", marginLeft: "0px" }}
             />
           ) : (

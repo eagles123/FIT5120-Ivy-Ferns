@@ -10,11 +10,6 @@ export const recReducer = (state, action) => {
         ...state,
         educationScore: Math.floor(action.payload)
       };
-    case "BUYORRENT":
-      return {
-        ...state,
-        propertyType: action.payload
-      };
     case "PROPERTY":
       return {
         ...state,

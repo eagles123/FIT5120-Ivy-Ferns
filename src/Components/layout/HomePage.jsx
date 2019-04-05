@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import ImageBox from "../common/ImageBox";
 import Fab from "@material-ui/core/Fab";
-import Video from "../common/Video";
 import { Fade, Roll, Flip } from "react-reveal";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";

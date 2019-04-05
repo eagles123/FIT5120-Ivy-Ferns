@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import CustomButton from "../common/CustomButtons";
 import { ChoiceContext } from "../context/ParameterContext";
 import NavBar from "./NavBar";
-import Radio from "@material-ui/core/Radio";
 import "../../chosePage.css";
+import { LightSpeed } from "react-reveal";
 import RadioBut from "../common/RadioBut";
 
 export default function Intro(props) {
@@ -34,52 +34,61 @@ export default function Intro(props) {
 
   return (
     <React.Fragment>
-      <NavBar home={true} />
+      <NavBar home={true} about={true} faqs={true} />
+
       <div className="cpage">
-        <div
-          className="container"
-          style={{
-            width: "1100px",
-            backgroundColor: "#ff5252",
-            // backgroundColor: "white",
-            opacity: 0.9,
-            maxHeight: "650px",
-            marginTop: "130px",
-            marginLeft: "350px"
-          }}
-        >
-          <h2 style={{ paddingTop: 20 }}>SET YOUR PREFERENCES</h2>
-          <div className="row">
-            <div className="col s4 m4">
-              <img style={{ opacity: 1 }} src={"/carton3.png"} alt="" />
+        <LightSpeed left duration={1000}>
+          <div
+            className="container"
+            style={{
+              width: "1100px",
+              backgroundColor: "#ff5252",
+              // backgroundColor: "white",
+              opacity: 0.9,
+              maxHeight: "650px",
+              marginTop: "130px",
+              marginLeft: "350px"
+            }}
+          >
+            <h2 style={{ paddingTop: 20 }}>SET YOUR PREFERENCES</h2>
+            <div className="row">
+              <div className="col s4 m4">
+                <img src={"/carton3.png"} />
+              </div>
+              <div className="col s1 m1 offset-m1" style={{ color: "white" }}>
+                <i class="fas fa-hospital-symbol fa-3x" />
+                <i class="fas fa-building fa-3x" />
+                <i class="fas fa-hospital-alt fa-3x" />
+                <i class="fas fa-briefcase fa-3x" />
+              </div>
+              <div className="col s7 m5 ">
+                {/* <FormControl component="fieldset"> */}
+                <h4>HEALTH CARE</h4>
+
+                <RadioBut text={"HEALTHFIELD"} />
+                <h4>EDUCATIONAL INSTITUTIONS</h4>
+
+                <RadioBut text={"EDUCATIONFIELD"} />
+                <h4>PROPERTY PRICES</h4>
+
+                <RadioBut text={"PROPERTYFIELD"} />
+                <h4>JOB OPPORTUNITIES</h4>
+
+                <RadioBut text={"JOBFIELD"} />
+              </div>
+              <div style={{ marginLeft: "600px" }}>
+                <CustomButton
+                  text={"Submit"}
+                  color={"#00695c"}
+                  handleChange={handleNext}
+                />
+              </div>
             </div>
-            <div className="col s1 m1 offset-m1" style={{ color: "white" }}>
-              <i class="fas fa-hospital-symbol fa-3x" />
-              <i class="fas fa-building fa-3x" />
-              <i class="fas fa-hospital-alt fa-3x" />
-              <i class="fas fa-briefcase fa-3x" />
-            </div>
-            <div className="col s7 m5 ">
-              {/* <FormControl component="fieldset"> */}
-              <h4>HEALTH CARE</h4>
-
-              <RadioBut text={"HEALTHFIELD"} />
-              <h4>EDUCATIONAL INSTITUTIONS</h4>
-
-              <RadioBut text={"EDUCATIONFIELD"} />
-              <h4>PROPERTY PRICES</h4>
-
-              <RadioBut text={"PROPERTYFIELD"} />
-              <h4>JOB OPPORTUNITIES</h4>
-
-              <RadioBut text={"JOBFIELD"} />
-            </div>
-          </div>
-          {/* <div id="choose" />
+            {/* <div id="choose" />
         <h4 style={{ padding: 300, color: "white", zIndex: 5 }}>
           SET YOUR PREFERENCES
         </h4> */}
-          {/* <CustomButton
+            {/* <CustomButton
             text={"Health"}
             color={"green"}
             handleChange={handleHealth}
@@ -110,7 +119,8 @@ export default function Intro(props) {
               handleChange={handleNext}
             />
           </div> */}
-        </div>
+          </div>
+        </LightSpeed>
       </div>
     </React.Fragment>
   );

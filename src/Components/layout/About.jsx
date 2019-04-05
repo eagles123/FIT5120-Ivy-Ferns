@@ -23,13 +23,13 @@ export default function About() {
               className="col s12 m9 offset-m1"
               style={{ fontSize: 20, marginBottom: 100 }}
             >
-              IVY FERNS is a group of passionate and enthusiastic students, who
-              are aiming to support people looking to move and live in Regional
-              Victoria. As Ivies are popular in their native range and can adopt
-              to different climates, they are significant for their aesthetics
-              and their evergreen foliage. Therefore, our team is aiming to
-              build a solution that is evergreen and adaptable to the
-              ever-changing needs of the population living in Regional Victoria.
+              IvyFerns is a project aiming to support migrants or existing
+              residents of Victoria, considering to move to Regional Victoria
+              specifically to suburbs in Greater Geelong, Ballarat, Greater
+              Bendigo. This platform guides the users towards the most suitable
+              suburb based on their personal inputs and filters covering four
+              key areas that are necessary for leading a quality life, i.e.
+              education, employment, health and property. 
             </p>
           </div>
         </Fade>

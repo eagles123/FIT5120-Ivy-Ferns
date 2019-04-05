@@ -1,66 +1,61 @@
 const suburbs = [
   {
     id: "1",
-    city: "Geelong",
-    name: "Bellarine",
+    city: "Bellarine",
+    name: "Geelong",
     description: "very good area, you are welcome to move here",
     rating: {
       healthScore: 20,
       educationScore: 79,
-      propertyBuy: 34,
-      PropertyRent: 55,
+      propetyScore: 3,
       jobScore: 47
     }
   },
   {
     id: "2",
-    city: "Geelong",
-    name: "Brownbill",
+    city: "Brownbill",
+    name: "Geelong",
     description: "very good area, you are welcome to move here",
     rating: {
       healthScore: 90,
       educationScore: 29,
-      propertyBuy: 64,
-      PropertyRent: 15,
+      propetyScore: 64,
       jobScore: 87
     }
   },
   {
     id: "3",
-    city: "Ballarat",
-    name: "Ballarat East",
+    city: "Ballarat East",
+    name: "Ballarat",
     description: "very good area, you are welcome to move here",
     rating: {
       healthScore: 1,
       educationScore: 1,
-      propertyBuy: 4,
-      PropertyRent: 5,
+      propetyScore: 4,
       jobScore: 7
     }
   },
   {
     id: "4",
-    city: "Bendigo",
-    name: "Huntly",
+    city: "Huntly",
+    name: "Bendigo",
     description: "very good area, you are welcome to move here",
     rating: {
       healthScore: 70,
       educationScore: 89,
-      propertyBuy: 34,
-      PropertyRent: 85,
+      propetyScore: 34,
       jobScore: 26
     }
   },
   {
     id: "5",
-    city: "Bendigo",
-    name: "Eaglehawk",
+    city: "Eaglehawk",
+    name: "Bendigo",
     description: "very good area, you are welcome to move here",
     rating: {
       healthScore: 30,
       educationScore: 29,
-      propertyBuy: 90,
-      PropertyRent: 15,
+      propetyScore: 36,
       jobScore: 70
     }
   }

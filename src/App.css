@@ -79,6 +79,9 @@ h2 {
   opacity: 0.8;
 }
 
+#side {
+  color: black;
+}
 /* #im {
   position: relative;
 }

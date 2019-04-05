@@ -14,27 +14,34 @@ import StyledButton from "../common/StyleButton";
 const SuburbResult = ({ suburb }) => {
   return (
     <div className="col s12 m12">
-      <Card style={{ outerWidth: 50 }}>
-        <CardHeader
+      <Card
+        raised={true}
+        style={{ width: "350px", backgroundColor: "#ff5252" }}
+      >
+        {/* <CardHeader
           avatar={
             <Avatar aria-label="Recipe" style={{ backgroundColor: "red" }}>
-              {suburb.city.charAt(0)}
+              {suburb.name.charAt(0)}
             </Avatar>
           }
-          title={suburb.city}
-        />
+          title={suburb.name}
+        /> */}
         <CardContent>
-          <Typography variant="h5" component="h3">
+          <Typography variant="h5" component="h3" style={{ color: "white" }}>
             {suburb.name}
           </Typography>
-          <Typography component="p">{suburb.description}</Typography>
+          <Typography component="span" style={{ color: "white" }}>
+            {suburb.city}
+          </Typography>
         </CardContent>
         <CardActions>
           {/* <Button variant="contained" color="primary" size="small">
             Learn Morea
           </Button> */}
-          <Link to="/dashboard" key={suburb.id}>
-            <StyledButton>Learn More</StyledButton>
+          <Link to="/dashboard" key={suburb.name}>
+            <Button variant="contained" color="primary" size="small">
+              <span style={{ fontSize: "15px" }}>comming soon...</span>
+            </Button>
           </Link>
         </CardActions>
       </Card>
