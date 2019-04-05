@@ -11,6 +11,7 @@ import About from "./Components/layout/About";
 
 import { Fade } from "react-reveal";
 import FAQs from "./Components/layout/FAQs";
+import NotFound from "./Components/layout/NotFound";
 
 const App = () => {
   const [choice, choiceDispatch] = useReducer(choiceReducer, {
@@ -41,17 +42,18 @@ const App = () => {
   return (
     <React.Fragment>
       <Fade top duration={1500} />
-      <Switch>
-        <ChoiceContext.Provider value={{ choiceDispatch, choice }}>
+      <ChoiceContext.Provider value={{ choiceDispatch, choice }}>
+        <Switch>
           <Route path="/about" component={About} />
           <Route path="/faqs" component={FAQs} />
           <Route path="/recommend" component={Recommender} />
           <Route path="/dashboard" component={DataDashBoard} />
           <Route path="/intro" component={Intro} />
+          <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={HomePage} />
-          <Redirect to="/" />
-        </ChoiceContext.Provider>
-      </Switch>
+          <Redirect to="/not-found" />
+        </Switch>
+      </ChoiceContext.Provider>
     </React.Fragment>
   );
 

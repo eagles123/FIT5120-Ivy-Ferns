@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Fab from "@material-ui/core/Fab";
-import { Fade, Roll, Flip } from "react-reveal";
+import { Fade, Roll } from "react-reveal";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
 import ImageCard from "./../common/ImageCard";

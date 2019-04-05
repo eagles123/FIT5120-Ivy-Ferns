@@ -7,7 +7,7 @@ import { LightSpeed } from "react-reveal";
 import RadioBut from "../common/RadioBut";
 
 export default function Intro(props) {
-  const { choice, choiceDispatch } = useContext(ChoiceContext);
+  const { choiceDispatch } = useContext(ChoiceContext);
   //manage local state for radio button
 
   // const [healthBtn, setHealth] = useState(false);
@@ -53,7 +53,7 @@ export default function Intro(props) {
             <h2 style={{ paddingTop: 20 }}>SET YOUR PREFERENCES</h2>
             <div className="row">
               <div className="col s4 m4">
-                <img src={"/carton3.png"} />
+                <img src={"/carton3.png"} alt="" />
               </div>
               <div className="col s1 m1 offset-m1" style={{ color: "white" }}>
                 <i className="fas fa-hospital-symbol fa-3x" />

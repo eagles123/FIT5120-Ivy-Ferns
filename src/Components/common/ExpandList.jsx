@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   ExpansionPanel,
   ExpansionPanelSummary,
@@ -14,9 +14,7 @@ export default function ExpandList({ question, response }) {
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon style={{ color: "black" }} />}
         >
-          <Typography>
-            <h4>{question}</h4>
-          </Typography>
+          <Typography style={{ fontSize: "28px" }}>{question}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography style={{ fontSize: "18px" }}>{response}</Typography>

@@ -10,7 +10,7 @@ import {
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 export default function CheckList(props) {
-  const { classes, choices } = props;
+  const { choices } = props;
   const [perference, setperference] = useState(false);
 
   function handleClick() {
