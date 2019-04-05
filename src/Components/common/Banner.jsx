@@ -1,50 +1,64 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-export default function Banner({ link, text }) {
+export default function Banner({ home, text }) {
   //change color here
   const BannerDiv = styled.div`
     box-sizing: border-box;
     text-align:center
-    background: #007bff;
-    // background: red
-    padding: 20px;
+    // background: #007bff;
+    background: #ff5252
+    padding-top:30px;
+    padding-left: 5px;
     position: relative;
     color: #fff;
     width: 80px;
-    height: 80px;
+    height: 100px;
     font: 600 16px sans-serif;
     color: #fff;
-    &:after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -90px;
-      border: 40px solid transparent;
-      border-top: 50px solid #007bff
-      //border-top: 50px solid red
-      -webkit-transform: translate(-50%, 0);
-      -ms-transform: translate(-50%, 0);
-      transform: translate(-50%, 0);
-    }
+    z-index: 10;
+    // &:after {
+    //   content: "";
+    //   position: absolute;
+    //   left: 50%;
+    //   bottom: -90px;
+    //   border: 40px solid transparent;
+    //   border-top: 50px solid #007bff
+    //   //border-top: 50px solid red
+    //   -webkit-transform: translate(-50%, 0);
+    //   -ms-transform: translate(-50%, 0);
+    //   transform: translate(-50%, 0);
+    // }
   `;
 
   const BannerSpan = styled.span`
-    padding: 30px 0 30px;
+    padding: 0px 0 0px;
+    font-family: Arial
+    font-size: 18px;
+    text-align: center
     position: relative;
     display: block;
-    z-index: 1;
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-0deg);
+    z-index: 10;
+    // -webkit-transform: rotate(-90deg);
+    // -moz-transform: rotate(-90deg);
+    // -o-transform: rotate(-90deg);
+    // transform: rotate(-0deg);
   `;
   return (
-    <Link to={link}>
+    <React.Fragment>
+      {/* {home ? "yes" : "no"} */}
       <BannerDiv>
-        <BannerSpan>{text}</BannerSpan>
+        <BannerSpan>
+          {home ? (
+            <i
+              class="fas fa-home fa-2x"
+              style={{ marginTop: "0px", marginLeft: "0px" }}
+            />
+          ) : (
+            text
+          )}
+        </BannerSpan>
       </BannerDiv>
-    </Link>
+    </React.Fragment>
   );
 }

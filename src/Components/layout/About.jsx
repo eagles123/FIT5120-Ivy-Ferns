@@ -6,11 +6,18 @@ import { Fade, Roll, Flip } from "react-reveal";
 export default function About() {
   return (
     <React.Fragment>
+      <NavBar home={true} faqs={true} />
       <div className="container" style={{ marginTop: 100 }}>
         <Fade>
-          <h3>About US</h3>
+          <h3
+            style={{
+              fontFamily: "Arial Black"
+            }}
+          >
+            ABOUT US
+          </h3>
           <br />
-          <h4 style={{ paddingLeft: 30 }}>OUR VISION</h4>
+          <h3 style={{ paddingLeft: 20 }}>Our Vision</h3>
           <div class="row">
             <p
               className="col s12 m9 offset-m1"
@@ -26,6 +33,7 @@ export default function About() {
             </p>
           </div>
         </Fade>
+        <h3>Our Team</h3>
         <Fade delay={300}>
           <Profile
             img={"vijiya.png"}
@@ -39,7 +47,7 @@ export default function About() {
         <Fade delay={300}>
           <Profile
             img={"nagma.png"}
-            name={"VIJIYA SINGH TOMAR"}
+            name={"NAGMA GROVER"}
             degree={"Student at Monash Univeristy"}
             desp={
               " Nagma is currently pursuing her Masters in Business Information Systems and she is our team’s User Interface design and documentation expert."

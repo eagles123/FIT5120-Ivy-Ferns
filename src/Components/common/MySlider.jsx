@@ -6,6 +6,7 @@ const MySlider = ({ lable }) => {
   const { stateDispatch } = useContext(ParameterContext);
   const [local, setLocal] = useState(0);
   function handleChange(e, value) {
+    console.log(e.target.value);
     stateDispatch({ type: lable, payload: value });
     setLocal(value);
   }

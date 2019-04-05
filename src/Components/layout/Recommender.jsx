@@ -8,17 +8,18 @@ import { recommd } from "../services/recommend";
 import { recReducer } from "./../reducer/recReducer";
 import ToggleButtons from "../common/ToggleButtons";
 import CheckList from "./../common/CheckList";
+import NavBar from "./NavBar";
 
 const Recommender = () => {
   const { choice, choiceDispatch } = useContext(ChoiceContext);
-  const [animate, setAnimate] = useState(false);
+  // const [animate, setAnimate] = useState(false);
 
-  useEffect(() => {
-    setTimeout(toggle, 600);
-  }, []);
-  function toggle() {
-    setAnimate(true);
-  }
+  // useEffect(() => {
+  //   setTimeout(toggle, 600);
+  // }, []);
+  // function toggle() {
+  //   setAnimate(true);
+  // }
 
   //dispatch actions to show sliders at Recommder
   function choseHealth() {
@@ -74,21 +75,16 @@ const Recommender = () => {
 
   return (
     <React.Fragment>
+      <NavBar home={true} about={true} faqs={true} />
       <div className="recommender container-fluid">
-        <div className="container">
-          <ToggleButtons />
-        </div>
+        <div className="container">{/* <ToggleButtons /> */}</div>
         <div className="row">
           <div className="col s12 m2" style={{ marginTop: 100 }}>
-            <Anidiv className=" center" pose={animate ? "open" : "closed"}>
-              <CheckList choices={choices} />
-            </Anidiv>
+            <CheckList choices={choices} />
           </div>
           <div className="col s12 m4 offset-m1 ">
             <ParameterContext.Provider value={{ stateDispatch, state }}>
-              <Anidiv className=" center" pose={animate ? "open" : "closed"}>
-                <SidePanel data={state} />
-              </Anidiv>
+              <SidePanel data={state} />
             </ParameterContext.Provider>
           </div>
           <div className="col s12 m4" style={{ marginTop: 50, marginLeft: 20 }}>

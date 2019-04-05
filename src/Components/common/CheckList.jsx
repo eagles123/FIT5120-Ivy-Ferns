@@ -12,7 +12,11 @@ export default function CheckList(props) {
 
   return (
     <List
-      style={{ width: "100%", maxWidth: "280px", backgroundColor: "white" }}
+      style={{
+        width: "100%",
+        maxWidth: "280px",
+        backgroundColor: "#ff5252"
+      }}
     >
       {choices.map(choice => (
         <ListItem
@@ -23,7 +27,10 @@ export default function CheckList(props) {
           onClick={choice.action}
         >
           <Checkbox checked={choice.chose} />
-          <ListItemText primary={choice.label} />
+          <ListItemText
+            primary={choice.label}
+            style={{ fontSize: "20px", color: "#eceff1" }}
+          />
         </ListItem>
       ))}
     </List>

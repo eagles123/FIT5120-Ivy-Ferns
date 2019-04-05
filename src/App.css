@@ -19,7 +19,7 @@ h4 {
 }
 
 #secondRow {
-  background-color: rgb(235, 235, 235);
+  background-color: white;
 }
 p {
   padding-top: 20px;
@@ -65,7 +65,18 @@ p {
 /* change color here */
 h2 {
   /* color: white; */
+  font-family: "Arial Black";
   text-align: center;
+}
+
+#choose {
+  margin-top: 150px;
+  margin-left: 80px;
+  width: 1000px;
+  height: 600px;
+  background-color: #ff5252;
+  position: absolute;
+  opacity: 0.8;
 }
 
 /* #im {
