@@ -16,7 +16,8 @@ const SuburList = ({ suburbs, choice }) => {
       ) : (
         <div
           style={{
-            height: "500px",
+            borderRadius: "10px",
+            height: "570px",
             width: "350px",
             backgroundColor: "#ff5252",
             color: "white"

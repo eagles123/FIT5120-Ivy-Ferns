@@ -5,6 +5,7 @@ import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
 import ImageCard from "./../common/ImageCard";
 import NavBar from "./NavBar";
+import PageFooter from "./Footer";
 
 export default function HomePage() {
   const image2 = require("../../assets/parallex1.jpg");
@@ -19,19 +20,22 @@ export default function HomePage() {
       <div className="container-fluid" style={{ marginTop: 100 }}>
         <h2>ARE YOU FACING ANY OF THESE ISSUES?</h2>
         <div className="row">
-          <div className="col s10 m4">
+          <div className="title col s10 m4" style={{ paddingRight: 40 }}>
             <Fade>
-              <ImageCard title={"TOO CROWED?"} image={"/home4.png"} />
+              <ImageCard title={"TOO CROWDED?"} image={"/home1_1.png"} />
             </Fade>
           </div>
-          <div className="col s10 m4">
+          <div className="title col s10 m4" style={{ paddingRight: 40 }}>
             <Fade delay={300}>
-              <ImageCard title={"CAN'T AFFORD IT?"} image={"/home2.png"} />
+              <ImageCard title={"CAN'T AFFORD IT?"} image={"/home2_1.png"} />
             </Fade>
           </div>
-          <div className="col s10 m4 ">
+          <div className="title col s10 m4 " style={{ paddingRight: 40 }}>
             <Fade delay={600}>
-              <ImageCard title={"BEEN FORCED TO MOVE?"} image={"/home3.png"} />
+              <ImageCard
+                title={"BEEN FORCED TO MOVE?"}
+                image={"/home3_1.png"}
+              />
             </Fade>
           </div>
         </div>
@@ -79,7 +83,7 @@ export default function HomePage() {
                 <img style={{ paddingLeft: 60 }} src={"carton2.png"} alt="" />
               </Roll>
               <p style={{ fontSize: 25, textAlign: "center" }}>
-                Sorted and ranked list of best Suburbs in Greater Geelong,
+                Sorted and ranked list of best suburbs in Greater Geelong,
                 Greater Bendigo and City of Ballarat
               </p>
             </div>
@@ -88,24 +92,8 @@ export default function HomePage() {
         <Parallax bgImage={image3} strength={500}>
           <div style={{ height: 400 }} />
         </Parallax>
-        <footer>
-          <div className="row">
-            <div className="col s12 m6">
-              <h5>
-                Copyright @ IvyFerns – Building Comfort in Regional Victoria
-              </h5>
-            </div>
-            <div className="col s12 m3">
-              <h5 style={{ paddingLeft: "260px" }}>Connect With Us</h5>
-            </div>
-            <div className="col s12 m1">
-              <a href="https://www.linkedin.com/groups/13700361/">
-                <i style={{ margin: 10 }} className="fab fa-linkedin fa-3x" />
-              </a>
-            </div>
-          </div>
-        </footer>
       </div>
+      <PageFooter />
 
       <div />
     </React.Fragment>

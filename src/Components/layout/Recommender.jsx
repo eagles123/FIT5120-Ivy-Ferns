@@ -60,7 +60,7 @@ const Recommender = () => {
     { label: "Health", chose: choice.healthField, action: choseHealth },
     { label: "Education", chose: choice.educationField, action: choseEdu },
     { label: "Property", chose: choice.propertyField, action: choseProp },
-    { label: "Empolyment", chose: choice.jobField, action: choseJob }
+    { label: "Employment", chose: choice.jobField, action: choseJob }
   ];
   //state and reducer to maniplate the user input slider value
   const [state, stateDispatch] = useReducer(recReducer, {
@@ -117,7 +117,7 @@ const Recommender = () => {
               </Fade>
             </ParameterContext.Provider>
           </div>
-          <div className="col s12 m4" style={{ marginTop: 50, marginLeft: 20 }}>
+          <div className="col s12 m4" style={{ marginTop: 20, marginLeft: 20 }}>
             <Fade right duration={1000}>
               {suburbs.length === 0 ? null : (
                 <SuburbList suburbs={pagedSub} choice={choice} />
@@ -128,6 +128,7 @@ const Recommender = () => {
                 onPageChange={handlePageChange}
                 currentPage={currentPage}
                 onPreNext={handlePreNext}
+                choice={choice}
               />
             </Fade>
           </div>

@@ -1,23 +1,17 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Profile from "./../common/Profile";
-import { Fade, Roll, Flip } from "react-reveal";
+import PageFooter from "./Footer";
+import { Fade } from "react-reveal";
 
 export default function About() {
   return (
     <React.Fragment>
       <NavBar home={true} faqs={true} />
-      <div className="container" style={{ marginTop: 100 }}>
+      <div className="container" style={{ marginTop: 100, height: "100%" }}>
         <Fade>
-          <h3
-            style={{
-              fontFamily: "Arial Black"
-            }}
-          >
-            ABOUT US
-          </h3>
           <br />
-          <h3 style={{ paddingLeft: 20 }}>Our Vision</h3>
+          <h3>Our Vision</h3>
           <div className="row">
             <p
               className="col s12 m9 offset-m1"
@@ -75,6 +69,8 @@ export default function About() {
           />
         </Fade>
       </div>
+
+      <PageFooter />
     </React.Fragment>
   );
 }

@@ -28,7 +28,7 @@ const SuburbResult = ({ suburb }) => {
         /> */}
         <CardContent>
           <Typography variant="h5" component="h3" style={{ color: "white" }}>
-            {suburb.name}
+            Suburb: {suburb.name}
           </Typography>
           <Typography component="span" style={{ color: "white" }}>
             {suburb.city}
@@ -40,7 +40,7 @@ const SuburbResult = ({ suburb }) => {
           </Button> */}
           <Link to="/dashboard" key={suburb.name}>
             <Button variant="contained" color="primary" size="small">
-              <span style={{ fontSize: "15px" }}>comming soon...</span>
+              <span style={{ fontSize: "15px" }}>coming soon...</span>
             </Button>
           </Link>
         </CardActions>

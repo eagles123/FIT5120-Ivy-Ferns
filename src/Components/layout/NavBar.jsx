@@ -9,9 +9,9 @@ const NavBar = ({ home, about, faqs, text }) => {
     <div>
       {/* <nav style={{ backgroundColor: "#2d6161" }}> */}
       <nav style={{ backgroundColor: "rgb(235, 235, 235)" }}>
-        <div className="container">
+        <div className="nav-wrapper">
           <Link to="/" className="brand-logo">
-            <img src={"icon1.png"} alt="" />
+            <img src={"icon2.png"} alt="" />
           </Link>
           <NavBarLinks home={home} about={about} faqs={faqs} />
         </div>

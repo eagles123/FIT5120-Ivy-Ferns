@@ -37,20 +37,20 @@ export default function Intro(props) {
       <NavBar home={true} about={true} faqs={true} />
 
       <div className="cpage">
-        <LightSpeed left duration={1000}>
-          <div
-            className="container"
-            style={{
-              width: "1100px",
-              backgroundColor: "#ff5252",
-              // backgroundColor: "white",
-              opacity: 0.9,
-              maxHeight: "650px",
-              marginTop: "130px",
-              marginLeft: "350px"
-            }}
-          >
-            <h2 style={{ paddingTop: 20 }}>SET YOUR PREFERENCES</h2>
+        <div
+          className="container"
+          style={{
+            width: "1000px",
+            backgroundColor: "#ff5252",
+            // backgroundColor: "white",
+            opacity: 0.9,
+            maxHeight: "620px",
+            marginTop: "100px",
+            marginLeft: "350px"
+          }}
+        >
+          <LightSpeed left duration={1000}>
+            <h2 style={{ paddingTop: 5 }}>SET YOUR PREFERENCES</h2>
             <div className="row">
               <div className="col s4 m4">
                 <img src={"/carton3.png"} alt="" />
@@ -79,7 +79,7 @@ export default function Intro(props) {
               <div style={{ marginLeft: "600px" }}>
                 <CustomButton
                   text={"Submit"}
-                  color={"#00695c"}
+                  color={"#3f51b5"}
                   handleChange={handleNext}
                 />
               </div>
@@ -119,8 +119,8 @@ export default function Intro(props) {
               handleChange={handleNext}
             />
           </div> */}
-          </div>
-        </LightSpeed>
+          </LightSpeed>
+        </div>
       </div>
     </React.Fragment>
   );

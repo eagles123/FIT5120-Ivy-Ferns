@@ -7,13 +7,7 @@ import StyledButton from "./StyleButton";
 
 class Pagination extends Component {
   render() {
-    const {
-      pageSize,
-      itemNumber,
-      onPageChange,
-      currentPage,
-      onPreNext
-    } = this.props;
+    const { pageSize, itemNumber, currentPage, onPreNext, choice } = this.props;
 
     const pagesCount = Math.ceil(itemNumber / pageSize);
     if (pagesCount <= 1) return null;
@@ -21,53 +15,49 @@ class Pagination extends Component {
     const pages = _.range(1, pagesCount + 1);
     return (
       <div className="col s12 m8 offset-m3">
-        <ul className="pagination">
-          {/* <li className="page-item">
-            <i
-              class="fas fa-chevron-left fa-3x"
-              style={{ cursor: "pointer" }}
-            />
-          </li> */}
-          <li className="page-item">
-            <Button
-              color="primary"
-              variant="contained"
-              size="small"
-              className="page-link"
-              onClick={() => onPreNext(true, pages)}
-            >
-              <span style={{ fontSize: "15px" }}>Previous</span>
-            </Button>
-          </li>
+        {choice.healthField ||
+        choice.educationField ||
+        choice.propertyField ||
+        choice.jobField ? (
+          <ul className="pagination">
+            <li className="page-item">
+              <Button
+                disabled={currentPage === 1 ? "disable" : ""}
+                color="primary"
+                variant="contained"
+                size="small"
+                className="page-link"
+                onClick={() => onPreNext(true, pages)}
+              >
+                <span style={{ fontSize: "15px" }}>Previous</span>
+              </Button>
+            </li>
 
-          <span
-            style={{
-              paddingLeft: "15px",
-              paddingRight: "15px",
-              color: "black",
-              fontSize: "20px"
-            }}
-          >
-            {currentPage}
-          </span>
-
-          {/* <li className="page-item">
-            <i
-              class="fas fa-chevron-right fa-3x"
-              style={{ cursor: "pointer" }}
-            /> */}
-          <li className="page-item">
-            <Button
-              color="primary"
-              variant="contained"
-              size="small"
-              className="page-link"
-              onClick={() => onPreNext(false, pages)}
+            <span
+              style={{
+                paddingLeft: "15px",
+                paddingRight: "15px",
+                color: "black",
+                fontSize: "20px"
+              }}
             >
-              <span style={{ fontSize: "15px" }}>Next</span>
-            </Button>
-          </li>
-        </ul>
+              {currentPage}
+            </span>
+
+            <li className="page-item">
+              <Button
+                disabled={currentPage === pagesCount ? "disable" : ""}
+                color="primary"
+                variant="contained"
+                size="small"
+                className="page-link"
+                onClick={() => onPreNext(false, pages)}
+              >
+                <span style={{ fontSize: "15px" }}>Next</span>
+              </Button>
+            </li>
+          </ul>
+        ) : null}
       </div>
     );
   }
