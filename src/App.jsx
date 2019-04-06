@@ -8,7 +8,6 @@ import Intro from "./Components/layout/Intro";
 import { choiceReducer } from "./Components/reducer/choiceReducer";
 import { ChoiceContext } from "./Components/context/ParameterContext";
 import About from "./Components/layout/About";
-
 import { Fade } from "react-reveal";
 import FAQs from "./Components/layout/FAQs";
 import NotFound from "./Components/layout/NotFound";
@@ -21,26 +20,8 @@ const App = () => {
     jobField: false
   });
 
-  //   const [state, stateDispatch] = useReducer(recReducer, {
-  //   healthScore: 10,
-  //   educationScore: 0,
-  //   propertyType: "buy",
-  //   propertyScore: 0,
-  //   jobScore: 0
-  // });
-  // return transitions.map(({ item, props, key }) => (
-  //   <animated.div key={key} style={props}>
-  //     <Switch location={item}>
-  //       <Route exact path="/" component={HomePage} />
-  //       <Route path="/recommend" component={Recommender} />
-  //       <Route path="/intro" render={() => <Intro parentState={dispatch} />} />
-  //       <Route path="/dashboard" component={DataDashBoard} />
-  //     </Switch>
-  //   </animated.div>
-  // ));
-
   return (
-    <React.Fragment>
+    <div className="App">
       <Fade top duration={1500} />
       <ChoiceContext.Provider value={{ choiceDispatch, choice }}>
         <Switch>
@@ -54,32 +35,8 @@ const App = () => {
           <Redirect to="/not-found" />
         </Switch>
       </ChoiceContext.Provider>
-    </React.Fragment>
+    </div>
   );
-
-  // return (
-  //   <Route
-  //     render={({ location }) => (
-  //       <div id="site-container">
-  //         <NavBar />
-  //         <div id="content-container">
-  //           <PoseGroup>
-  //             <RouteContainer key={Math.random()}>
-  //               <Switch location={location}>
-  //                 <ChoiceContext.Provider value={{ dispatch, choice, handleH }}>
-  //                   <Route exact path="/" component={HomePage} />
-  //                   <Route path="/recommend" component={Recommender} />
-  //                   <Route path="/intro" component={Intro} />
-  //                 </ChoiceContext.Provider>
-  //                 <Route path="/dashboard" component={DataDashBoard} />
-  //               </Switch>
-  //             </RouteContainer>
-  //           </PoseGroup>
-  //         </div>
-  //       </div>
-  //     )}
-  //   />
-  // );
 };
 
 export default App;

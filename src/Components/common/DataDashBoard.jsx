@@ -7,7 +7,8 @@ import AreaChart from "./Charts/AreaChart";
 export default function DataDashBoard() {
   return (
     <div className="dashboard container" style={{ paddingTop: 30 }}>
-      <div className="row">
+      <h2>Coming soon....</h2>
+      {/* <div className="row">
         <div className="col s12 m6">
           <BarChart />
         </div>
@@ -20,7 +21,7 @@ export default function DataDashBoard() {
         <div className="col s12 m5">
           <AreaChart />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

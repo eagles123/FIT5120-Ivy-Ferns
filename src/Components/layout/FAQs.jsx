@@ -42,7 +42,7 @@ export default function FAQs() {
             "3. How do I choose the level of importance for each of my preferences?"
           }
           response={
-            "Land up to the page which has level of importance criteria. Select/unselect the importance level for the dimension required. The resultant suburb list will appear."
+            "Go to the page which has level of importance for each dimension. You will see various questions and a slider with each of them having 3 signifiers. Scroll the slider towards your desired requirement and you can choose the level of preference. And the spellings for the preference when you directly click submit"
           }
         />
         <ExpandList
