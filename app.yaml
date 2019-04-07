@@ -2,9 +2,9 @@ runtime: nodejs
 env: flex
 
 handlers:
-- url: /(.*\.(html|css|js))
+- url: /(.*\.(html|css|jpg|png|ico}))$
   static_files: build/\1
-  upload: build/(.*\.(html|css|js))
+  upload: build/(.*\.(html|css|js|jpg|png|ico))
 
 
 - url: /.*

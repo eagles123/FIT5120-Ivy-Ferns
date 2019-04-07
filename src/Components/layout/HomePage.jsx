@@ -50,7 +50,6 @@ export default function HomePage() {
               color="primary"
               style={{ height: "70px", width: "190px" }}
             >
-              {/* <h5>Get Started</h5> */}
               Get Started
             </Fab>
           </Link>

@@ -38,11 +38,10 @@ const SuburbResult = ({ suburb }) => {
           {/* <Button variant="contained" color="primary" size="small">
             Learn Morea
           </Button> */}
-          <Link to="/dashboard" key={suburb.name}>
-            <Button variant="contained" color="primary" size="small">
-              <span style={{ fontSize: "15px" }}>coming soon...</span>
-            </Button>
-          </Link>
+
+          <Button variant="contained" color="primary" size="small">
+            <span style={{ fontSize: "15px" }}>coming soon...</span>
+          </Button>
         </CardActions>
       </Card>
     </div>

@@ -8,7 +8,6 @@ import Intro from "./Components/layout/Intro";
 import { choiceReducer } from "./Components/reducer/choiceReducer";
 import { ChoiceContext } from "./Components/context/ParameterContext";
 import About from "./Components/layout/About";
-import { Fade } from "react-reveal";
 import FAQs from "./Components/layout/FAQs";
 import NotFound from "./Components/layout/NotFound";
 
@@ -22,7 +21,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <Fade top duration={1500} />
       <ChoiceContext.Provider value={{ choiceDispatch, choice }}>
         <Switch>
           <Route path="/about" component={About} />

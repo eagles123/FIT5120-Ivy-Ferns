@@ -8,7 +8,7 @@ export default function Banner({ home, text }) {
     text-align:center
     // background: #007bff;
     background: #ff5252
-    padding-top:30px;
+    padding-top:20px;
     padding-left: 5px;
     position: relative;
     color: #fff;
@@ -32,7 +32,7 @@ export default function Banner({ home, text }) {
   `;
 
   const BannerSpan = styled.span`
-    padding: 0px 0 0px;
+
     font-family: Arial
     font-size: 18px;
     text-align: center
@@ -52,10 +52,13 @@ export default function Banner({ home, text }) {
           {home ? (
             <i
               className="fas fa-home fa-2x"
-              style={{ marginTop: "0px", marginLeft: "0px" }}
+              style={{ marginTop: "0px", marginLeft: "0px", paddingTop: "0px" }}
             />
           ) : (
-            text
+            <div>
+              <br />
+              {text}
+            </div>
           )}
         </BannerSpan>
       </BannerDiv>
