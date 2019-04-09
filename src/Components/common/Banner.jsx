@@ -12,8 +12,8 @@ export default function Banner({ home, text }) {
     padding-left: 5px;
     position: relative;
     color: #fff;
-    width: 75px;
-    height: 100px;
+    width: 60px;
+    height: 90px;
     font: 600 16px sans-serif;
     color: #fff;
     z-index: 10;
@@ -34,7 +34,7 @@ export default function Banner({ home, text }) {
   const BannerSpan = styled.span`
 
     font-family: Arial
-    font-size: 18px;
+    font-size: 15px;
     text-align: center
     position: relative;
     display: block;

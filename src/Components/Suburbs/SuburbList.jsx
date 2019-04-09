@@ -11,11 +11,12 @@ const SuburList = ({ suburbs, choice }) => {
             height: "500px",
             width: "350px",
             backgroundColor: "#ff5252",
-            color: "white"
+            color: "white",
+            margineTop: "1px"
           }}
         >
           <h4 style={{ paddingTop: "100px", textAlign: "center" }}>
-            There is no match
+            There is no such suuburb...
           </h4>
         </div>
       );
@@ -42,9 +43,9 @@ const SuburList = ({ suburbs, choice }) => {
             color: "white"
           }}
         >
-          <h4 style={{ paddingTop: "100px", textAlign: "center" }}>
+          <h5 style={{ paddingTop: "100px", textAlign: "center" }}>
             Please Choose Your Preference First!
-          </h4>
+          </h5>
         </div>
       )}
     </div>

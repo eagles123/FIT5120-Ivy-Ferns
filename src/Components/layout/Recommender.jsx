@@ -135,7 +135,7 @@ const Recommender = () => {
               </Fade>
             </ParameterContext.Provider>
           </div>
-          <div className="col s12 m4" style={{ marginTop: 20, marginLeft: 20 }}>
+          <div className="col s12 m4" style={{ marginTop: 18, marginLeft: 20 }}>
             <Fade right duration={1000}>
               <SearchBox value={query} onChange={handleSearch} />
               {suburbs.length === 0 ? null : (

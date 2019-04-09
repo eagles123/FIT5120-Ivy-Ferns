@@ -13,7 +13,11 @@ const SuburbResult = ({ suburb }) => {
     <div className="col s12 m12">
       <Card
         raised={true}
-        style={{ width: "400px", height: "115px", backgroundColor: "#ff5252" }}
+        style={{
+          width: "350px",
+          height: "105px",
+          backgroundColor: "#ff5252"
+        }}
       >
         {/* <CardHeader
           avatar={
@@ -24,17 +28,17 @@ const SuburbResult = ({ suburb }) => {
           title={suburb.name}
         /> */}
         <CardContent>
-          <Typography variant="h5" component="h5" style={{ color: "white" }}>
+          <Typography variant="h6" component="h6" style={{ color: "white" }}>
             No.{suburb.rank} Suburb: {suburb.name}
           </Typography>
           <Typography
             component="span"
-            style={{ color: "white", marginBottom: "10px" }}
+            style={{ color: "white", marginBottom: "8px" }}
           >
             {suburb.city}
           </Typography>
           <Button variant="contained" color="primary" size="small">
-            <span style={{ fontSize: "13px" }}>coming soon...</span>
+            <span style={{ fontSize: "10px" }}>coming soon...</span>
           </Button>
         </CardContent>
       </Card>

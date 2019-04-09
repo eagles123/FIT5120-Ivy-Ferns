@@ -18,7 +18,10 @@ class Pagination extends Component {
     //generate a array using lodash
     const pages = _.range(1, pagesCount + 1);
     return (
-      <div className="col s12 m8 offset-m3">
+      <div
+        className="col s12 m8 offset-m3"
+        style={{ marginTop: "0px", paddingTop: "0px" }}
+      >
         {/* {choice.healthField ||
         choice.educationField ||
         choice.propertyField ||

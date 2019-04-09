@@ -64,7 +64,7 @@ export default function CheckList(props) {
                 //disableTypography to make text white
                 disableTypography
                 primary={choice.label}
-                style={{ fontSize: "15px", color: "white" }}
+                style={{ fontSize: "13px", color: "white" }}
               />
             </ListItem>
           ))}
