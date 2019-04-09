@@ -36,7 +36,11 @@ export function recommd(customChoice, suburbList) {
   suburbList.sort(function(a, b) {
     return a.difScore - b.difScore;
   });
+  rank(suburbList);
   return suburbList;
+}
+function rank(suburbList) {
+  suburbList.map(subrub => (subrub.rank = suburbList.indexOf(subrub) + 1));
 }
 
 export function paginate(items, pageNumber, pageSize) {

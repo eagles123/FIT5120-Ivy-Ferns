@@ -12,7 +12,7 @@ export default function Banner({ home, text }) {
     padding-left: 5px;
     position: relative;
     color: #fff;
-    width: 80px;
+    width: 75px;
     height: 100px;
     font: 600 16px sans-serif;
     color: #fff;

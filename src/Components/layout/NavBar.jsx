@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBarLinks from "./NavBarLinks";
-import { relative } from "path";
 
 const NavBar = ({ home, about, faqs, text }) => {
   //change color here

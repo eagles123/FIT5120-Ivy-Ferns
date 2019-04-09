@@ -44,18 +44,20 @@ export default function Intro(props) {
             backgroundColor: "#ff5252",
             // backgroundColor: "white",
             opacity: 0.9,
-            maxHeight: "620px",
-            marginTop: "100px",
-            marginLeft: "350px"
+            maxHeight: "720px",
+            margin: "70px auto"
           }}
         >
           <LightSpeed left duration={1000}>
-            <h2 style={{ paddingTop: 5 }}>SET YOUR PREFERENCES</h2>
+            <h3 style={{ paddingTop: 5 }}>SET YOUR PREFERENCES</h3>
             <div className="row">
               <div className="col s4 m4">
                 <img src={"/carton3.png"} alt="" />
               </div>
-              <div className="col s1 m1 offset-m1" style={{ color: "white" }}>
+              <div
+                className="col s1 m1 offset-m1 introicon"
+                style={{ color: "white" }}
+              >
                 <i className="fas fa-hospital-symbol fa-3x" />
                 <i className="fas fa-graduation-cap fa-3x" />
                 <i className="fas fa-building fa-3x" />
@@ -63,16 +65,16 @@ export default function Intro(props) {
               </div>
               <div className="col s7 m5 ">
                 {/* <FormControl component="fieldset"> */}
-                <h4>HEALTH CARE</h4>
+                <h5>HEALTH CARE</h5>
 
                 <RadioBut text={"HEALTHFIELD"} />
-                <h4>EDUCATIONAL INSTITUTIONS</h4>
+                <h5>EDUCATIONAL INSTITUTIONS</h5>
 
                 <RadioBut text={"EDUCATIONFIELD"} />
-                <h4>PROPERTY PRICES</h4>
+                <h5>PROPERTY PRICES</h5>
 
                 <RadioBut text={"PROPERTYFIELD"} />
-                <h4>JOB OPPORTUNITIES</h4>
+                <h5>JOB OPPORTUNITIES</h5>
 
                 <RadioBut text={"JOBFIELD"} />
               </div>

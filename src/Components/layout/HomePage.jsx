@@ -18,7 +18,7 @@ export default function HomePage() {
       </div> */}
       <NavBar about={true} faqs={true} />
       <div className="container-fluid" style={{ marginTop: 100 }}>
-        <h2>ARE YOU FACING ANY OF THESE ISSUES?</h2>
+        <h3>ARE YOU FACING ANY OF THESE ISSUES?</h3>
         <div className="row">
           <div className="title col s10 m4" style={{ paddingRight: 40 }}>
             <Fade>
@@ -39,9 +39,9 @@ export default function HomePage() {
             </Fade>
           </div>
         </div>
-        <h2 style={{ fontFamily: "Arial" }}>
+        <h3 style={{ fontFamily: "Arial" }}>
           IF YES, LET’S EXPLORE REGIONAL VICTORIA!
-        </h2>
+        </h3>
         <div style={{ margin: 40, textAlign: "center" }}>
           <Link to="/intro">
             <Fab

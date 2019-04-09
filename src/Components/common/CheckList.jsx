@@ -7,14 +7,21 @@ import {
   ListSubheader,
   Collapse
 } from "@material-ui/core";
-import { ExpandLess, ExpandMore } from "@material-ui/icons";
+// import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 export default function CheckList(props) {
   const { choices } = props;
   const [perference, setperference] = useState(false);
+  const [Lga, setLga] = useState(false);
 
-  function handleClick() {
+  function handlePreference() {
     setperference(!perference);
+  }
+
+  function handleLga() {
+    setLga(!Lga);
   }
 
   return (
@@ -22,7 +29,7 @@ export default function CheckList(props) {
       subheader={
         <ListSubheader
           component="div"
-          style={{ fontSize: "20px", color: "white" }}
+          style={{ fontSize: "17px", color: "white" }}
         >
           Filter
         </ListSubheader>
@@ -33,14 +40,14 @@ export default function CheckList(props) {
         backgroundColor: "#ff5252"
       }}
     >
-      <ListItem button onClick={handleClick} style={{ color: "white" }}>
+      <ListItem button onClick={handlePreference} style={{ color: "white" }}>
         <ListItemText
           disableTypography
           inset
           primary="By Preference"
-          style={{ fontSize: "17px", color: "white" }}
+          style={{ fontSize: "15px", color: "white" }}
         />
-        {perference ? <ExpandLess /> : <ExpandMore />}
+        {perference ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>
       <Collapse in={perference} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -57,12 +64,43 @@ export default function CheckList(props) {
                 //disableTypography to make text white
                 disableTypography
                 primary={choice.label}
-                style={{ fontSize: "18px", color: "white" }}
+                style={{ fontSize: "15px", color: "white" }}
               />
             </ListItem>
           ))}
         </List>
       </Collapse>
+
+      {/* <ListItem button onClick={handleLga} style={{ color: "white" }}>
+        <ListItemText
+          disableTypography
+          inset
+          primary="By LGA"
+          style={{ fontSize: "15px", color: "white" }}
+        />
+        {Lga ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+      </ListItem>
+      <Collapse in={Lga} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          {choices.map(choice => (
+            <ListItem
+              key={choice.label}
+              role={undefined}
+              dense
+              button
+              onClick={choice.action}
+            >
+              <Checkbox checked={choice.chose} />
+              <ListItemText
+                //disableTypography to make text white
+                disableTypography
+                primary={choice.label}
+                style={{ fontSize: "15px", color: "white" }}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Collapse> */}
     </List>
   );
 }

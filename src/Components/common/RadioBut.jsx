@@ -34,7 +34,7 @@ export default function Radiobut({ text }) {
 
   return (
     <div className="row">
-      <div className="col s3 m3">
+      <div className="col s4 m4">
         <Radio
           checked={value === "yes"}
           onClick={handleYes}
@@ -42,7 +42,7 @@ export default function Radiobut({ text }) {
         />
         <span>Yes</span>
       </div>
-      <div className="col s3 m3">
+      <div className="col s4 m4">
         <Radio
           checked={value === "no" && temp === "1"}
           onClick={handleNo}

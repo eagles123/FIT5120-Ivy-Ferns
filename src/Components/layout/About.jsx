@@ -12,20 +12,7 @@ export default function About() {
         <Fade>
           <br />
           <h3>Our Vision</h3>
-          <div className="row">
-            <p
-              className="col s12 m9 offset-m1"
-              style={{ fontSize: 20, marginBottom: 100 }}
-            >
-              IvyFerns is a project aiming to support migrants or existing
-              residents of Victoria, considering to move to Regional Victoria
-              specifically to suburbs in Greater Geelong, Ballarat, Greater
-              Bendigo. This platform guides the users towards the most suitable
-              suburb based on their personal inputs and filters covering four
-              key areas that are necessary for leading a quality life, i.e.
-              education, employment, health and property. 
-            </p>
-          </div>
+          <div className="row" />
         </Fade>
         <h3>Our Team</h3>
         <Fade delay={300}>

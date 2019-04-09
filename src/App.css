@@ -68,7 +68,7 @@ p {
   align-items: center;
 }
 /* change color here */
-h2 {
+h3 {
   /* color: white; */
   font-family: "Arial Black";
   text-align: center;
@@ -93,6 +93,21 @@ h2 {
 
 p {
   text-align: justify;
+}
+
+#searchBox {
+  border: 0.5px solid #ff5252;
+}
+
+.introicon > i {
+  margin-top: 57px;
+  margin-left: 35px;
+}
+
+.page-item > i {
+  cursor: pointer;
+  color: #1976d2;
+  padding: 0 5px 0 5px;
 }
 
 /* #im {
