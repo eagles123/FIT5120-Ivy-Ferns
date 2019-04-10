@@ -7,7 +7,7 @@ export default function Banner({ home, text }) {
     box-sizing: border-box;
     text-align:center
     // background: #007bff;
-    background: #ff5252
+    background: #e91e63;
     padding-top:20px;
     padding-left: 5px;
     position: relative;

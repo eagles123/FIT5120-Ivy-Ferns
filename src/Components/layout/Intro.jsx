@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import "../../chosePage.css";
 import { LightSpeed } from "react-reveal";
 import RadioBut from "../common/RadioBut";
+import { Transition } from "react-spring/renderprops";
 
 export default function Intro(props) {
   const { choiceDispatch } = useContext(ChoiceContext);
@@ -41,7 +42,7 @@ export default function Intro(props) {
           className="container"
           style={{
             width: "900px",
-            backgroundColor: "#ff5252",
+            backgroundColor: "white",
             // backgroundColor: "white",
             opacity: 0.9,
             maxHeight: "550px",

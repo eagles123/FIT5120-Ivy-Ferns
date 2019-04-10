@@ -37,7 +37,7 @@ export default function CheckList(props) {
       style={{
         width: "100%",
         maxWidth: "280px",
-        backgroundColor: "#ff5252"
+        backgroundColor: "#e91e63"
       }}
     >
       <ListItem button onClick={handlePreference} style={{ color: "white" }}>
@@ -45,7 +45,7 @@ export default function CheckList(props) {
           disableTypography
           inset
           primary="By Preference"
-          style={{ fontSize: "15px", color: "white" }}
+          style={{ fontSize: "15px" }}
         />
         {perference ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>

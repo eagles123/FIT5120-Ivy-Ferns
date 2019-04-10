@@ -16,7 +16,7 @@ const SuburbResult = ({ suburb }) => {
         style={{
           width: "350px",
           height: "105px",
-          backgroundColor: "#ff5252"
+          backgroundColor: "#e91e63"
         }}
       >
         {/* <CardHeader

@@ -10,7 +10,7 @@ const SuburList = ({ suburbs, choice }) => {
             borderRadius: "10px",
             height: "500px",
             width: "350px",
-            backgroundColor: "#ff5252",
+            backgroundColor: "#e91e63",
             color: "white",
             margineTop: "1px"
           }}
@@ -39,7 +39,7 @@ const SuburList = ({ suburbs, choice }) => {
             borderRadius: "10px",
             height: "500px",
             width: "350px",
-            backgroundColor: "#ff5252",
+            backgroundColor: "#e91e63",
             color: "white"
           }}
         >

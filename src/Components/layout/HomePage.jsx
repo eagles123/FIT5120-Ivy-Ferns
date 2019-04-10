@@ -5,6 +5,7 @@ import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
 import ImageCard from "./../common/ImageCard";
 import NavBar from "./NavBar";
+import Grid from "@material-ui/core/Grid";
 import PageFooter from "./Footer";
 
 export default function HomePage() {
@@ -17,7 +18,7 @@ export default function HomePage() {
         <Video videoUrl={require("../../assets/MyVideo.mp4")} />
       </div> */}
       <NavBar about={true} faqs={true} />
-      <div className="container-fluid" style={{ marginTop: 100 }}>
+      <div className="main" style={{ marginTop: 100 }}>
         <h3>ARE YOU FACING ANY OF THESE ISSUES?</h3>
         <div className="row">
           <div className="title col s10 m4" style={{ paddingRight: 40 }}>
