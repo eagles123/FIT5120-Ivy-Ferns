@@ -21,15 +21,15 @@ export default function Radiobut({ text }) {
   const [value, setValue] = useState("no");
 
   function handleYes() {
+    choiceDispatch({ type: text, payload: true });
     setValue("yes");
     setTemp("1");
-    choiceDispatch({ type: text, payload: true });
   }
 
   function handleNo() {
+    choiceDispatch({ type: text, payload: false });
     setValue("no");
     setTemp("1");
-    choiceDispatch({ type: text, payload: false });
   }
 
   return (

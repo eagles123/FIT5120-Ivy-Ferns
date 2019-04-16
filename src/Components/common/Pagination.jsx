@@ -22,72 +22,27 @@ class Pagination extends Component {
         className="col s12 m8 offset-m3"
         style={{ marginTop: "0px", paddingTop: "0px" }}
       >
-        {/* {choice.healthField ||
-        choice.educationField ||
-        choice.propertyField ||
-        choice.jobField ? (
-          <ul className="pagination">
-            <li className="page-item">
-              <i href="" onClick={() => console.log("Clicked <")}>
-                First
-              </i>
-            </li>
-            <li className="page-item">
-              <Button
-                disabled={currentPage === 1 ? true : false}
-                color="primary"
-                variant="contained"
-                size="small"
-                className="page-link"
-                onClick={() => onPreNext(true, pages)}
-              >
-                <span style={{ fontSize: "15px" }}>Previous</span>
-              </Button>
-            </li>
-
-            <span
-              style={{
-                paddingLeft: "15px",
-                paddingRight: "15px",
-                color: "black",
-                fontSize: "20px"
-              }}
-            >
-              {currentPage}
-            </span>
-
-            <li className="page-item">
-              <Button
-                disabled={currentPage === pagesCount ? "disable" : ""}
-                color="primary"
-                variant="contained"
-                size="small"
-                className="page-link"
-                onClick={() => onPreNext(false, pages)}
-              >
-                <span style={{ fontSize: "15px" }}>Next</span>
-              </Button>
-            </li>
-            <li className="page-item">
-              <i href="" onClick={() => console.log("Clicked >")}>
-                Last
-              </i>
-            </li>
-          </ul>
-        ) : null} */}
         {choice.healthField ||
         choice.educationField ||
         choice.propertyField ||
         choice.jobField ? (
           <ul className="pagination">
             <li className="page-item">
-              <i className="fas fa-fast-backward" onClick={() => toPage(1)} />
+              {currentPage === 1 ? (
+                <i>{""}</i>
+              ) : (
+                <i className="fas fa-fast-backward" onClick={() => toPage(1)} />
+              )}
             </li>
             <li className="page-item">
-              <i
-                className="fas fa-step-backward"
-                onClick={() => onPreNext(true, pages)}
-              />
+              {currentPage === 1 ? (
+                <i> </i>
+              ) : (
+                <i
+                  className="fas fa-step-backward"
+                  onClick={() => onPreNext(true, pages)}
+                />
+              )}
             </li>
 
             <span
@@ -102,16 +57,20 @@ class Pagination extends Component {
             </span>
 
             <li className="page-item">
-              <i
-                className="fas fa-step-forward"
-                onClick={() => onPreNext(false, pages)}
-              />
+              {currentPage === pagesCount ? null : (
+                <i
+                  className="fas fa-step-forward"
+                  onClick={() => onPreNext(false, pages)}
+                />
+              )}
             </li>
             <li className="page-item">
-              <i
-                className="fas fa-fast-forward"
-                onClick={() => toPage(pagesCount)}
-              />
+              {currentPage === pagesCount ? null : (
+                <i
+                  className="fas fa-fast-forward"
+                  onClick={() => toPage(pagesCount)}
+                />
+              )}
             </li>
           </ul>
         ) : null}

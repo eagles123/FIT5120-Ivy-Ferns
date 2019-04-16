@@ -1,54 +1,80 @@
-import React from "react";
-import SuburbResult from "./SuburbResult";
+import React, { useEffect, useState } from "react";
+// import SuburbResult from "./SuburbResult";
+import styled from "styled-components";
+import SubListResult from "./SubListResult";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const SuburList = ({ suburbs, choice }) => {
+const SuburList = ({ suburbs, choice, change }) => {
+  const Container = styled.div`
+    border-radius: 10px;
+    height: 470px;
+    width: 350px;
+    background-color: #ff5252;
+    color: white;
+    margin-top: 0px;
+    margin-left: 45px;
+  `;
+
+  //code for animate the list
+  const [prev, setPrev] = useState(change);
+
+  useEffect(() => {
+    let timeout = setTimeout(() => {
+      setPrev(change);
+    }, 500);
+    return () => clearTimeout(timeout);
+  }, [change]);
+
+  // useEffect(() => {
+  //   setTimeout(toggle, 800);
+  // }, []);
+
+  // function toggle() {
+  //   setAnimate(true);
+  // }
+
+  // function handleChange(list) {
+  //   setChange(list);
+  // }
+
   function checkSuburb(suburbs) {
     if (suburbs.length === 0)
       return (
-        <div
-          style={{
-            borderRadius: "10px",
-            height: "500px",
-            width: "350px",
-            backgroundColor: "#e91e63",
-            color: "white",
-            margineTop: "1px"
-          }}
-        >
+        <Container>
           <h4 style={{ paddingTop: "100px", textAlign: "center" }}>
             There is no such suuburb...
           </h4>
-        </div>
+        </Container>
       );
   }
+
   return (
-    <div className="suburb-list section">
-      {checkSuburb(suburbs)}
+    <React.Fragment>
       {choice.healthField ||
       choice.educationField ||
       choice.propertyField ||
       choice.jobField ? (
-        suburbs.map(suburb => (
-          <div key={suburb.name} className="row">
-            <SuburbResult key={suburb.name} suburb={suburb} />
-          </div>
+        checkSuburb(suburbs) ||
+        (change !== prev ? (
+          <Container>
+            <div className="container" style={{ padding: "150px 0 0 100px" }}>
+              <CircularProgress />
+            </div>
+          </Container>
+        ) : (
+          suburbs.map(c => (
+            // {/* <SuburbResult key={suburb.name} suburb={suburb} /> */}
+            <SubListResult key={c._id} suburb={c} />
+          ))
         ))
       ) : (
-        <div
-          style={{
-            borderRadius: "10px",
-            height: "500px",
-            width: "350px",
-            backgroundColor: "#e91e63",
-            color: "white"
-          }}
-        >
+        <Container>
           <h5 style={{ paddingTop: "100px", textAlign: "center" }}>
             Please Choose Your Preference First!
           </h5>
-        </div>
+        </Container>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

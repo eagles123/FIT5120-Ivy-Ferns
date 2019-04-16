@@ -6,14 +6,108 @@ import { Fade } from "react-reveal";
 import { recommd, paginate } from "../services/recommend";
 import { recReducer } from "./../reducer/recReducer";
 import CheckList from "./../common/CheckList";
-import NavBar from "./NavBar";
 import Pagination from "../common/Pagination";
 import { getallSuburbs } from "./../services/suburbs";
 import SearchBox from "./../common/SearchBox";
+import StyledButton from "./../common/StyleButton";
+import { gql } from "apollo-boost";
+import { graphql } from "react-apollo";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const Recommender = () => {
+const getSuburbsQuery = gql`
+  {
+    suburbs {
+      _id
+      city
+      suburbName
+      rating {
+        healthScore
+        educationScore
+        propetyScore
+        jobScore
+      }
+    }
+  }
+`;
+const Recommender = props => {
+  const [scoreState, stateDispatch] = useReducer(recReducer, {
+    healthScore: 0,
+    educationScore: 0,
+    propertyScore: 0,
+    jobScore: 0
+  });
+  //use local data for development
+  const [suburbs, setSuburbs] = useState(getallSuburbs);
+  useEffect(() => {
+    setSuburbs(recommd(scoreState, suburbs));
+
+    //don't understand this code but add this line suburb list will update immidiately
+    // setInitialSuburb(initialSuburb);
+    // let newList = recommd(scoreState, initialSuburb);
+
+    // setSuburbs(newList);
+  }, [scoreState]);
+
+  // initialise suburb with dummny data
+  // const [suburbs, setSuburbs] = useState([
+  //   {
+  //     _id: "NA",
+  //     city: "NA",
+  //     name: "NA",
+  //     rating: {
+  //       healthScore: 0.0,
+  //       educationScore: 0.0,
+  //       propetyScore: 0.0,
+  //       jobScore: 0.0
+  //     }
+  //   }
+  // ]);
+  // //equal to componentDidMount to update the suburbs with data from databse
+  // useEffect(() => {
+  //   if (props.data.loading);
+  //   else {
+  //     setSuburbs(recommd(scoreState, props.data.suburbs));
+  //     setPaged(paginate(suburbs, currentPage, pageSize));
+  //     setTotal(suburbs.length);
+  //     setInit(false);
+  //   }
+  // }, [suburbs, props.data.loading]);
+
+  //state and reducer to maniplate the user input slider value
+
+  //count number for pagenated data pass to Pagination component
+  const [totalcount, setTotal] = useState(0);
+  const [init, setInit] = useState(true);
+  //states manage pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(4);
+  const [change, setChange] = useState(0);
+  const [pagedSub, setPaged] = useState(
+    paginate(suburbs, currentPage, pageSize)
+  );
+  //cacluate the distance when the state is changed
+  useEffect(() => {
+    //caculate difference score.
+    setSuburbs(recommd(scoreState, suburbs));
+    setChange(change + 1);
+
+    //don't understand this code but add this line suburb list will update immidiately
+    // setInitialSuburb(initialSuburb);
+  }, [scoreState]);
+
+  //effect for pagination
+  useEffect(() => {
+    setPaged(paginate(suburbs, currentPage, pageSize));
+  }, [scoreState, currentPage]);
+
+  //effect for search box
+  useEffect(() => {
+    getSearchData();
+  }, [query]);
+
   const { choice, choiceDispatch } = useContext(ChoiceContext);
   const [query, setQuery] = useState("");
+
   function handleSearch(query) {
     setQuery(query);
   }
@@ -61,6 +155,10 @@ const Recommender = () => {
     setCurrentPage(temp);
   }
 
+  function handleBack() {
+    props.history.push("/intro");
+  }
+
   //read in the data when compomentDidMount
   // useEffect(() => {
   //   getAllSuburbs;
@@ -73,73 +171,38 @@ const Recommender = () => {
     { label: "Property", chose: choice.propertyField, action: choseProp },
     { label: "Employment", chose: choice.jobField, action: choseJob }
   ];
-  //state and reducer to maniplate the user input slider value
-  const [state, stateDispatch] = useReducer(recReducer, {
-    healthScore: 0,
-    educationScore: 0,
-    propertyScore: 0,
-    jobScore: 0
-  });
-  const [initialSuburb, setInitialSuburb] = useState(1);
-  //get suburb data
-  // const [suburbs, setSuburbs] = useState(getEverySuburbs);
-  const [suburbs, setSuburbs] = useState(getallSuburbs);
-  //count number for pagenated data pass to Pagination component
-  const [totalcount, setTotal] = useState(0);
-  //states manage pagination
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(4);
-  const [pagedSub, setPaged] = useState(
-    paginate(suburbs, currentPage, pageSize)
-  );
-  //cacluate the distance when the state is changed
-
-  useEffect(() => {
-    setSuburbs(recommd(state, suburbs));
-
-    //don't understand this code but add this line suburb list will update immidiately
-    setInitialSuburb(initialSuburb);
-    // let newList = recommd(state, initialSuburb);
-
-    // setSuburbs(newList);
-  }, [state]);
-
-  //effect for pagination
-  useEffect(() => {
-    setPaged(paginate(suburbs, currentPage, pageSize));
-    setInitialSuburb(initialSuburb);
-  }, [state, currentPage]);
-
-  //effect for search box
-  useEffect(() => {
-    getSearchData();
-  }, [query]);
 
   return (
     <React.Fragment>
-      <Fade top duration={1000}>
-        <NavBar home={true} about={true} faqs={true} />
-      </Fade>
+      {/* {init || suburbs.length === 1 ? (
+        <CircularProgress />
+      ) : ( */}
       <div className="recommender container-fluid">
         <div className="container">{/* <ToggleButtons /> */}</div>
         <div className="row">
-          <div className="col s12 m2" style={{ marginTop: 100 }}>
+          <div className="col s12 m2" style={{ marginTop: 50 }}>
             <Fade left duration={1000}>
+              <StyledButton onClick={handleBack}>Back</StyledButton>
               <CheckList choices={choices} />
             </Fade>
           </div>
           <div className="col s12 m4 offset-m1 ">
-            <ParameterContext.Provider value={{ stateDispatch, state }}>
+            <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
               <Fade bottom duration={1000}>
-                <SidePanel data={state} />
+                <SidePanel data={scoreState} />
               </Fade>
             </ParameterContext.Provider>
           </div>
-          <div className="col s12 m4" style={{ marginTop: 18, marginLeft: 20 }}>
+          <div className="col s12 m4" style={{ marginTop: 18 }}>
             <Fade right duration={1000}>
+              <h6>Suburb Ranking List:</h6>
               <SearchBox value={query} onChange={handleSearch} />
               {suburbs.length === 0 ? null : (
-                <SuburbList suburbs={pagedSub} choice={choice} />
+                <SuburbList
+                  suburbs={pagedSub}
+                  choice={choice}
+                  change={change}
+                />
               )}
               <Pagination
                 itemNumber={totalcount}
@@ -154,7 +217,8 @@ const Recommender = () => {
           </div>
         </div>
       </div>
+      {/* )} */}
     </React.Fragment>
   );
 };
-export default Recommender;
+export default graphql(getSuburbsQuery)(Recommender);

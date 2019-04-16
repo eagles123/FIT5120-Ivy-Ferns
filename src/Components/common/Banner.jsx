@@ -7,7 +7,7 @@ export default function Banner({ home, text }) {
     box-sizing: border-box;
     text-align:center
     // background: #007bff;
-    background: #e91e63;
+    background: #ff5252;
     padding-top:20px;
     padding-left: 5px;
     position: relative;
@@ -38,6 +38,7 @@ export default function Banner({ home, text }) {
     text-align: center
     position: relative;
     display: block;
+    color: white
     z-index: 10;
     // -webkit-transform: rotate(-90deg);
     // -moz-transform: rotate(-90deg);

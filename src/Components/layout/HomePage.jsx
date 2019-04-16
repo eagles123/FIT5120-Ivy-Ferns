@@ -17,7 +17,7 @@ export default function HomePage() {
       {/* <div style={{ marginTop: 30 }}>
         <Video videoUrl={require("../../assets/MyVideo.mp4")} />
       </div> */}
-      <NavBar about={true} faqs={true} />
+
       <div className="main" style={{ marginTop: 100 }}>
         <h3>ARE YOU FACING ANY OF THESE ISSUES?</h3>
         <div className="row">
@@ -94,6 +94,11 @@ export default function HomePage() {
         </Parallax>
       </div>
       <PageFooter />
+      {/* <svg>
+        <g>
+          <path d=" M178.203 103.081L129 74.673V101H23v4h106v26.488l49.203-28.407z" />
+        </g>
+      </svg> */}
 
       <div />
     </React.Fragment>

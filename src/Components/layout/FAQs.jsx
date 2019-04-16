@@ -6,7 +6,6 @@ import PageFooter from "./Footer";
 export default function FAQs() {
   return (
     <React.Fragment>
-      <NavBar home={true} about={true} />
       <div className="container" style={{ marginTop: 100, height: "100%" }}>
         <h3 style={{ fontFamily: "Arial Black", textAlign: "center" }}>
           FREQUENTLY ASKED QUESTIONS (FAQs)

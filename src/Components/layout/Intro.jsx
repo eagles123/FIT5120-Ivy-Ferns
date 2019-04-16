@@ -5,38 +5,85 @@ import NavBar from "./NavBar";
 import "../../chosePage.css";
 import { LightSpeed } from "react-reveal";
 import RadioBut from "../common/RadioBut";
-import { Transition } from "react-spring/renderprops";
+import AniIcon from "../common/AniIcon";
 
 export default function Intro(props) {
-  const { choiceDispatch } = useContext(ChoiceContext);
+  const { choice, choiceDispatch } = useContext(ChoiceContext);
+
   //manage local state for radio button
 
-  // const [healthBtn, setHealth] = useState(false);
-  // const [educationBtn, setEducation] = useState(false);
-  // const [propBtn, setProp] = useState(false);
-  // const [jobBtn, setJob] = useState(false);
+  // const [healthCounter, setHealth] = useState(0);
+  // const [educationCounter, setEducation] = useState(0);
+  // const [propCounter, setProp] = useState(0);
+  // const [jobCounter, setJob] = useState(0);
+  const [submit, setSubmit] = useState(false);
+
+  useEffect(() => {
+    resetChoice();
+  }, []);
+
   //set animation
-  const [animate, setAnimate] = useState(false);
+  // function handleIcon(lable, flag) {
+  //   if (flag === "yes") {
+  //     if (lable === "HEALTHFIELD") {
+  //       setHealth(healthCounter + 1);
+  //       if (choice.educationField === true) setEducation(educationCounter + 1);
+  //       if (choice.propertyField === true) setProp(propCounter + 1);
+  //       if (choice.jobField === true) setJob(jobCounter + 1);
+  //     } else if (lable === "EDUCATIONFIELD") {
+  //       setEducation(educationCounter + 1);
+  //       if (choice.healthField === true) setHealth(healthCounter + 1);
+  //       if (choice.propertyField === true) setProp(propCounter + 1);
+  //       if (choice.jobField === true) setJob(jobCounter + 1);
+  //     } else if (lable === "PROPERTYFIELD") {
+  //       setProp(propCounter + 1);
+  //       if (choice.educationField === true) setEducation(educationCounter + 1);
+  //       if (choice.healthField === true) setHealth(healthCounter + 1);
+  //       if (choice.jobField === true) setJob(jobCounter + 1);
+  //     } else if (lable === "JOBFIELD") {
+  //       setJob(jobCounter + 1);
+  //       if (choice.educationField === true) setEducation(educationCounter + 1);
+  //       if (choice.propertyField === true) setProp(propCounter + 1);
+  //       if (choice.healthField === true) setHealth(healthCounter + 1);
+  //     }
+  //   } else if (flag === "no") {
+  //     if (lable === "HEALTHFIELD") {
+  //       setHealth(0);
+  //       if (choice.educationField === true) setEducation(educationCounter + 1);
+  //       if (choice.propertyField === true) setProp(propCounter + 1);
+  //       if (choice.jobField === true) setJob(jobCounter + 1);
+  //     } else if (lable === "EDUCATIONFIELD") {
+  //       setEducation(0);
+  //       if (choice.healthField === true) setHealth(healthCounter + 1);
+  //       if (choice.propertyField === true) setProp(propCounter + 1);
+  //       if (choice.jobField === true) setJob(jobCounter + 1);
+  //     } else if (lable === "PROPERTYFIELD") {
+  //       setProp(0);
+  //       if (choice.educationField === true) setEducation(educationCounter + 1);
+  //       if (choice.healthField === true) setHealth(healthCounter + 1);
+  //       if (choice.jobField === true) setJob(jobCounter + 1);
+  //     } else if (lable === "JOBFIELD") {
+  //       setJob(0);
+  //       if (choice.educationField === true) setEducation(educationCounter + 1);
+  //       if (choice.propertyField === true) setProp(propCounter + 1);
+  //       if (choice.healthField === true) setHealth(healthCounter + 1);
+  //     }
+  //   }
+  // }
+
   function resetChoice() {
     choiceDispatch({ type: "RESET" });
   }
   //set animation start time
-  useEffect(() => {
-    resetChoice();
-    setTimeout(toggle, 600);
-  }, []);
-  function toggle() {
-    setAnimate(true);
-  }
-
   function handleNext() {
-    props.history.push("/recommend");
+    setSubmit(true);
+    setTimeout(() => {
+      props.history.push("/recommend");
+    }, 700);
   }
 
   return (
     <React.Fragment>
-      <NavBar home={true} about={true} faqs={true} />
-
       <div className="cpage">
         <div
           className="container"
@@ -56,24 +103,59 @@ export default function Intro(props) {
                 <img src={"/carton3.png"} alt="" />
               </div>
               <div className="col s1 m1 introicon" style={{ color: "white" }}>
-                <i className="fas fa-hospital-symbol fa-3x" />
-                <i className="fas fa-graduation-cap fa-3x" />
+                <AniIcon
+                  animate={choice.healthField}
+                  submit={submit}
+                  icon={"fas fa-hospital-symbol fa-3x"}
+                  x1={"-100px"}
+                  x2={"-170px"}
+                  y1={"10px"}
+                  y2={"380px"}
+                />
+                <AniIcon
+                  animate={choice.educationField}
+                  submit={submit}
+                  icon={"fas fa-graduation-cap fa-3x"}
+                  x1={"-100px"}
+                  x2={"-170px"}
+                  y1={"10px"}
+                  y2={"250px"}
+                />
+                <AniIcon
+                  animate={choice.propertyField}
+                  submit={submit}
+                  icon={"fas fa-building fa-3x"}
+                  x1={"-120px"}
+                  x2={"-170px"}
+                  y1={"7px"}
+                  y2={"140px"}
+                />
+                <AniIcon
+                  animate={choice.jobField}
+                  submit={submit}
+                  icon={"fas fa-briefcase fa-3x"}
+                  x1={"-160px"}
+                  x2={"-170px"}
+                  y1={"5px"}
+                  y2={"50px"}
+                />
+                {/* <i className="fas fa-hospital-symbol fa-3x" /> */}
+                {/* <i className="fas fa-graduation-cap fa-3x" />
                 <i className="fas fa-building fa-3x" />
-                <i className="fas fa-briefcase fa-3x" />
+                <i className="fas fa-briefcase fa-3x" /> */}
               </div>
               <div className="col s7 m5 ">
                 {/* <FormControl component="fieldset"> */}
                 <h6>HEALTH CARE</h6>
-
                 <RadioBut text={"HEALTHFIELD"} />
+
                 <h6>EDUCATIONAL INSTITUTIONS</h6>
-
                 <RadioBut text={"EDUCATIONFIELD"} />
+
                 <h6>PROPERTY PRICES</h6>
-
                 <RadioBut text={"PROPERTYFIELD"} />
-                <h6>JOB OPPORTUNITIES</h6>
 
+                <h6>JOB OPPORTUNITIES</h6>
                 <RadioBut text={"JOBFIELD"} />
               </div>
               <div style={{ marginLeft: "500px" }}>

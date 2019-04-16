@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  CardActions
-} from "@material-ui/core";
-import StyledButton from "../common/StyleButton";
+import { Button, Card, CardContent, Typography } from "@material-ui/core";
 
 const SuburbResult = ({ suburb }) => {
   return (
@@ -16,20 +9,13 @@ const SuburbResult = ({ suburb }) => {
         style={{
           width: "350px",
           height: "105px",
-          backgroundColor: "#e91e63"
+          backgroundColor: "#e91e63",
+          marginBottom: "15px"
         }}
       >
-        {/* <CardHeader
-          avatar={
-            <Avatar aria-label="Recipe" style={{ backgroundColor: "red" }}>
-              {suburb.name.charAt(0)}
-            </Avatar>
-          }
-          title={suburb.name}
-        /> */}
         <CardContent>
           <Typography variant="h6" component="h6" style={{ color: "white" }}>
-            No.{suburb.rank} Suburb: {suburb.name}
+            No.{suburb.rank} Suburb: {suburb.suburbName}
           </Typography>
           <Typography
             component="span"

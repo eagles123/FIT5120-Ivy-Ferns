@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { ChoiceContext } from "../context/ParameterContext";
 import SliderElement from "../common/SliderElement";
+import { AniBox } from "./../common/AniComponent";
 
-const SidePanel = ({ data }) => {
+const SidePanel = () => {
   const { choice } = useContext(ChoiceContext);
   // function renderText(data) {
   //   if (data >= 0 && data <= 2) return "Not at all";
@@ -25,6 +26,20 @@ const SidePanel = ({ data }) => {
             }
           />
         ) : null}
+        {/* <AniBox
+          className="box"
+          pose={choice.healthField ? "visible" : "hidden"}
+        >
+          <SliderElement
+            key={String(choice.healthField)}
+            // text={renderText(data.healthScore)}
+            title={"Health Care"}
+            label={"HEALTH"}
+            text={
+              "How much do you care about having a hospital and/or a General Practitioner (G.P.) near you? "
+            }
+          />
+        </AniBox> */}
         {choice.educationField ? (
           <SliderElement
             // text={renderText(data.educationScore)}

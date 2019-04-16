@@ -1,28 +1,37 @@
 // function to caclulate the euclidean-distance between custom and suburb data vector
 import _ from "lodash";
-export function distance(custom, suburb) {
-  let healthDiff = Math.pow(
-    custom.healthScore * 10 - suburb.rating.healthScore,
-    2
-  );
+export function distance(scoreState, suburb) {
+  let healthDiff;
+  if (scoreState.healthDiff === 0) healthDiff = 0;
+  else
+    healthDiff = Math.pow(
+      scoreState.healthScore * 10 - suburb.rating.healthScore,
+      2
+    );
 
   // console.log(healthDiff);
-
-  let educationDiff = Math.pow(
-    custom.educationScore * 10 - suburb.rating.educationScore,
-    2
-  );
+  let educationDiff;
+  if (scoreState.educationScore === 0) educationDiff = 0;
+  else
+    educationDiff = Math.pow(
+      scoreState.educationScore * 10 - suburb.rating.educationScore,
+      2
+    );
   // console.log(educationDiff);
 
   // let propertyDiff = Math.pow(
-  //   custom.propertyScore * 10 - suburb.rating.propertyScore
+  //   scoreState.propertyScore * 10 - suburb.rating.propertyScore
   // );
-  let propertyDiff = Math.pow(
-    custom.propertyScore * 10 - suburb.rating.propetyScore,
-    2
-  );
-
-  let jobDiff = Math.pow(custom.jobScore * 10 - suburb.rating.jobScore, 2);
+  let propertyDiff;
+  if (scoreState.propertyScore === 0) propertyDiff = 0;
+  else
+    propertyDiff = Math.pow(
+      scoreState.propertyScore * 10 - suburb.rating.propetyScore,
+      2
+    );
+  let jobDiff;
+  if (scoreState.jobScore === 0) jobDiff = 0;
+  jobDiff = Math.pow(scoreState.jobScore * 10 - suburb.rating.jobScore, 2);
   // console.log(jobDiff);
 
   suburb.difScore = Math.sqrt(
@@ -31,8 +40,8 @@ export function distance(custom, suburb) {
   return suburb;
 }
 
-export function recommd(customChoice, suburbList) {
-  suburbList.map(suburb => distance(customChoice, suburb));
+export function recommd(scoreState, suburbList) {
+  suburbList.map(suburb => distance(scoreState, suburb));
   suburbList.sort(function(a, b) {
     return a.difScore - b.difScore;
   });

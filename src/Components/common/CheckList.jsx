@@ -37,7 +37,7 @@ export default function CheckList(props) {
       style={{
         width: "100%",
         maxWidth: "280px",
-        backgroundColor: "#e91e63"
+        backgroundColor: "#ff5252"
       }}
     >
       <ListItem button onClick={handlePreference} style={{ color: "white" }}>

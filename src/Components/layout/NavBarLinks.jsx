@@ -1,32 +1,39 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Banner from "./../common/Banner";
+import { NavLink } from "react-router-dom";
 
-const NavBarLinks = ({ home, about, faqs, text }) => {
+const NavBarLinks = () => {
   return (
     <div>
       <ul className="right">
-        {home ? (
-          <li>
-            <Link to="/">
-              <Banner home={home} />
-            </Link>
-          </li>
-        ) : null}
-        {about ? (
-          <li>
-            <Link to="/about">
-              <Banner text={"About Us"} />
-            </Link>
-          </li>
-        ) : null}
-        {faqs ? (
-          <li>
-            <Link to="/faqs">
-              <Banner text={"FAQs"} />
-            </Link>
-          </li>
-        ) : null}
+        <li>
+          <NavLink
+            style={{ color: "black" }}
+            className="nav-item nav-link"
+            to="/intro"
+          >
+            Pick Suburb
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            style={{ color: "black" }}
+            className="nav-item nav-link"
+            to="/about"
+          >
+            About Us
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            style={{ color: "black" }}
+            className="nav-item nav-link"
+            to="/faqs"
+          >
+            FAQ
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
