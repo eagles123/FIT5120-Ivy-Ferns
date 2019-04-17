@@ -25,7 +25,7 @@ export default function Banner({ home, text }) {
     //   border: 40px solid transparent;
     //   border-top: 50px solid #007bff
     //   //border-top: 50px solid red
-    //   -webkit-transform: translate(-50%, 0);
+    //   -webkit-transform: translate(-50%, 0);cd 
     //   -ms-transform: translate(-50%, 0);
     //   transform: translate(-50%, 0);
     // }

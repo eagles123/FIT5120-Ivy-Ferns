@@ -1,5 +1,5 @@
 import React from "react";
-
+//search  a specific suburb from the ranked list 
 export default function SearchBox({ value, onChange }) {
   return (
     <React.Fragment>
