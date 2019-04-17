@@ -23,8 +23,8 @@ export default function HomePageTwo() {
           className="jarallax text parallax-3"
           data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
         >
-          <p style={{ marginBottom: "0px" }}>Planning to move to </p>
-          <p style={{ paddingTop: "0px", marginTop: "0px" }}>
+          <p style={{ fontFamily: "Merriweather", marginBottom: "0px" }}>Planning to move to </p>
+          <p style={{ fontFamily: "Merriweather", paddingTop: "0px", marginTop: "0px" }}>
             Regional Victoria?
           </p>
           <Link to="/intro">
