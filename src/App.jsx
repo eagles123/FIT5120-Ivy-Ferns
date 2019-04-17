@@ -16,6 +16,7 @@ import NavBar from "./Components/layout/NavBar";
 import Nav from "./Components/layout/Nav";
 
 const App = () => {
+//hahahahahahahahahaha
   const [choice, choiceDispatch] = useReducer(choiceReducer, {
     healthField: false,
     educationField: false,
