@@ -1,48 +1,54 @@
 import React, { useEffect, useState } from "react";
-// import SuburbResult from "./SuburbResult";
+
 import styled from "styled-components";
 import SubListResult from "./SubListResult";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { AniUl } from "./../common/AniComponent";
 
-const SuburList = ({ suburbs, choice, change }) => {
+const SuburList = ({ suburbs, choice }) => {
   const Container = styled.div`
     border-radius: 10px;
     height: 470px;
     width: 350px;
-    background-color: #ff5252;
+    background-color: #d4e157;
     color: white;
     margin-top: 0px;
-    margin-left: 45px;
+    margin-left: 80px;
   `;
 
   //code for animate the list
-  const [prev, setPrev] = useState(change);
+  const [data, setData] = useState([]);
+  const [isOpen, setOpen] = useState(true);
+  async function handleOpen() {
+    await setOpen(false);
+  }
 
-  useEffect(() => {
-    let timeout = setTimeout(() => {
-      setPrev(change);
-    }, 500);
-    return () => clearTimeout(timeout);
-  }, [change]);
+  // const [prev, setPrev] = useState(change);
 
   // useEffect(() => {
-  //   setTimeout(toggle, 800);
-  // }, []);
+  //   let timeout = setTimeout(() => {
+  //     setPrev(change);
+  //   }, 500);
+  //   return () => clearTimeout(timeout);
+  // }, [change]);
 
-  // function toggle() {
-  //   setAnimate(true);
-  // }
+  async function handleClos() {
+    await setOpen(true);
+  }
+  useEffect(() => {
+    handleOpen();
+    let timeout = setTimeout(() => {
+      handleClos();
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [suburbs]);
 
-  // function handleChange(list) {
-  //   setChange(list);
-  // }
-
+  //check for searchbox filter
   function checkSuburb(suburbs) {
     if (suburbs.length === 0)
       return (
         <Container>
           <h4 style={{ paddingTop: "100px", textAlign: "center" }}>
-            There is no such suuburb...
+            There is no such suburb...
           </h4>
         </Container>
       );
@@ -54,22 +60,19 @@ const SuburList = ({ suburbs, choice, change }) => {
       choice.educationField ||
       choice.propertyField ||
       choice.jobField ? (
-        checkSuburb(suburbs) ||
-        (change !== prev ? (
-          <Container>
-            <div className="container" style={{ padding: "150px 0 0 100px" }}>
-              <CircularProgress />
-            </div>
-          </Container>
-        ) : (
-          suburbs.map(c => (
-            // {/* <SuburbResult key={suburb.name} suburb={suburb} /> */}
-            <SubListResult key={c._id} suburb={c} />
-          ))
-        ))
+        checkSuburb(suburbs) || (
+          <AniUl className="slidebar" pose={isOpen ? "open" : "closed"}>
+            {suburbs.map(c => (
+              //change to _id when deploy
+              <SubListResult key={c.suburbName} suburb={c} />
+            ))}
+          </AniUl>
+        )
       ) : (
         <Container>
-          <h5 style={{ paddingTop: "100px", textAlign: "center" }}>
+          <h5
+            style={{ color: "black", paddingTop: "100px", textAlign: "center" }}
+          >
             Please Choose Your Preference First!
           </h5>
         </Container>

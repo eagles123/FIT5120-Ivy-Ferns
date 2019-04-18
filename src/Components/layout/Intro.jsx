@@ -1,86 +1,72 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import CustomButton from "../common/CustomButtons";
 import { ChoiceContext } from "../context/ParameterContext";
-import NavBar from "./NavBar";
-import "../../chosePage.css";
 import { LightSpeed } from "react-reveal";
 import RadioBut from "../common/RadioBut";
 import AniIcon from "../common/AniIcon";
+import MyDialog from "../common/Dialog";
 
 export default function Intro(props) {
   const { choice, choiceDispatch } = useContext(ChoiceContext);
-
-  //manage local state for radio button
-
-  // const [healthCounter, setHealth] = useState(0);
-  // const [educationCounter, setEducation] = useState(0);
-  // const [propCounter, setProp] = useState(0);
-  // const [jobCounter, setJob] = useState(0);
   const [submit, setSubmit] = useState(false);
+  const [hdialog, setH] = useState(false);
+  const [edialog, setE] = useState(false);
+  const [pdialog, setP] = useState(false);
+  const [jdialog, setJ] = useState(false);
+  const [error, setError] = useState(false);
+
+  function handleHopen() {
+    setH(true);
+  }
+  function handleEopen() {
+    setE(true);
+  }
+  function handlePopen() {
+    setP(true);
+  }
+  function handleJopen() {
+    setJ(true);
+  }
+
+  function handleHclose() {
+    setH(false);
+  }
+  function handleEclose() {
+    setE(false);
+  }
+  function handlePclose() {
+    setP(false);
+  }
+  function handleJclose() {
+    setJ(false);
+  }
 
   useEffect(() => {
     resetChoice();
   }, []);
-
-  //set animation
-  // function handleIcon(lable, flag) {
-  //   if (flag === "yes") {
-  //     if (lable === "HEALTHFIELD") {
-  //       setHealth(healthCounter + 1);
-  //       if (choice.educationField === true) setEducation(educationCounter + 1);
-  //       if (choice.propertyField === true) setProp(propCounter + 1);
-  //       if (choice.jobField === true) setJob(jobCounter + 1);
-  //     } else if (lable === "EDUCATIONFIELD") {
-  //       setEducation(educationCounter + 1);
-  //       if (choice.healthField === true) setHealth(healthCounter + 1);
-  //       if (choice.propertyField === true) setProp(propCounter + 1);
-  //       if (choice.jobField === true) setJob(jobCounter + 1);
-  //     } else if (lable === "PROPERTYFIELD") {
-  //       setProp(propCounter + 1);
-  //       if (choice.educationField === true) setEducation(educationCounter + 1);
-  //       if (choice.healthField === true) setHealth(healthCounter + 1);
-  //       if (choice.jobField === true) setJob(jobCounter + 1);
-  //     } else if (lable === "JOBFIELD") {
-  //       setJob(jobCounter + 1);
-  //       if (choice.educationField === true) setEducation(educationCounter + 1);
-  //       if (choice.propertyField === true) setProp(propCounter + 1);
-  //       if (choice.healthField === true) setHealth(healthCounter + 1);
-  //     }
-  //   } else if (flag === "no") {
-  //     if (lable === "HEALTHFIELD") {
-  //       setHealth(0);
-  //       if (choice.educationField === true) setEducation(educationCounter + 1);
-  //       if (choice.propertyField === true) setProp(propCounter + 1);
-  //       if (choice.jobField === true) setJob(jobCounter + 1);
-  //     } else if (lable === "EDUCATIONFIELD") {
-  //       setEducation(0);
-  //       if (choice.healthField === true) setHealth(healthCounter + 1);
-  //       if (choice.propertyField === true) setProp(propCounter + 1);
-  //       if (choice.jobField === true) setJob(jobCounter + 1);
-  //     } else if (lable === "PROPERTYFIELD") {
-  //       setProp(0);
-  //       if (choice.educationField === true) setEducation(educationCounter + 1);
-  //       if (choice.healthField === true) setHealth(healthCounter + 1);
-  //       if (choice.jobField === true) setJob(jobCounter + 1);
-  //     } else if (lable === "JOBFIELD") {
-  //       setJob(0);
-  //       if (choice.educationField === true) setEducation(educationCounter + 1);
-  //       if (choice.propertyField === true) setProp(propCounter + 1);
-  //       if (choice.healthField === true) setHealth(healthCounter + 1);
-  //     }
-  //   }
-  // }
 
   function resetChoice() {
     choiceDispatch({ type: "RESET" });
   }
   //set animation start time
   function handleNext() {
-    setSubmit(true);
-    setTimeout(() => {
-      props.history.push("/recommend");
-    }, 700);
+    if (
+      choice.healthField ||
+      choice.educationField ||
+      choice.propertyField ||
+      choice.jobField
+    ) {
+      setError(false);
+      setSubmit(true);
+      setTimeout(() => {
+        props.history.push("/recommend");
+      }, 700);
+    } else setError(true);
   }
+
+  // function handleInfo(info) {
+  //   dispatch({type: info, payload: !dialogState.info})
+  // }
 
   return (
     <React.Fragment>
@@ -88,11 +74,11 @@ export default function Intro(props) {
         <div
           className="container"
           style={{
-            width: "900px",
+            width: "70%",
             backgroundColor: "white",
             // backgroundColor: "white",
             opacity: 0.9,
-            maxHeight: "550px",
+            height: "100%",
             margin: "45px auto"
           }}
         >
@@ -100,9 +86,12 @@ export default function Intro(props) {
             <h3 style={{ paddingTop: 5 }}>SET YOUR PREFERENCES</h3>
             <div className="row">
               <div className="col s4 m4 offset-m1">
-                <img src={"/carton3.png"} alt="" />
+                <img src={"/carton3.1.png"} alt="" />
               </div>
-              <div className="col s1 m1 introicon" style={{ color: "white" }}>
+              <div
+                className="col s1 m1 offset-m1 introicon"
+                style={{ color: "white" }}
+              >
                 <AniIcon
                   animate={choice.healthField}
                   submit={submit}
@@ -146,16 +135,72 @@ export default function Intro(props) {
               </div>
               <div className="col s7 m5 ">
                 {/* <FormControl component="fieldset"> */}
-                <h6>HEALTH CARE</h6>
+                <h6>
+                  HEALTH CARE{" "}
+                  <i
+                    class="fas fa-info-circle"
+                    onClick={handleHopen}
+                    style={{ cursor: "pointer", color: "#2962ff" }}
+                  />
+                </h6>
+                <MyDialog
+                  state={hdialog}
+                  handleClose={handleHclose}
+                  content={
+                    "Health Care includes information about the number of hospitals and number of General Practitioners in the particular Suburb."
+                  }
+                />
                 <RadioBut text={"HEALTHFIELD"} />
 
-                <h6>EDUCATIONAL INSTITUTIONS</h6>
+                <h6>
+                  EDUCATIONAL INSTITUTIONS{" "}
+                  <i
+                    class="fas fa-info-circle"
+                    onClick={handleEopen}
+                    style={{ cursor: "pointer", color: "#2962ff" }}
+                  />
+                </h6>
+                <MyDialog
+                  state={edialog}
+                  handleClose={handleEclose}
+                  content={
+                    "Educational Institutions include information about pre-primary schools, primary schools and secondary schools. Also, the ICSEA score for each of the schools, number of enrolment and the teacher to student staff ratio is also included."
+                  }
+                />
                 <RadioBut text={"EDUCATIONFIELD"} />
 
-                <h6>PROPERTY PRICES</h6>
+                <h6>
+                  PROPERTY PRICES{" "}
+                  <i
+                    class="fas fa-info-circle"
+                    onClick={handlePopen}
+                    style={{ cursor: "pointer", color: "#2962ff" }}
+                  />
+                </h6>
+                <MyDialog
+                  state={pdialog}
+                  handleClose={handlePclose}
+                  content={
+                    "Property prices include the median price range of properties located in the suburb."
+                  }
+                />
                 <RadioBut text={"PROPERTYFIELD"} />
 
-                <h6>JOB OPPORTUNITIES</h6>
+                <h6>
+                  JOB OPPORTUNITIES{" "}
+                  <i
+                    class="fas fa-info-circle"
+                    onClick={handleJopen}
+                    style={{ cursor: "pointer", color: "#2962ff" }}
+                  />
+                </h6>
+                <MyDialog
+                  state={jdialog}
+                  handleClose={handleJclose}
+                  content={
+                    "Job opportunities include information about the industries and the number of employees employed in that industry."
+                  }
+                />
                 <RadioBut text={"JOBFIELD"} />
               </div>
               <div style={{ marginLeft: "500px" }}>
@@ -165,6 +210,11 @@ export default function Intro(props) {
                   handleChange={handleNext}
                 />
               </div>
+              {error ? (
+                <p style={{ margin: "0 auto", color: "red" }}>
+                  *Please Select at least on field
+                </p>
+              ) : null}
             </div>
             {/* <div id="choose" />
         <h4 style={{ padding: 300, color: "white", zIndex: 5 }}>

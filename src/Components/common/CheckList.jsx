@@ -29,7 +29,7 @@ export default function CheckList(props) {
       subheader={
         <ListSubheader
           component="div"
-          style={{ fontSize: "17px", color: "white" }}
+          style={{ fontSize: "17px", color: "black" }}
         >
           Filter
         </ListSubheader>
@@ -37,10 +37,10 @@ export default function CheckList(props) {
       style={{
         width: "100%",
         maxWidth: "280px",
-        backgroundColor: "#ff5252"
+        backgroundColor: "#d4e157"
       }}
     >
-      <ListItem button onClick={handlePreference} style={{ color: "white" }}>
+      <ListItem button onClick={handlePreference} style={{ color: "black" }}>
         <ListItemText
           disableTypography
           inset
@@ -64,7 +64,7 @@ export default function CheckList(props) {
                 //disableTypography to make text white
                 disableTypography
                 primary={choice.label}
-                style={{ fontSize: "13px", color: "white" }}
+                style={{ fontSize: "13px", color: "black" }}
               />
             </ListItem>
           ))}

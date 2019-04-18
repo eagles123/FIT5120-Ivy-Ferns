@@ -29,14 +29,20 @@ class Pagination extends Component {
           <ul className="pagination">
             <li className="page-item">
               {currentPage === 1 ? (
-                <i>{""}</i>
+                <i
+                  className="fas fa-fast-backward"
+                  style={{ color: "grey", cursor: "default" }}
+                />
               ) : (
                 <i className="fas fa-fast-backward" onClick={() => toPage(1)} />
               )}
             </li>
             <li className="page-item">
               {currentPage === 1 ? (
-                <i> </i>
+                <i
+                  className="fas fa-step-backward"
+                  style={{ color: "grey", cursor: "default" }}
+                />
               ) : (
                 <i
                   className="fas fa-step-backward"
@@ -57,7 +63,12 @@ class Pagination extends Component {
             </span>
 
             <li className="page-item">
-              {currentPage === pagesCount ? null : (
+              {currentPage === pagesCount ? (
+                <i
+                  className="fas fa-step-forward"
+                  style={{ color: "grey", cursor: "default" }}
+                />
+              ) : (
                 <i
                   className="fas fa-step-forward"
                   onClick={() => onPreNext(false, pages)}
@@ -65,7 +76,12 @@ class Pagination extends Component {
               )}
             </li>
             <li className="page-item">
-              {currentPage === pagesCount ? null : (
+              {currentPage === pagesCount ? (
+                <i
+                  className="fas fa-fast-forward"
+                  style={{ color: "grey", cursor: "default" }}
+                />
+              ) : (
                 <i
                   className="fas fa-fast-forward"
                   onClick={() => toPage(pagesCount)}

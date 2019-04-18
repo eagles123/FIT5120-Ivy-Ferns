@@ -5,11 +5,11 @@ export default function SearchBox({ value, onChange }) {
     <React.Fragment>
       <input
         id="searchBox"
-        placeholder="  Search suburb..."
+        placeholder="  Search suburb... "
         type="text"
         value={value}
         onChange={e => onChange(e.currentTarget.value)}
-        style={{ width: "300px", marginLeft: "50px" }}
+        style={{ width: "300px", marginLeft: "80px" }}
       />
     </React.Fragment>
   );

@@ -13,7 +13,6 @@ import FAQs from "./Components/layout/FAQs";
 import NotFound from "./Components/layout/NotFound";
 import HomePageTwo from "./Components/layout/HomePageTwo";
 import NavBar from "./Components/layout/NavBar";
-import Nav from "./Components/layout/Nav";
 
 const App = () => {
   const [choice, choiceDispatch] = useReducer(choiceReducer, {

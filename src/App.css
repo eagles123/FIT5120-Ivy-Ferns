@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather");
 .App {
   text-align: left;
 }
@@ -9,32 +10,95 @@
   color: #61dafb;
 }
 
-/* h4 {
-  font-size: 25px;
-  padding-left: 10px;
-} */
-NavLink {
-  color: black;
+h4 {
+  font-family: "Merriweather";
 }
+
 h4 {
   font-size: 1.6em;
   text-emphasis: center;
 }
 .firstRow {
   margin: 0 auto;
+  margin-top: 40px;
   text-align: center;
-  width: 75%;
+  width: 80%;
 }
 
 #firstRow {
   background-color: white;
 }
 
+.secondRow {
+  margin: 0 auto;
+  background: url("/home1.jpg");
+  text-align: center;
+  width: 95%;
+  height: 100%;
+  padding-top: 10px;
+}
+
 #secondRow {
   background-color: white;
 }
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: black;
+}
+
 p {
   padding-top: 0.9em;
+}
+
+.cpage {
+  margin: 0;
+  padding: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif; */
+  /* font-family: "Merriweather", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-size: 100%;
+  background-position: center;
+  /* background-image: radial-gradient(#417e72, #2d6161); */
+  background: url("/bg2.jpg") no-repeat;
+  min-height: 92%;
+  min-width: 100%;
+  position: absolute;
+  z-index: -0;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.recpage {
+  margin: 0;
+  padding: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif; */
+  /* font-family: "Merriweather", serif;
+    font-family: "Playfair Display", serif; */
+  font-family: "Merriweather";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-size: 100%;
+  background-position: center;
+  /* background-image: radial-gradient(#417e72, #2d6161); */
+  background: url("/home5.jpg") no-repeat;
+  min-height: 92%;
+  min-width: 100%;
+  position: absolute;
+  z-index: -0;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+span {
+  color: black;
+  font-size: 15px;
 }
 
 .item {
@@ -42,7 +106,7 @@ p {
   height: 30px;
   width: 20%;
   opacity: 0;
-  margin-bottom: 30px;
+
   transform-origin-y: 0%;
   color: white;
 }
@@ -67,11 +131,12 @@ p {
 .container-fluid {
   margin-top: 0px;
   align-items: center;
+  overflow: auto;
 }
 /* change color here */
 h3 {
   /* color: white; */
-  font-family: "Arial Black";
+  font-family: "Merriweather";
   text-align: center;
 }
 .title {
@@ -122,14 +187,13 @@ p {
   );
   height: 150px;
   width: 100%;
-  display: block;
 }
 
 .jarallax {
   color: white;
-  height: 600px;
+  height: 510px;
   margin: 0 auto;
-  width: 95%;
+  width: 90%;
   text-align: center;
   text-shadow: 2px 2px 3px #111, 3px 3px 10px #000;
   position: relative;
@@ -141,17 +205,20 @@ p {
 .text p {
   text-align: center;
   padding-top: 200px;
-  font-family: "Open Sans";
+  font-family: "Merriweather";
   font-size: 45px;
 }
 
+#color {
+  background-color: #dcedc8;
+}
 .bgsection {
   background-color: #dcedc8;
   /* background: url("/bg1.jpg"); */
-  min-height: 500px;
+  min-height: 430px;
   width: 100%;
   position: relative;
-  margin-top: "-50px";
+  margin-top: "-500px";
 }
 
 /* css for scroll icon */
@@ -218,6 +285,15 @@ p {
   to {
     opacity: 1;
   }
+}
+
+.item {
+  color: #000;
+}
+
+.vl {
+  border-right: 3px solid black;
+  height: 450px;
 }
 
 /* #im {

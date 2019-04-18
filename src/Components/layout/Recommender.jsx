@@ -36,16 +36,11 @@ const Recommender = props => {
     propertyScore: 0,
     jobScore: 0
   });
+
   //use local data for development
   const [suburbs, setSuburbs] = useState(getallSuburbs);
   useEffect(() => {
     setSuburbs(recommd(scoreState, suburbs));
-
-    //don't understand this code but add this line suburb list will update immidiately
-    // setInitialSuburb(initialSuburb);
-    // let newList = recommd(scoreState, initialSuburb);
-
-    // setSuburbs(newList);
   }, [scoreState]);
 
   // initialise suburb with dummny data
@@ -81,16 +76,16 @@ const Recommender = props => {
   //states manage pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(4);
-  const [change, setChange] = useState(0);
   const [pagedSub, setPaged] = useState(
     paginate(suburbs, currentPage, pageSize)
   );
+  const { choice, choiceDispatch } = useContext(ChoiceContext);
+  const [query, setQuery] = useState("");
+
   //cacluate the distance when the state is changed
   useEffect(() => {
     //caculate difference score.
     setSuburbs(recommd(scoreState, suburbs));
-    setChange(change + 1);
-
     //don't understand this code but add this line suburb list will update immidiately
     // setInitialSuburb(initialSuburb);
   }, [scoreState]);
@@ -104,9 +99,6 @@ const Recommender = props => {
   useEffect(() => {
     getSearchData();
   }, [query]);
-
-  const { choice, choiceDispatch } = useContext(ChoiceContext);
-  const [query, setQuery] = useState("");
 
   function handleSearch(query) {
     setQuery(query);
@@ -134,7 +126,7 @@ const Recommender = props => {
     let filtered = suburbs;
     if (query)
       filtered = suburbs.filter(s =>
-        s.name.toLowerCase().includes(query.toLowerCase())
+        s.suburbName.toLowerCase().includes(query.toLowerCase())
       );
     setTotal(filtered.length);
     return setPaged(paginate(filtered, currentPage, pageSize));
@@ -159,11 +151,6 @@ const Recommender = props => {
     props.history.push("/intro");
   }
 
-  //read in the data when compomentDidMount
-  // useEffect(() => {
-  //   getAllSuburbs;
-  // }, []);
-
   //actions pass to CheckList component
   const choices = [
     { label: "Health", chose: choice.healthField, action: choseHealth },
@@ -174,46 +161,41 @@ const Recommender = props => {
 
   return (
     <React.Fragment>
-      {/* {init || suburbs.length === 1 ? (
-        <CircularProgress />
-      ) : ( */}
-      <div className="recommender container-fluid">
-        <div className="container">{/* <ToggleButtons /> */}</div>
-        <div className="row">
-          <div className="col s12 m2" style={{ marginTop: 50 }}>
-            <Fade left duration={1000}>
-              <StyledButton onClick={handleBack}>Back</StyledButton>
-              <CheckList choices={choices} />
-            </Fade>
-          </div>
-          <div className="col s12 m4 offset-m1 ">
-            <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
-              <Fade bottom duration={1000}>
-                <SidePanel data={scoreState} />
+      <div className="recpage">
+        <div className="recommender container-fluid">
+          <div className="container">{/* <ToggleButtons /> */}</div>
+          <div className="row">
+            <div className="col s12 m2" style={{ marginTop: 50 }}>
+              <Fade left duration={1000}>
+                <StyledButton onClick={handleBack}>Back</StyledButton>
+                <CheckList choices={choices} />
               </Fade>
-            </ParameterContext.Provider>
-          </div>
-          <div className="col s12 m4" style={{ marginTop: 18 }}>
-            <Fade right duration={1000}>
-              <h6>Suburb Ranking List:</h6>
-              <SearchBox value={query} onChange={handleSearch} />
-              {suburbs.length === 0 ? null : (
-                <SuburbList
-                  suburbs={pagedSub}
+            </div>
+            <div className="col s12 m4 offset-m1 ">
+              <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
+                <Fade bottom duration={1000}>
+                  <SidePanel data={scoreState} />
+                </Fade>
+              </ParameterContext.Provider>
+            </div>
+            <div className="col s12 m4" style={{ marginTop: 18 }}>
+              <Fade right duration={1000}>
+                <h5 style={{ textAlign: "center" }}>Ranked Suburbs</h5>
+                <SearchBox value={query} onChange={handleSearch} />
+                {suburbs.length === 0 ? null : (
+                  <SuburbList suburbs={pagedSub} choice={choice} />
+                )}
+                <Pagination
+                  itemNumber={totalcount}
+                  pageSize={pageSize}
+                  onPageChange={handlePageChange}
+                  currentPage={currentPage}
+                  onPreNext={handlePreNext}
+                  toPage={toPage}
                   choice={choice}
-                  change={change}
                 />
-              )}
-              <Pagination
-                itemNumber={totalcount}
-                pageSize={pageSize}
-                onPageChange={handlePageChange}
-                currentPage={currentPage}
-                onPreNext={handlePreNext}
-                toPage={toPage}
-                choice={choice}
-              />
-            </Fade>
+              </Fade>
+            </div>
           </div>
         </div>
       </div>

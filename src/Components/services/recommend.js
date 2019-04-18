@@ -26,7 +26,7 @@ export function distance(scoreState, suburb) {
   if (scoreState.propertyScore === 0) propertyDiff = 0;
   else
     propertyDiff = Math.pow(
-      scoreState.propertyScore * 10 - suburb.rating.propetyScore,
+      10 - scoreState.propertyScore * 10 - suburb.rating.propetyScore,
       2
     );
   let jobDiff;

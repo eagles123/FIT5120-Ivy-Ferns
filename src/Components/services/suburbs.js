@@ -1,7 +1,7 @@
 const suburbs = [
   {
     city: "Ballarat",
-    name: "Alfredton",
+    suburbName: "Alfredton",
     rating: {
       healthScore: 28.7628405538,
       educationScore: 7.3366808473,
@@ -11,7 +11,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Anakie",
+    suburbName: "Anakie",
     rating: {
       healthScore: 0.0,
       educationScore: 2.1811010568,
@@ -21,7 +21,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Armstrong creek",
+    suburbName: "Armstrong creek",
     rating: {
       healthScore: 0.0,
       educationScore: 9.5064451341,
@@ -31,7 +31,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Avalon",
+    suburbName: "Avalon",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -41,7 +41,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Bakery hill",
+    suburbName: "Bakery hill",
     rating: {
       healthScore: 6.2527914247,
       educationScore: 0.0,
@@ -51,7 +51,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Ballarat central",
+    suburbName: "Ballarat central",
     rating: {
       healthScore: 100.0,
       educationScore: 2.4194390689,
@@ -61,7 +61,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Ballarat east",
+    suburbName: "Ballarat east",
     rating: {
       healthScore: 1.2505582849,
       educationScore: 10.5209977408,
@@ -71,7 +71,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Ballarat north",
+    suburbName: "Ballarat north",
     rating: {
       healthScore: 0.0,
       educationScore: 4.9962037142,
@@ -81,7 +81,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Balliang",
+    suburbName: "Balliang",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -91,7 +91,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Barwon heads",
+    suburbName: "Barwon heads",
     rating: {
       healthScore: 2.044938076,
       educationScore: 2.6169279264,
@@ -101,7 +101,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Batesford",
+    suburbName: "Batesford",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -111,7 +111,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Bell park",
+    suburbName: "Bell park",
     rating: {
       healthScore: 0.0,
       educationScore: 4.7093183402,
@@ -121,7 +121,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Bell post hill",
+    suburbName: "Bell post hill",
     rating: {
       healthScore: 1.3632920507,
       educationScore: 18.1293338197,
@@ -131,7 +131,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Bellarine",
+    suburbName: "Bellarine",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -141,7 +141,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Belmont",
+    suburbName: "Belmont",
     rating: {
       healthScore: 19.7677347348,
       educationScore: 22.4670231449,
@@ -151,7 +151,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Bendigo",
+    suburbName: "Bendigo",
     rating: {
       healthScore: 97.434680661,
       educationScore: 100.0,
@@ -161,7 +161,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Black hill",
+    suburbName: "Black hill",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -171,7 +171,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Bo peep",
+    suburbName: "Bo peep",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -181,7 +181,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Bonshaw",
+    suburbName: "Bonshaw",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -191,7 +191,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Breakwater",
+    suburbName: "Breakwater",
     rating: {
       healthScore: 0.0,
       educationScore: 0.5273136432,
@@ -201,7 +201,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Breamlea",
+    suburbName: "Breamlea",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -211,7 +211,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Brown hill",
+    suburbName: "Brown hill",
     rating: {
       healthScore: 0.0,
       educationScore: 4.1637828189,
@@ -221,7 +221,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Bunkers hill",
+    suburbName: "Bunkers hill",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -231,7 +231,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "California gully",
+    suburbName: "California gully",
     rating: {
       healthScore: 0.0,
       educationScore: 3.890250696,
@@ -241,7 +241,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Canadian",
+    suburbName: "Canadian",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -251,7 +251,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Cardigan",
+    suburbName: "Cardigan",
     rating: {
       healthScore: 0.0,
       educationScore: 0.8064796896,
@@ -261,7 +261,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Cardigan village",
+    suburbName: "Cardigan village",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -271,7 +271,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Ceres",
+    suburbName: "Ceres",
     rating: {
       healthScore: 0.0,
       educationScore: 2.0906533607,
@@ -281,7 +281,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Chapel flat",
+    suburbName: "Chapel flat",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -291,7 +291,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Charlemont",
+    suburbName: "Charlemont",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -301,7 +301,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Clifton springs",
+    suburbName: "Clifton springs",
     rating: {
       healthScore: 0.6816460253,
       educationScore: 3.169205699,
@@ -311,7 +311,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Connewarre",
+    suburbName: "Connewarre",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -321,7 +321,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Corio",
+    suburbName: "Corio",
     rating: {
       healthScore: 17.0411506335,
       educationScore: 18.3302272782,
@@ -331,7 +331,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Curlewis",
+    suburbName: "Curlewis",
     rating: {
       healthScore: 2.044938076,
       educationScore: 0.0,
@@ -341,7 +341,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Delacombe",
+    suburbName: "Delacombe",
     rating: {
       healthScore: 0.0,
       educationScore: 7.3601508195,
@@ -351,7 +351,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Drumcondra",
+    suburbName: "Drumcondra",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -361,7 +361,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Drysdale",
+    suburbName: "Drysdale",
     rating: {
       healthScore: 14.3145665321,
       educationScore: 22.2976926415,
@@ -371,7 +371,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Durham lead",
+    suburbName: "Durham lead",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -381,7 +381,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Eaglehawk",
+    suburbName: "Eaglehawk",
     rating: {
       healthScore: 19.0514738723,
       educationScore: 22.3652951342,
@@ -391,7 +391,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "East bendigo",
+    suburbName: "East bendigo",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -401,7 +401,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "East geelong",
+    suburbName: "East geelong",
     rating: {
       healthScore: 3.7490531394,
       educationScore: 5.9023685648,
@@ -411,7 +411,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Epsom",
+    suburbName: "Epsom",
     rating: {
       healthScore: 7.6205895489,
       educationScore: 4.5226108654,
@@ -421,7 +421,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Eureka",
+    suburbName: "Eureka",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -431,7 +431,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Flora hill",
+    suburbName: "Flora hill",
     rating: {
       healthScore: 0.0,
       educationScore: 2.1092545729,
@@ -441,7 +441,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Fyansford",
+    suburbName: "Fyansford",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -451,7 +451,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Geelong",
+    suburbName: "Geelong",
     rating: {
       healthScore: 43.244962795,
       educationScore: 9.4680407262,
@@ -461,7 +461,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Geelong west",
+    suburbName: "Geelong west",
     rating: {
       healthScore: 3.7490531394,
       educationScore: 4.5742195059,
@@ -471,7 +471,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Glen park",
+    suburbName: "Glen park",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -481,7 +481,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Glendaurel",
+    suburbName: "Glendaurel",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -491,7 +491,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Glendonald",
+    suburbName: "Glendonald",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -501,7 +501,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Golden point",
+    suburbName: "Golden point",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -511,7 +511,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Golden square",
+    suburbName: "Golden square",
     rating: {
       healthScore: 6.3504912908,
       educationScore: 8.2025265971,
@@ -521,7 +521,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Gong gong",
+    suburbName: "Gong gong",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -531,7 +531,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Grovedale",
+    suburbName: "Grovedale",
     rating: {
       healthScore: 8.1797523041,
       educationScore: 15.3928406799,
@@ -541,7 +541,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Hamlyn heights",
+    suburbName: "Hamlyn heights",
     rating: {
       healthScore: 0.6816460253,
       educationScore: 9.9994154491,
@@ -551,7 +551,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Herne hill",
+    suburbName: "Herne hill",
     rating: {
       healthScore: 0.0,
       educationScore: 6.4109354615,
@@ -561,7 +561,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Highton",
+    suburbName: "Highton",
     rating: {
       healthScore: 6.134814228,
       educationScore: 15.5417532444,
@@ -571,7 +571,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Indented head",
+    suburbName: "Indented head",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -581,7 +581,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Invermay",
+    suburbName: "Invermay",
     rating: {
       healthScore: 0.0,
       educationScore: 3.4547033232,
@@ -591,7 +591,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Invermay park",
+    suburbName: "Invermay park",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -601,7 +601,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Ironbark",
+    suburbName: "Ironbark",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -611,7 +611,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Jackass flat",
+    suburbName: "Jackass flat",
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
@@ -621,7 +621,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Junortoun",
+    suburbName: "Junortoun",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -631,7 +631,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Kangaroo flat",
+    suburbName: "Kangaroo flat",
     rating: {
       healthScore: 16.511277356,
       educationScore: 22.189533338,
@@ -641,7 +641,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Kennington",
+    suburbName: "Kennington",
     rating: {
       healthScore: 5.0803930326,
       educationScore: 6.7733030023,
@@ -651,7 +651,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Lake gardens",
+    suburbName: "Lake gardens",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -661,7 +661,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Lake wendouree",
+    suburbName: "Lake wendouree",
     rating: {
       healthScore: 0.0,
       educationScore: 3.3382306477,
@@ -671,7 +671,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Lara",
+    suburbName: "Lara",
     rating: {
       healthScore: 9.8838673674,
       educationScore: 10.9962979915,
@@ -681,7 +681,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Leopold",
+    suburbName: "Leopold",
     rating: {
       healthScore: 7.1572832661,
       educationScore: 3.1557258087,
@@ -691,7 +691,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Little river",
+    suburbName: "Little river",
     rating: {
       healthScore: 0.0,
       educationScore: 0.5273136432,
@@ -701,7 +701,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Long gully",
+    suburbName: "Long gully",
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
@@ -711,7 +711,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Longlea",
+    suburbName: "Longlea",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -721,7 +721,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Lovely banks",
+    suburbName: "Lovely banks",
     rating: {
       healthScore: 0.0,
       educationScore: 7.6116782767,
@@ -731,7 +731,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Lucas",
+    suburbName: "Lucas",
     rating: {
       healthScore: 2.5011165699,
       educationScore: 3.4772568244,
@@ -741,7 +741,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Magpie",
+    suburbName: "Magpie",
     rating: {
       healthScore: 0.0,
       educationScore: 3.3900287414,
@@ -751,7 +751,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Maiden gully",
+    suburbName: "Maiden gully",
     rating: {
       healthScore: 0.0,
       educationScore: 19.3934411447,
@@ -761,7 +761,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Manifold heights",
+    suburbName: "Manifold heights",
     rating: {
       healthScore: 0.0,
       educationScore: 4.0622406928,
@@ -771,7 +771,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Mannerim",
+    suburbName: "Mannerim",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -781,7 +781,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Marcus hill",
+    suburbName: "Marcus hill",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -791,7 +791,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Marshall",
+    suburbName: "Marshall",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -801,7 +801,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Miners rest",
+    suburbName: "Miners rest",
     rating: {
       healthScore: 0.0,
       educationScore: 4.1432824193,
@@ -811,7 +811,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Mitchell park",
+    suburbName: "Mitchell park",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -821,7 +821,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Moolap",
+    suburbName: "Moolap",
     rating: {
       healthScore: 0.0,
       educationScore: 2.1141012056,
@@ -831,7 +831,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Moorabool",
+    suburbName: "Moorabool",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -841,7 +841,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Mount clear",
+    suburbName: "Mount clear",
     rating: {
       healthScore: 3.7516748548,
       educationScore: 30.0094584411,
@@ -851,7 +851,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Mount duneed",
+    suburbName: "Mount duneed",
     rating: {
       healthScore: 0.0,
       educationScore: 2.1101852552,
@@ -861,7 +861,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Mount helen",
+    suburbName: "Mount helen",
     rating: {
       healthScore: 3.7516748548,
       educationScore: 2.4194390689,
@@ -871,7 +871,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Mount pleasant",
+    suburbName: "Mount pleasant",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -881,7 +881,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Nerrina",
+    suburbName: "Nerrina",
     rating: {
       healthScore: 0.0,
       educationScore: 3.3597412125,
@@ -891,7 +891,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Newcomb",
+    suburbName: "Newcomb",
     rating: {
       healthScore: 7.8389292914,
       educationScore: 10.1167756811,
@@ -901,7 +901,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Newington",
+    suburbName: "Newington",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -911,7 +911,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Newtown",
+    suburbName: "Newtown",
     rating: {
       healthScore: 3.4082301267,
       educationScore: 28.1621155432,
@@ -921,7 +921,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Norlane",
+    suburbName: "Norlane",
     rating: {
       healthScore: 4.089876152,
       educationScore: 3.3671709148,
@@ -931,7 +931,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "North bendigo",
+    suburbName: "North bendigo",
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
@@ -941,7 +941,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "North geelong",
+    suburbName: "North geelong",
     rating: {
       healthScore: 8.7853217641,
       educationScore: 5.8958617982,
@@ -951,7 +951,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "North shore",
+    suburbName: "North shore",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -961,7 +961,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Ocean grove",
+    suburbName: "Ocean grove",
     rating: {
       healthScore: 10.2246903801,
       educationScore: 7.5448646905,
@@ -971,7 +971,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Point lonsdale",
+    suburbName: "Point lonsdale",
     rating: {
       healthScore: 5.4531682027,
       educationScore: 0.0,
@@ -981,7 +981,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Point wilson",
+    suburbName: "Point wilson",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -991,7 +991,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Portarlington",
+    suburbName: "Portarlington",
     rating: {
       healthScore: 0.3408230127,
       educationScore: 2.6925952907,
@@ -1001,7 +1001,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Quarry hill",
+    suburbName: "Quarry hill",
     rating: {
       healthScore: 3.8102947745,
       educationScore: 6.0792544411,
@@ -1011,7 +1011,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Redan",
+    suburbName: "Redan",
     rating: {
       healthScore: 0.0,
       educationScore: 3.3766256395,
@@ -1021,7 +1021,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Rippleside",
+    suburbName: "Rippleside",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -1031,7 +1031,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Sebastopol",
+    suburbName: "Sebastopol",
     rating: {
       healthScore: 7.5033497097,
       educationScore: 39.6976915588,
@@ -1041,7 +1041,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Soldiers hill",
+    suburbName: "Soldiers hill",
     rating: {
       healthScore: 4.3546225994,
       educationScore: 3.3810724292,
@@ -1051,7 +1051,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "South geelong",
+    suburbName: "South geelong",
     rating: {
       healthScore: 0.0,
       educationScore: 2.1280170815,
@@ -1061,7 +1061,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Spring gully",
+    suburbName: "Spring gully",
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
@@ -1071,7 +1071,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "St albans park",
+    suburbName: "St albans park",
     rating: {
       healthScore: 4.3546225994,
       educationScore: 0.5273136432,
@@ -1081,7 +1081,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "St leonards",
+    suburbName: "St leonards",
     rating: {
       healthScore: 0.6816460253,
       educationScore: 2.1891363123,
@@ -1091,7 +1091,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Staughton vale",
+    suburbName: "Staughton vale",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -1101,7 +1101,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Strathdale",
+    suburbName: "Strathdale",
     rating: {
       healthScore: 10.1607860652,
       educationScore: 16.5756686393,
@@ -1111,7 +1111,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "Strathfieldsaye",
+    suburbName: "Strathfieldsaye",
     rating: {
       healthScore: 8.8906878071,
       educationScore: 8.1717238888,
@@ -1121,7 +1121,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Sulky",
+    suburbName: "Sulky",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -1131,7 +1131,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Swan bay",
+    suburbName: "Swan bay",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -1141,7 +1141,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Thomson",
+    suburbName: "Thomson",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -1151,7 +1151,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Wallington",
+    suburbName: "Wallington",
     rating: {
       healthScore: 0.0,
       educationScore: 2.1336428289,
@@ -1161,7 +1161,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Wandana heights",
+    suburbName: "Wandana heights",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
@@ -1171,7 +1171,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Warrenheip",
+    suburbName: "Warrenheip",
     rating: {
       healthScore: 0.0,
       educationScore: 3.4802700453,
@@ -1181,7 +1181,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Waurn ponds",
+    suburbName: "Waurn ponds",
     rating: {
       healthScore: 12.1935518908,
       educationScore: 5.5448521982,
@@ -1191,7 +1191,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Wendouree",
+    suburbName: "Wendouree",
     rating: {
       healthScore: 21.8624385887,
       educationScore: 54.9035193977,
@@ -1201,7 +1201,7 @@ const suburbs = [
   },
   {
     city: "Greater bendigo",
-    name: "White hills",
+    suburbName: "White hills",
     rating: {
       healthScore: 5.0803930326,
       educationScore: 7.5143689195,
@@ -1211,7 +1211,7 @@ const suburbs = [
   },
   {
     city: "Greater geelong",
-    name: "Whittington",
+    suburbName: "Whittington",
     rating: {
       healthScore: 0.0,
       educationScore: 3.2166936068,
@@ -1221,7 +1221,7 @@ const suburbs = [
   },
   {
     city: "Ballarat",
-    name: "Winter valley",
+    suburbName: "Winter valley",
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,

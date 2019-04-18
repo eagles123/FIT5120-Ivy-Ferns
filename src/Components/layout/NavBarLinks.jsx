@@ -6,6 +6,11 @@ const NavBarLinks = () => {
     <div>
       <ul className="right">
         <li>
+          <a style={{ color: "black" }} className="nav-item nav-link" href="/">
+            Home
+          </a>
+        </li>
+        <li>
           <NavLink
             style={{ color: "black" }}
             className="nav-item nav-link"

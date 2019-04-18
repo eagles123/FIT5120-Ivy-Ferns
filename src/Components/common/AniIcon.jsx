@@ -44,7 +44,6 @@ export default function AniIcon({ animate, submit, icon, x1, y1, x2, y2 }) {
     align-items: center;
     // background-color: #eaeaea;
     padding: 50px 10px 48px 10px;
-    cursor: pointer;
     i {
       fill: #b2b2b2;
       will-change: transform;

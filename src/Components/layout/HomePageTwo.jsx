@@ -1,11 +1,9 @@
 import React, { Component, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
-import { Fade, Roll } from "react-reveal";
-import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
 import PageFooter from "./Footer";
 import FirstRow from "../common/FirstRow";
+import SecondRow from "../common/SecondRow";
 
 export default function HomePageTwo() {
   return (
@@ -23,26 +21,25 @@ export default function HomePageTwo() {
           className="jarallax text parallax-3"
           data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
         >
-          <p style={{ marginBottom: "0px" }}>Planning to move to </p>
+          <p style={{ marginBottom: "0px" }}>Planning to move to</p>
           <p style={{ paddingTop: "0px", marginTop: "0px" }}>
             Regional Victoria?
           </p>
           <Link to="/intro">
             <Fab
               variant="extended"
+              aria-label="Add"
+              color="primary"
               style={{
                 height: "40px",
-                width: "150px",
-                color: "yellow",
-                backgroundColor: "#689f38",
-                opacity: 0.8
+                width: "150px"
               }}
             >
               <span
                 style={{
                   fontSize: "15px",
-                  fontFamily: "Open Sans",
-                  opacity: 1
+                  fontFamily: "Merriweather",
+                  color: "white"
                 }}
               >
                 Get Started
@@ -50,6 +47,18 @@ export default function HomePageTwo() {
             </Fab>
           </Link>
         </div>
+        {/* <div
+          style={{
+            backgroundColor: "#dcedc8",
+            width: "100%",
+            float: "left",
+            height: "150px"
+          }}
+          id="color"
+        > */}
+        <h5 style={{ fontFamily: "Merriweather", textAlign: "center" }}>
+          Know More
+        </h5>
         <div
           className="container"
           style={{
@@ -64,8 +73,15 @@ export default function HomePageTwo() {
           <div className="chevron" />
           <div className="chevron" />
         </div>
-
+        {/* </div> */}
         <FirstRow />
+        <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <h5>Why?</h5>
+          <i className="fas fa-long-arrow-alt-down fa-2x" />
+        </div>
+        <div className="secondRow">
+          <SecondRow />
+        </div>
       </div>
       {/* <h3>ARE YOU FACING ANY OF THESE ISSUES?</h3>
         <div className="row">
