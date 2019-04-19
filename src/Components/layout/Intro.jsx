@@ -85,13 +85,10 @@ export default function Intro(props) {
           <LightSpeed left duration={1000}>
             <h3 style={{ paddingTop: 5 }}>SET YOUR PREFERENCES</h3>
             <div className="row">
-              <div className="col s4 m4 offset-m1">
-                <img src={"/carton3.1.png"} alt="" />
+              <div className="col s12 m5 offset-m1">
+                <img className="responsive" src={"/carton3.1.png"} alt="" />
               </div>
-              <div
-                className="col s1 m1 offset-m1 introicon"
-                style={{ color: "white" }}
-              >
+              <div className="col s2 m1  introicon" style={{ color: "white" }}>
                 <AniIcon
                   animate={choice.healthField}
                   submit={submit}
@@ -133,12 +130,12 @@ export default function Intro(props) {
                 <i className="fas fa-building fa-3x" />
                 <i className="fas fa-briefcase fa-3x" /> */}
               </div>
-              <div className="col s7 m5 ">
+              <div className="col s8 m5 ">
                 {/* <FormControl component="fieldset"> */}
                 <h6>
                   HEALTH CARE{" "}
                   <i
-                    class="fas fa-info-circle"
+                    className="fas fa-info-circle"
                     onClick={handleHopen}
                     style={{ cursor: "pointer", color: "#2962ff" }}
                   />
@@ -155,7 +152,7 @@ export default function Intro(props) {
                 <h6>
                   EDUCATIONAL INSTITUTIONS{" "}
                   <i
-                    class="fas fa-info-circle"
+                    className="fas fa-info-circle"
                     onClick={handleEopen}
                     style={{ cursor: "pointer", color: "#2962ff" }}
                   />
@@ -172,7 +169,7 @@ export default function Intro(props) {
                 <h6>
                   PROPERTY PRICES{" "}
                   <i
-                    class="fas fa-info-circle"
+                    className="fas fa-info-circle"
                     onClick={handlePopen}
                     style={{ cursor: "pointer", color: "#2962ff" }}
                   />
@@ -189,7 +186,7 @@ export default function Intro(props) {
                 <h6>
                   JOB OPPORTUNITIES{" "}
                   <i
-                    class="fas fa-info-circle"
+                    className="fas fa-info-circle"
                     onClick={handleJopen}
                     style={{ cursor: "pointer", color: "#2962ff" }}
                   />
@@ -203,7 +200,7 @@ export default function Intro(props) {
                 />
                 <RadioBut text={"JOBFIELD"} />
               </div>
-              <div style={{ marginLeft: "500px" }}>
+              <div style={{ margin: "30 auto" }}>
                 <CustomButton
                   text={"Submit"}
                   color={"#3f51b5"}

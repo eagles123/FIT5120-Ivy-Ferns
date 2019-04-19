@@ -1,5 +1,7 @@
 import React from "react";
 import { AniItem } from "./../common/AniComponent";
+import { Link } from "react-router-dom";
+import StyledButton from "./../common/StyleButton";
 
 const SubListResult = ({ suburb }) => {
   return (
@@ -7,10 +9,9 @@ const SubListResult = ({ suburb }) => {
       <div className="col s12 m12">
         <div
           style={{
-            color: "white",
             width: "350px",
-            height: "70px",
-            backgroundColor: "#4caf50",
+            height: "80px",
+            backgroundColor: "#d4e157",
             marginBottom: "10px",
             marginLeft: "45px",
             borderRadius: "10px",
@@ -21,7 +22,16 @@ const SubListResult = ({ suburb }) => {
           <h6 style={{ padding: "10px 0 0 10px" }}>
             No.{suburb.rank} Suburb: {suburb.suburbName}
           </h6>
-          <p style={{ padding: "0px 0 0 10px" }}>{suburb.city}</p>
+          <div className="row">
+            <div className="col s6 m6">
+              <p style={{ padding: "0px 0 0 10px" }}>{suburb.city}</p>
+            </div>
+            <div className="col s4 m2 offset-m1">
+              <Link to={`dashboard/${suburb._id}`} key={suburb._id}>
+                Detail
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </AniItem>

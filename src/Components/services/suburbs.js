@@ -5,7 +5,7 @@ const suburbs = [
     rating: {
       healthScore: 28.7628405538,
       educationScore: 7.3366808473,
-      propetyScore: 39.3873085339,
+      propertyScore: 39.3873085339,
       jobScore: 30.0881517097
     }
   },
@@ -15,7 +15,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 2.1811010568,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -25,7 +25,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 9.5064451341,
-      propetyScore: 48.1400437637,
+      propertyScore: 48.1400437637,
       jobScore: 23.1257482833
     }
   },
@@ -35,7 +35,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -45,7 +45,7 @@ const suburbs = [
     rating: {
       healthScore: 6.2527914247,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -55,7 +55,7 @@ const suburbs = [
     rating: {
       healthScore: 100.0,
       educationScore: 2.4194390689,
-      propetyScore: 36.9803063457,
+      propertyScore: 36.9803063457,
       jobScore: 0.0
     }
   },
@@ -65,7 +65,7 @@ const suburbs = [
     rating: {
       healthScore: 1.2505582849,
       educationScore: 10.5209977408,
-      propetyScore: 29.7592997812,
+      propertyScore: 29.7592997812,
       jobScore: 16.1593029387
     }
   },
@@ -75,7 +75,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 4.9962037142,
-      propetyScore: 34.6170678337,
+      propertyScore: 34.6170678337,
       jobScore: 18.2227994681
     }
   },
@@ -85,7 +85,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -95,7 +95,7 @@ const suburbs = [
     rating: {
       healthScore: 2.044938076,
       educationScore: 2.6169279264,
-      propetyScore: 84.4638949672,
+      propertyScore: 84.4638949672,
       jobScore: 18.0643163946
     }
   },
@@ -105,7 +105,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 13.2948253648
     }
   },
@@ -115,7 +115,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 4.7093183402,
-      propetyScore: 41.8818380744,
+      propertyScore: 41.8818380744,
       jobScore: 20.3698912031
     }
   },
@@ -125,7 +125,7 @@ const suburbs = [
     rating: {
       healthScore: 1.3632920507,
       educationScore: 18.1293338197,
-      propetyScore: 42.8884026258,
+      propertyScore: 42.8884026258,
       jobScore: 19.9226082331
     }
   },
@@ -135,7 +135,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 14.2319704944
     }
   },
@@ -145,7 +145,7 @@ const suburbs = [
     rating: {
       healthScore: 19.7677347348,
       educationScore: 22.4670231449,
-      propetyScore: 49.1728665208,
+      propertyScore: 49.1728665208,
       jobScore: 47.9847528262
     }
   },
@@ -155,7 +155,7 @@ const suburbs = [
     rating: {
       healthScore: 97.434680661,
       educationScore: 100.0,
-      propetyScore: 34.7921225383,
+      propertyScore: 34.7921225383,
       jobScore: 15.6457324351
     }
   },
@@ -165,7 +165,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 36.8490153173,
+      propertyScore: 36.8490153173,
       jobScore: 21.1393663812
     }
   },
@@ -175,7 +175,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -185,7 +185,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -195,7 +195,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.5273136432,
-      propetyScore: 33.6980306346,
+      propertyScore: 33.6980306346,
       jobScore: 27.8786186107
     }
   },
@@ -205,7 +205,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 18.0643163946
     }
   },
@@ -215,7 +215,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 4.1637828189,
-      propetyScore: 35.010940919,
+      propertyScore: 35.010940919,
       jobScore: 21.1393663812
     }
   },
@@ -225,7 +225,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -235,7 +235,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.890250696,
-      propetyScore: 23.6323851204,
+      propertyScore: 23.6323851204,
       jobScore: 18.9017878668
     }
   },
@@ -245,7 +245,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 32.3851203501,
+      propertyScore: 32.3851203501,
       jobScore: 36.7090294811
     }
   },
@@ -255,7 +255,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.8064796896,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -265,7 +265,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -275,7 +275,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 2.0906533607,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 20.0719269459
     }
   },
@@ -285,7 +285,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -295,7 +295,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 14.762648174
     }
   },
@@ -305,7 +305,7 @@ const suburbs = [
     rating: {
       healthScore: 0.6816460253,
       educationScore: 3.169205699,
-      propetyScore: 40.2625820569,
+      propertyScore: 40.2625820569,
       jobScore: 25.8212204088
     }
   },
@@ -315,7 +315,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 100.0,
+      propertyScore: 100.0,
       jobScore: 18.0643163946
     }
   },
@@ -325,7 +325,7 @@ const suburbs = [
     rating: {
       healthScore: 17.0411506335,
       educationScore: 18.3302272782,
-      propetyScore: 33.2603938731,
+      propertyScore: 33.2603938731,
       jobScore: 36.3784645109
     }
   },
@@ -335,7 +335,7 @@ const suburbs = [
     rating: {
       healthScore: 2.044938076,
       educationScore: 0.0,
-      propetyScore: 43.8774617068,
+      propertyScore: 43.8774617068,
       jobScore: 8.6591299655
     }
   },
@@ -345,7 +345,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 7.3601508195,
-      propetyScore: 32.8227571116,
+      propertyScore: 32.8227571116,
       jobScore: 32.2172179637
     }
   },
@@ -355,7 +355,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -365,7 +365,7 @@ const suburbs = [
     rating: {
       healthScore: 14.3145665321,
       educationScore: 22.2976926415,
-      propetyScore: 47.1772428884,
+      propertyScore: 47.1772428884,
       jobScore: 14.2319704944
     }
   },
@@ -375,7 +375,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -385,7 +385,7 @@ const suburbs = [
     rating: {
       healthScore: 19.0514738723,
       educationScore: 22.3652951342,
-      propetyScore: 24.9452954048,
+      propertyScore: 24.9452954048,
       jobScore: 15.3143667854
     }
   },
@@ -395,7 +395,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 27.352297593,
+      propertyScore: 27.352297593,
       jobScore: 10.4542016277
     }
   },
@@ -405,7 +405,7 @@ const suburbs = [
     rating: {
       healthScore: 3.7490531394,
       educationScore: 5.9023685648,
-      propetyScore: 62.8008752735,
+      propertyScore: 62.8008752735,
       jobScore: 11.206013072
     }
   },
@@ -415,7 +415,7 @@ const suburbs = [
     rating: {
       healthScore: 7.6205895489,
       educationScore: 4.5226108654,
-      propetyScore: 30.1969365427,
+      propertyScore: 30.1969365427,
       jobScore: 16.7968600111
     }
   },
@@ -425,7 +425,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 28.0087527352,
+      propertyScore: 28.0087527352,
       jobScore: 16.1593029387
     }
   },
@@ -435,7 +435,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 2.1092545729,
-      propetyScore: 28.8840262582,
+      propertyScore: 28.8840262582,
       jobScore: 31.1096921316
     }
   },
@@ -445,7 +445,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 48.5776805252,
+      propertyScore: 48.5776805252,
       jobScore: 16.2689267422
     }
   },
@@ -455,7 +455,7 @@ const suburbs = [
     rating: {
       healthScore: 43.244962795,
       educationScore: 9.4680407262,
-      propetyScore: 63.8949671772,
+      propertyScore: 63.8949671772,
       jobScore: 26.4199638023
     }
   },
@@ -465,7 +465,7 @@ const suburbs = [
     rating: {
       healthScore: 3.7490531394,
       educationScore: 4.5742195059,
-      propetyScore: 61.8818380744,
+      propertyScore: 61.8818380744,
       jobScore: 100.0
     }
   },
@@ -475,7 +475,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -485,7 +485,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -495,7 +495,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -505,7 +505,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 36.7090294811
     }
   },
@@ -515,7 +515,7 @@ const suburbs = [
     rating: {
       healthScore: 6.3504912908,
       educationScore: 8.2025265971,
-      propetyScore: 30.9409190372,
+      propertyScore: 30.9409190372,
       jobScore: 28.1100113097
     }
   },
@@ -525,7 +525,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -535,7 +535,7 @@ const suburbs = [
     rating: {
       healthScore: 8.1797523041,
       educationScore: 15.3928406799,
-      propetyScore: 43.7636761488,
+      propertyScore: 43.7636761488,
       jobScore: 49.9420650285
     }
   },
@@ -545,7 +545,7 @@ const suburbs = [
     rating: {
       healthScore: 0.6816460253,
       educationScore: 9.9994154491,
-      propetyScore: 44.9015317287,
+      propertyScore: 44.9015317287,
       jobScore: 29.5382897684
     }
   },
@@ -555,7 +555,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 6.4109354615,
-      propetyScore: 44.6389496718,
+      propertyScore: 44.6389496718,
       jobScore: 16.2689267422
     }
   },
@@ -565,7 +565,7 @@ const suburbs = [
     rating: {
       healthScore: 6.134814228,
       educationScore: 15.5417532444,
-      propetyScore: 59.9562363239,
+      propertyScore: 59.9562363239,
       jobScore: 38.1303756859
     }
   },
@@ -575,7 +575,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 50.0481400438,
+      propertyScore: 50.0481400438,
       jobScore: 13.1820488895
     }
   },
@@ -585,7 +585,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.4547033232,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -595,7 +595,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 36.9803063457,
+      propertyScore: 36.9803063457,
       jobScore: 18.2227994681
     }
   },
@@ -605,7 +605,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 26.3719912473,
+      propertyScore: 26.3719912473,
       jobScore: 18.4499931531
     }
   },
@@ -615,7 +615,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
-      propetyScore: 27.466083151,
+      propertyScore: 27.466083151,
       jobScore: 19.9600110151
     }
   },
@@ -625,7 +625,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 43.7636761488,
+      propertyScore: 43.7636761488,
       jobScore: 0.0
     }
   },
@@ -635,7 +635,7 @@ const suburbs = [
     rating: {
       healthScore: 16.511277356,
       educationScore: 22.189533338,
-      propetyScore: 28.5776805252,
+      propertyScore: 28.5776805252,
       jobScore: 28.9499212226
     }
   },
@@ -645,7 +645,7 @@ const suburbs = [
     rating: {
       healthScore: 5.0803930326,
       educationScore: 6.7733030023,
-      propetyScore: 33.4442013129,
+      propertyScore: 33.4442013129,
       jobScore: 23.0284259344
     }
   },
@@ -655,7 +655,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 59.9562363239,
+      propertyScore: 59.9562363239,
       jobScore: 0.0
     }
   },
@@ -665,7 +665,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.3382306477,
-      propetyScore: 67.8336980306,
+      propertyScore: 67.8336980306,
       jobScore: 37.8163656302
     }
   },
@@ -675,7 +675,7 @@ const suburbs = [
     rating: {
       healthScore: 9.8838673674,
       educationScore: 10.9962979915,
-      propetyScore: 46.6520787746,
+      propertyScore: 46.6520787746,
       jobScore: 29.9026588524
     }
   },
@@ -685,7 +685,7 @@ const suburbs = [
     rating: {
       healthScore: 7.1572832661,
       educationScore: 3.1557258087,
-      propetyScore: 43.3260393873,
+      propertyScore: 43.3260393873,
       jobScore: 19.3231813558
     }
   },
@@ -695,7 +695,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.5273136432,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -705,7 +705,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
-      propetyScore: 25.3391684902,
+      propertyScore: 25.3391684902,
       jobScore: 18.4499931531
     }
   },
@@ -715,7 +715,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -725,7 +725,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 7.6116782767,
-      propetyScore: 45.9518599562,
+      propertyScore: 45.9518599562,
       jobScore: 13.2948253648
     }
   },
@@ -735,7 +735,7 @@ const suburbs = [
     rating: {
       healthScore: 2.5011165699,
       educationScore: 3.4772568244,
-      propetyScore: 37.1991247265,
+      propertyScore: 37.1991247265,
       jobScore: 0.0
     }
   },
@@ -745,7 +745,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.3900287414,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -755,7 +755,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 19.3934411447,
-      propetyScore: 45.9606126915,
+      propertyScore: 45.9606126915,
       jobScore: 18.4857025301
     }
   },
@@ -765,7 +765,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 4.0622406928,
-      propetyScore: 68.7527352298,
+      propertyScore: 68.7527352298,
       jobScore: 100.0
     }
   },
@@ -775,7 +775,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -785,7 +785,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -795,7 +795,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 42.4507658643,
+      propertyScore: 42.4507658643,
       jobScore: 14.762648174
     }
   },
@@ -805,7 +805,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 4.1432824193,
-      propetyScore: 35.4048140044,
+      propertyScore: 35.4048140044,
       jobScore: 16.4510766566
     }
   },
@@ -815,7 +815,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 26.9584245077,
+      propertyScore: 26.9584245077,
       jobScore: 16.4510766566
     }
   },
@@ -825,7 +825,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 2.1141012056,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 26.6059233349
     }
   },
@@ -835,7 +835,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 13.2948253648
     }
   },
@@ -845,7 +845,7 @@ const suburbs = [
     rating: {
       healthScore: 3.7516748548,
       educationScore: 30.0094584411,
-      propetyScore: 35.010940919,
+      propertyScore: 35.010940919,
       jobScore: 15.2313569226
     }
   },
@@ -855,7 +855,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 2.1101852552,
-      propetyScore: 47.9212253829,
+      propertyScore: 47.9212253829,
       jobScore: 23.1257482833
     }
   },
@@ -865,7 +865,7 @@ const suburbs = [
     rating: {
       healthScore: 3.7516748548,
       educationScore: 2.4194390689,
-      propetyScore: 35.6673960613,
+      propertyScore: 35.6673960613,
       jobScore: 15.2313569226
     }
   },
@@ -875,7 +875,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 31.5536105033,
+      propertyScore: 31.5536105033,
       jobScore: 36.7090294811
     }
   },
@@ -885,7 +885,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.3597412125,
-      propetyScore: 56.2363238512,
+      propertyScore: 56.2363238512,
       jobScore: 21.1393663812
     }
   },
@@ -895,7 +895,7 @@ const suburbs = [
     rating: {
       healthScore: 7.8389292914,
       educationScore: 10.1167756811,
-      propetyScore: 39.5623632385,
+      propertyScore: 39.5623632385,
       jobScore: 26.6059233349
     }
   },
@@ -905,7 +905,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 41.1378555799,
+      propertyScore: 41.1378555799,
       jobScore: 0.0
     }
   },
@@ -915,7 +915,7 @@ const suburbs = [
     rating: {
       healthScore: 3.4082301267,
       educationScore: 28.1621155432,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 14.0100397594
     }
   },
@@ -925,7 +925,7 @@ const suburbs = [
     rating: {
       healthScore: 4.089876152,
       educationScore: 3.3671709148,
-      propetyScore: 32.3851203501,
+      propertyScore: 32.3851203501,
       jobScore: 10.5220881829
     }
   },
@@ -935,7 +935,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
-      propetyScore: 26.6958424508,
+      propertyScore: 26.6958424508,
       jobScore: 18.9017878668
     }
   },
@@ -945,7 +945,7 @@ const suburbs = [
     rating: {
       healthScore: 8.7853217641,
       educationScore: 5.8958617982,
-      propetyScore: 41.6630196937,
+      propertyScore: 41.6630196937,
       jobScore: 10.0271126562
     }
   },
@@ -955,7 +955,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 57.3304157549,
+      propertyScore: 57.3304157549,
       jobScore: 10.5220881829
     }
   },
@@ -965,7 +965,7 @@ const suburbs = [
     rating: {
       healthScore: 10.2246903801,
       educationScore: 7.5448646905,
-      propetyScore: 59.9562363239,
+      propertyScore: 59.9562363239,
       jobScore: 22.2075342376
     }
   },
@@ -975,7 +975,7 @@ const suburbs = [
     rating: {
       healthScore: 5.4531682027,
       educationScore: 0.0,
-      propetyScore: 69.0590809628,
+      propertyScore: 69.0590809628,
       jobScore: 0.0
     }
   },
@@ -985,7 +985,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -995,7 +995,7 @@ const suburbs = [
     rating: {
       healthScore: 0.3408230127,
       educationScore: 2.6925952907,
-      propetyScore: 52.95404814,
+      propertyScore: 52.95404814,
       jobScore: 19.1138491138
     }
   },
@@ -1005,7 +1005,7 @@ const suburbs = [
     rating: {
       healthScore: 3.8102947745,
       educationScore: 6.0792544411,
-      propetyScore: 29.1028446389,
+      propertyScore: 29.1028446389,
       jobScore: 31.1096921316
     }
   },
@@ -1015,7 +1015,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.3766256395,
-      propetyScore: 29.2166301969,
+      propertyScore: 29.2166301969,
       jobScore: 21.3184513681
     }
   },
@@ -1025,7 +1025,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 89.9343544858,
+      propertyScore: 89.9343544858,
       jobScore: 10.0271126562
     }
   },
@@ -1035,7 +1035,7 @@ const suburbs = [
     rating: {
       healthScore: 7.5033497097,
       educationScore: 39.6976915588,
-      propetyScore: 25.1991247265,
+      propertyScore: 25.1991247265,
       jobScore: 21.3184513681
     }
   },
@@ -1045,7 +1045,7 @@ const suburbs = [
     rating: {
       healthScore: 4.3546225994,
       educationScore: 3.3810724292,
-      propetyScore: 40.7002188184,
+      propertyScore: 40.7002188184,
       jobScore: 21.1393663812
     }
   },
@@ -1055,7 +1055,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 2.1280170815,
-      propetyScore: 44.7527352298,
+      propertyScore: 44.7527352298,
       jobScore: 27.8786186107
     }
   },
@@ -1065,7 +1065,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.7030848576,
-      propetyScore: 36.3238512035,
+      propertyScore: 36.3238512035,
       jobScore: 31.1096921316
     }
   },
@@ -1075,7 +1075,7 @@ const suburbs = [
     rating: {
       healthScore: 4.3546225994,
       educationScore: 0.5273136432,
-      propetyScore: 38.5120350109,
+      propertyScore: 38.5120350109,
       jobScore: 35.7817825459
     }
   },
@@ -1085,7 +1085,7 @@ const suburbs = [
     rating: {
       healthScore: 0.6816460253,
       educationScore: 2.1891363123,
-      propetyScore: 51.7286652079,
+      propertyScore: 51.7286652079,
       jobScore: 13.1820488895
     }
   },
@@ -1095,7 +1095,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -1105,7 +1105,7 @@ const suburbs = [
     rating: {
       healthScore: 10.1607860652,
       educationScore: 16.5756686393,
-      propetyScore: 34.1619256018,
+      propertyScore: 34.1619256018,
       jobScore: 36.6807386232
     }
   },
@@ -1115,7 +1115,7 @@ const suburbs = [
     rating: {
       healthScore: 8.8906878071,
       educationScore: 8.1717238888,
-      propetyScore: 39.8249452954,
+      propertyScore: 39.8249452954,
       jobScore: 38.9560934021
     }
   },
@@ -1125,7 +1125,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -1135,7 +1135,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -1145,7 +1145,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 27.8786186107
     }
   },
@@ -1155,7 +1155,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 2.1336428289,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 0.0
     }
   },
@@ -1165,7 +1165,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 60.6126914661,
+      propertyScore: 60.6126914661,
       jobScore: 38.1303756859
     }
   },
@@ -1175,7 +1175,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.4802700453,
-      propetyScore: 0.0,
+      propertyScore: 0.0,
       jobScore: 16.1593029387
     }
   },
@@ -1185,7 +1185,7 @@ const suburbs = [
     rating: {
       healthScore: 12.1935518908,
       educationScore: 5.5448521982,
-      propetyScore: 54.6170678337,
+      propertyScore: 54.6170678337,
       jobScore: 20.0719269459
     }
   },
@@ -1195,7 +1195,7 @@ const suburbs = [
     rating: {
       healthScore: 21.8624385887,
       educationScore: 54.9035193977,
-      propetyScore: 29.3216630197,
+      propertyScore: 29.3216630197,
       jobScore: 31.4667393553
     }
   },
@@ -1205,7 +1205,7 @@ const suburbs = [
     rating: {
       healthScore: 5.0803930326,
       educationScore: 7.5143689195,
-      propetyScore: 26.47702407,
+      propertyScore: 26.47702407,
       jobScore: 19.9600110151
     }
   },
@@ -1215,7 +1215,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 3.2166936068,
-      propetyScore: 36.761487965,
+      propertyScore: 36.761487965,
       jobScore: 10.7812678295
     }
   },
@@ -1225,7 +1225,7 @@ const suburbs = [
     rating: {
       healthScore: 0.0,
       educationScore: 0.0,
-      propetyScore: 36.8052516411,
+      propertyScore: 36.8052516411,
       jobScore: 0.0
     }
   }

@@ -38,6 +38,7 @@ const SuburList = ({ suburbs, choice }) => {
     handleOpen();
     let timeout = setTimeout(() => {
       handleClos();
+      setData(suburbs);
     }, 300);
     return () => clearTimeout(timeout);
   }, [suburbs]);
@@ -62,9 +63,9 @@ const SuburList = ({ suburbs, choice }) => {
       choice.jobField ? (
         checkSuburb(suburbs) || (
           <AniUl className="slidebar" pose={isOpen ? "open" : "closed"}>
-            {suburbs.map(c => (
+            {data.map(d => (
               //change to _id when deploy
-              <SubListResult key={c.suburbName} suburb={c} />
+              <SubListResult key={d.suburbName} suburb={d} />
             ))}
           </AniUl>
         )

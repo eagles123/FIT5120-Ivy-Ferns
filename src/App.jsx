@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { Switch, Route, __RouterContext, Redirect } from "react-router-dom";
 import "./App.css";
 import Recommender from "./Components/layout/Recommender";
-import DataDashBoard from "./Components/common/DataDashBoard";
+import DataDashBoard from "./Components/layout/DataDashBoard";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import Intro from "./Components/layout/Intro";
@@ -33,10 +33,10 @@ const App = () => {
       <ApolloProvider client={client}>
         <ChoiceContext.Provider value={{ choiceDispatch, choice }}>
           <Switch>
+            <Route path="/dashboard/:id" component={DataDashBoard} />
             <Route path="/about" component={About} />
             <Route path="/faqs" component={FAQs} />
             <Route path="/recommend" component={Recommender} />
-            <Route path="/dashboard" component={DataDashBoard} />
             <Route path="/intro" component={Intro} />
             <Route path="/not-found" component={NotFound} />
             {/* <Route path="/" exact component={HomePage} /> */}

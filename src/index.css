@@ -31,9 +31,9 @@ code {
 input[type="text"]:not(.browser-default):focus:not([readonly])
   textarea.materialize-textarea:focus:not([readonly]) {
   border: solid;
-  border-bottom: 1px solid #ff5252;
+  border-bottom: 1px solid #d4e157;
 }
 
 input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
-  color: #ff5252 !important;
+  color: #d4e157 !important;
 }

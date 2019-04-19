@@ -29,7 +29,7 @@ export default function CheckList(props) {
       subheader={
         <ListSubheader
           component="div"
-          style={{ fontSize: "17px", color: "black" }}
+          style={{ fontSize: "17px", color: "black", borderRadius: "10px" }}
         >
           Filter
         </ListSubheader>
@@ -37,15 +37,20 @@ export default function CheckList(props) {
       style={{
         width: "100%",
         maxWidth: "280px",
-        backgroundColor: "#d4e157"
+        backgroundColor: "#d4e157",
+        borderRadius: "10px"
       }}
     >
-      <ListItem button onClick={handlePreference} style={{ color: "black" }}>
+      <ListItem
+        button
+        onClick={handlePreference}
+        style={{ color: "black", borderRadius: "10px" }}
+      >
         <ListItemText
           disableTypography
           inset
           primary="By Preference"
-          style={{ fontSize: "15px" }}
+          style={{ fontSize: "13px" }}
         />
         {perference ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>

@@ -1,5 +1,6 @@
 // function to caclulate the euclidean-distance between custom and suburb data vector
 import _ from "lodash";
+
 export function distance(scoreState, suburb) {
   let healthDiff;
   if (scoreState.healthDiff === 0) healthDiff = 0;
@@ -26,14 +27,13 @@ export function distance(scoreState, suburb) {
   if (scoreState.propertyScore === 0) propertyDiff = 0;
   else
     propertyDiff = Math.pow(
-      10 - scoreState.propertyScore * 10 - suburb.rating.propetyScore,
+      10 - scoreState.propertyScore * 10 - suburb.rating.propertyScore,
       2
     );
   let jobDiff;
   if (scoreState.jobScore === 0) jobDiff = 0;
   jobDiff = Math.pow(scoreState.jobScore * 10 - suburb.rating.jobScore, 2);
   // console.log(jobDiff);
-
   suburb.difScore = Math.sqrt(
     healthDiff + educationDiff + propertyDiff + jobDiff
   );

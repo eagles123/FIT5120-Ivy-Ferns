@@ -10,25 +10,10 @@ import Pagination from "../common/Pagination";
 import { getallSuburbs } from "./../services/suburbs";
 import SearchBox from "./../common/SearchBox";
 import StyledButton from "./../common/StyleButton";
-import { gql } from "apollo-boost";
 import { graphql } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { getSuburbsQuery } from "../../queries/queries";
 
-const getSuburbsQuery = gql`
-  {
-    suburbs {
-      _id
-      city
-      suburbName
-      rating {
-        healthScore
-        educationScore
-        propetyScore
-        jobScore
-      }
-    }
-  }
-`;
 const Recommender = props => {
   const [scoreState, stateDispatch] = useReducer(recReducer, {
     healthScore: 0,
@@ -38,41 +23,39 @@ const Recommender = props => {
   });
 
   //use local data for development
-  const [suburbs, setSuburbs] = useState(getallSuburbs);
-  useEffect(() => {
-    setSuburbs(recommd(scoreState, suburbs));
-  }, [scoreState]);
+  // const [suburbs, setSuburbs] = useState(getallSuburbs);
+  // useEffect(() => {
+  //   setSuburbs(recommd(scoreState, suburbs));
+  // }, [scoreState]);
 
   // initialise suburb with dummny data
-  // const [suburbs, setSuburbs] = useState([
-  //   {
-  //     _id: "NA",
-  //     city: "NA",
-  //     name: "NA",
-  //     rating: {
-  //       healthScore: 0.0,
-  //       educationScore: 0.0,
-  //       propetyScore: 0.0,
-  //       jobScore: 0.0
-  //     }
-  //   }
-  // ]);
-  // //equal to componentDidMount to update the suburbs with data from databse
-  // useEffect(() => {
-  //   if (props.data.loading);
-  //   else {
-  //     setSuburbs(recommd(scoreState, props.data.suburbs));
-  //     setPaged(paginate(suburbs, currentPage, pageSize));
-  //     setTotal(suburbs.length);
-  //     setInit(false);
-  //   }
-  // }, [suburbs, props.data.loading]);
+  const [suburbs, setSuburbs] = useState([
+    {
+      _id: "NA",
+      city: "NA",
+      name: "NA",
+      rating: {
+        healthScore: 0.0,
+        educationScore: 0.0,
+        propetyScore: 0.0,
+        jobScore: 0.0
+      }
+    }
+  ]);
+  //equal to componentDidMount to update the suburbs with data from databse
+  useEffect(() => {
+    if (props.data.loading);
+    else {
+      setSuburbs(recommd(scoreState, props.data.suburbs));
+      setPaged(paginate(suburbs, currentPage, pageSize));
+      setTotal(suburbs.length);
+    }
+  }, [suburbs, props.data.loading]);
 
   //state and reducer to maniplate the user input slider value
 
   //count number for pagenated data pass to Pagination component
   const [totalcount, setTotal] = useState(0);
-  const [init, setInit] = useState(true);
   //states manage pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(4);
@@ -158,6 +141,7 @@ const Recommender = props => {
     { label: "Property", chose: choice.propertyField, action: choseProp },
     { label: "Employment", chose: choice.jobField, action: choseJob }
   ];
+  console.log(props.data.loading);
 
   return (
     <React.Fragment>
@@ -182,7 +166,9 @@ const Recommender = props => {
               <Fade right duration={1000}>
                 <h5 style={{ textAlign: "center" }}>Ranked Suburbs</h5>
                 <SearchBox value={query} onChange={handleSearch} />
-                {suburbs.length === 0 ? null : (
+                {suburbs.length === 1 ? (
+                  <CircularProgress />
+                ) : (
                   <SuburbList suburbs={pagedSub} choice={choice} />
                 )}
                 <Pagination
