@@ -23,34 +23,34 @@ const Recommender = props => {
   });
 
   //use local data for development
-  // const [suburbs, setSuburbs] = useState(getallSuburbs);
-  // useEffect(() => {
-  //   setSuburbs(recommd(scoreState, suburbs));
-  // }, [scoreState]);
+  const [suburbs, setSuburbs] = useState(getallSuburbs);
+  useEffect(() => {
+    setSuburbs(recommd(scoreState, suburbs));
+  }, [scoreState]);
 
   // initialise suburb with dummny data
-  const [suburbs, setSuburbs] = useState([
-    {
-      _id: "NA",
-      city: "NA",
-      name: "NA",
-      rating: {
-        healthScore: 0.0,
-        educationScore: 0.0,
-        propetyScore: 0.0,
-        jobScore: 0.0
-      }
-    }
-  ]);
-  //equal to componentDidMount to update the suburbs with data from databse
-  useEffect(() => {
-    if (props.data.loading);
-    else {
-      setSuburbs(recommd(scoreState, props.data.suburbs));
-      setPaged(paginate(suburbs, currentPage, pageSize));
-      setTotal(suburbs.length);
-    }
-  }, [suburbs, props.data.loading]);
+  // const [suburbs, setSuburbs] = useState([
+  //   {
+  //     _id: "NA",
+  //     city: "NA",
+  //     name: "NA",
+  //     rating: {
+  //       healthScore: 0.0,
+  //       educationScore: 0.0,
+  //       propetyScore: 0.0,
+  //       jobScore: 0.0
+  //     }
+  //   }
+  // ]);
+  // //equal to componentDidMount to update the suburbs with data from databse
+  // useEffect(() => {
+  //   if (props.data.loading);
+  //   else {
+  //     setSuburbs(recommd(scoreState, props.data.suburbs));
+  //     setPaged(paginate(suburbs, currentPage, pageSize));
+  //     setTotal(suburbs.length);
+  //   }
+  // }, [suburbs, props.data.loading]);
 
   //state and reducer to maniplate the user input slider value
 
@@ -62,13 +62,14 @@ const Recommender = props => {
   const [pagedSub, setPaged] = useState(
     paginate(suburbs, currentPage, pageSize)
   );
-  const { choice, choiceDispatch } = useContext(ChoiceContext);
+  const { choice, choiceDispatch, setSubList } = useContext(ChoiceContext);
   const [query, setQuery] = useState("");
 
-  //cacluate the distance when the state is changed
+  //cacluate the distance when the score state is changed
   useEffect(() => {
     //caculate difference score.
     setSuburbs(recommd(scoreState, suburbs));
+    setSubList(suburbs);
     //don't understand this code but add this line suburb list will update immidiately
     // setInitialSuburb(initialSuburb);
   }, [scoreState]);
@@ -141,7 +142,6 @@ const Recommender = props => {
     { label: "Property", chose: choice.propertyField, action: choseProp },
     { label: "Employment", chose: choice.jobField, action: choseJob }
   ];
-  console.log(props.data.loading);
 
   return (
     <React.Fragment>
@@ -189,4 +189,5 @@ const Recommender = props => {
     </React.Fragment>
   );
 };
-export default graphql(getSuburbsQuery)(Recommender);
+// export default graphql(getSuburbsQuery)(Recommender);
+export default Recommender;

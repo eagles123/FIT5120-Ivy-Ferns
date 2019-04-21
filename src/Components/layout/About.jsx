@@ -11,7 +11,7 @@ export default function About() {
           <br />
           <iframe
             src="https://www.youtube.com/embed/nR4r3vfdnT4"
-            width="100"
+            width="100%"
             height="600"
             frameBorder="1"
             allow="autoplay; encrypted-media"

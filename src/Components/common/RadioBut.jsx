@@ -5,7 +5,7 @@ import { ChoiceContext } from "../context/ParameterContext";
 export default function Radiobut({ text }) {
   //temperare varibale to make raido not shown in the bigining
   const [temp, setTemp] = useState("0");
-  const { choice, choiceDispatch } = useContext(ChoiceContext);
+  const { choiceDispatch } = useContext(ChoiceContext);
   // function handleChoice() {
   //   if (value === "yes") {
   //     choiceDispatch({ type: text, payload: true });

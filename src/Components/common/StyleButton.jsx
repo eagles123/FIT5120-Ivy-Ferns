@@ -9,7 +9,7 @@ const StyledButton = withStyles({
     color: "white",
     height: "40px",
     width: "100px",
-    margin: "0 0 40px 30px",
+    margin: "15px 0 5px 10px",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)"
   },
   label: {

@@ -14,6 +14,11 @@ export const AniItem = posed.li({
   closed: { y: 20, opacity: 0 }
 });
 
+export const DashItem = posed.li({
+  open: { scale: 1, opacity: 1 },
+  closed: { scale: 0, opacity: 0 }
+});
+
 export const AniBox = posed.div({
   hidden: { opacity: 0 },
   visible: { opacity: 1 }

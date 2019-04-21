@@ -20,8 +20,9 @@ export const getSuburbsQuery = gql`
 `;
 
 export const getSuburbByIdQuery = gql`
-  {
-    suburb(id: "5cb7f49ca5fb6a88011fac6c") {
+  query($id: ID) {
+    suburb(id: $id) {
+      city
       suburbName
       health {
         hospital

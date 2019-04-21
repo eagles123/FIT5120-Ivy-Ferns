@@ -27,7 +27,10 @@ const SubListResult = ({ suburb }) => {
               <p style={{ padding: "0px 0 0 10px" }}>{suburb.city}</p>
             </div>
             <div className="col s4 m2 offset-m1">
-              <Link to={`dashboard/${suburb._id}`} key={suburb._id}>
+              <Link
+                to={`dashboard/${suburb.suburbName}`}
+                key={suburb.suburbName}
+              >
                 Detail
               </Link>
             </div>

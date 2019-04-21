@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { Switch, Route, __RouterContext, Redirect } from "react-router-dom";
 import "./App.css";
 import Recommender from "./Components/layout/Recommender";
@@ -22,6 +22,8 @@ const App = () => {
     jobField: false
   });
 
+  const [suburbList, setSubList] = useState([]);
+
   const client = new ApolloClient({
     uri: "/graphql?"
   });
@@ -31,7 +33,9 @@ const App = () => {
       <NavBar />
       {/* <Nav /> */}
       <ApolloProvider client={client}>
-        <ChoiceContext.Provider value={{ choiceDispatch, choice }}>
+        <ChoiceContext.Provider
+          value={{ choiceDispatch, choice, suburbList, setSubList }}
+        >
           <Switch>
             <Route path="/dashboard/:id" component={DataDashBoard} />
             <Route path="/about" component={About} />

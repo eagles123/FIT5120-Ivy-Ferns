@@ -48,9 +48,9 @@ hr {
   background-color: black;
 }
 
-p {
+/* p {
   padding-top: 0.9em;
-}
+} */
 
 .cpage {
   margin: 0;
@@ -303,6 +303,37 @@ p {
 .responsive {
   max-width: 100%;
   height: auto;
+}
+
+.dashboard {
+  margin-left: 40px;
+}
+
+.dashitem {
+  font-family: "Merriweather";
+  background: #e5d7e5;
+  width: 70%;
+  height: 13vh;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.icon > img {
+  width: 69%;
+  height: auto;
+}
+
+.board {
+  margin: 20px;
+}
+
+.leaflet-container {
+  height: 100px;
+  width: 20%;
+}
+
+#map {
+  height: 100%;
 }
 
 /* #im {
