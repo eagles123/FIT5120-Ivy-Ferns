@@ -3,7 +3,6 @@ import Button from "@material-ui/core/Button";
 import { AniUl, DashItem } from "./../common/AniComponent";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
-import { animated } from "react-spring";
 
 export default function HealthBox({ data }) {
   const [isOpen, setOpen] = useState(false);

@@ -4,12 +4,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import _ from "lodash";
 
 export default class SchoolChart extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       choice: "Primary",
       label: "LAG_Average",
@@ -65,7 +63,7 @@ export default class SchoolChart extends React.Component {
     let pri = [];
     let sec = [];
     data.map(item => {
-      if (item.school_type === "Pre") pre.push(item);
+      if (item.school_type === "Preschool") pre.push(item);
       else if (item.school_type === "Primary") pri.push(item);
       else sec.push(item);
     });
@@ -92,7 +90,7 @@ export default class SchoolChart extends React.Component {
         newSeris[1].data.push(school.ts_average);
       } else {
         newSeris[0].data.push(school.enrolments);
-        newSeris[1].data.push(school.enro_averge);
+        newSeris[1].data.push(school.enrol_average);
       }
     });
     this.setState({
@@ -194,7 +192,7 @@ export default class SchoolChart extends React.Component {
       this.setState(
         {
           field: event.target.value,
-          label: "Teacher/Student Ratio"
+          label: "Average Teacher/Student Ratio"
         },
         () => {
           this.reRender();

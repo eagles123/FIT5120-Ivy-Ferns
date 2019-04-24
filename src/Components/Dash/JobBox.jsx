@@ -3,7 +3,6 @@ import CountUp from "react-countup";
 
 export default function JobBox({ data }) {
   const [job, setJob] = useState(0);
-
   useEffect(() => {
     sumJobs();
   }, []);
@@ -11,7 +10,7 @@ export default function JobBox({ data }) {
   function sumJobs() {
     let sum = 0;
     for (var key in data) {
-      sum += data[key];
+      if (!isNaN(data[key])) sum += data[key];
     }
     setJob(sum);
   }

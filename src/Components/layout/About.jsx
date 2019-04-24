@@ -20,7 +20,6 @@ export default function About() {
           />
         </div>
       </div>
-
       <PageFooter />
     </React.Fragment>
   );

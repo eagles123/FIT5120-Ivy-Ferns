@@ -26,6 +26,7 @@ class StepSlider extends React.Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
+    // console.log(value);
 
     return (
       <React.Fragment>

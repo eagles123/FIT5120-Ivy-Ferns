@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import styled from "styled-components";
 import SubListResult from "./SubListResult";
 import { AniUl } from "./../common/AniComponent";

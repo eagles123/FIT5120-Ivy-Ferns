@@ -1,10 +1,10 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import PageFooter from "./Footer";
 import FirstRow from "../common/FirstRow";
 import SecondRow from "../common/SecondRow";
-
+import Carousel from "nuka-carousel";
 export default function HomePageTwo() {
   return (
     <React.Fragment>
@@ -77,7 +77,20 @@ export default function HomePageTwo() {
         <FirstRow />
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <h5>Why?</h5>
-          <i className="fas fa-long-arrow-alt-down fa-2x" />
+          <div
+            className="container"
+            style={{
+              position: "relative",
+              paddingTop: "10px",
+              paddingBottom: "30px",
+              width: "24px",
+              height: "24px"
+            }}
+          >
+            <div className="chevron" />
+            <div className="chevron" />
+            <div className="chevron" />
+          </div>
         </div>
         <div className="secondRow">
           <SecondRow />

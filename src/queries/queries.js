@@ -15,6 +15,11 @@ export const getSuburbsQuery = gql`
       health {
         hospital
       }
+      education {
+        pre_school
+        primary_school
+        secondary_school
+      }
     }
   }
 `;
@@ -49,7 +54,9 @@ export const getSuburbByIdQuery = gql`
         icsea
         lga_average
         ts_ration
+        ts_average
         enrolments
+        enrol_average
         longitude
         latitude
       }

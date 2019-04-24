@@ -15,6 +15,7 @@ export default function MyMap({ data }) {
   // console.log(data.hosptials);
 
   //{ lat: -37.5702758, lng: 143.8370906 },
+  //methods to parse prop data into required formate
   function parseHostpitalCoords() {
     let tempCor = [];
     data.hosptials.map(item =>
@@ -33,10 +34,13 @@ export default function MyMap({ data }) {
   function paresePreCoords() {
     let per = [];
     data.schools.map(item => {
-      if (item.school_type === "Pre")
+      if (item.school_type === "Preschool")
         per.push({
-          lat: parseFloat(item.latitude),
-          lng: parseFloat(item.longitude)
+          name: item.school_name,
+          coord: {
+            lat: parseFloat(item.latitude),
+            lng: parseFloat(item.longitude)
+          }
         });
     });
     return per;
@@ -47,8 +51,11 @@ export default function MyMap({ data }) {
     data.schools.map(item => {
       if (item.school_type === "Primary")
         pri.push({
-          lat: parseFloat(item.latitude),
-          lng: parseFloat(item.longitude)
+          name: item.school_name,
+          coord: {
+            lat: parseFloat(item.latitude),
+            lng: parseFloat(item.longitude)
+          }
         });
     });
     return pri;
@@ -59,34 +66,32 @@ export default function MyMap({ data }) {
     data.schools.map(item => {
       if (item.school_type === "Primary")
         sec.push({
-          lat: parseFloat(item.latitude),
-          lng: parseFloat(item.longitude)
+          name: item.school_name,
+          coord: {
+            lat: parseFloat(item.latitude),
+            lng: parseFloat(item.longitude)
+          }
         });
     });
     return sec;
   }
 
-  //initialize school hospitals cordinates
-  // useEffect(() => {
-  //   setHospital(parseHostpitalCoords());
-  //   setPre(paresePreCoords());
-  //   setPrimary(paresePrimaryCoords());
-  //   setSec(pareseSecondaryCoords());
-  // }, []);
-  // setHospital(parseHostpitalCoords());
-  // setPre(paresePreCoords());
-  // setPrimary(paresePrimaryCoords());
-  // setSec(pareseSecondaryCoords());
-  // useEffect(() => {
-  //   setHospital(parseHostpitalCoords());
-  //   console.log(parseHostpitalCoords());
-  // }, []);
   useEffect(() => {
     //fetch data suburb corninate
-    Axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+    // Axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+    //   params: {
+    //     address: `${suburbName} ${city} VIC`,
+    //     key: "AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono"
+    //   }
+    // })
+    //call from openstreetmap api
+    Axios.get("https://nominatim.openstreetmap.org/search", {
       params: {
-        address: `${suburbName} ${city} VIC`,
-        key: "AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono"
+        q: `${suburbName} ${city} VIC`,
+        format: "json",
+        addressdetails: 1,
+        limit: 1,
+        polygon_geojson: 1
       }
     })
       .then(function(response) {
@@ -102,9 +107,11 @@ export default function MyMap({ data }) {
 
   const initMap = () => {
     let map = new window.google.maps.Map(document.getElementById("map"), {
+      // lat: parseFloat(obj.data.results[0].geometry.location.lat),
+      // lng: parseFloat(obj.data.results[0].geometry.location.lng)
       center: {
-        lat: parseFloat(obj.data.results[0].geometry.location.lat),
-        lng: parseFloat(obj.data.results[0].geometry.location.lng)
+        lat: parseFloat(obj.data[0].lat),
+        lng: parseFloat(obj.data[0].lon)
       },
       zoom: 13
     });
@@ -115,21 +122,20 @@ export default function MyMap({ data }) {
     });
 
     //add preschool marker
-    paresePreCoords().map(coord => {
-      addMarker(coord, map, preSchool);
+    paresePreCoords().map(data => {
+      addMarker(data.coord, map, preSchool, data.name);
     });
 
-    paresePrimaryCoords().map(coord => {
-      addMarker(coord, map, school);
+    paresePrimaryCoords().map(data => {
+      addMarker(data.coord, map, school, data.name);
     });
 
     //add secondary school marker
-    pareseSecondaryCoords().map(coord => {
-      addMarker(coord, map, school);
+    pareseSecondaryCoords().map(data => {
+      addMarker(data.coordcoord, map, school, data.name);
     });
 
-    //add primarySchool marker
-
+    //polygon boundary
     // map.data.addGeoJson(geo);
     // map.data.setStyle({
     //   fillColor: "pink",
@@ -145,8 +151,8 @@ export default function MyMap({ data }) {
       fillOpacity: 0.35,
       map: map,
       center: {
-        lat: parseFloat(obj.data.results[0].geometry.location.lat),
-        lng: parseFloat(obj.data.results[0].geometry.location.lng)
+        lat: parseFloat(obj.data[0].lat),
+        lng: parseFloat(obj.data[0].lon)
       },
       radius: 3000
     });
@@ -168,6 +174,7 @@ export default function MyMap({ data }) {
     window.initMap = initMap;
   }
 
+  //function to add marker
   function addMarker(coords, map, icon, name, beds) {
     let marker = new window.google.maps.Marker({
       position: coords,
@@ -193,17 +200,8 @@ export default function MyMap({ data }) {
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "90vh", width: "100%" }}>
+    <div style={{ height: "85vh", width: "100%", fontSize: "10px" }}>
       <div id="map" />
-      {/* <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono" }}
-        defaultCenter={center}
-        defaultZoom={zoom}
-        nGoogleApiLoaded={({ map, maps }) => console.log(map, maps)}
-        yesIWantToUseGoogleMapApiInternals
-      >
-        <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
-      </GoogleMapReact> */}
       <div>
         Icons made by{" "}
         <a href="https://www.freepik.com/" title="Freepik">

@@ -31,7 +31,7 @@ h4 {
 
 .secondRow {
   margin: 0 auto;
-  background: url("/home1.jpg");
+  /* background: url("/home1.jpg"); */
   text-align: center;
   width: 95%;
   height: 100%;
@@ -65,6 +65,18 @@ hr {
   background-position: center;
   /* background-image: radial-gradient(#417e72, #2d6161); */
   background: url("/bg1.jpg") no-repeat;
+  min-height: 91%;
+  min-width: 100%;
+  position: absolute;
+  z-index: -0;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.dashpage {
+  margin: 0;
+  padding: 0;
+  background: url("/dashbg.jpg") no-repeat;
   min-height: 91%;
   min-width: 100%;
   position: absolute;

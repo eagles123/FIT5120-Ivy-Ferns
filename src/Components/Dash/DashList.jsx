@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ChoiceContext } from "../context/ParameterContext";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import {
   List,
   ListItem,
@@ -9,6 +10,7 @@ import {
   Typography,
   ListSubheader
 } from "@material-ui/core";
+
 const styles = theme => ({
   root: {
     width: "100%",
@@ -17,7 +19,7 @@ const styles = theme => ({
     backgroundColor: "#d4e157",
     position: "relative",
     overflow: "auto",
-    maxHeight: 650
+    maxHeight: "80vh"
   },
   listSection: {
     backgroundColor: "inherit"
@@ -32,14 +34,14 @@ const styles = theme => ({
 });
 //need to change key property to _id
 function DashList(props) {
-  const { classes } = props;
+  const { classes, getSuburbByIdQuery } = props;
   const { suburbList } = useContext(ChoiceContext);
 
   return (
     <List className={classes.root} subheader={<li />}>
       <ListSubheader>Ranked Suburbs</ListSubheader>
       {suburbList.map(suburb => (
-        <li key={`section-${suburb.rank}`} className={classes.listSection}>
+        <li key={`section-${suburb._id}`} className={classes.listSection}>
           <ul className={classes.ul}>
             <ListItem key={`item-${suburb.suburbName}-${suburb.rank}`} button>
               <ListItemText
