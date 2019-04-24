@@ -169,7 +169,7 @@ export default function MyMap({ data }) {
 
   function loadMap() {
     loadScript(
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono&callback=initMap"
+      `https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_API}`
     );
     window.initMap = initMap;
   }

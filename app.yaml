@@ -9,3 +9,6 @@ handlers:
 - url: /.*
   static_files: build/index.html
   upload: build/index.html
+
+env_variables:
+  MAP_API: "AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono&callback=initMap"
