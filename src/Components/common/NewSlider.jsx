@@ -1,46 +1,58 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Slider from "@material-ui/lab/Slider";
-
-const styles = {
-  root: {
-    width: 450
-  },
-  slider: {
-    padding: "22px 0px"
-  }
-};
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 class StepSlider extends React.Component {
   state = {
     value: 1
   };
 
-  handleChange = (event, value) => {
+  // handleChange = (event, value) => {
+  //   this.props.stateDispatch({ type: this.props.label, payload: value });
+
+  //   this.setState({ value });
+  // };
+
+  handleChange = value => {
     this.props.stateDispatch({ type: this.props.label, payload: value });
 
     this.setState({ value });
   };
 
   render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-    // console.log(value);
-
     return (
       <React.Fragment>
         <div className="col s12 m12">
-          <Slider
+          {/* <Slider
             classes={{ container: classes.slider }}
             value={value}
             min={1}
             max={10}
             step={1}
             onChange={this.handleChange}
+          /> */}
+          <Slider
+            dots
+            dotStyle={{ borderColor: "orange" }}
+            activeDotStyle={{ borderColor: "yellow" }}
+            value={this.state.value}
+            min={1}
+            max={10}
+            onChange={this.handleChange}
+            trackStyle={{ backgroundColor: "#00acc1", height: 5 }}
+            handleStyle={{
+              borderColor: "ff5252",
+              height: 15,
+              width: 15,
+              backgroundColor: "#00acc1"
+            }}
+            railStyle={{ backgroundColor: "#ff5252", height: 5 }}
           />
         </div>
-        <div className="row" style={{ marginBottom: "50px" }}>
+        <div
+          className="row"
+          style={{ marginTop: "35px", marginBottom: "50px" }}
+        >
           <div className="col s2 m2">
             <p
               style={{
@@ -91,8 +103,4 @@ class StepSlider extends React.Component {
   }
 }
 
-StepSlider.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(StepSlider);
+export default StepSlider;

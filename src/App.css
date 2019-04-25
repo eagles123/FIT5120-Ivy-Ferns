@@ -47,10 +47,17 @@ hr {
   height: 2px;
   background-color: black;
 }
-
-/* p {
-  padding-top: 0.9em;
-} */
+#detail:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+#detail {
+  background-image: linear-gradient(
+    to right,
+    #84fab0 0%,
+    #8fd3f4 51%,
+    #84fab0 100%
+  );
+}
 
 .cpage {
   margin: 0;

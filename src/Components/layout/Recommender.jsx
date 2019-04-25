@@ -7,7 +7,6 @@ import { recommd, paginate } from "../services/recommend";
 import { recReducer } from "./../reducer/recReducer";
 import CheckList from "./../common/CheckList";
 import Pagination from "../common/Pagination";
-import { getallSuburbs } from "./../services/suburbs";
 import SearchBox from "./../common/SearchBox";
 import StyledButton from "./../common/StyleButton";
 import { graphql } from "react-apollo";
@@ -57,6 +56,7 @@ const Recommender = props => {
     if (props.data.loading);
     else {
       setSuburbs(recommd(scoreState, props.data.suburbs));
+
       setTotal(suburbs.length);
       setSubList(suburbs);
       setPaged(paginate(suburbs, currentPage, pageSize));
@@ -166,7 +166,7 @@ const Recommender = props => {
             </div>
             <div className="col s12 m4" style={{ marginTop: 18 }}>
               <Fade right duration={1000}>
-                <h5 style={{ textAlign: "center" }}>Ranked Suburbs</h5>
+                <h5 style={{ textAlign: "center" }}>RANKED SUBURBS</h5>
                 <SearchBox value={query} onChange={handleSearch} />
                 {suburbs.length === 1 ? (
                   <div

@@ -52,7 +52,12 @@ const SubListResult = ({ suburb }) => {
             </div>
             <div className="col s4 m2 offset-m1">
               <Link to={`dashboard/${suburb._id}`} key={suburb._id}>
-                <Button style={{ backgroundColor: "white" }}>Detail</Button>
+                <Button
+                  id="detail"
+                  style={{ backgroundColor: "white", width: "30px" }}
+                >
+                  Detail
+                </Button>
               </Link>
             </div>
           </div>

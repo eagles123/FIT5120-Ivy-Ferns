@@ -17,8 +17,8 @@ const SuburList = ({ suburbs, choice }) => {
   //code for animate the list
   const [data, setData] = useState([]);
   const [isOpen, setOpen] = useState(true);
-  async function handleOpen() {
-    await setOpen(false);
+  function handleOpen() {
+    setOpen(false);
   }
 
   // const [prev, setPrev] = useState(change);
@@ -30,10 +30,11 @@ const SuburList = ({ suburbs, choice }) => {
   //   return () => clearTimeout(timeout);
   // }, [change]);
 
-  async function handleClos() {
-    await setOpen(true);
+  function handleClos() {
+    setOpen(true);
   }
   useEffect(() => {
+    console.log("Change");
     handleOpen();
     let timeout = setTimeout(() => {
       handleClos();

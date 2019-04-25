@@ -148,7 +148,6 @@ function DataDashBoard(props) {
   // });
   // const [id, setId] = useState(props.match.params.id);
   // const [data, setData] = useState();
-
   // useEffect(() => {
   //   if (props.data.loading) console.log(props.data.loading);
   //   else {
@@ -159,7 +158,6 @@ function DataDashBoard(props) {
   function handlePre() {
     props.history.push("/recommend");
   }
-  console.log(props.data.loading);
   return props.data.loading ? (
     <div className="container" style={{ margin: "0 auto" }}>
       <CircularProgress style={{ marginTop: "40vh", marginLeft: "30vw" }} />
@@ -214,4 +212,5 @@ export default graphql(getSuburbByIdQuery, {
     };
   }
 })(DataDashBoard);
+
 // export default DataDashBoard;

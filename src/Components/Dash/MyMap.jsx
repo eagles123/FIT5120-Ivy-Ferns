@@ -81,7 +81,7 @@ export default function MyMap({ data }) {
     // Axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
     //   params: {
     //     address: `${suburbName} ${city} VIC`,
-    //     key: "AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono"
+    //
     //   }
     // })
     //call from openstreetmap api

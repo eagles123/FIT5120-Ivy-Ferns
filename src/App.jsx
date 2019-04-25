@@ -25,25 +25,23 @@ const App = () => {
   const [suburbList, setSubList] = useState([]);
 
   const client = new ApolloClient({
-    uri: "/graphql?"
+    uri: "https://sturdy-dogfish-236900.appspot.com/graphql?"
   });
 
   return (
     <div className="App">
       <NavBar />
-      {/* <Nav /> */}
       <ApolloProvider client={client}>
         <ChoiceContext.Provider
           value={{ choiceDispatch, choice, suburbList, setSubList }}
         >
           <Switch>
             <Route path="/dashboard/:id" component={DataDashBoard} />
-            <Route path="/about" component={About} />
-            <Route path="/faqs" component={FAQs} />
             <Route path="/recommend" component={Recommender} />
             <Route path="/intro" component={Intro} />
+            <Route path="/about" component={About} />
             <Route path="/not-found" component={NotFound} />
-            {/* <Route path="/" exact component={HomePage} /> */}
+            <Route path="/faqs" component={FAQs} />
             <Route path="/" component={HomePageTwo} />
             <Redirect to="/not-found" />
           </Switch>
