@@ -11,7 +11,7 @@ const SuburList = ({ suburbs, choice }) => {
     background-color: #d4e157;
     color: white;
     margin-top: 0px;
-    margin-left: 80px;
+    margin-left: 5vw;
   `;
 
   //code for animate the list
@@ -34,7 +34,6 @@ const SuburList = ({ suburbs, choice }) => {
     setOpen(true);
   }
   useEffect(() => {
-    console.log("Change");
     handleOpen();
     let timeout = setTimeout(() => {
       handleClos();

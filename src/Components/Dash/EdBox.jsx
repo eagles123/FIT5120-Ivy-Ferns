@@ -32,11 +32,13 @@ export default function EdBox({ data }) {
       >
         <div className="row">
           <div className="col s3 m3">
-            <img src={"/education.png"} alt="" />
+            <img className="responsive" src={"/education.png"} alt="" />
           </div>
           <div className="col s8 m8 offset-m1">
             <h6>Education</h6>
-            <Button onClick={handleOpen}>Learn More</Button>
+            <Button style={{ backgroundColor: "#dcedc8" }} onClick={handleOpen}>
+              Learn More
+            </Button>
             <Rodal
               visible={isOpen}
               onClose={handleClose}
@@ -60,7 +62,7 @@ export default function EdBox({ data }) {
                 <DashItem className="dashitem">
                   <div className="row">
                     <div className="icon col s4 m4">
-                      <img src={"/rt.png"} alt="" />
+                      <img className="responsive" src={"/rt.png"} alt="" />
                     </div>
                     <div className="col s7 m7 offset-m1">
                       <p style={{ textAlign: "center" }}>
@@ -74,7 +76,7 @@ export default function EdBox({ data }) {
                 <DashItem className="dashitem">
                   <div className="row">
                     <div className="icon col s4 m4">
-                      <img src={"/dt.png"} alt="" />
+                      <img className="responsive" src={"/dt.png"} alt="" />
                     </div>
                     <div className="col s7 m7 offset-m1">
                       <p style={{ textAlign: "center" }}>

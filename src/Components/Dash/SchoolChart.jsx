@@ -10,8 +10,8 @@ export default class SchoolChart extends React.Component {
     super(props);
     this.state = {
       choice: "Primary",
-      label: "LAG_Average",
-      field: "ICSEA",
+      label: "LGA_Average - Average of ICSEA Score in Local Government Area",
+      field: "ICSEA - Index of Community Socio-Educational Advantage",
       pre_school: [],
       primary_school: [],
       secondary_school: [],
@@ -54,7 +54,11 @@ export default class SchoolChart extends React.Component {
   }
 
   componentDidMount() {
-    this.setSchool(this.state.primary_school, "ICSEA", "LAG_Average");
+    this.setSchool(
+      this.state.primary_school,
+      "ICSEA - Index of Community Socio-Educational Advantage",
+      "LGA_Average - Average of ICSEA Score in Local Government Area"
+    );
   }
   //load the data to state
   componentWillMount() {
@@ -82,12 +86,17 @@ export default class SchoolChart extends React.Component {
       cat.push(school.school_name);
       newSeris[0].name = serisone;
       newSeris[1].name = seriostwo;
-      if (serisone === "ICSEA") {
+      if (
+        serisone === "ICSEA - Index of Community Socio-Educational Advantage"
+      ) {
         newSeris[0].data.push(school.icsea);
         newSeris[1].data.push(school.lga_average);
-      } else if (serisone === "Teacher/Student") {
-        newSeris[0].data.push(school.ts_ration);
-        newSeris[1].data.push(school.ts_average);
+      } else if (
+        serisone ===
+        "VCE - Victorian Certificate of Education (VCE) Study Score"
+      ) {
+        newSeris[0].data.push(school.vce_score);
+        newSeris[1].data.push(school.vce_average);
       } else {
         newSeris[0].data.push(school.enrolments);
         newSeris[1].data.push(school.enrol_average);
@@ -184,15 +193,27 @@ export default class SchoolChart extends React.Component {
   }
 
   handleFieldChange = event => {
-    if (event.target.value === "ICSEA") {
-      this.setState({ field: event.target.value, label: "LGA_Average" }, () => {
-        this.reRender();
-      });
-    } else if (event.target.value === "Teacher/Student")
+    if (
+      event.target.value ===
+      "ICSEA - Index of Community Socio-Educational Advantage"
+    ) {
       this.setState(
         {
           field: event.target.value,
-          label: "Average Teacher/Student Ratio"
+          label: "LGA_Average - Average of ICSEA Score in Local Government Area"
+        },
+        () => {
+          this.reRender();
+        }
+      );
+    } else if (
+      event.target.value ===
+      "VCE - Victorian Certificate of Education (VCE) Study Score"
+    )
+      this.setState(
+        {
+          field: event.target.value,
+          label: "Average VCE"
         },
         () => {
           this.reRender();
@@ -208,6 +229,13 @@ export default class SchoolChart extends React.Component {
     }
   };
 
+  handleEmpty() {
+    if (this.state.choice === "Primary")
+      return this.state.primary_school.length === 0;
+    else if (this.state.choice === "Secondary")
+      return this.state.secondary_school.length === 0;
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -222,20 +250,34 @@ export default class SchoolChart extends React.Component {
         <FormControl style={{ minWidth: 90, height: "6vh", marginLeft: "3vw" }}>
           <InputLabel>Field</InputLabel>
           <Select value={this.state.field} onChange={this.handleFieldChange}>
-            <MenuItem value={"ICSEA"}>ICSEA Score</MenuItem>
-            <MenuItem value={"Teacher/Student"}>Teacher/Student</MenuItem>
+            <MenuItem
+              value={"ICSEA - Index of Community Socio-Educational Advantage"}
+            >
+              ICSEA Score
+            </MenuItem>
+            <MenuItem
+              value={
+                "VCE - Victorian Certificate of Education (VCE) Study Score"
+              }
+            >
+              VCE Score
+            </MenuItem>
             <MenuItem value={"Enrollment"}>Enrollment</MenuItem>
           </Select>
         </FormControl>
-        <div id="chart">
-          <Chart
-            options={this.state.options}
-            series={this.state.series}
-            type="bar"
-            height="350"
-            width="85%"
-          />
-        </div>
+        {this.handleEmpty() ? (
+          <img style={{ marginTop: "20px" }} src={"/nodata.jpg"} />
+        ) : (
+          <div id="chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="bar"
+              height="350"
+              width="85%"
+            />
+          </div>
+        )}
       </React.Fragment>
     );
   }

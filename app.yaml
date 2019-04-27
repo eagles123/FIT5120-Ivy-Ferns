@@ -10,5 +10,3 @@ handlers:
   static_files: public/index.html
   upload: public/index.html
 
-env_variables:
-  MAP_API: "AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono&callback=initMap"

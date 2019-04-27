@@ -12,14 +12,6 @@ export const getSuburbsQuery = gql`
         propertyScore
         jobScore
       }
-      health {
-        hospital
-      }
-      education {
-        pre_school
-        primary_school
-        secondary_school
-      }
     }
   }
 `;
@@ -37,6 +29,7 @@ export const getSuburbByIdQuery = gql`
       hosptials {
         hospital_name
         beds
+        url
         longitude
         latitude
       }
@@ -53,10 +46,11 @@ export const getSuburbByIdQuery = gql`
         school_type
         icsea
         lga_average
-        ts_ration
-        ts_average
+        vce_score
+        vce_average
         enrolments
         enrol_average
+        url
         longitude
         latitude
       }

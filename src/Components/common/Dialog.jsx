@@ -10,7 +10,7 @@ function Transition(props) {
   return <Slide direction="left" {...props} />;
 }
 
-export default function MyDialog({ state, handleClose, content }) {
+export default function MyDialog({ state, handleClose, content, header }) {
   return (
     <div>
       <Dialog
@@ -22,6 +22,7 @@ export default function MyDialog({ state, handleClose, content }) {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogContent>
+          <h6 style={{ textAlign: "center" }}>{header}</h6>
           <DialogContentText id="alert-dialog-slide-description">
             {content}
           </DialogContentText>

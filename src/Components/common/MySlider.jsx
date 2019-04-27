@@ -4,7 +4,7 @@ import "rc-slider/assets/index.css";
 
 const style = { width: 600, margin: 50 };
 function log(value) {
-  console.log(value); //eslint-disable-line
+  //eslint-disable-line
 }
 export default class MySlider extends Component {
   constructor(props) {

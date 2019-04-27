@@ -1,19 +1,11 @@
 import React from "react";
 import { Fade } from "react-reveal";
-import MyCarousel from "./Carousel";
 
 export default function SecondRow() {
   return (
     <div className="row">
-      <Fade left>
-        <div className="col s12 m6">
-          <h4>Why we do it</h4>
-          <br />
-          <MyCarousel />
-        </div>
-      </Fade>
       <Fade right>
-        <div className="col s12 m6">
+        <div className="col s12 m6 offset-m3">
           <h4>How we do it</h4>
           <br />
           <div style={{ height: "50vh", width: "40vw", marginLeft: 30 }}>

@@ -32,11 +32,13 @@ export default function HealthBox({ data }) {
       >
         <div className="row">
           <div className="col s3 m3">
-            <img src={"/health.png"} alt="" />
+            <img className="responsive" src={"/health.png"} alt="" />
           </div>
           <div className="col s8 m8 offset-m1">
-            <h6>Health</h6>
-            <Button onClick={handleOpen}>Learn More</Button>
+            <h6>Health Care</h6>
+            <Button style={{ backgroundColor: "#c8e6c9" }} onClick={handleOpen}>
+              Learn More
+            </Button>
             <Rodal
               visible={isOpen}
               onClose={handleClose}
@@ -48,7 +50,7 @@ export default function HealthBox({ data }) {
                 <DashItem className="dashitem">
                   <div className="row">
                     <div className="icon col s4 m4">
-                      <img src={"/hosp.png"} alt="" />
+                      <img className="responsive" src={"/hosp.png"} alt="" />
                     </div>
                     <div className="col s7 m7 offset-m1">
                       <p style={{ textAlign: "center" }}>No. of Hospitals:</p>
@@ -60,7 +62,7 @@ export default function HealthBox({ data }) {
                 <DashItem className="dashitem">
                   <div className="row">
                     <div className="icon col s4 m4">
-                      <img src={"/gps.png"} alt="" />
+                      <img className="responsive" src={"/gps.png"} alt="" />
                     </div>
                     <div className="col s7 m7 offset-m1">
                       <p style={{ textAlign: "center" }}>
@@ -74,7 +76,7 @@ export default function HealthBox({ data }) {
                 <DashItem className="dashitem">
                   <div className="row">
                     <div className="icon col s4 m4">
-                      <img src={"/bed.png"} alt="" />
+                      <img className="responsive" src={"/bed.png"} alt="" />
                     </div>
                     <div className="col s7 m7 offset-m1">
                       <p style={{ textAlign: "center" }}>

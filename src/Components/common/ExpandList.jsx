@@ -14,10 +14,10 @@ export default function ExpandList({ question, response }) {
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon style={{ color: "black" }} />}
         >
-          <Typography style={{ fontSize: "28px" }}>{question}</Typography>
+          <Typography style={{ fontSize: "21px" }}>{question}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography style={{ fontSize: "18px" }}>{response}</Typography>
+          <Typography style={{ fontSize: "16px" }}>{response}</Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>

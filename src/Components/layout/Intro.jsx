@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext, useReducer } from "react";
-import CustomButton from "../common/CustomButtons";
+import React, { useState, useEffect, useContext } from "react";
+import { Button } from "@material-ui/core";
 import { ChoiceContext } from "../context/ParameterContext";
 import { LightSpeed } from "react-reveal";
 import RadioBut from "../common/RadioBut";
@@ -83,7 +83,7 @@ export default function Intro(props) {
           }}
         >
           <LightSpeed left duration={1000}>
-            <h3 style={{ paddingTop: 5 }}>SET YOUR PREFERENCES</h3>
+            <h3 style={{ paddingTop: 5 }}>Set Your Preferences</h3>
             <div className="row">
               <div className="col s12 m5 offset-m1">
                 <img className="responsive" src={"/carton3.1.png"} alt="" />
@@ -93,30 +93,30 @@ export default function Intro(props) {
                   animate={choice.healthField}
                   submit={submit}
                   icon={"fas fa-hospital-symbol fa-3x"}
-                  x1={"-100px"}
-                  x2={"-170px"}
-                  y1={"10px"}
-                  y2={"380px"}
+                  x1={"-10vw"}
+                  x2={"-14vw"}
+                  y1={"1vh"}
+                  y2={"48vh"}
                 />
                 <AniIcon
                   animate={choice.educationField}
                   submit={submit}
                   icon={"fas fa-graduation-cap fa-3x"}
-                  x1={"-100px"}
-                  x2={"-170px"}
-                  y1={"10px"}
-                  y2={"250px"}
+                  x1={"-10vw"}
+                  x2={"-14vw"}
+                  y1={"1vh"}
+                  y2={"39vh"}
                 />
                 <AniIcon
                   animate={choice.propertyField}
                   submit={submit}
-                  icon={"fas fa-building fa-3x"}
-                  x1={"-120px"}
-                  x2={"-170px"}
-                  y1={"7px"}
-                  y2={"140px"}
+                  icon={"fas fa-home fa-3x"}
+                  x1={"-11vw"}
+                  x2={"-14vw"}
+                  y1={"0vh"}
+                  y2={"10vh"}
                 />
-                <AniIcon
+                {/* <AniIcon
                   animate={choice.jobField}
                   submit={submit}
                   icon={"fas fa-briefcase fa-3x"}
@@ -124,7 +124,7 @@ export default function Intro(props) {
                   x2={"-170px"}
                   y1={"5px"}
                   y2={"50px"}
-                />
+                /> */}
                 {/* <i className="fas fa-hospital-symbol fa-3x" /> */}
                 {/* <i className="fas fa-graduation-cap fa-3x" />
                 <i className="fas fa-building fa-3x" />
@@ -141,6 +141,7 @@ export default function Intro(props) {
                   />
                 </h6>
                 <MyDialog
+                  header={"Health Care"}
                   state={hdialog}
                   handleClose={handleHclose}
                   content={
@@ -148,7 +149,7 @@ export default function Intro(props) {
                   }
                 />
                 <RadioBut text={"HEALTHFIELD"} />
-
+                <br />
                 <h6>
                   EDUCATIONAL INSTITUTIONS{" "}
                   <i
@@ -158,6 +159,7 @@ export default function Intro(props) {
                   />
                 </h6>
                 <MyDialog
+                  header={"Educatioin"}
                   state={edialog}
                   handleClose={handleEclose}
                   content={
@@ -165,7 +167,7 @@ export default function Intro(props) {
                   }
                 />
                 <RadioBut text={"EDUCATIONFIELD"} />
-
+                <br />
                 <h6>
                   PROPERTY PRICES{" "}
                   <i
@@ -177,13 +179,14 @@ export default function Intro(props) {
                 <MyDialog
                   state={pdialog}
                   handleClose={handlePclose}
+                  header={"House Price"}
                   content={
                     "Property prices include the median price range of properties located in the suburb."
                   }
                 />
                 <RadioBut text={"PROPERTYFIELD"} />
-
-                <h6>
+                <br />
+                {/* <h6>
                   JOB OPPORTUNITIES{" "}
                   <i
                     className="fas fa-info-circle"
@@ -198,56 +201,34 @@ export default function Intro(props) {
                     "Job opportunities include information about the industries and the number of employees employed in that industry."
                   }
                 />
-                <RadioBut text={"JOBFIELD"} />
+                <RadioBut text={"JOBFIELD"} /> */}
+
+                <div style={{ margin: "40 auto" }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                    style={{
+                      borderRadius: 20,
+                      width: "200px",
+                      height: "40px",
+                      fontSize: 20
+                    }}
+                  >
+                    <span style={{ color: "white" }}>Submit</span>
+                  </Button>
+                  {error ? (
+                    <p
+                      style={{
+                        color: "red"
+                      }}
+                    >
+                      *Please Select at least One Preference
+                    </p>
+                  ) : null}
+                </div>
               </div>
-              <div style={{ margin: "30 auto" }}>
-                <CustomButton
-                  text={"Submit"}
-                  color={"#3f51b5"}
-                  handleChange={handleNext}
-                />
-              </div>
-              {error ? (
-                <p style={{ margin: "0 auto", color: "red" }}>
-                  *Please Select at least on field
-                </p>
-              ) : null}
             </div>
-            {/* <div id="choose" />
-        <h4 style={{ padding: 300, color: "white", zIndex: 5 }}>
-          SET YOUR PREFERENCES
-        </h4> */}
-            {/* <CustomButton
-            text={"Health"}
-            color={"green"}
-            handleChange={handleHealth}
-          />
-          {choice.healthField ? "true" : "false"}
-
-          <CustomButton
-            text={"Education"}
-            color={"blue"}
-            handleChange={handleEdu}
-          />
-          {choice.educationField ? "true" : "false"}
-
-          <CustomButton
-            text={"Property"}
-            color={"purple"}
-            handleChange={handleProp}
-          />
-          {choice.propertyField ? "true" : "false"}
-
-          <CustomButton text={"Job"} color={"red"} handleChange={handleJob} />
-          {choice.jobField ? "true" : "false"}
-
-          <div style={{ marginTop: 200 }}>
-            <CustomButton
-              text={"Next"}
-              color={"black"}
-              handleChange={handleNext}
-            />
-          </div> */}
           </LightSpeed>
         </div>
       </div>

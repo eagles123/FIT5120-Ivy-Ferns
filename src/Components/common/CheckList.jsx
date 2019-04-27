@@ -49,7 +49,7 @@ export default function CheckList(props) {
         <ListItemText
           disableTypography
           inset
-          primary="By Preference"
+          primary="Preference"
           style={{ fontSize: "13px" }}
         />
         {perference ? <ExpandLessIcon /> : <ExpandMoreIcon />}

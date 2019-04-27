@@ -25,7 +25,7 @@ const App = () => {
   const [suburbList, setSubList] = useState([]);
 
   const client = new ApolloClient({
-    uri: "https://sturdy-dogfish-236900.appspot.com/graphql?"
+    uri: `${process.env.REACT_APP_URL}/graphql?`
   });
 
   return (

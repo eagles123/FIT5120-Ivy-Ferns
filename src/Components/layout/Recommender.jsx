@@ -141,8 +141,7 @@ const Recommender = props => {
   const choices = [
     { label: "Health", chose: choice.healthField, action: choseHealth },
     { label: "Education", chose: choice.educationField, action: choseEdu },
-    { label: "Property", chose: choice.propertyField, action: choseProp },
-    { label: "Employment", chose: choice.jobField, action: choseJob }
+    { label: "Property", chose: choice.propertyField, action: choseProp }
   ];
 
   return (
@@ -153,7 +152,9 @@ const Recommender = props => {
           <div className="row">
             <div className="col s12 m2" style={{ marginTop: 50 }}>
               <Fade left duration={1000}>
-                <StyledButton onClick={handleBack}>Back</StyledButton>
+                <StyledButton style={{ marginBottom: 30 }} onClick={handleBack}>
+                  Back
+                </StyledButton>
                 <CheckList choices={choices} />
               </Fade>
             </div>
@@ -166,8 +167,8 @@ const Recommender = props => {
             </div>
             <div className="col s12 m4" style={{ marginTop: 18 }}>
               <Fade right duration={1000}>
-                <h5 style={{ textAlign: "center" }}>RANKED SUBURBS</h5>
                 <SearchBox value={query} onChange={handleSearch} />
+                <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
                 {suburbs.length === 1 ? (
                   <div
                     className="container"

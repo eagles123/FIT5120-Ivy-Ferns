@@ -15,8 +15,12 @@ const NavBarLinks = () => {
             style={{ color: "black" }}
             className="nav-item nav-link"
             to="/intro"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "green"
+            }}
           >
-            Pick Suburb
+            Pick a Suburb
           </NavLink>
         </li>
 
@@ -25,6 +29,10 @@ const NavBarLinks = () => {
             style={{ color: "black" }}
             className="nav-item nav-link"
             to="/about"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "green"
+            }}
           >
             About Us
           </NavLink>
@@ -35,6 +43,10 @@ const NavBarLinks = () => {
             style={{ color: "black" }}
             className="nav-item nav-link"
             to="/faqs"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "green"
+            }}
           >
             FAQ
           </NavLink>

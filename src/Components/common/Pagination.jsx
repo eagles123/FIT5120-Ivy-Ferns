@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import { Button } from "@material-ui/core";
 
 class Pagination extends Component {
   render() {

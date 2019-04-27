@@ -5,10 +5,10 @@ import DashList from "../Dash/DashList";
 import HealthBox from "./../Dash/HealthBox";
 import EdBox from "../Dash/EdBox";
 import PropBox from "../Dash/PropBox";
-import JobBox from "../Dash/JobBox";
+// import JobBox from "../Dash/JobBox";
 import SchoolChart from "../Dash/SchoolChart";
 import JobChart from "./../Dash/JobChart";
-import MyMap from "./../Dash/MyMap";
+import MyMap from "./../Dash/MyMap"; //check
 import StyledButton from "./../common/StyleButton";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -158,6 +158,7 @@ function DataDashBoard(props) {
   function handlePre() {
     props.history.push("/recommend");
   }
+
   return props.data.loading ? (
     <div className="container" style={{ margin: "0 auto" }}>
       <CircularProgress style={{ marginTop: "40vh", marginLeft: "30vw" }} />
@@ -165,28 +166,28 @@ function DataDashBoard(props) {
   ) : (
     <div className="dashpage">
       <div className="container-fluid">
-        <h4>
+        <h4 style={{ textAlign: "center" }}>
           {props.data.suburb.suburbName}, {props.data.suburb.city}
         </h4>
         <div className="row">
           <div className="col s12 m2">
-            <StyledButton onClick={handlePre}>Previous</StyledButton>
-            <DashList query={getSuburbByIdQuery} />
+            <StyledButton onClick={handlePre}>Back</StyledButton>
+            <DashList query={getSuburbByIdQuery} props={props} />
           </div>
           <div className="col s12 m10 dashboard">
             <div className="row">
-              <div className="boardbox col s2 m3">
+              <div className="boardbox col s2 m4">
                 <HealthBox data={props.data.suburb.health} />
               </div>
-              <div className="boardbox col s2 m3 ">
+              <div className="boardbox col s2 m4 ">
                 <EdBox data={props.data.suburb.education} />
               </div>
-              <div className="boardbox col s2 m3">
+              <div className="boardbox col s2 m4">
                 <PropBox data={props.data.suburb.property} />
               </div>
-              <div className="boardbox col s2 m3">
+              {/* <div className="boardbox col s2 m3">
                 <JobBox data={props.data.suburb.job} />
-              </div>
+              </div> */}
             </div>
             <div className="row">
               <div className="col s5 m5 board">
@@ -194,7 +195,7 @@ function DataDashBoard(props) {
               </div>
               <div className="col s6 m6 board">
                 <SchoolChart data={props.data.suburb.schools} />
-                <JobChart data={props.data.suburb.job} />
+                {/* <JobChart data={props.data.suburb.job} /> */}
               </div>
             </div>
           </div>

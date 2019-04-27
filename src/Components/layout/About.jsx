@@ -9,6 +9,12 @@ export default function About() {
           <h3>About us</h3>
           <hr />
           <br />
+
+          <h6 style={{ textAlign: "center" }}>
+            We aim to help our customers find a suburb in Regional Victoria that
+            is most suited to their needs and preferences, so let’s learn more!
+          </h6>
+          <br />
           <iframe
             src="https://www.youtube.com/embed/nR4r3vfdnT4"
             width="100%"

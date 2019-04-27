@@ -20,10 +20,10 @@ export default function PropBox({ data }) {
       >
         <div className="row">
           <div className="col s3 m3">
-            <img src={"/property.png"} alt="" />
+            <img className="responsive" src={"/property.png"} alt="" />
           </div>
           <div className="col s8 m8 offset-m1">
-            <h6>Property</h6>
+            <h6>House Price</h6>
             <CountUp
               start={0}
               end={price}

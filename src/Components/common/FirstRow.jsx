@@ -6,14 +6,14 @@ export default function FirstRow() {
     <div className="bgsection ">
       <div className="firstRow">
         <div className="row" id="firstRow">
-          <h3
+          <h4
             style={{
               color: "black",
               fontFamily: "Merriweather"
             }}
           >
             What we do?
-          </h3>
+          </h4>
           <hr />
           <div className="col s12 m4" style={{ paddingTop: "35px" }}>
             <Fade bottom>

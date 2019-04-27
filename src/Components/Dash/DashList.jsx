@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { ChoiceContext } from "../context/ParameterContext";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
 import {
   List,
   ListItem,
@@ -16,7 +15,7 @@ const styles = theme => ({
     width: "100%",
     maxWidth: 360,
     marginTop: 20,
-    backgroundColor: "#d4e157",
+    backgroundColor: "#80cbc4",
     position: "relative",
     overflow: "auto",
     maxHeight: "80vh"
@@ -39,13 +38,19 @@ function DashList(props) {
 
   return (
     <List className={classes.root} subheader={<li />}>
-      <ListSubheader>Ranked Suburbs</ListSubheader>
+      <ListSubheader style={{ fontSize: "20px" }}>Ranked Suburbs</ListSubheader>
       {suburbList.map(suburb => (
         <li key={`section-${suburb._id}`} className={classes.listSection}>
           <ul className={classes.ul}>
-            <ListItem key={`item-${suburb.suburbName}-${suburb.rank}`} button>
+            <ListItem
+              key={`item-${suburb.suburbName}-${suburb.rank}`}
+              button
+              onClick={() =>
+                props.props.history.push(`/dashboard/${suburb._id}`)
+              }
+            >
               <ListItemText
-                primary={`Suburb: ${suburb.suburbName}`}
+                primary={`${suburb.rank}. Suburb: ${suburb.suburbName}`}
                 secondary={
                   <React.Fragment>
                     <Typography
@@ -55,7 +60,6 @@ function DashList(props) {
                     >
                       {suburb.city}
                     </Typography>
-                    {` — No.${suburb.rank}`}
                   </React.Fragment>
                 }
               />
