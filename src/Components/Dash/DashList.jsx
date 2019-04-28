@@ -33,7 +33,7 @@ const styles = theme => ({
 });
 //need to change key property to _id
 function DashList(props) {
-  const { classes, getSuburbByIdQuery } = props;
+  const { classes } = props;
   const { suburbList } = useContext(ChoiceContext);
 
   return (

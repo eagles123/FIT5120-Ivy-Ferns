@@ -85,7 +85,7 @@ export default function Intro(props) {
           <LightSpeed left duration={1000}>
             <h3 style={{ paddingTop: 5 }}>Set Your Preferences</h3>
             <div className="row">
-              <div className="col s12 m5 offset-m1">
+              <div className="col s12 m5 offset-m1" style={{ paddingTop: 10 }}>
                 <img className="responsive" src={"/carton3.1.png"} alt="" />
               </div>
               <div className="col s2 m1  introicon" style={{ color: "white" }}>

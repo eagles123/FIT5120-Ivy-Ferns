@@ -27,11 +27,11 @@ const SubListResult = ({ suburb }) => {
     return sum;
   }
   return (
-    <AniItem className="item">
-      <div className="col s12 m12">
+    <div className="col s12 m12">
+      <AniItem className="item">
         <div
           style={{
-            width: "22vw",
+            width: "350px",
             height: "80px",
             backgroundColor: "#d4e157",
             marginBottom: "10px",
@@ -61,8 +61,8 @@ const SubListResult = ({ suburb }) => {
             </div>
           </div>
         </div>
-      </div>
-    </AniItem>
+      </AniItem>
+    </div>
   );
 };
 

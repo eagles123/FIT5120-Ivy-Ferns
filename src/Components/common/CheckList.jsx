@@ -31,7 +31,7 @@ export default function CheckList(props) {
           component="div"
           style={{ fontSize: "17px", color: "black", borderRadius: "10px" }}
         >
-          Filter
+          Filter By:
         </ListSubheader>
       }
       style={{
@@ -76,31 +76,31 @@ export default function CheckList(props) {
         </List>
       </Collapse>
 
-      {/* <ListItem button onClick={handleLga} style={{ color: "white" }}>
+      {/* <ListItem button onClick={handleLga} style={{ color: "black" }}>
         <ListItemText
           disableTypography
           inset
-          primary="By LGA"
-          style={{ fontSize: "15px", color: "white" }}
+          primary="City"
+          style={{ fontSize: "13px", color: "black" }}
         />
         {Lga ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>
       <Collapse in={Lga} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {choices.map(choice => (
+          {["Geelong", "Ballarat", "Bendigo"].map(choice => (
             <ListItem
-              key={choice.label}
+              key={choice}
               role={undefined}
               dense
               button
-              onClick={choice.action}
+              onClick={choice}
             >
               <Checkbox checked={choice.chose} />
               <ListItemText
                 //disableTypography to make text white
                 disableTypography
-                primary={choice.label}
-                style={{ fontSize: "15px", color: "white" }}
+                primary={choice}
+                style={{ fontSize: "13px", color: "black" }}
               />
             </ListItem>
           ))}

@@ -26,7 +26,7 @@ function ImgMediaCard(props) {
   return (
     <Card className={classes.card}>
       <CardActionArea>
-        <a href={website} target="blank">
+        <a href={website} target="_blank" rel="noopener noreferrer">
           <CardMedia
             component="img"
             alt="Contemplative Reptile"
@@ -48,14 +48,16 @@ function ImgMediaCard(props) {
         </a>
       </CardActionArea>
       <CardActions>
-        <a href={website} target="blank">
-          <Button
-            size="small"
-            color="primary"
-            style={{ backgroundColor: "#b2dfdb" }}
-          >
-            Learn More
-          </Button>
+        <a href={website} target="_blank" rel="noopener noreferrer">
+          <div style={{ marginLeft: "12vw" }}>
+            <Button
+              size="small"
+              color="primary"
+              style={{ backgroundColor: "#b2dfdb" }}
+            >
+              Learn More
+            </Button>
+          </div>
         </a>
       </CardActions>
     </Card>

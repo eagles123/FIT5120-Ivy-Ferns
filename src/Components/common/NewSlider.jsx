@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-class StepSlider extends React.Component {
+class NewSlider extends React.Component {
   state = {
     value: 1
   };
@@ -103,4 +103,4 @@ class StepSlider extends React.Component {
   }
 }
 
-export default StepSlider;
+export default NewSlider;

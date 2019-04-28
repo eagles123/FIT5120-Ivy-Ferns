@@ -3,12 +3,12 @@ import { Fade } from "react-reveal";
 
 export default function SecondRow() {
   return (
-    <div className="row">
+    <React.Fragment>
       <Fade right>
-        <div className="col s12 m6 offset-m3">
-          <h4>How we do it</h4>
+        <h4>How we do it?</h4>
+        <div>
           <br />
-          <div style={{ height: "50vh", width: "40vw", marginLeft: 30 }}>
+          <div style={{ height: "70vh", width: "60vw", margin: "0 auto" }}>
             <iframe
               src="https://www.youtube.com/embed/yvGlwNhHEXM"
               width="100%"
@@ -21,6 +21,6 @@ export default function SecondRow() {
           </div>
         </div>
       </Fade>
-    </div>
+    </React.Fragment>
   );
 }

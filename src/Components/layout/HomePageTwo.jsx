@@ -17,65 +17,72 @@ export default function HomePageTwo() {
             <source src={"breeze.mp4"} type="video/mp4" />
             Your browser does not support the video tag.
           </video> */}
-        <div
-          className="jarallax text parallax-3"
-          // data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
-          data-jarallax-video="mp4:./file.mp4"
-        >
-          <p style={{ marginBottom: "0px" }}>Planning to move to</p>
-          <p style={{ paddingTop: "0px", marginTop: "0px" }}>
-            Regional Victoria?
-          </p>
-          <Link to="/intro">
-            <Fab
-              variant="extended"
-              aria-label="Add"
-              color="primary"
-              style={{
-                height: "40px",
-                width: "150px"
-              }}
-            >
-              <span
+        <div className="col s12 m12">
+          <div
+            className="jarallax text parallax-3 col s12 m12"
+            // data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
+            data-jarallax-video="mp4:./file.mp4"
+          >
+            <p style={{ marginBottom: "0px" }}>Planning to move to</p>
+            <p style={{ paddingTop: "0px", marginTop: "0px" }}>
+              Regional Victoria?
+            </p>
+            <Link to="/intro">
+              <Fab
+                variant="extended"
+                aria-label="Add"
+                color="primary"
                 style={{
-                  fontSize: "15px",
-                  color: "white"
+                  height: "40px",
+                  width: "150px"
                 }}
               >
-                Get Started
-              </span>
-            </Fab>
-          </Link>
-        </div>
-        <h5 style={{ textAlign: "center" }}>Know More</h5>
-        <div
-          className="container"
-          style={{
-            position: "relative",
-            paddingTop: "10px",
-            paddingBottom: "30px",
-            width: "24px",
-            height: "24px",
-            cursor: "pointer"
-          }}
-          onClick={() => window.scrollTo(0, 600)}
-        >
-          <div className="chevron" />
-          <div className="chevron" />
-          <div className="chevron" />
-        </div>
+                <span
+                  style={{
+                    fontSize: "15px",
+                    color: "white"
+                  }}
+                >
+                  Get Started
+                </span>
+              </Fab>
+            </Link>
+          </div>
 
-        <FirstRow />
-        <div style={{ textAlign: "center", marginBottom: "40px" }} />
-        <div className="insertRow">
-          <InsertRow />
+          <h5 style={{ textAlign: "center" }}>Know More</h5>
+          <div
+            className="container"
+            style={{
+              position: "relative",
+              paddingTop: "10px",
+              paddingBottom: "30px",
+              width: "24px",
+              height: "24px",
+              cursor: "pointer"
+            }}
+            onClick={() => window.scrollTo(0, 600)}
+          >
+            <div className="chevron" />
+            <div className="chevron" />
+            <div className="chevron" />
+          </div>
+
+          <div style={{ textAlign: "center", marginBottom: "40px" }} />
+          <FirstRow />
+          <div className="insertRow">
+            <InsertRow />
+          </div>
+          <div className="secondRow">
+            <SecondRow />
+            <i
+              className="fas fa-angle-double-up fa-4x"
+              onClick={() => window.scrollTo(0, 0)}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
         </div>
-        <div className="secondRow">
-          <SecondRow />
-        </div>
+        <PageFooter />
       </div>
-
-      <PageFooter />
     </React.Fragment>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { Switch, Route, __RouterContext, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Recommender from "./Components/layout/Recommender";
 import DataDashBoard from "./Components/layout/DataDashBoard";

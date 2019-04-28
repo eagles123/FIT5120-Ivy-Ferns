@@ -98,7 +98,6 @@ export default function MyMap({ data }) {
           url: item.url
         });
     });
-    console.log(pri);
     return pri;
   }
 
@@ -121,7 +120,6 @@ export default function MyMap({ data }) {
       }
     })
       .then(function(response) {
-        console.log(response);
         obj = response;
       })
       .then(function() {
@@ -232,6 +230,7 @@ export default function MyMap({ data }) {
 
   //function to add marker
   function addMarker(coords, map, icon, name, beds, url) {
+    let infoWindow;
     let marker = new window.google.maps.Marker({
       position: coords,
       map: map,
@@ -240,30 +239,54 @@ export default function MyMap({ data }) {
     });
 
     if (beds) {
-      let infoWindow = new window.google.maps.InfoWindow({
+      infoWindow = new window.google.maps.InfoWindow({
         content: `<a href=${url} target=blank>${name} has approx ${beds} hospital beds</a>`
       });
       marker.addListener("click", function() {
         infoWindow.open(map, marker);
       });
     } else if (name) {
-      let infoWindow = new window.google.maps.InfoWindow({
+      infoWindow = new window.google.maps.InfoWindow({
         content: `<a href=${url} target=blank>${name}</a>`
       });
-      marker.addListener("click", function() {
-        infoWindow.open(map, marker);
-      });
     }
+    marker.addListener("click", function() {
+      infoWindow.open(map, marker);
+    });
+    marker.addListener("mouseover", function() {
+      this.setAnimation(window.google.maps.Animation.BOUNCE);
+    });
+
+    marker.addListener("mouseover", function() {
+      this.setAnimation(null);
+    });
+
     // return markers.push[marker];
   }
   // console.log(polygon.features[0].geometry.coordinates);
 
   return (
     <React.Fragment>
-      <Checkbox value="Hospital" checked={hosp} onClick={() => setHos(!hosp)} />
-      <span>Hospital</span>
-      <Checkbox checked={school} onClick={() => setSchool(!school)} />{" "}
-      <span>Schools</span>
+      {data.hosptials.length !== 0 || data.schools.length !== 0 ? (
+        <span>Show:</span>
+      ) : null}
+      {data.hosptials.length === 0 ? null : (
+        <React.Fragment>
+          <Checkbox
+            value="Hospital"
+            checked={hosp}
+            onClick={() => setHos(!hosp)}
+          />
+          <span>Hospital</span>
+        </React.Fragment>
+      )}
+      {data.schools.length === 0 ? null : (
+        <React.Fragment>
+          <Checkbox checked={school} onClick={() => setSchool(!school)} />
+          <span>Schools</span>
+        </React.Fragment>
+      )}
+
       <div style={{ height: "85vh", width: "100%", fontSize: "10px" }}>
         <div className="map" id="map" />
         <div>
@@ -280,6 +303,7 @@ export default function MyMap({ data }) {
             href="http://creativecommons.org/licenses/by/3.0/"
             title="Creative Commons BY 3.0"
             target="_blank"
+            rel="noopener noreferrer"
           >
             CC 3.0 BY
           </a>
@@ -301,6 +325,7 @@ export default function MyMap({ data }) {
             href="http://creativecommons.org/licenses/by/3.0/"
             title="Creative Commons BY 3.0"
             target="_blank"
+            rel="noopener noreferrer"
           >
             CC 3.0 BY
           </a>

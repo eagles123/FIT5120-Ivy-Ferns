@@ -143,7 +143,7 @@ const Recommender = props => {
     { label: "Education", chose: choice.educationField, action: choseEdu },
     { label: "Property", chose: choice.propertyField, action: choseProp }
   ];
-
+  console.log(scoreState);
   return (
     <React.Fragment>
       <div className="recpage">

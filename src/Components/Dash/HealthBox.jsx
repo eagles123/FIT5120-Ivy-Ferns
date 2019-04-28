@@ -4,7 +4,7 @@ import { AniUl, DashItem } from "./../common/AniComponent";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 
-export default function HealthBox({ data }) {
+export default function HealthBox({ data, width, height }) {
   const [isOpen, setOpen] = useState(false);
   const { hospital, gps, beds } = data;
   function handleOpen() {
@@ -18,8 +18,8 @@ export default function HealthBox({ data }) {
   return (
     <div
       style={{
-        width: "95%",
-        height: "14vh",
+        width: width,
+        height: height,
         background: "#71AEE5",
         backgroundSize: "cover",
         backgroundPosition: "center center",

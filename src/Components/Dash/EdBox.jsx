@@ -4,7 +4,7 @@ import { AniUl, DashItem } from "./../common/AniComponent";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 
-export default function EdBox({ data }) {
+export default function EdBox({ data, width, height }) {
   const [isOpen, setOpen] = useState(false);
   const { pre_school, primary_school, secondary_school } = data;
 
@@ -18,8 +18,8 @@ export default function EdBox({ data }) {
   return (
     <div
       style={{
-        width: "95%",
-        height: "14vh",
+        width: width,
+        height: height,
         background: "#8CE1EC",
         backgroundSize: "cover",
         backgroundPosition: "center center",

@@ -1,13 +1,13 @@
 import React from "react";
 import CountUp from "react-countup";
 
-export default function PropBox({ data }) {
+export default function PropBox({ data, width, height }) {
   let price = data.price;
   return (
     <div
       style={{
-        width: "95%",
-        height: "14vh",
+        width: width,
+        height: height,
         background: "#8BD9B6",
         backgroundSize: "cover",
         backgroundPosition: "center center",

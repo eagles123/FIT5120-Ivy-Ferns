@@ -2,7 +2,6 @@ import React from "react";
 import ImageCard from "./ImageCard";
 
 export default function InsertRow() {
-  function handlepeople() {}
   return (
     <div className="sssection ">
       <div className="insertRow">

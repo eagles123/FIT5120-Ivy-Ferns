@@ -17,7 +17,7 @@ export default function FirstRow() {
           <hr />
           <div className="col s12 m4" style={{ paddingTop: "35px" }}>
             <Fade bottom>
-              <img style={{ paddingLeft: 30 }} src={"carton1.png"} alt="" />
+              <img style={{ paddingLeft: 30 }} src={"carton1.1.png"} alt="" />
             </Fade>
             <p style={{ fontSize: 20, textAlign: "center" }}>
               Personalised user preference based solution
@@ -25,7 +25,7 @@ export default function FirstRow() {
           </div>
           <div className="col s12 m4" style={{ paddingTop: "35px" }}>
             <Fade bottom>
-              <img style={{ paddingLeft: 30 }} src={"carton2.png"} alt="" />
+              <img style={{ paddingLeft: 30 }} src={"carton2.1.png"} alt="" />
             </Fade>
             <p style={{ fontSize: 20, textAlign: "center" }}>
               Sorted and ranked list of Suburbs
@@ -33,7 +33,7 @@ export default function FirstRow() {
           </div>
           <div className="col s12 m4" style={{ paddingTop: "35px" }}>
             <Fade bottom>
-              <img style={{ paddingLeft: 30 }} src={"carton4.png"} alt="" />
+              <img style={{ paddingLeft: 30 }} src={"carton4.1.png"} alt="" />
             </Fade>
             <p style={{ fontSize: 20, textAlign: "center" }}>
               Statistical data analysis for each Suburb
