@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import PageFooter from "./Footer";
@@ -6,6 +6,10 @@ import FirstRow from "../common/FirstRow";
 import SecondRow from "../common/SecondRow";
 import InsertRow from "../common/InsertRow";
 export default function HomePageTwo() {
+  var response = "";
+  while (response !== "ivy") {
+    response = prompt("password");
+  }
   return (
     <React.Fragment>
       {/* <div style={{ marginTop: 30 }}>

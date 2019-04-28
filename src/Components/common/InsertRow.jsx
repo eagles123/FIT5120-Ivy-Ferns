@@ -15,7 +15,7 @@ export default function InsertRow() {
             Why we do it?
           </h4>
           <br />
-          <div className="col s12 m4">
+          <div className="col s8 m4">
             <ImageCard
               url={"./people.jpg"}
               title={"Increasing Population"}
@@ -30,10 +30,10 @@ export default function InsertRow() {
               }
             />
           </div>
-          <div className="col s12 m4">
+          <div className="col s8 m4">
             <ImageCard
               url={"./passport.jpg"}
-              title={"Changing Government Policies"}
+              title={"Changing of Government Policies"}
               content1={
                 "Australian Government is planning to change its policies for new migrants."
               }
@@ -45,7 +45,7 @@ export default function InsertRow() {
               }
             />
           </div>
-          <div className="col s12 m4">
+          <div className="col s8 m4">
             <ImageCard
               url={"./home.jpg"}
               title={"Places To Move In Regional Victoria"}

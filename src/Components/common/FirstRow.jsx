@@ -9,7 +9,8 @@ export default function FirstRow() {
           <h4
             style={{
               color: "black",
-              fontFamily: "Merriweather"
+              fontFamily: "Merriweather",
+              paddingTop: "5px"
             }}
           >
             What we do?

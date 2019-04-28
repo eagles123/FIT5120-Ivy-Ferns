@@ -40,13 +40,13 @@ function DataDashBoard(props) {
                   <HealthBox
                     data={props.data.suburb.health}
                     width={"100%"}
-                    height={"16vh"}
+                    height={"17vh"}
                   />
                 ) : (
                   <HealthBox
                     data={props.data.suburb.health}
-                    width={"90%"}
-                    height={"12vh"}
+                    width={"95%"}
+                    height={"14vh"}
                   />
                 )}
               </div>
@@ -55,13 +55,13 @@ function DataDashBoard(props) {
                   <EdBox
                     data={props.data.suburb.education}
                     width={"100%"}
-                    height={"16vh"}
+                    height={"17vh"}
                   />
                 ) : (
                   <EdBox
                     data={props.data.suburb.education}
-                    width={"90%"}
-                    height={"12vh"}
+                    width={"95%"}
+                    height={"14vh"}
                   />
                 )}
               </div>
@@ -75,8 +75,8 @@ function DataDashBoard(props) {
                 ) : (
                   <PropBox
                     data={props.data.suburb.property}
-                    width={"90%"}
-                    height={"12vh"}
+                    width={"95%"}
+                    height={"14vh"}
                   />
                 )}
               </div>

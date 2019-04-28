@@ -138,8 +138,36 @@ export default function MyMap({ data }) {
         lat: parseFloat(obj.data[0].lat),
         lng: parseFloat(obj.data[0].lon)
       },
-      zoom: 12
+      zoom: 13
     });
+
+    var icons = {
+      PreSchool: {
+        name: "Pre-School",
+        icon: preSchool
+      },
+      Primary: {
+        name: "Primary School",
+        icon: primary
+      },
+      Secondary: {
+        name: "Secondary School",
+        icon: secondary
+      }
+    };
+    if (data.schools.length !== 0) {
+      var legend = document.getElementById("legend");
+      for (var key in icons) {
+        var type = icons[key];
+        var name = type.name;
+        var icon = type.icon;
+        var div = document.createElement("div");
+        div.innerHTML = '<img src="' + icon + '"> ' + name;
+        legend.appendChild(div);
+      }
+
+      map.controls[window.google.maps.ControlPosition.RIGHT_TOP].push(legend);
+    }
 
     // add hospital marker
     if (hosp)
@@ -289,6 +317,9 @@ export default function MyMap({ data }) {
 
       <div style={{ height: "85vh", width: "100%", fontSize: "10px" }}>
         <div className="map" id="map" />
+        <div id="legend" style={{ backgroundColor: "white", opacity: "0.8" }}>
+          <p>Icon Legend</p>
+        </div>
         <div>
           Icons made by{" "}
           <a href="https://www.freepik.com/" title="Freepik">

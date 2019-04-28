@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 
 const styles = {
   card: {
-    width: 340,
+    width: 330,
     height: 400,
     marginLeft: 20
   },
@@ -29,7 +29,6 @@ function ImgMediaCard(props) {
         <a href={website} target="_blank" rel="noopener noreferrer">
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
             className={classes.media}
             height="140"
             image={url}
@@ -49,7 +48,13 @@ function ImgMediaCard(props) {
       </CardActionArea>
       <CardActions>
         <a href={website} target="_blank" rel="noopener noreferrer">
-          <div style={{ marginLeft: "12vw" }}>
+          <div
+            style={{
+              marginLeft: "11vw",
+              marginTop: "5px",
+              position: "absolute"
+            }}
+          >
             <Button
               size="small"
               color="primary"
