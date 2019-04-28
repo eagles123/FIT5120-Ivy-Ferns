@@ -36,7 +36,10 @@ export default function HealthBox({ data, width, height }) {
           </div>
           <div className="col s8 m8 offset-m1">
             <h6>Health Care</h6>
-            <Button style={{ backgroundColor: "#c8e6c9" }} onClick={handleOpen}>
+            <Button
+              style={{ backgroundColor: "#c8e6c9", marginTop: "1px" }}
+              onClick={handleOpen}
+            >
               Learn More
             </Button>
             <Rodal

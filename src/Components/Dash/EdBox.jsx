@@ -36,7 +36,10 @@ export default function EdBox({ data, width, height }) {
           </div>
           <div className="col s8 m8 offset-m1">
             <h6>Education</h6>
-            <Button style={{ backgroundColor: "#dcedc8" }} onClick={handleOpen}>
+            <Button
+              style={{ backgroundColor: "#dcedc8", marginTop: "1px" }}
+              onClick={handleOpen}
+            >
               Learn More
             </Button>
             <Rodal

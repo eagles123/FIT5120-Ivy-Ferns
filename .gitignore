@@ -12,6 +12,7 @@
 # production
 /build
 .yaml
+.env.development
 
 # misc
 .DS_Store
