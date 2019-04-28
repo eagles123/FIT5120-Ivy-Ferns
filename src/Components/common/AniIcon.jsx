@@ -14,8 +14,8 @@ export default function AniIcon({ animate, submit, icon, x1, y1, x2, y2 }) {
     transform: scale(1.3);
   }
 
-  40% {
-    opacity: 0.9;
+  50% {
+    opacity: 0.7;
     transform: translate3d(${x1}, ${y1}, 0);
   }
 

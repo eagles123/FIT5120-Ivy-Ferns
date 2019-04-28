@@ -159,11 +159,11 @@ export default function Intro(props) {
                   />
                 </h6>
                 <MyDialog
-                  header={"Educatioin"}
+                  header={"Education"}
                   state={edialog}
                   handleClose={handleEclose}
                   content={
-                    "Educational Institutions include information about pre-primary schools, primary schools and secondary schools. Also, the ICSEA score for each of the schools, number of enrolment and the teacher to student staff ratio is also included."
+                    "Educational Institutions include information about pre-primary schools, primary schools and secondary schools. Also, the ICSEA score for each of the schools, VCE study Score and number of enrolment."
                   }
                 />
                 <RadioBut text={"EDUCATIONFIELD"} />

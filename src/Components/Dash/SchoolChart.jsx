@@ -255,13 +255,16 @@ export default class SchoolChart extends React.Component {
             >
               ICSEA Score
             </MenuItem>
-            <MenuItem
-              value={
-                "VCE - Victorian Certificate of Education (VCE) Study Score"
-              }
-            >
-              VCE Score
-            </MenuItem>
+            {this.state.choice === "Secondary" ? (
+              <MenuItem
+                value={
+                  "VCE - Victorian Certificate of Education (VCE) Study Score"
+                }
+              >
+                VCE Score
+              </MenuItem>
+            ) : null}
+
             <MenuItem value={"Enrollment"}>Enrollment</MenuItem>
           </Select>
         </FormControl>

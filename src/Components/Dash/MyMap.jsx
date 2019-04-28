@@ -7,9 +7,14 @@ import Axios from "axios";
 export default function MyMap({ data }) {
   const [hosp, setHos] = useState(true);
   const [school, setSchool] = useState(true);
+  const [hospitalMarker, setHospital] = useState([]);
+  const [schMarker, setScMarker] = useState([]);
   const city = data.city;
   const suburbName = data.suburbName;
   let obj = {};
+  let legend;
+  let hosMarkers = [];
+  let schoolMarkers = [];
   const corss = require("../../assets/cross.png");
   const primary = require("../../assets/primary.png");
   const preSchool = require("../../assets/pre.png");
@@ -128,7 +133,7 @@ export default function MyMap({ data }) {
       .catch(function(error) {
         console.log(error);
       });
-  }, [hosp, school]);
+  }, []);
 
   const initMap = () => {
     let map = new window.google.maps.Map(document.getElementById("map"), {
@@ -141,54 +146,32 @@ export default function MyMap({ data }) {
       zoom: 13
     });
 
-    var icons = {
-      PreSchool: {
-        name: "Pre-School",
-        icon: preSchool
-      },
-      Primary: {
-        name: "Primary School",
-        icon: primary
-      },
-      Secondary: {
-        name: "Secondary School",
-        icon: secondary
-      }
-    };
-    if (data.schools.length !== 0) {
-      var legend = document.getElementById("legend");
-      for (var key in icons) {
-        var type = icons[key];
-        var name = type.name;
-        var icon = type.icon;
-        var div = document.createElement("div");
-        div.innerHTML = '<img src="' + icon + '"> ' + name;
-        legend.appendChild(div);
-      }
-
-      map.controls[window.google.maps.ControlPosition.RIGHT_TOP].push(legend);
-    }
-
     // add hospital marker
-    if (hosp)
+    if (hosp) {
       parseHostpitalCoords().map(data => {
-        addMarker(data.coord, map, corss, data.name, data.beds, data.url);
+        addHosMarker(data.coord, map, corss, data.name, data.beds, data.url);
       });
+      setHospital(hosMarkers);
+    }
     if (school) {
       //add preschool marker
       paresePreCoords().map(data => {
-        addMarker(data.coord, map, preSchool, data.name, null, data.url);
+        addSchoolMarker(data.coord, map, preSchool, data.name, data.url);
       });
 
       paresePrimaryCoords().map(data => {
-        addMarker(data.coord, map, primary, data.name, null, data.url);
+        addSchoolMarker(data.coord, map, primary, data.name, data.url);
       });
 
       //add secondary school marker
       pareseSecondaryCoords().map(data => {
-        addMarker(data.coord, map, secondary, data.name, null, data.url);
+        addSchoolMarker(data.coord, map, secondary, data.name, data.url);
       });
+      setScMarker(schoolMarkers);
     }
+
+    setHosOnAll(map);
+    setSchoolOnAll(map);
 
     //polygon boundary
     let geo = {
@@ -220,7 +203,35 @@ export default function MyMap({ data }) {
       });
     }
 
-    // setMapOnAll(map);
+    var icons = {
+      PreSchool: {
+        name: "Pre-School",
+        icon: preSchool
+      },
+      Primary: {
+        name: "Primary School",
+        icon: primary
+      },
+      Secondary: {
+        name: "Secondary School",
+        icon: secondary
+      }
+    };
+    if (data.schools.length !== 0 && school) {
+      legend = document.getElementById("legend");
+      for (var key in icons) {
+        var type = icons[key];
+        var name = type.name;
+        var icon = type.icon;
+        var div = document.createElement("div");
+        div.innerHTML = '<img src="' + icon + '"> ' + name;
+        if (div !== null) {
+          legend.appendChild(div);
+        }
+      }
+
+      map.controls[window.google.maps.ControlPosition.RIGHT_TOP].push(legend);
+    }
 
     //circle radius
     // let cityCircle = new window.google.maps.Circle({
@@ -255,43 +266,95 @@ export default function MyMap({ data }) {
     );
     window.initMap = initMap;
   }
-
-  //function to add marker
-  function addMarker(coords, map, icon, name, beds, url) {
+  function addHosMarker(coords, map, icon, name, beds, url) {
     let infoWindow;
-    let marker = new window.google.maps.Marker({
+    let hosMarker = new window.google.maps.Marker({
       position: coords,
       map: map,
       icon: icon,
       animation: window.google.maps.Animation.DROP
     });
 
-    if (beds) {
-      infoWindow = new window.google.maps.InfoWindow({
-        content: `<a href=${url} target=blank>${name} has approx ${beds} hospital beds</a>`
-      });
-      marker.addListener("click", function() {
-        infoWindow.open(map, marker);
-      });
-    } else if (name) {
-      infoWindow = new window.google.maps.InfoWindow({
-        content: `<a href=${url} target=blank>${name}</a>`
-      });
-    }
-    marker.addListener("click", function() {
-      infoWindow.open(map, marker);
+    infoWindow = new window.google.maps.InfoWindow({
+      content: `<a href=${url} target=blank>${name} has approx ${beds} hospital beds</a>`
     });
-    marker.addListener("mouseover", function() {
+    infoWindow.setZIndex(100);
+    hosMarker.addListener("click", function() {
+      infoWindow.open(map, hosMarker);
+    });
+    hosMarker.addListener("mouseover", function() {
       this.setAnimation(window.google.maps.Animation.BOUNCE);
     });
 
-    marker.addListener("mouseover", function() {
+    hosMarker.addListener("mouseover", function() {
       this.setAnimation(null);
     });
-
-    // return markers.push[marker];
+    hosMarkers.push(hosMarker);
   }
-  // console.log(polygon.features[0].geometry.coordinates);
+
+  function addSchoolMarker(coords, map, icon, name, url) {
+    let infoWindow;
+    let schoolMarker = new window.google.maps.Marker({
+      position: coords,
+      map: map,
+      icon: icon,
+      animation: window.google.maps.Animation.DROP
+    });
+    infoWindow = new window.google.maps.InfoWindow({
+      content: `<a href=${url} target=blank>${name}</a>`
+    });
+    schoolMarker.addListener("click", function() {
+      infoWindow.open(map, schoolMarker);
+    });
+    schoolMarker.addListener("mouseover", function() {
+      this.setAnimation(window.google.maps.Animation.BOUNCE);
+    });
+
+    schoolMarker.addListener("mouseover", function() {
+      this.setAnimation(null);
+    });
+    schoolMarkers.push(schoolMarker);
+  }
+
+  function setHosOnAll(map) {
+    for (var i = 0; i < hospitalMarker.length; i++) {
+      hosMarkers[i].setMap(map);
+    }
+  }
+
+  function setSchoolOnAll(map) {
+    for (var i = 0; i < schoolMarkers.length; i++) {
+      schoolMarkers[i].setMap(map);
+    }
+  }
+
+  function handleHos() {
+    setHos(!hosp);
+  }
+
+  function handleSchool() {
+    setSchool(!school);
+  }
+
+  useEffect(() => {
+    for (var item in schMarker) {
+      if (school) {
+        schMarker[item].setVisible(true);
+      } else {
+        schMarker[item].setVisible(false);
+      }
+    }
+  }, [school]);
+
+  useEffect(() => {
+    for (var item in hospitalMarker) {
+      if (hosp) {
+        hospitalMarker[item].setVisible(true);
+      } else {
+        hospitalMarker[item].setVisible(false);
+      }
+    }
+  }, [hosp]);
 
   return (
     <React.Fragment>
@@ -300,17 +363,13 @@ export default function MyMap({ data }) {
       ) : null}
       {data.hosptials.length === 0 ? null : (
         <React.Fragment>
-          <Checkbox
-            value="Hospital"
-            checked={hosp}
-            onClick={() => setHos(!hosp)}
-          />
+          <Checkbox value="Hospital" checked={hosp} onClick={handleHos} />
           <span>Hospital</span>
         </React.Fragment>
       )}
       {data.schools.length === 0 ? null : (
         <React.Fragment>
-          <Checkbox checked={school} onClick={() => setSchool(!school)} />
+          <Checkbox checked={school} onClick={handleSchool} />
           <span>Schools</span>
         </React.Fragment>
       )}

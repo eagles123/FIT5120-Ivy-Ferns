@@ -51,11 +51,11 @@ const SubListResult = ({ suburb }) => {
             </div>
             <div className="col s4 m2 offset-m2">
               <Link to={`dashboard/${suburb._id}`} key={suburb._id}>
-                <Button id="detail" style={{ width: "15px" }}>
-                  <i
-                    className="fas fa-arrow-right fa-1x"
-                    style={{ color: "white" }}
-                  />
+                <Button
+                  id="detail"
+                  style={{ width: "15px", marginLeft: "30px" }}
+                >
+                  <i className="fas fa-angle-double-right fa-2x" />
                 </Button>
               </Link>
             </div>

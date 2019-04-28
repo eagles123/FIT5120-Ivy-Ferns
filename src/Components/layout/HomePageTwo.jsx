@@ -5,6 +5,9 @@ import PageFooter from "./Footer";
 import FirstRow from "../common/FirstRow";
 import SecondRow from "../common/SecondRow";
 import InsertRow from "../common/InsertRow";
+
+import { animateScroll as scroll } from "react-scroll";
+
 export default function HomePageTwo() {
   var response = "";
   while (response !== "ivy") {
@@ -52,8 +55,18 @@ export default function HomePageTwo() {
               </Fab>
             </Link>
           </div>
+          <h5
+            style={{ textAlign: "center", cursor: "pointer" }}
+            onClick={() => scroll.scrollTo(650)}
+          >
+            Know More{" "}
+            <i
+              class="fas fa-chevron-down fa-1x"
+              onClick={() => scroll.scrollTo(650)}
+              style={{ cursor: "pointer" }}
+            />
+          </h5>
 
-          <h5 style={{ textAlign: "center" }}>Know More</h5>
           <div
             className="container"
             style={{
@@ -61,16 +74,13 @@ export default function HomePageTwo() {
               paddingTop: "10px",
               paddingBottom: "30px",
               width: "24px",
-              height: "24px",
-              cursor: "pointer"
+              height: "24px"
             }}
-            onClick={() => window.scrollTo(0, 600)}
           >
+            {/* <div className="chevron" />
             <div className="chevron" />
-            <div className="chevron" />
-            <div className="chevron" />
+            <div className="chevron" /> */}
           </div>
-
           <div style={{ textAlign: "center", marginBottom: "40px" }} />
           <FirstRow />
           <div className="insertRow">
@@ -80,7 +90,7 @@ export default function HomePageTwo() {
             <SecondRow />
             <i
               className="fas fa-angle-double-up fa-4x"
-              onClick={() => window.scrollTo(0, 0)}
+              onClick={() => scroll.scrollToTop()}
               style={{ cursor: "pointer" }}
             />
           </div>

@@ -6,6 +6,8 @@ export default function SecondRow() {
     <React.Fragment>
       <Fade right>
         <h4>How we do it?</h4>
+        <br />
+        <hr style={{ width: "90%" }} />
         <div>
           <br />
           <div style={{ height: "70vh", width: "60vw", margin: "0 auto" }}>

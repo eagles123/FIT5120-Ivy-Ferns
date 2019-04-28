@@ -45,7 +45,7 @@ function SearchBox(props) {
       <SearchIcon />
       <InputBase
         className={classes.input}
-        placeholder="search suburbs"
+        placeholder="Search Suburbs"
         value={value}
         onChange={e => onChange(e.currentTarget.value)}
       />
