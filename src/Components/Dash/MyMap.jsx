@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { withApollo } from "react-apollo";
+import { getNeighbourThings } from "../../queries/queries";
 import {
   Checkbox,
   Switch,
@@ -14,47 +16,139 @@ import {
 import Axios from "axios";
 
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
-  const [hosp, setHos] = useState(true);
-  const [school, setSchool] = useState(true);
-  const [precSchool, setPre] = useState(true);
-  const [choice, setChoice] = useState([]);
+let map;
+let newinfoWindow;
+function MyMap({ data, neighbours, client }) {
+  const [choice, setChoice] = useState([
+    "Hospital",
+    "Pre-School",
+    "Primary School",
+    "Secondary School"
+  ]);
   //const for markers
-  const [hospitalMarker, setHospital] = useState([]);
-  const [schMarker, setScMarker] = useState([]);
+  const [hospitalMarker, setHospitals] = useState([]);
+  const [preMarkers, setPreMarkers] = useState([]);
+  const [priMarkers, setPriMarkers] = useState([]);
+  const [secMarkers, setSecMarkers] = useState([]);
+
   //const for neiboure markers
   const [neigHosMarker, setNeigHops] = useState([]);
   const [neigPre, setNeigPre] = useState([]);
   const [neighPri, setNeiPri] = useState([]);
   const [neigSec, setNeiSec] = useState([]);
-  const [neighbour, setNeighbour] = useState(false);
+  const [fetchNeighbour, setFetch] = useState(false);
   const city = data.city;
   const suburbName = data.suburbName;
-  let map;
+  //
+  const [neigHosp, setNeiHosp] = useState([]);
+  const [neigSchool, setNeiSchool] = useState([]);
+  const [count, setCount] = useState(0);
+
   let obj = {};
   let legend;
-  let hosMarkers = [];
-  let schoolMarkers = [];
+  let temphosMarkers = [];
+  let temppreMarkers = [];
+  let temppriMarkers = [];
+  let tempsecMarkers = [];
+
   const corss = require("../../assets/cross.png");
   const primary = require("../../assets/primary.png");
   const preSchool = require("../../assets/pre.png");
   const secondary = require("../../assets/secondary.png");
-
+  //load neibour data
+  useEffect(() => {
+    if (count <= 1) {
+      client
+        .query({
+          query: getNeighbourThings,
+          variables: { name: neighbours }
+        })
+        .then(({ data }) => {
+          console.log(data);
+          data.suburbsByName.map(item => {
+            setNeiHosp(h => h.concat(item.hosptials));
+            setNeiSchool(s => s.concat(item.schools));
+          });
+        });
+    }
+    setCount(count + 1);
+  }, [neighbours]);
   //hook to populate neigbour hospital and school data
   useEffect(() => {
-    setNeigHops(neigSchool);
-    // setNeigScho(neigHosp);
-  }, [neigHosp, neigSchool]);
+    if (fetchNeighbour) {
+      neigHosp.map(data => {
+        addMarker(
+          parseFloat(data.latitude),
+          parseFloat(data.longitude),
+          map,
+          corss,
+          data.hospital_name,
+          data.beds,
+          data.url,
+          newinfoWindow,
+          temphosMarkers
+        );
+      });
+      addSchoolMarkers(neigSchool, newinfoWindow);
 
-  // useEffect(() => {}, [neigHosMarker, neigPre, neighPri]);
+      setNeigHops(temphosMarkers);
+      setNeigPre(temppreMarkers);
+      setNeiPri(temppriMarkers);
+      setNeiSec(tempsecMarkers);
+      resetTemp();
+    } else {
+      for (let item in neigHosMarker) {
+        neigHosMarker[item].setMap(null);
+        setNeigHops([]);
+      }
+      for (let item in neigPre) {
+        neigPre[item].setMap(null);
+        setNeigPre([]);
+      }
+      for (let item in neighPri) {
+        neighPri[item].setMap(null);
+        setNeiPri([]);
+      }
+      for (let item in neigSec) {
+        neigSec[item].setMap(null);
+        setNeiSec([]);
+      }
+    }
+  }, [fetchNeighbour]);
 
-  // useEffect(() => {
-  //   setHosOnAll(hospitalMarker, map);
-  //   setSchoolOnAll(schMarker, map);
-  //   hosMarkers = [];
-  //   schoolMarkers = [];
-  // }, [hospitalMarker, schMarker]);
+  //hook to show and hide icons
+  useEffect(() => {
+    if (choice.includes("Hospital")) {
+      for (let item in hospitalMarker) hospitalMarker[item].setVisible(true);
+      for (let item in neigHosMarker) neigHosMarker[item].setVisible(true);
+    } else {
+      for (let item in hospitalMarker) hospitalMarker[item].setVisible(false);
+      for (let item in neigHosMarker) neigHosMarker[item].setVisible(false);
+    }
+    if (choice.includes("Pre-School")) {
+      for (let item in preMarkers) preMarkers[item].setVisible(true);
+      for (let item in neigPre) neigPre[item].setVisible(true);
+    } else {
+      for (let item in preMarkers) preMarkers[item].setVisible(false);
+      for (let item in neigPre) neigPre[item].setVisible(false);
+    }
+
+    if (choice.includes("Primary School")) {
+      for (let item in priMarkers) priMarkers[item].setVisible(true);
+      for (let item in neighPri) neighPri[item].setVisible(true);
+    } else {
+      for (let item in priMarkers) priMarkers[item].setVisible(false);
+      for (let item in neighPri) neighPri[item].setVisible(false);
+    }
+
+    if (choice.includes("Secondary School")) {
+      for (let item in secMarkers) secMarkers[item].setVisible(true);
+      for (let item in neigSec) neigSec[item].setVisible(true);
+    } else {
+      for (let item in secMarkers) secMarkers[item].setVisible(false);
+      for (let item in neigSec) neigSec[item].setVisible(false);
+    }
+  }, [choice]);
 
   //methods to parse prop data into required formate
 
@@ -90,10 +184,12 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
       },
       zoom: 13
     });
+
     //initialise a infoWindwo
     let infoWindow = new window.google.maps.InfoWindow();
-    // add hospital marker
+    newinfoWindow = infoWindow;
 
+    // add hospital marker
     data.hosptials.map(data => {
       addMarker(
         parseFloat(data.latitude),
@@ -103,51 +199,19 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
         data.hospital_name,
         data.beds,
         data.url,
-        infoWindow
+        infoWindow,
+        temphosMarkers
       );
     });
-    setHospital(hosMarkers);
 
     //add school marker
-    data.schools.map(data => {
-      if (data.school_type === "Preschool") {
-        addMarker(
-          parseFloat(data.latitude),
-          parseFloat(data.longitude),
-          map,
-          preSchool,
-          data.school_name,
-          null,
-          data.url,
-          infoWindow
-        );
-      } else if (data.school_type === "Primary") {
-        addMarker(
-          parseFloat(data.latitude),
-          parseFloat(data.longitude),
-          map,
-          primary,
-          data.school_name,
-          null,
-          data.url,
-          infoWindow
-        );
-      } else {
-        addMarker(
-          parseFloat(data.latitude),
-          parseFloat(data.longitude),
-          map,
-          secondary,
-          data.school_name,
-          null,
-          data.url,
-          infoWindow
-        );
-      }
-    });
+    addSchoolMarkers(data.schools, infoWindow);
 
-    setScMarker(schoolMarkers);
-
+    setHospitals(temphosMarkers);
+    setPreMarkers(temppreMarkers);
+    setPriMarkers(temppriMarkers);
+    setSecMarkers(tempsecMarkers);
+    resetTemp();
     //polygon boundary
     let geo = {
       type: "FeatureCollection",
@@ -179,6 +243,10 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
     }
 
     var icons = {
+      Hospital: {
+        name: "Hospital",
+        icon: corss
+      },
       PreSchool: {
         name: "Pre-School",
         icon: preSchool
@@ -192,7 +260,7 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
         icon: secondary
       }
     };
-    if (data.schools.length !== 0 && school) {
+    if (data.schools.length !== 0) {
       legend = document.getElementById("legend");
       for (var key in icons) {
         var type = icons[key];
@@ -208,6 +276,54 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
       map.controls[window.google.maps.ControlPosition.RIGHT_TOP].push(legend);
     }
   };
+
+  function resetTemp() {
+    temphosMarkers = [];
+    temppreMarkers = [];
+    temppriMarkers = [];
+    tempsecMarkers = [];
+  }
+  function addSchoolMarkers(schoolList, infoWindow) {
+    schoolList.map(data => {
+      if (data.school_type === "Preschool") {
+        addMarker(
+          parseFloat(data.latitude),
+          parseFloat(data.longitude),
+          map,
+          preSchool,
+          data.school_name,
+          null,
+          data.url,
+          infoWindow,
+          temppreMarkers
+        );
+      } else if (data.school_type === "Primary") {
+        addMarker(
+          parseFloat(data.latitude),
+          parseFloat(data.longitude),
+          map,
+          primary,
+          data.school_name,
+          null,
+          data.url,
+          infoWindow,
+          temppriMarkers
+        );
+      } else {
+        addMarker(
+          parseFloat(data.latitude),
+          parseFloat(data.longitude),
+          map,
+          secondary,
+          data.school_name,
+          null,
+          data.url,
+          infoWindow,
+          tempsecMarkers
+        );
+      }
+    });
+  }
 
   function loadScript(url) {
     let index = window.document.getElementsByTagName("script")[0];
@@ -227,7 +343,17 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
     window.initMap = initMap;
   }
 
-  function addMarker(lat, lng, map, icon, name, beds, url, infoWindow) {
+  function addMarker(
+    lat,
+    lng,
+    map,
+    icon,
+    name,
+    beds,
+    url,
+    infoWindow,
+    markers
+  ) {
     let Marker = new window.google.maps.Marker({
       position: { lat, lng },
       map: map,
@@ -254,8 +380,8 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
     Marker.addListener("mouseover", function() {
       this.setAnimation(null);
     });
-    if (beds !== null) hosMarkers.push(Marker);
-    else schoolMarkers.push(Marker);
+    Marker.setMap(map);
+    markers.push(Marker);
   }
 
   //function to set markers on
@@ -265,53 +391,22 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
   //   }
   // }
 
-  // function setSchoolOnAll(markers, map) {
+  // function setMarkersOnAll(markers, map) {
   //   for (var i = 0; i < schoolMarkers.length; i++) {
   //     markers[i].setMap(map);
   //   }
   // }
 
   //this block is to show and hide this suburb hospital and school
-  useEffect(() => {}, [choice]);
-
-  function handleHos() {
-    setHos(!hosp);
-  }
-
-  function handleSchool() {
-    setSchool(!school);
-  }
-
-  useEffect(() => {
-    for (var item in schMarker) {
-      if (school) {
-        schMarker[item].setVisible(true);
-      } else {
-        schMarker[item].setVisible(false);
-      }
-    }
-  }, [school, precSchool]);
-
-  useEffect(() => {
-    for (var item in hospitalMarker) {
-      if (hosp) {
-        hospitalMarker[item].setVisible(true);
-      } else {
-        hospitalMarker[item].setVisible(false);
-      }
-    }
-  }, [hosp]);
 
   function handleNeighbour() {
-    setNeighbour(!neighbour);
-    if (neighbour) {
-      handleClick();
-    }
+    setFetch(!fetchNeighbour);
   }
 
   function handleCheckChange(e) {
     setChoice(e.target.value);
   }
+
   return (
     <React.Fragment>
       <div className="row" style={{ marginBottom: "0px" }}>
@@ -371,7 +466,7 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
             <FormControlLabel
               control={
                 <Switch
-                  checked={neighbour}
+                  checked={fetchNeighbour}
                   onChange={handleNeighbour}
                   color="primary"
                 />
@@ -431,3 +526,5 @@ export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
     </React.Fragment>
   );
 }
+
+export default withApollo(MyMap);

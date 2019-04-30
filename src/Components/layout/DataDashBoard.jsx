@@ -15,10 +15,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 function DataDashBoard(props) {
   const { choice } = useContext(ChoiceContext);
   const [neighbours, setNeighbours] = useState([]);
-  const [count, setCount] = useState(0);
+
   //const to pass neighoubr hospitals and school to MyMap
-  const [neigHosp, setNeiHosp] = useState([]);
-  const [neigSchool, setNeiSchool] = useState([]);
+
   function handlePre() {
     props.history.push("/recommend");
   }
@@ -30,22 +29,7 @@ function DataDashBoard(props) {
   }, [props.data.loading]);
 
   //fetch neighbour hospitals and schools on click
-  function handleClick() {
-    if (count === 0) {
-      props.client
-        .query({
-          query: getNeighbourThings,
-          variables: { name: neighbours }
-        })
-        .then(({ data }) =>
-          data.suburbsByName.map(item => {
-            setNeiHosp(h => h.concat(item.hosptials));
-            setNeiSchool(s => s.concat(item.schools));
-          })
-        );
-      setCount(count + 1);
-    }
-  }
+
   return props.data.loading ? (
     <div className="container" style={{ margin: "0 auto" }}>
       <CircularProgress style={{ marginTop: "40vh", marginLeft: "30vw" }} />
@@ -114,12 +98,7 @@ function DataDashBoard(props) {
             </div>
             <div className="row">
               <div className="col s5 m5 board">
-                <MyMap
-                  data={props.data.suburb}
-                  neigHosp={neigHosp}
-                  neigSchool={neigSchool}
-                  handleClick={handleClick}
-                />
+                <MyMap data={props.data.suburb} neighbours={neighbours} />
               </div>
               <div className="col s6 m6 board">
                 <SchoolChart data={props.data.suburb.schools} />
@@ -131,17 +110,16 @@ function DataDashBoard(props) {
     </div>
   );
 }
-export default withApollo(
-  graphql(getSuburbByIdQuery, {
-    options: props => {
-      return {
-        variables: {
-          id: props.match.params.id
-        }
-      };
-    }
-  })(DataDashBoard)
-);
+export default graphql(getSuburbByIdQuery, {
+  options: props => {
+    return {
+      variables: {
+        id: props.match.params.id
+      }
+    };
+  }
+})(DataDashBoard);
+
 // export default compose(
 //   graphql(getSuburbByIdQuery, {
 //     options: props => {
