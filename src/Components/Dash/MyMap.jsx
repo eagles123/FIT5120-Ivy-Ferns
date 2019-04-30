@@ -18,6 +18,8 @@ import Axios from "axios";
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 let map;
 let newinfoWindow;
+let temphos = [];
+let tempschool = [];
 function MyMap({ data, neighbours, client }) {
   const [choice, setChoice] = useState([
     "Hospital",
@@ -64,16 +66,24 @@ function MyMap({ data, neighbours, client }) {
           variables: { name: neighbours }
         })
         .then(({ data }) => {
-          console.log(data);
           data.suburbsByName.map(item => {
+            // temphos = temphos.concat(item.hosptials);
+            // tempschool = ["fuck"];
+            // console.log(tempschool);
             setNeiHosp(h => h.concat(item.hosptials));
             setNeiSchool(s => s.concat(item.schools));
           });
         });
+
+      // setNeiHosp(temphos);
+      // setNeiSchool(tempschool);
+      // temphos = [];
+      // tempschool = [];
     }
     setCount(count + 1);
   }, [neighbours]);
   //hook to populate neigbour hospital and school data
+
   useEffect(() => {
     if (fetchNeighbour) {
       neigHosp.map(data => {
@@ -99,19 +109,15 @@ function MyMap({ data, neighbours, client }) {
     } else {
       for (let item in neigHosMarker) {
         neigHosMarker[item].setMap(null);
-        setNeigHops([]);
       }
       for (let item in neigPre) {
         neigPre[item].setMap(null);
-        setNeigPre([]);
       }
       for (let item in neighPri) {
         neighPri[item].setMap(null);
-        setNeiPri([]);
       }
       for (let item in neigSec) {
         neigSec[item].setMap(null);
-        setNeiSec([]);
       }
     }
   }, [fetchNeighbour]);
@@ -172,6 +178,8 @@ function MyMap({ data, neighbours, client }) {
       .catch(function(error) {
         console.log(error);
       });
+    setNeiHosp([]);
+    setNeiSchool([]);
   }, []);
 
   const initMap = () => {

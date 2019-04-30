@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { graphql, withApollo } from "react-apollo";
-import { getSuburbByIdQuery, getNeighbourThings } from "../../queries/queries";
+import { graphql } from "react-apollo";
+import { getSuburbByIdQuery } from "../../queries/queries";
 import DashList from "../Dash/DashList";
 import HealthBox from "./../Dash/HealthBox";
 import EdBox from "../Dash/EdBox";
