@@ -35,18 +35,14 @@ export default function Radiobut({ text }) {
   return (
     <div className="row">
       <div className="col s4 m4">
-        <Radio
-          checked={value === "yes"}
-          onClick={handleYes}
-          style={{ color: "#fafafa" }}
-        />
+        <Radio checked={value === "yes"} onClick={handleYes} color="primary" />
         <span>Yes</span>
       </div>
       <div className="col s4 m4">
         <Radio
           checked={value === "no" && temp === "1"}
           onClick={handleNo}
-          style={{ color: "#fafafa" }}
+          color="primary"
         />
         <span>No</span>
       </div>

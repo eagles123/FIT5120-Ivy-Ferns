@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { Checkbox } from "@material-ui/core";
+import {
+  Checkbox,
+  Switch,
+  FormGroup,
+  FormControlLabel,
+  FormControl,
+  InputLabel,
+  Select,
+  Input,
+  MenuItem,
+  ListItemText
+} from "@material-ui/core";
 import Axios from "axios";
 
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-export default function MyMap({ data }) {
+export default function MyMap({ data, neigHosp, neigSchool, handleClick }) {
   const [hosp, setHos] = useState(true);
   const [school, setSchool] = useState(true);
+  const [precSchool, setPre] = useState(true);
+  const [choice, setChoice] = useState([]);
+  //const for markers
   const [hospitalMarker, setHospital] = useState([]);
   const [schMarker, setScMarker] = useState([]);
+  //const for neiboure markers
+  const [neigHosMarker, setNeigHops] = useState([]);
+  const [neigPre, setNeigPre] = useState([]);
+  const [neighPri, setNeiPri] = useState([]);
+  const [neigSec, setNeiSec] = useState([]);
+  const [neighbour, setNeighbour] = useState(false);
   const city = data.city;
   const suburbName = data.suburbName;
+  let map;
   let obj = {};
   let legend;
   let hosMarkers = [];
@@ -20,100 +41,24 @@ export default function MyMap({ data }) {
   const preSchool = require("../../assets/pre.png");
   const secondary = require("../../assets/secondary.png");
 
-  // let geo = {
-  //   type: "FeatureCollection",
-  //   features: [
-  //     {
-  //       type: "Feature",
-  //       properties: {
-  //         letter: "G",
-  //         color: "blue",
-  //         rank: "7",
-  //         ascii: "71"
-  //       },
-  //       geometry: {
-  //         type: "Polygon",
-  //         coordinates: [[]]
-  //       }
-  //     }
-  //   ]
-  // };
+  //hook to populate neigbour hospital and school data
+  useEffect(() => {
+    setNeigHops(neigSchool);
+    // setNeigScho(neigHosp);
+  }, [neigHosp, neigSchool]);
 
-  //{ lat: -37.5702758, lng: 143.8370906 },
+  // useEffect(() => {}, [neigHosMarker, neigPre, neighPri]);
+
+  // useEffect(() => {
+  //   setHosOnAll(hospitalMarker, map);
+  //   setSchoolOnAll(schMarker, map);
+  //   hosMarkers = [];
+  //   schoolMarkers = [];
+  // }, [hospitalMarker, schMarker]);
+
   //methods to parse prop data into required formate
-  function parseHostpitalCoords() {
-    let tempCor = [];
-    data.hosptials.map(item =>
-      tempCor.push({
-        name: item.hospital_name,
-        beds: item.beds,
-        coord: {
-          lat: parseFloat(item.latitude),
-          lng: parseFloat(item.longitude)
-        },
-        url: item.url
-      })
-    );
-    return tempCor;
-  }
-
-  function paresePreCoords() {
-    let per = [];
-    data.schools.map(item => {
-      if (item.school_type === "Preschool")
-        return per.push({
-          name: item.school_name,
-          coord: {
-            lat: parseFloat(item.latitude),
-            lng: parseFloat(item.longitude)
-          },
-          url: item.url
-        });
-    });
-    return per;
-  }
-  function pareseSecondaryCoords() {
-    let pri = [];
-    data.schools.map(item => {
-      if (item.school_type === "Secondary")
-        // console.log(item.school_name);
-        return pri.push({
-          name: item.school_name,
-          coord: {
-            lat: parseFloat(item.latitude),
-            lng: parseFloat(item.longitude)
-          },
-          url: item.url
-        });
-    });
-    return pri;
-  }
-
-  function paresePrimaryCoords() {
-    let pri = [];
-    data.schools.map(item => {
-      if (item.school_type === "Primary")
-        // console.log(item.school_name);
-        return pri.push({
-          name: item.school_name,
-          coord: {
-            lat: parseFloat(item.latitude),
-            lng: parseFloat(item.longitude)
-          },
-          url: item.url
-        });
-    });
-    return pri;
-  }
 
   useEffect(() => {
-    //fetch data suburb corninate
-    // Axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
-    //   params: {
-    //     address: `${suburbName} ${city} VIC`,
-    //
-    //   }
-    // })
     //call from openstreetmap api
     Axios.get("https://nominatim.openstreetmap.org/search", {
       params: {
@@ -136,7 +81,7 @@ export default function MyMap({ data }) {
   }, []);
 
   const initMap = () => {
-    let map = new window.google.maps.Map(document.getElementById("map"), {
+    map = new window.google.maps.Map(document.getElementById("map"), {
       // lat: parseFloat(obj.data.results[0].geometry.location.lat),
       // lng: parseFloat(obj.data.results[0].geometry.location.lng)
       center: {
@@ -145,33 +90,63 @@ export default function MyMap({ data }) {
       },
       zoom: 13
     });
-
+    //initialise a infoWindwo
+    let infoWindow = new window.google.maps.InfoWindow();
     // add hospital marker
-    if (hosp) {
-      parseHostpitalCoords().map(data => {
-        addHosMarker(data.coord, map, corss, data.name, data.beds, data.url);
-      });
-      setHospital(hosMarkers);
-    }
-    if (school) {
-      //add preschool marker
-      paresePreCoords().map(data => {
-        addSchoolMarker(data.coord, map, preSchool, data.name, data.url);
-      });
 
-      paresePrimaryCoords().map(data => {
-        addSchoolMarker(data.coord, map, primary, data.name, data.url);
-      });
+    data.hosptials.map(data => {
+      addMarker(
+        parseFloat(data.latitude),
+        parseFloat(data.longitude),
+        map,
+        corss,
+        data.hospital_name,
+        data.beds,
+        data.url,
+        infoWindow
+      );
+    });
+    setHospital(hosMarkers);
 
-      //add secondary school marker
-      pareseSecondaryCoords().map(data => {
-        addSchoolMarker(data.coord, map, secondary, data.name, data.url);
-      });
-      setScMarker(schoolMarkers);
-    }
+    //add school marker
+    data.schools.map(data => {
+      if (data.school_type === "Preschool") {
+        addMarker(
+          parseFloat(data.latitude),
+          parseFloat(data.longitude),
+          map,
+          preSchool,
+          data.school_name,
+          null,
+          data.url,
+          infoWindow
+        );
+      } else if (data.school_type === "Primary") {
+        addMarker(
+          parseFloat(data.latitude),
+          parseFloat(data.longitude),
+          map,
+          primary,
+          data.school_name,
+          null,
+          data.url,
+          infoWindow
+        );
+      } else {
+        addMarker(
+          parseFloat(data.latitude),
+          parseFloat(data.longitude),
+          map,
+          secondary,
+          data.school_name,
+          null,
+          data.url,
+          infoWindow
+        );
+      }
+    });
 
-    setHosOnAll(map);
-    setSchoolOnAll(map);
+    setScMarker(schoolMarkers);
 
     //polygon boundary
     let geo = {
@@ -232,21 +207,6 @@ export default function MyMap({ data }) {
 
       map.controls[window.google.maps.ControlPosition.RIGHT_TOP].push(legend);
     }
-
-    //circle radius
-    // let cityCircle = new window.google.maps.Circle({
-    //   strokeColor: "#FF0000",
-    //   strokeOpacity: 0.8,
-    //   strokeWeight: 2,
-    //   fillColor: "#FF0000",
-    //   fillOpacity: 0.35,
-    //   map: map,
-    //   center: {
-    //     lat: parseFloat(obj.data[0].lat),
-    //     lng: parseFloat(obj.data[0].lon)
-    //   },
-    //   radius: 3000
-    // });
   };
 
   function loadScript(url) {
@@ -266,67 +226,53 @@ export default function MyMap({ data }) {
     );
     window.initMap = initMap;
   }
-  function addHosMarker(coords, map, icon, name, beds, url) {
-    let infoWindow;
-    let hosMarker = new window.google.maps.Marker({
-      position: coords,
+
+  function addMarker(lat, lng, map, icon, name, beds, url, infoWindow) {
+    let Marker = new window.google.maps.Marker({
+      position: { lat, lng },
       map: map,
       icon: icon,
       animation: window.google.maps.Animation.DROP
     });
-
-    infoWindow = new window.google.maps.InfoWindow({
-      content: `<a href=${url} target=blank>${name} has approx ${beds} hospital beds</a>`
-    });
-    infoWindow.setZIndex(100);
-    hosMarker.addListener("click", function() {
-      infoWindow.open(map, hosMarker);
-    });
-    hosMarker.addListener("mouseover", function() {
+    if (beds !== null) {
+      Marker.addListener("click", function() {
+        infoWindow.setContent(
+          `<a href=${url} target=blank>${name} has approx ${beds} hospital beds</a>`
+        );
+        infoWindow.open(map, Marker);
+      });
+    } else {
+      Marker.addListener("click", function() {
+        infoWindow.setContent(`<a href=${url} target=blank>${name}</a>`);
+        infoWindow.open(map, Marker);
+      });
+    }
+    Marker.addListener("mouseover", function() {
       this.setAnimation(window.google.maps.Animation.BOUNCE);
     });
 
-    hosMarker.addListener("mouseover", function() {
+    Marker.addListener("mouseover", function() {
       this.setAnimation(null);
     });
-    hosMarkers.push(hosMarker);
+    if (beds !== null) hosMarkers.push(Marker);
+    else schoolMarkers.push(Marker);
   }
 
-  function addSchoolMarker(coords, map, icon, name, url) {
-    let infoWindow;
-    let schoolMarker = new window.google.maps.Marker({
-      position: coords,
-      map: map,
-      icon: icon,
-      animation: window.google.maps.Animation.DROP
-    });
-    infoWindow = new window.google.maps.InfoWindow({
-      content: `<a href=${url} target=blank>${name}</a>`
-    });
-    schoolMarker.addListener("click", function() {
-      infoWindow.open(map, schoolMarker);
-    });
-    schoolMarker.addListener("mouseover", function() {
-      this.setAnimation(window.google.maps.Animation.BOUNCE);
-    });
+  //function to set markers on
+  // function setHosOnAll(markers, map) {
+  //   for (var i = 0; i < hospitalMarker.length; i++) {
+  //     markers[i].setMap(map);
+  //   }
+  // }
 
-    schoolMarker.addListener("mouseover", function() {
-      this.setAnimation(null);
-    });
-    schoolMarkers.push(schoolMarker);
-  }
+  // function setSchoolOnAll(markers, map) {
+  //   for (var i = 0; i < schoolMarkers.length; i++) {
+  //     markers[i].setMap(map);
+  //   }
+  // }
 
-  function setHosOnAll(map) {
-    for (var i = 0; i < hospitalMarker.length; i++) {
-      hosMarkers[i].setMap(map);
-    }
-  }
-
-  function setSchoolOnAll(map) {
-    for (var i = 0; i < schoolMarkers.length; i++) {
-      schoolMarkers[i].setMap(map);
-    }
-  }
+  //this block is to show and hide this suburb hospital and school
+  useEffect(() => {}, [choice]);
 
   function handleHos() {
     setHos(!hosp);
@@ -344,7 +290,7 @@ export default function MyMap({ data }) {
         schMarker[item].setVisible(false);
       }
     }
-  }, [school]);
+  }, [school, precSchool]);
 
   useEffect(() => {
     for (var item in hospitalMarker) {
@@ -356,24 +302,85 @@ export default function MyMap({ data }) {
     }
   }, [hosp]);
 
+  function handleNeighbour() {
+    setNeighbour(!neighbour);
+    if (neighbour) {
+      handleClick();
+    }
+  }
+
+  function handleCheckChange(e) {
+    setChoice(e.target.value);
+  }
   return (
     <React.Fragment>
-      {data.hosptials.length !== 0 || data.schools.length !== 0 ? (
-        <span>Show:</span>
-      ) : null}
-      {data.hosptials.length === 0 ? null : (
-        <React.Fragment>
-          <Checkbox value="Hospital" checked={hosp} onClick={handleHos} />
-          <span>Hospital</span>
-        </React.Fragment>
-      )}
-      {data.schools.length === 0 ? null : (
-        <React.Fragment>
-          <Checkbox checked={school} onClick={handleSchool} />
-          <span>Schools</span>
-        </React.Fragment>
-      )}
-
+      <div className="row" style={{ marginBottom: "0px" }}>
+        <div className="col s6 m6">
+          <FormControl style={{ minWidth: 120, maxWidth: 200 }}>
+            <InputLabel htmlFor="select-multiple-checkbox">Show:</InputLabel>
+            <Select
+              multiple
+              value={choice}
+              onChange={handleCheckChange}
+              input={<Input id="select-multiple-checkbox" />}
+              renderValue={selected => selected.join(", ")}
+            >
+              {[
+                "Hospital",
+                "Pre-School",
+                "Primary School",
+                "Secondary School"
+              ].map(name => (
+                <MenuItem key={name} value={name}>
+                  <Checkbox
+                    checked={choice.indexOf(name) > -1}
+                    color="primary"
+                  />
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          {/* {data.hosptials.length !== 0 || data.schools.length !== 0 ? (
+            <span>Show:</span>
+          ) : null}
+          {data.hosptials.length === 0 ? null : (
+            <React.Fragment>
+              <Checkbox
+                value="Hospital"
+                checked={hosp}
+                onClick={handleHos}
+                color="primary"
+              />
+              <span>Hospital</span>
+            </React.Fragment>
+          )}
+          {data.schools.length === 0 ? null : (
+            <React.Fragment>
+              <Checkbox
+                checked={school}
+                onClick={handleSchool}
+                color="primary"
+              />
+              <span>Schools</span>
+            </React.Fragment>
+          )} */}
+        </div>
+        <div className="col s5 m5 offset-m1">
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={neighbour}
+                  onChange={handleNeighbour}
+                  color="primary"
+                />
+              }
+              label="Neighbour Hospitals & Schools"
+            />
+          </FormGroup>
+        </div>
+      </div>
       <div style={{ height: "85vh", width: "100%", fontSize: "10px" }}>
         <div className="map" id="map" />
         <div id="legend" style={{ backgroundColor: "white", opacity: "0.8" }}>

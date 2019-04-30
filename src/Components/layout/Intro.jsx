@@ -88,7 +88,7 @@ export default function Intro(props) {
               <div className="col s12 m5 offset-m1" style={{ paddingTop: 10 }}>
                 <img className="responsive" src={"/carton3.1.png"} alt="" />
               </div>
-              <div className="col s2 m1  introicon" style={{ color: "white" }}>
+              <div className="col s2 m1  introicon">
                 <AniIcon
                   animate={choice.healthField}
                   submit={submit}

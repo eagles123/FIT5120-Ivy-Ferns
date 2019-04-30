@@ -15,7 +15,6 @@ export default function FirstRow() {
           >
             What we do?
           </h4>
-          <hr />
           <div className="col s12 m4" style={{ paddingTop: "35px" }}>
             <Fade bottom>
               <img style={{ paddingLeft: 30 }} src={"carton1.1.png"} alt="" />

@@ -9,10 +9,10 @@ import InsertRow from "../common/InsertRow";
 import { animateScroll as scroll } from "react-scroll";
 
 export default function HomePageTwo() {
-  var response = "";
-  while (response !== "ivy") {
-    response = prompt("password");
-  }
+  // var response = "";
+  // while (response !== "ivy") {
+  //   response = prompt("password");
+  // }
   return (
     <React.Fragment>
       {/* <div style={{ marginTop: 30 }}>
@@ -54,20 +54,24 @@ export default function HomePageTwo() {
                 </span>
               </Fab>
             </Link>
-          </div>
-          <h5
-            style={{ textAlign: "center", cursor: "pointer" }}
-            onClick={() => scroll.scrollTo(650)}
-          >
-            Know More{" "}
-            <i
-              class="fas fa-chevron-down fa-1x"
+            <h5
+              style={{
+                textAlign: "center",
+                cursor: "pointer",
+                marginTop: "6vh"
+              }}
               onClick={() => scroll.scrollTo(650)}
-              style={{ cursor: "pointer" }}
-            />
-          </h5>
+            >
+              Know More{" "}
+              <i
+                className="fas fa-chevron-down fa-1x"
+                onClick={() => scroll.scrollTo(650)}
+                style={{ cursor: "pointer" }}
+              />
+            </h5>
+          </div>
 
-          <div
+          {/* <div
             className="container"
             style={{
               position: "relative",
@@ -77,10 +81,10 @@ export default function HomePageTwo() {
               height: "24px"
             }}
           >
-            {/* <div className="chevron" />
             <div className="chevron" />
-            <div className="chevron" /> */}
-          </div>
+            <div className="chevron" />
+            <div className="chevron" />
+          </div> */}
           <div style={{ textAlign: "center", marginBottom: "40px" }} />
           <FirstRow />
           <div className="insertRow">

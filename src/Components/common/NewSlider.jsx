@@ -4,7 +4,7 @@ import "rc-slider/assets/index.css";
 
 class NewSlider extends React.Component {
   state = {
-    value: 1
+    value: 2
   };
 
   // handleChange = (event, value) => {
@@ -36,8 +36,9 @@ class NewSlider extends React.Component {
             dotStyle={{ borderColor: "orange" }}
             activeDotStyle={{ borderColor: "yellow" }}
             value={this.state.value}
-            min={1}
+            min={2}
             max={10}
+            step={2}
             onChange={this.handleChange}
             trackStyle={{ backgroundColor: "#00acc1", height: 5 }}
             handleStyle={{
