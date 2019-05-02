@@ -16,7 +16,10 @@ body {
   background-size: 100%;
   background-position: center;
   /* background-image: radial-gradient(#417e72, #2d6161); */
-  background-color: white;
+  /* background-color: #fafafa; */
+  background: url("/home5.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   min-height: 100%;
   min-width: 100%;
   position: absolute;
@@ -34,5 +37,5 @@ input[type="text"]:not(.browser-default):focus:not([readonly])
 }
 
 input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
-  color: #d4e157 !important;
+  color: #9ccc65 !important;
 }

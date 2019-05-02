@@ -29,22 +29,25 @@ class Pagination extends Component {
             <li className="page-item">
               {currentPage === 1 ? (
                 <i
-                  className="fas fa-fast-backward"
+                  className="fas fa-angle-double-left fa-3x"
                   style={{ color: "grey", cursor: "default" }}
                 />
               ) : (
-                <i className="fas fa-fast-backward" onClick={() => toPage(1)} />
+                <i
+                  className="fas fa-angle-double-left fa-3x"
+                  onClick={() => toPage(1)}
+                />
               )}
             </li>
             <li className="page-item">
               {currentPage === 1 ? (
                 <i
-                  className="fas fa-step-backward"
+                  className="fas fa-angle-left fa-3x"
                   style={{ color: "grey", cursor: "default" }}
                 />
               ) : (
                 <i
-                  className="fas fa-step-backward"
+                  className="fas fa-angle-left fa-3x"
                   onClick={() => onPreNext(true, pages)}
                 />
               )}
@@ -64,12 +67,12 @@ class Pagination extends Component {
             <li className="page-item">
               {currentPage === pagesCount ? (
                 <i
-                  className="fas fa-step-forward"
+                  className="fas fa-angle-right"
                   style={{ color: "grey", cursor: "default" }}
                 />
               ) : (
                 <i
-                  className="fas fa-step-forward"
+                  className="fas fa-angle-right"
                   onClick={() => onPreNext(false, pages)}
                 />
               )}
@@ -77,12 +80,12 @@ class Pagination extends Component {
             <li className="page-item">
               {currentPage === pagesCount ? (
                 <i
-                  className="fas fa-fast-forward"
+                  className="fas fa-angle-double-right"
                   style={{ color: "grey", cursor: "default" }}
                 />
               ) : (
                 <i
-                  className="fas fa-fast-forward"
+                  className="fas fa-angle-double-right"
                   onClick={() => toPage(pagesCount)}
                 />
               )}

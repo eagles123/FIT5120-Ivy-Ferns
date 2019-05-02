@@ -4,7 +4,7 @@ import NavBarLinks from "./NavBarLinks";
 const NavBar = () => {
   //change color here
   return (
-    <div>
+    <div className="navbar-fixed">
       {/* <nav style={{ backgroundColor: "#2d6161" }}> */}
       <nav className="navbar" style={{ backgroundColor: "white" }}>
         <div className="container row">

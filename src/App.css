@@ -23,11 +23,21 @@ h4 {
   width: 80%;
 }
 
+.sssection {
+  width: 150%;
+  margin-top: 5vw;
+}
+
+#insertRow {
+  margin: 0 auto;
+  margin-left: 3vw;
+}
+
 .insertRow {
   margin: 0 auto;
   margin-top: 40px;
   text-align: center;
-  width: 90%;
+  width: 100%;
 }
 
 #firstRow {
@@ -42,13 +52,17 @@ h4 {
   width: 100%;
   height: 100%;
   padding-top: 10px;
-  background-color: #f5f5f5;
+  background-color: #fafafa;
 }
 
 hr {
   border: none;
   height: 2px;
   background-color: black;
+}
+
+link:hover {
+  background-color: #000;
 }
 
 #detail {
@@ -58,7 +72,13 @@ hr {
     #a6c1ee 51%,
     #fbc2eb 100%
   ); */
-  background-color: #d4e157;
+  background-color: #9ccc65;
+}
+
+footer {
+  height: 100%;
+  background-color: #fafafa;
+  opacity: 0.7;
 }
 
 .cpage {
@@ -73,7 +93,7 @@ hr {
   background-size: 100%;
   background-position: center;
   /* background-image: radial-gradient(#417e72, #2d6161); */
-  background: url("/bg1.jpg") no-repeat;
+  background: url("/home5.jpg") no-repeat;
   min-height: 91%;
   min-width: 100%;
   position: absolute;
@@ -82,11 +102,33 @@ hr {
   background-size: cover;
 }
 
-.dashpage {
+.dashboard {
   margin: 0;
   padding: 0;
-  background: url("/dashbg.jpg") no-repeat;
-  min-height: 91%;
+  background: url("/bg.jpg") no-repeat;
+  min-height: 100%;
+  min-width: 100%;
+
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.home {
+  margin: 0;
+  padding: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif; */
+  /* font-family: "Merriweather", serif;
+    font-family: "Playfair Display", serif; */
+  font-family: "Merriweather";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-size: 100%;
+  background-position: center;
+  /* background-image: radial-gradient(#417e72, #2d6161); */
+  background: url("/bg.jpg") no-repeat;
+  min-height: 92%;
   min-width: 100%;
   position: absolute;
   z-index: -0;
@@ -202,7 +244,7 @@ p {
 
 .jarallax {
   color: white;
-  height: 500px;
+  height: 600px;
   margin: 0 auto;
   width: 95%;
   text-align: center;
@@ -313,10 +355,6 @@ p {
 .responsive {
   max-width: 100%;
   height: auto;
-}
-
-.dashboard {
-  margin-left: 40px;
 }
 
 .dashitem {

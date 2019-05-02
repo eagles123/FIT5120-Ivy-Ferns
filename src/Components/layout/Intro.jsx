@@ -75,11 +75,12 @@ export default function Intro(props) {
           className="container"
           style={{
             width: "70%",
+            // background: url("/dashbg.jpg"),
             backgroundColor: "white",
-            // backgroundColor: "white",
             opacity: 0.9,
             height: "100%",
-            margin: "45px auto"
+            margin: "45px auto",
+            boxShadow: "0 10px 12px 7px rgba(128, 128, 128, .3)"
           }}
         >
           <LightSpeed left duration={1000}>

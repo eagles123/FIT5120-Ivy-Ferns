@@ -4,10 +4,9 @@ import { Fade } from "react-reveal";
 export default function SecondRow() {
   return (
     <React.Fragment>
+      <h4>How We Help You?</h4>
+      <br />
       <Fade right>
-        <h4>How we do it?</h4>
-        <br />
-        <hr style={{ width: "90%" }} />
         <div>
           <br />
           <div style={{ height: "70vh", width: "60vw", margin: "0 auto" }}>

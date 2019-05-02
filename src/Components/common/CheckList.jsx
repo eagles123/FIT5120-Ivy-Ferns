@@ -37,7 +37,8 @@ export default function CheckList(props) {
       style={{
         width: "100%",
         maxWidth: "280px",
-        backgroundColor: "#d4e157",
+        // backgroundColor: "#d4e157",
+        backgroundColor: "#9ccc65",
         borderRadius: "10px"
       }}
     >
@@ -64,7 +65,7 @@ export default function CheckList(props) {
               button
               onClick={choice.action}
             >
-              <Checkbox checked={choice.chose} />
+              <Checkbox color="primary" checked={choice.chose} />
               <ListItemText
                 //disableTypography to make text white
                 disableTypography

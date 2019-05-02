@@ -9,15 +9,18 @@ import CheckList from "./../common/CheckList";
 import Pagination from "../common/Pagination";
 import SearchBox from "./../common/SearchBox";
 import StyledButton from "./../common/StyleButton";
+import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
 import { graphql } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getSuburbsQuery } from "../../queries/queries";
 
 const Recommender = props => {
+  document.title = "Recommend";
   const [scoreState, stateDispatch] = useReducer(recReducer, {
-    healthScore: 0,
-    educationScore: 0,
-    propertyScore: 0,
+    healthScore: 1,
+    educationScore: 1,
+    propertyScore: 1,
     jobScore: 0
   });
 
@@ -63,11 +66,7 @@ const Recommender = props => {
     }
   }, [suburbs.length, props.data.loading]);
 
-  //state and reducer to maniplate the user input slider value
-
-  //count number for pagenated data pass to Pagination component
-
-  //cacluate the distance when the score state is changed
+  //hook to cacluate the distance when the score state is changed
   useEffect(() => {
     //caculate difference score.
     setSuburbs(recommd(scoreState, suburbs));
@@ -145,55 +144,62 @@ const Recommender = props => {
   ];
   // const l
   return (
-    <React.Fragment>
-      <div className="recpage">
-        <div className="recommender container-fluid">
-          <div className="container" />
-          <div className="row">
-            <div className="col s12 m2" style={{ marginTop: 50 }}>
-              <Fade left duration={1000}>
-                <StyledButton style={{ marginBottom: 30 }} onClick={handleBack}>
-                  Back
-                </StyledButton>
-                <CheckList choices={choices} />
+    <div className="recpage">
+      <div className="recommender container-fluid">
+        <div className="container" />
+        <div className="row">
+          <div className="col s12 m2" style={{ marginTop: 50 }}>
+            <Fade left duration={1000}>
+              <Button
+                style={{
+                  color: "white",
+                  marginBottom: 30,
+                  marginLeft: 30,
+                  backgroundColor: "#3f51b5"
+                }}
+                onClick={handleBack}
+              >
+                Back
+              </Button>
+              <CheckList choices={choices} />
+            </Fade>
+          </div>
+          <div className="col s12 m4 offset-m1 ">
+            <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
+              <Fade bottom duration={1000}>
+                <SidePanel data={scoreState} />
               </Fade>
-            </div>
-            <div className="col s12 m4 offset-m1 ">
-              <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
-                <Fade bottom duration={1000}>
-                  <SidePanel data={scoreState} />
-                </Fade>
-              </ParameterContext.Provider>
-            </div>
-            <div className="col s12 m4" style={{ marginTop: 18 }}>
-              <Fade right duration={1000}>
-                <SearchBox value={query} onChange={handleSearch} />
-                <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
-                {suburbs.length === 1 ? (
-                  <div
-                    className="container"
-                    style={{ paddingLeft: 100, marginTop: 100 }}
-                  >
-                    <CircularProgress />
-                  </div>
-                ) : (
-                  <SuburbList suburbs={pagedSub} choice={choice} />
-                )}
-                <Pagination
-                  itemNumber={totalcount}
-                  pageSize={pageSize}
-                  onPageChange={handlePageChange}
-                  currentPage={currentPage}
-                  onPreNext={handlePreNext}
-                  toPage={toPage}
-                  choice={choice}
-                />
-              </Fade>
-            </div>
+            </ParameterContext.Provider>
+          </div>
+          <div className="col s12 m4" style={{ marginTop: 18 }}>
+            <Fade right duration={1000}>
+              <SearchBox value={query} onChange={handleSearch} />
+
+              <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
+              {suburbs.length === 1 ? (
+                <div
+                  className="container"
+                  style={{ paddingLeft: 100, marginTop: 100 }}
+                >
+                  <CircularProgress />
+                </div>
+              ) : (
+                <SuburbList suburbs={pagedSub} choice={choice} />
+              )}
+              <Pagination
+                itemNumber={totalcount}
+                pageSize={pageSize}
+                onPageChange={handlePageChange}
+                currentPage={currentPage}
+                onPreNext={handlePreNext}
+                toPage={toPage}
+                choice={choice}
+              />
+            </Fade>
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 export default graphql(getSuburbsQuery)(Recommender);

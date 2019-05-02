@@ -28,6 +28,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     width: 300,
+    border: "2px solid #9ccc65",
     marginLeft: "5vw",
     backgroundColor: "#f9fbe7"
   },
@@ -50,6 +51,19 @@ function SearchBox(props) {
         onChange={e => onChange(e.currentTarget.value)}
       />
     </Paper>
+    // <React.Fragment>
+    //   <div className="nav-wrapper">
+    //     <form>
+    //       <div className="input-field">
+    //         <input id="search" type="search" required />
+    //         <label className="label-icon" for="search">
+    //           <i className="material-icons">search</i>
+    //         </label>
+    //         <i className="material-icons">close</i>
+    //       </div>
+    //     </form>
+    //   </div>
+    // </React.Fragment>
   );
 }
 

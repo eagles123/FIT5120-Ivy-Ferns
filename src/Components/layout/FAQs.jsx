@@ -7,8 +7,10 @@ export default function FAQs() {
     <React.Fragment>
       <div className="container" style={{ marginTop: 100, height: "100%" }}>
         <h3 style={{ textAlign: "center" }}>
-          FREQUENTLY ASKED QUESTIONS (FAQs)
+          Frequently Asked Questions (FAQs)
         </h3>
+        <hr />
+        <br />
         <ExpandList
           question={"How do I find the suburb according to my preferences?"}
           response={

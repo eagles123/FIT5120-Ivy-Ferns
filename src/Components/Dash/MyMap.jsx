@@ -14,12 +14,10 @@ import {
   ListItemText
 } from "@material-ui/core";
 import Axios from "axios";
-
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
+//gloabl varibles
 let map;
 let newinfoWindow;
-let temphos = [];
-let tempschool = [];
+let tempNeighbour = [];
 function MyMap({ data, neighbours, client }) {
   const [choice, setChoice] = useState([
     "Hospital",
@@ -47,6 +45,7 @@ function MyMap({ data, neighbours, client }) {
   const [count, setCount] = useState(0);
 
   let obj = {};
+  let google = {};
   let legend;
   let temphosMarkers = [];
   let temppreMarkers = [];
@@ -59,7 +58,8 @@ function MyMap({ data, neighbours, client }) {
   const secondary = require("../../assets/secondary.png");
   //load neibour data
   useEffect(() => {
-    if (count <= 1) {
+    if (neighbours !== tempNeighbour) {
+      tempNeighbour = neighbours;
       client
         .query({
           query: getNeighbourThings,
@@ -70,8 +70,15 @@ function MyMap({ data, neighbours, client }) {
             // temphos = temphos.concat(item.hosptials);
             // tempschool = ["fuck"];
             // console.log(tempschool);
-            setNeiHosp(h => h.concat(item.hosptials));
-            setNeiSchool(s => s.concat(item.schools));
+
+            if (
+              item !== null &&
+              item.hosptials !== null &&
+              item.schools !== null
+            ) {
+              setNeiHosp(h => h.concat(item.hosptials));
+              setNeiSchool(s => s.concat(item.schools));
+            }
           });
         });
 
@@ -159,6 +166,15 @@ function MyMap({ data, neighbours, client }) {
   //methods to parse prop data into required formate
 
   useEffect(() => {
+    Axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+      params: {
+        address: `${suburbName} ${city} VIC`,
+        key: process.env.REACT_APP_MAPkEY
+      }
+    }).then(function(response) {
+      google = response;
+    });
+
     //call from openstreetmap api
     Axios.get("https://nominatim.openstreetmap.org/search", {
       params: {
@@ -184,13 +200,15 @@ function MyMap({ data, neighbours, client }) {
 
   const initMap = () => {
     map = new window.google.maps.Map(document.getElementById("map"), {
-      // lat: parseFloat(obj.data.results[0].geometry.location.lat),
-      // lng: parseFloat(obj.data.results[0].geometry.location.lng)
       center: {
-        lat: parseFloat(obj.data[0].lat),
-        lng: parseFloat(obj.data[0].lon)
+        lat: parseFloat(google.data.results[0].geometry.location.lat),
+        lng: parseFloat(google.data.results[0].geometry.location.lng)
       },
-      zoom: 13
+      // center: {
+      //   lat: parseFloat(obj.data[0].lat),
+      //   lng: parseFloat(obj.data[0].lon)
+      // },
+      zoom: 12
     });
 
     //initialise a infoWindwo
@@ -214,42 +232,44 @@ function MyMap({ data, neighbours, client }) {
 
     //add school marker
     addSchoolMarkers(data.schools, infoWindow);
-
     setHospitals(temphosMarkers);
     setPreMarkers(temppreMarkers);
     setPriMarkers(temppriMarkers);
     setSecMarkers(tempsecMarkers);
     resetTemp();
     //polygon boundary
-    let geo = {
-      type: "FeatureCollection",
-      features: [
-        {
-          type: "Feature",
-          properties: {
-            letter: "G",
-            color: "blue",
-            rank: "7",
-            ascii: "71"
-          },
-          geometry: {
-            type: "Polygon",
-            coordinates: obj.data[0].geojson.coordinates
+    if (obj.data.length !== 0) {
+      let geo = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: {
+              letter: "G",
+              color: "blue",
+              rank: "7",
+              ascii: "71"
+            },
+            geometry: {
+              type: "Polygon",
+              coordinates: obj.data[0].geojson.coordinates
+            }
           }
-        }
-      ]
-    };
-    if (
-      Array.isArray(geo.features[0].geometry.coordinates[0]) &&
-      Array.isArray(geo.features[0].geometry.coordinates[0][0])
-    ) {
-      map.data.addGeoJson(geo);
-      map.data.setStyle({
-        fillColor: "#ef5350",
-        strokeWeight: 1
-      });
-    }
+        ]
+      };
 
+      if (
+        Array.isArray(geo.features[0].geometry.coordinates[0]) &&
+        Array.isArray(geo.features[0].geometry.coordinates[0][0])
+      ) {
+        map.data.addGeoJson(geo);
+        map.data.setStyle({
+          fillColor: "#ef5350",
+          strokeWeight: 1
+        });
+      }
+    }
+    //code for icon legend
     var icons = {
       Hospital: {
         name: "Hospital",
@@ -268,7 +288,7 @@ function MyMap({ data, neighbours, client }) {
         icon: secondary
       }
     };
-    if (data.schools.length !== 0) {
+    if (data.schools.length !== 0 || data.hosptials.length !== 0) {
       legend = document.getElementById("legend");
       for (var key in icons) {
         var type = icons[key];
@@ -281,7 +301,29 @@ function MyMap({ data, neighbours, client }) {
         }
       }
 
-      map.controls[window.google.maps.ControlPosition.RIGHT_TOP].push(legend);
+      map.controls[window.google.maps.ControlPosition.LEFT_TOP].push(legend);
+    }
+
+    if (data.schools.length === 0) {
+      let legendError = document.getElementById("legendError");
+      let div = document.createElement("div");
+      div.innerHTML = `<p>No Schools in the Suburb</p>`;
+      if (div !== null) {
+        legendError.appendChild(div);
+      }
+      map.controls[window.google.maps.ControlPosition.LEFT_TOP].push(
+        legendError
+      );
+    } else if (data.hosptials.length === 0) {
+      let legendError = document.getElementById("legendError");
+      let div = document.createElement("div");
+      div.innerHTML = `<p>No Hospitals in the Suburb</p>`;
+      if (div !== null) {
+        legendError.appendChild(div);
+      }
+      map.controls[window.google.maps.ControlPosition.LEFT_TOP].push(
+        legendError
+      );
     }
   };
 
@@ -350,7 +392,7 @@ function MyMap({ data, neighbours, client }) {
     );
     window.initMap = initMap;
   }
-
+  //function to addMarker
   function addMarker(
     lat,
     lng,
@@ -392,21 +434,7 @@ function MyMap({ data, neighbours, client }) {
     markers.push(Marker);
   }
 
-  //function to set markers on
-  // function setHosOnAll(markers, map) {
-  //   for (var i = 0; i < hospitalMarker.length; i++) {
-  //     markers[i].setMap(map);
-  //   }
-  // }
-
-  // function setMarkersOnAll(markers, map) {
-  //   for (var i = 0; i < schoolMarkers.length; i++) {
-  //     markers[i].setMap(map);
-  //   }
-  // }
-
   //this block is to show and hide this suburb hospital and school
-
   function handleNeighbour() {
     setFetch(!fetchNeighbour);
   }
@@ -416,8 +444,13 @@ function MyMap({ data, neighbours, client }) {
   }
 
   return (
-    <React.Fragment>
-      <div className="row" style={{ marginBottom: "0px" }}>
+    <div style={{ marginTop: "20px" }}>
+      <div
+        className="row"
+        style={{
+          marginBottom: "0px"
+        }}
+      >
         <div className="col s6 m6">
           <FormControl style={{ minWidth: 120, maxWidth: 200 }}>
             <InputLabel htmlFor="select-multiple-checkbox">Show:</InputLabel>
@@ -444,30 +477,6 @@ function MyMap({ data, neighbours, client }) {
               ))}
             </Select>
           </FormControl>
-          {/* {data.hosptials.length !== 0 || data.schools.length !== 0 ? (
-            <span>Show:</span>
-          ) : null}
-          {data.hosptials.length === 0 ? null : (
-            <React.Fragment>
-              <Checkbox
-                value="Hospital"
-                checked={hosp}
-                onClick={handleHos}
-                color="primary"
-              />
-              <span>Hospital</span>
-            </React.Fragment>
-          )}
-          {data.schools.length === 0 ? null : (
-            <React.Fragment>
-              <Checkbox
-                checked={school}
-                onClick={handleSchool}
-                color="primary"
-              />
-              <span>Schools</span>
-            </React.Fragment>
-          )} */}
         </div>
         <div className="col s5 m5 offset-m1">
           <FormGroup row>
@@ -484,9 +493,13 @@ function MyMap({ data, neighbours, client }) {
           </FormGroup>
         </div>
       </div>
-      <div style={{ height: "85vh", width: "100%", fontSize: "10px" }}>
+      <div style={{ height: "90vh", width: "100%", fontSize: "10px" }}>
         <div className="map" id="map" />
         <div id="legend" style={{ backgroundColor: "white", opacity: "0.8" }}>
+          <div
+            id="legendError"
+            style={{ backgroundColor: "white", opacity: "0.8" }}
+          />
           <p>Icon Legend</p>
         </div>
         <div>
@@ -531,8 +544,7 @@ function MyMap({ data, neighbours, client }) {
           </a>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
-
 export default withApollo(MyMap);

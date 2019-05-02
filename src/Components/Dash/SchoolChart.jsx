@@ -11,7 +11,7 @@ export default class SchoolChart extends React.Component {
     this.state = {
       choice: "Primary",
       label: "LGA_Average - Average of ICSEA Score in Local Government Area",
-      field: "ICSEA - Index of Community Socio-Educational Advantage",
+      field: "ICSEA - Index of Community Social-Educational Advantage",
       pre_school: [],
       primary_school: [],
       secondary_school: [],
@@ -41,6 +41,15 @@ export default class SchoolChart extends React.Component {
         xaxis: {
           categories: []
         }
+        // title: {
+        //   text: "School Statistics",
+        //   floating: true,
+        //   offsetY: 10,
+        //   align: "center",
+        //   style: {
+        //     color: "#444"
+        //   }
+        // }
       },
       series: [
         {
@@ -56,7 +65,7 @@ export default class SchoolChart extends React.Component {
   componentDidMount() {
     this.setSchool(
       this.state.primary_school,
-      "ICSEA - Index of Community Socio-Educational Advantage",
+      "ICSEA - Index of Community Social-Educational Advantage",
       "LGA_Average - Average of ICSEA Score in Local Government Area"
     );
   }
@@ -87,7 +96,7 @@ export default class SchoolChart extends React.Component {
       newSeris[0].name = serisone;
       newSeris[1].name = seriostwo;
       if (
-        serisone === "ICSEA - Index of Community Socio-Educational Advantage"
+        serisone === "ICSEA - Index of Community Social-Educational Advantage"
       ) {
         newSeris[0].data.push(school.icsea);
         newSeris[1].data.push(school.lga_average);
@@ -195,7 +204,7 @@ export default class SchoolChart extends React.Component {
   handleFieldChange = event => {
     if (
       event.target.value ===
-      "ICSEA - Index of Community Socio-Educational Advantage"
+      "ICSEA - Index of Community Social-Educational Advantage"
     ) {
       this.setState(
         {
@@ -239,11 +248,16 @@ export default class SchoolChart extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <h6 style={{ textAlign: "center" }}>School Statistics</h6>
         <FormControl style={{ minWidth: 90, height: "6vh", marginLeft: "6vw" }}>
           <InputLabel>School Type</InputLabel>
           <Select value={this.state.choice} onChange={this.handleSchoolChange}>
-            <MenuItem value={"Primary"}>Primary School</MenuItem>
-            <MenuItem value={"Secondary"}>Secondary School</MenuItem>
+            {this.state.primary_school === 0 ? null : (
+              <MenuItem value={"Primary"}>Primary School</MenuItem>
+            )}
+            {this.state.secondary_school === 0 ? null : (
+              <MenuItem value={"Secondary"}>Secondary School</MenuItem>
+            )}
           </Select>
         </FormControl>
 
@@ -251,7 +265,7 @@ export default class SchoolChart extends React.Component {
           <InputLabel>Field</InputLabel>
           <Select value={this.state.field} onChange={this.handleFieldChange}>
             <MenuItem
-              value={"ICSEA - Index of Community Socio-Educational Advantage"}
+              value={"ICSEA - Index of Community Social-Educational Advantage"}
             >
               ICSEA Score
             </MenuItem>
@@ -269,7 +283,10 @@ export default class SchoolChart extends React.Component {
           </Select>
         </FormControl>
         {this.handleEmpty() ? (
-          <img style={{ marginTop: "20px" }} src={"/nodata.jpg"} />
+          <img
+            style={{ marginTop: "20px", marginLeft: "20px" }}
+            src={"/nodata.jpg"}
+          />
         ) : (
           <div id="chart">
             <Chart
@@ -277,7 +294,7 @@ export default class SchoolChart extends React.Component {
               series={this.state.series}
               type="bar"
               height="350"
-              width="85%"
+              width="95%"
             />
           </div>
         )}

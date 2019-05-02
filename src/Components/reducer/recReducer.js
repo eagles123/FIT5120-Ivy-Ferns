@@ -23,22 +23,22 @@ export const recReducer = (state, action) => {
     case "RESETHEALTH":
       return {
         ...state,
-        healthScore: 0
+        healthScore: 1
       };
     case "RESETEDU":
       return {
         ...state,
-        educationScore: 0
+        educationScore: 1
       };
     case "RESETPROP":
       return {
         ...state,
-        propertyScore: 0
+        propertyScore: 1
       };
     case "RESETJOB":
       return {
         ...state,
-        jobScore: 0
+        jobScore: 1
       };
     default: {
       return state;

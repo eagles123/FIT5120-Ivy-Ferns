@@ -83,6 +83,18 @@ export const getSuburbByIdQuery = gql`
       }
       property {
         price
+        flat1
+        flat1_avg
+        flat2
+        flat2_avg
+        flat3
+        flat3_avg
+        house2
+        house2_avg
+        house3
+        house3_avg
+        house4
+        house4_avg
       }
       schools {
         school_name

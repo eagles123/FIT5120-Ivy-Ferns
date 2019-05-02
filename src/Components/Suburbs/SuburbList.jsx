@@ -8,7 +8,7 @@ const SuburList = ({ suburbs, choice }) => {
     border-radius: 10px;
     height: 470px;
     width: 350px;
-    background-color: #d4e157;
+    background-color: #9ccc65;
     color: white;
     margin-top: 0px;
     margin-left: 5vw;
