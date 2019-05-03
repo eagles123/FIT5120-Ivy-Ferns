@@ -37,31 +37,32 @@ export const getNeighbourThings = gql`
   }
 `;
 
-export const getComparsion = gql`
-  query($ids: [String]) {
-    suburbsById(suburbIds: ids) {
-      city
-      suburbName
-      education {
-        pre_school
-        primary_school
-        secondary_school
-      }
-      health {
-        hospital
-        gps
-        beds
-      }
-      property {
-        price
-      }
-    }
-  }
-`;
+// export const getComparsion = gql`
+//   query($ids: [String]) {
+//     suburbsById(suburbIds: ids) {
+//       city
+//       suburbName
+//       education {
+//         pre_school
+//         primary_school
+//         secondary_school
+//       }
+//       health {
+//         hospital
+//         gps
+//         beds
+//       }
+//       property {
+//         price
+//       }
+//     }
+//   }
+// `;
 
 export const getSuburbByIdQuery = gql`
   query($id: ID) {
     suburb(id: $id) {
+      _id
       city
       suburbName
       health {

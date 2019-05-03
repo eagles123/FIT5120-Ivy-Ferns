@@ -18,12 +18,11 @@ import { getSuburbsQuery } from "../../queries/queries";
 const Recommender = props => {
   document.title = "Recommend";
   const [scoreState, stateDispatch] = useReducer(recReducer, {
-    healthScore: 1,
-    educationScore: 1,
-    propertyScore: 1,
+    healthScore: 2,
+    educationScore: 2,
+    propertyScore: 2,
     jobScore: 0
   });
-
   const [totalcount, setTotal] = useState(0);
   //states manage pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +30,7 @@ const Recommender = props => {
   const [pagedSub, setPaged] = useState(
     paginate(suburbs, currentPage, pageSize)
   );
+  //context of getting choosed field
   const { choice, choiceDispatch, setSubList } = useContext(ChoiceContext);
   const [query, setQuery] = useState("");
 
@@ -91,22 +91,37 @@ const Recommender = props => {
 
   //dispatch actions to show sliders at Recommder
   function choseHealth() {
-    choiceDispatch({ type: "HEALTHFIELD", payload: !choice.healthField });
-    stateDispatch({ type: "RESETHEALTH" });
+    if (choice.healthField === true) {
+      choiceDispatch({ type: "HEALTHFIELD", payload: false });
+      stateDispatch({ type: "HEALTH", payload: 0 });
+    } else {
+      choiceDispatch({ type: "HEALTHFIELD", payload: true });
+      stateDispatch({ type: "RESETHEALTH" });
+    }
   }
 
   function choseEdu() {
-    choiceDispatch({ type: "EDUCATIONFIELD", payload: !choice.educationField });
-    stateDispatch({ type: "RESETEDU" });
+    if (choice.educationField === true) {
+      choiceDispatch({ type: "EDUCATIONFIELD", payload: false });
+      stateDispatch({ type: "EDUCATION", payload: 0 });
+    } else {
+      choiceDispatch({ type: "EDUCATIONFIELD", payload: true });
+      stateDispatch({ type: "RESETEDUCATION" });
+    }
   }
   function choseProp() {
-    choiceDispatch({ type: "PROPERTYFIELD", payload: !choice.propertyField });
-    stateDispatch({ type: "RESETPROP" });
+    if (choice.propertyField === true) {
+      choiceDispatch({ type: "PROPERTYFIELD", payload: false });
+      stateDispatch({ type: "PROPERTY", payload: 0 });
+    } else {
+      choiceDispatch({ type: "PROPERTYFIELD", payload: true });
+      stateDispatch({ type: "RESETPROPERTY" });
+    }
   }
-  function choseJob() {
-    choiceDispatch({ type: "JOBFIELD", payload: !choice.jobField });
-    stateDispatch({ type: "RESETJOB" });
-  }
+  // function choseJob() {
+  //   choiceDispatch({ type: "JOBFIELD", payload: !choice.jobField });
+  //   stateDispatch({ type: "RESETJOB" });
+  // }
   function getSearchData() {
     let filtered = suburbs;
     if (query)
@@ -132,9 +147,9 @@ const Recommender = props => {
     setCurrentPage(temp);
   }
 
-  function handleBack() {
-    props.history.push("/intro");
-  }
+  // function handleBack() {
+  //   props.history.push("/intro");
+  // }
 
   //actions pass to CheckList component
   const choices = [
@@ -150,7 +165,7 @@ const Recommender = props => {
         <div className="row">
           <div className="col s12 m2" style={{ marginTop: 50 }}>
             <Fade left duration={1000}>
-              <Button
+              {/* <Button
                 style={{
                   color: "white",
                   marginBottom: 30,
@@ -160,14 +175,14 @@ const Recommender = props => {
                 onClick={handleBack}
               >
                 Back
-              </Button>
+              </Button> */}
               <CheckList choices={choices} />
             </Fade>
           </div>
           <div className="col s12 m4 offset-m1 ">
             <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
               <Fade bottom duration={1000}>
-                <SidePanel data={scoreState} />
+                <SidePanel />
               </Fade>
             </ParameterContext.Provider>
           </div>

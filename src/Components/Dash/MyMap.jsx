@@ -81,11 +81,6 @@ function MyMap({ data, neighbours, client }) {
             }
           });
         });
-
-      // setNeiHosp(temphos);
-      // setNeiSchool(tempschool);
-      // temphos = [];
-      // tempschool = [];
     }
     setCount(count + 1);
   }, [neighbours]);
@@ -171,45 +166,57 @@ function MyMap({ data, neighbours, client }) {
         address: `${suburbName} ${city} VIC`,
         key: process.env.REACT_APP_MAPkEY
       }
-    }).then(function(response) {
-      google = response;
-    });
-
-    //call from openstreetmap api
-    Axios.get("https://nominatim.openstreetmap.org/search", {
-      params: {
-        q: `${suburbName} ${city} VIC`,
-        format: "json",
-        addressdetails: 1,
-        limit: 1,
-        polygon_geojson: 1
-      }
     })
       .then(function(response) {
-        obj = response;
+        google = response;
       })
       .then(function() {
-        loadMap();
+        Axios.get("https://nominatim.openstreetmap.org/search", {
+          params: {
+            q: `${suburbName} ${city} VIC`,
+            format: "json",
+            addressdetails: 1,
+            limit: 1,
+            polygon_geojson: 1
+          }
+        })
+          .then(function(response) {
+            obj = response;
+          })
+          .then(function() {
+            loadMap();
+          })
+          .catch(function(error) {});
       })
       .catch(function(error) {
         console.log(error);
       });
+
+    //call from openstreetmap api
+
     setNeiHosp([]);
     setNeiSchool([]);
   }, []);
 
+  //initialise the map check if API return proper data.
   const initMap = () => {
-    map = new window.google.maps.Map(document.getElementById("map"), {
-      center: {
-        lat: parseFloat(google.data.results[0].geometry.location.lat),
-        lng: parseFloat(google.data.results[0].geometry.location.lng)
-      },
-      // center: {
-      //   lat: parseFloat(obj.data[0].lat),
-      //   lng: parseFloat(obj.data[0].lon)
-      // },
-      zoom: 12
-    });
+    if (google.data !== null) {
+      map = new window.google.maps.Map(document.getElementById("map"), {
+        center: {
+          lat: parseFloat(google.data.results[0].geometry.location.lat),
+          lng: parseFloat(google.data.results[0].geometry.location.lng)
+        },
+        zoom: 12
+      });
+    } else if (google.data.results === null && obj.data !== null) {
+      map = new window.google.maps.Map(document.getElementById("map"), {
+        center: {
+          lat: parseFloat(obj.data[0].lat),
+          lng: parseFloat(obj.data[0].lon)
+        },
+        zoom: 12
+      });
+    }
 
     //initialise a infoWindwo
     let infoWindow = new window.google.maps.InfoWindow();

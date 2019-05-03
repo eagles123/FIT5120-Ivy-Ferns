@@ -3,7 +3,7 @@ import _ from "lodash";
 
 export function distance(scoreState, suburb) {
   let healthDiff;
-  if (scoreState.healthDiff === 0) healthDiff = 0;
+  if (scoreState.healthScore === 0) healthDiff = 0;
   else
     healthDiff = Math.pow(
       scoreState.healthScore * 10 - suburb.rating.healthScore,
@@ -34,9 +34,7 @@ export function distance(scoreState, suburb) {
   if (scoreState.jobScore === 0) jobDiff = 0;
   jobDiff = Math.pow(scoreState.jobScore * 10 - suburb.rating.jobScore, 2);
   // console.log(jobDiff);
-  suburb.difScore = Math.sqrt(
-    healthDiff + educationDiff + propertyDiff + jobDiff
-  );
+  suburb.difScore = Math.sqrt(healthDiff + educationDiff + propertyDiff);
   return suburb;
 }
 

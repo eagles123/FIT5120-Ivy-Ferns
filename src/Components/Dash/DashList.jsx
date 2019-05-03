@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ChoiceContext } from "../context/ParameterContext";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -33,8 +33,10 @@ const styles = theme => ({
 });
 //need to change key property to _id
 function DashList(props) {
-  const { classes } = props;
+  const { classes, index } = props;
   const { suburbList } = useContext(ChoiceContext);
+
+  const [selectedIndex, setIndex] = useState(index);
 
   return (
     <List className={classes.root} subheader={<li />}>
@@ -42,9 +44,11 @@ function DashList(props) {
       {suburbList.map(suburb => (
         <li key={`section-${suburb._id}`} className={classes.listSection}>
           <ul className={classes.ul}>
+            <hr />
             <ListItem
               key={`item-${suburb.suburbName}-${suburb.rank}`}
               button
+              selected={selectedIndex === suburb._id}
               onClick={() =>
                 props.props.history.push(`/dashboard/${suburb._id}`)
               }

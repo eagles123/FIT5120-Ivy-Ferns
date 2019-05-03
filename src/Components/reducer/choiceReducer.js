@@ -22,9 +22,9 @@ export const choiceReducer = (choice, action) => {
       };
     case "RESET":
       return {
-        healthField: false,
-        educationField: false,
-        propertyField: false,
+        healthField: true,
+        educationField: true,
+        propertyField: true,
         jobField: false
       };
     default: {

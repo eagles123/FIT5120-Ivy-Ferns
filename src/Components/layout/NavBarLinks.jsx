@@ -7,14 +7,24 @@ const NavBarLinks = () => {
       <ul className="right">
         <li>
           <a style={{ color: "black" }} className="nav-item nav-link" href="/">
+            {/* <NavLink
+            style={{ color: "black" }}
+            className="nav-item nav-link"
+            to="/"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "green"
+            }}
+          > */}
             Home
           </a>
+          {/* </NavLink> */}
         </li>
         <li>
           <NavLink
             style={{ color: "black" }}
             className="nav-item nav-link"
-            to="/intro"
+            to="/recommend"
             activeStyle={{
               fontWeight: "bold",
               color: "green"

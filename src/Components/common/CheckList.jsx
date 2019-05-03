@@ -13,7 +13,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 export default function CheckList(props) {
   const { choices } = props;
-  const [perference, setperference] = useState(false);
+  const [perference, setperference] = useState(true);
   const [Lga, setLga] = useState(false);
 
   function handlePreference() {

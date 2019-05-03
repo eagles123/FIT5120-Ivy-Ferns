@@ -7,18 +7,15 @@ import EdBox from "../Dash/EdBox";
 import PropBox from "../Dash/PropBox";
 // import JobBox from "../Dash/JobBox";
 import SchoolChart from "../Dash/SchoolChart";
-import { ChoiceContext } from "../context/ParameterContext";
-import MyMap from "./../Dash/MyMap"; //check
+import MyMap from "./../Dash/MyMap";
 import StyledButton from "./../common/StyleButton";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import RentalChart from "./../Dash/RentalChart";
 
 function DataDashBoard(props) {
-  const { choice } = useContext(ChoiceContext);
   const [neighbours, setNeighbours] = useState([]);
 
   //const to pass neighoubr hospitals and school to MyMap
-
   function handlePre() {
     props.history.push("/recommend");
   }
@@ -40,17 +37,22 @@ function DataDashBoard(props) {
       <div className="row">
         <div className="col s12 m2">
           <StyledButton onClick={handlePre}>Back</StyledButton>
-          <DashList props={props} />
+
+          <StyledButton
+            onClick={() =>
+              props.history.push(`/compare/${props.match.params.id}`)
+            }
+          >
+            Compare
+          </StyledButton>
+
+          <DashList props={props} index={props.match.params.id} />
         </div>
         <div className="col s12 m5 ">
           <h4 style={{ textAlign: "center", marginTop: "50px" }}>
             {props.data.suburb.suburbName}, {props.data.suburb.city}
           </h4>
           <MyMap data={props.data.suburb} neighbours={neighbours} />
-
-          {/* <div className="boardbox col s2 m3">
-                <JobBox data={props.data.suburb.job} />
-              </div> */}
         </div>
         <div className="col s12 m5 ">
           <div className="row">
@@ -63,13 +65,6 @@ function DataDashBoard(props) {
             <div className="boardbox col s2 m4">
               <PropBox data={props.data.suburb.property} />
             </div>
-            {/* <div className="col s5 m5 ">
-              <MyMap
-                data={props.data.suburb}
-                neighbours={neighbours}
-                style={{ paddingTop: "-100px" }}
-              />
-            </div> */}
           </div>
           <div style={{ backgroundColor: "rgba(220,220,220, .4)" }}>
             <SchoolChart data={props.data.suburb.schools} />
@@ -93,17 +88,3 @@ export default graphql(getSuburbByIdQuery, {
     };
   }
 })(DataDashBoard);
-
-// export default compose(
-//   graphql(getSuburbByIdQuery, {
-//     options: props => {
-//       return {
-//         variables: {
-//           id: props.match.params.id
-//         }
-//       };
-//     }
-//   }),
-//   graphql(getNebours, { options: props })
-// );
-// export default DataDashBoard;

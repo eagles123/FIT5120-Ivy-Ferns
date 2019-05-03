@@ -4,7 +4,7 @@ import "rc-slider/assets/index.css";
 
 class NewSlider extends React.Component {
   state = {
-    value: 1
+    value: 2
   };
 
   // handleChange = (event, value) => {
@@ -36,8 +36,8 @@ class NewSlider extends React.Component {
             dotStyle={{ borderColor: "orange" }}
             activeDotStyle={{ borderColor: "yellow" }}
             value={this.state.value}
-            min={1}
-            max={9}
+            min={2}
+            max={10}
             step={2}
             onChange={this.handleChange}
             trackStyle={{ backgroundColor: "#388e3c", height: 5 }}
@@ -70,7 +70,7 @@ class NewSlider extends React.Component {
               Less Important
             </p>
           </div>
-          <div className="col s2 m2 offset-m3">
+          {/* <div className="col s2 m2 offset-m3">
             <p
               style={{
                 height: 10,
@@ -83,8 +83,8 @@ class NewSlider extends React.Component {
             >
               Netural
             </p>
-          </div>
-          <div className="col s2 m2 offset-m3">
+          </div> */}
+          <div className="col s2 m2 offset-m8">
             <p
               style={{
                 height: 10,

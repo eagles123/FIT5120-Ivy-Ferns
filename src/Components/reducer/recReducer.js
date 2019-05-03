@@ -3,42 +3,42 @@ export const recReducer = (state, action) => {
     case "HEALTH":
       return {
         ...state,
-        healthScore: Math.floor(action.payload)
+        healthScore: action.payload
       };
     case "EDUCATION":
       return {
         ...state,
-        educationScore: Math.floor(action.payload)
+        educationScore: action.payload
       };
     case "PROPERTY":
       return {
         ...state,
-        propertyScore: Math.floor(action.payload)
+        propertyScore: action.payload
       };
     case "JOB":
       return {
         ...state,
-        jobScore: Math.floor(action.payload)
+        jobScore: action.payload
       };
     case "RESETHEALTH":
       return {
         ...state,
-        healthScore: 1
+        healthScore: 2
       };
     case "RESETEDU":
       return {
         ...state,
-        educationScore: 1
+        educationScore: 2
       };
     case "RESETPROP":
       return {
         ...state,
-        propertyScore: 1
+        propertyScore: 2
       };
     case "RESETJOB":
       return {
         ...state,
-        jobScore: 1
+        jobScore: 0
       };
     default: {
       return state;

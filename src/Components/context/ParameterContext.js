@@ -1,9 +1,8 @@
 import { createContext } from "react";
 const initialScore = {
-  healthScore: 0,
-  educationScore: 0,
-  propertyType: "buy",
-  propertyScore: 0,
+  healthScore: 2,
+  educationScore: 2,
+  propertyScore: 2,
   jobScore: 0
 };
 

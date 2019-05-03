@@ -2,18 +2,21 @@ import React, { useState, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import PageFooter from "./Footer";
-import FirstRow from "../common/FirstRow";
+import Script from "react-load-script";
 import UpIcon from "@material-ui/icons/KeyboardArrowUp";
 import SecondRow from "../common/SecondRow";
 import InsertRow from "../common/InsertRow";
-
+import { jarallax, jarallaxElement, jarallaxVideo } from "jarallax";
 import { animateScroll as scroll } from "react-scroll";
+import MyVideo from "./../common/MyVideo";
 
 export default function HomePageTwo() {
-  // var response = "";
-  // while (response !== "ivy") {
-  //   response = prompt("password");
-  // }
+  // useEffect(() => {
+  //   window.location.reload();
+  // }, []);
+  function handleScorll() {
+    scroll.scrollTo(700);
+  }
   return (
     <React.Fragment>
       <div className="home">
@@ -27,51 +30,7 @@ export default function HomePageTwo() {
             Your browser does not support the video tag.
           </video> */}
           <div className="col s12 m12">
-            <div
-              className="jarallax text parallax-3 col s12 m12"
-              // data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
-              data-jarallax-video="mp4:./file.mp4"
-            >
-              <p style={{ marginBottom: "0px" }}>Looking to move to</p>
-              <p style={{ paddingTop: "0px", marginTop: "0px" }}>
-                Geelong, Ballarat or Bendigo?
-              </p>
-              <Link to="/intro">
-                <Fab
-                  variant="extended"
-                  aria-label="Add"
-                  color="primary"
-                  style={{
-                    height: "40px",
-                    width: "150px"
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "15px",
-                      color: "white"
-                    }}
-                  >
-                    Get Started
-                  </span>
-                </Fab>
-              </Link>
-              <h4
-                style={{
-                  textAlign: "center",
-                  cursor: "pointer",
-                  marginTop: "10vh"
-                }}
-                onClick={() => scroll.scrollTo(700)}
-              >
-                Know More{" "}
-                <i
-                  className="fas fa-chevron-down fa-1x"
-                  onClick={() => scroll.scrollTo(650)}
-                  style={{ cursor: "pointer" }}
-                />
-              </h4>
-            </div>
+            <MyVideo handleScorll={handleScorll} />
 
             {/* <div
             className="container"
