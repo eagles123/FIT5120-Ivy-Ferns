@@ -12,6 +12,17 @@ export const getSuburbsQuery = gql`
         propertyScore
         jobScore
       }
+      health {
+        hospital
+      }
+      education {
+        pre_school
+        primary_school
+        secondary_school
+      }
+      property {
+        price
+      }
     }
   }
 `;

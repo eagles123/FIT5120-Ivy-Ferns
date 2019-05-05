@@ -8,7 +8,7 @@ import { recReducer } from "./../reducer/recReducer";
 import CheckList from "./../common/CheckList";
 import Pagination from "../common/Pagination";
 import SearchBox from "./../common/SearchBox";
-import { graphql } from "react-apollo";
+import { withApollo } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getSuburbsQuery } from "../../queries/queries";
 
@@ -48,21 +48,36 @@ const Recommender = props => {
   ]);
 
   // //equal to componentDidMount to update the suburbs with data from databse
-  useEffect(() => {
-    console.log("Hook1");
-    if (props.data.loading);
-    else {
-      setSuburbs(recommd(scoreState, props.data.suburbs));
+  // useEffect(() => {
+  //   console.log("Hook1");
+  //   if (props.data.loading);
+  //   else {
+  //     setSuburbs(recommd(scoreState, props.data.suburbs));
 
-      setTotal(suburbs.length);
-      setSubList(suburbs);
-      setPaged(paginate(suburbs, currentPage, pageSize));
-    }
-  }, [suburbs.length, props.data.loading]);
+  //     setTotal(suburbs.length);
+  //     setSubList(suburbs);
+  //     setPaged(paginate(suburbs, currentPage, pageSize));
+  //   }
+  // }, [suburbs.length, props.data.loading]);
+
+  useEffect(() => {
+    props.client
+      .query({
+        query: getSuburbsQuery
+      })
+      .then(({ data }) => {
+        setSuburbs(recommd(scoreState, data.suburbs));
+        setTotal(data.suburbs.length);
+        setSubList(data.suburbs);
+      });
+  }, []);
+
+  useEffect(() => {
+    setPaged(paginate(suburbs, currentPage, pageSize));
+  }, [suburbs]);
 
   //hook to cacluate the distance when the score state is changed
   useEffect(() => {
-    console.log("Hook2");
     //caculate difference score.
     setSuburbs(recommd(scoreState, suburbs));
     setSubList(suburbs);
@@ -72,13 +87,11 @@ const Recommender = props => {
 
   //effect for pagination
   useEffect(() => {
-    console.log("Hook3");
     setPaged(paginate(suburbs, currentPage, pageSize));
   }, [scoreState, currentPage]);
 
   //effect for search box
   useEffect(() => {
-    console.log("Hook4");
     getSearchData();
   }, [query]);
 
@@ -103,7 +116,7 @@ const Recommender = props => {
       stateDispatch({ type: "EDUCATION", payload: 0 });
     } else {
       choiceDispatch({ type: "EDUCATIONFIELD", payload: true });
-      stateDispatch({ type: "RESETEDUCATION" });
+      stateDispatch({ type: "RESETEDU" });
     }
   }
   function choseProp() {
@@ -112,7 +125,7 @@ const Recommender = props => {
       stateDispatch({ type: "PROPERTY", payload: 0 });
     } else {
       choiceDispatch({ type: "PROPERTYFIELD", payload: true });
-      stateDispatch({ type: "RESETPROPERTY" });
+      stateDispatch({ type: "RESETPROP" });
     }
   }
   // function choseJob() {
@@ -203,5 +216,5 @@ const Recommender = props => {
     </div>
   );
 };
-export default graphql(getSuburbsQuery)(Recommender);
-// export default Recommender;
+// export default graphql(getSuburbsQuery)(Recommender);
+export default withApollo(Recommender);

@@ -23,22 +23,12 @@ const SidePanel = () => {
             text={
               "How much do you care about having a hospital and/or a General Practitioner (G.P.) near you? "
             }
-          />
-        ) : null}
-        {/* <AniBox
-          className="box"
-          pose={choice.healthField ? "visible" : "hidden"}
-        >
-          <SliderElement
-            key={String(choice.healthField)}
-            // text={renderText(data.healthScore)}
-            title={"Health Care"}
-            label={"HEALTH"}
-            text={
-              "How much do you care about having a hospital and/or a General Practitioner (G.P.) near you? "
+            info={
+              "Health Care includes information about the number of hospitals and number of General Practitioners in the particular Suburb."
             }
           />
-        </AniBox> */}
+        ) : null}
+
         {choice.educationField ? (
           <SliderElement
             // text={renderText(data.educationScore)}
@@ -46,6 +36,9 @@ const SidePanel = () => {
             label={"EDUCATION"}
             text={
               "How important is it for you to have an educational institution nearby?"
+            }
+            info={
+              "Educational Institutions include information about pre-primary schools, primary schools and secondary schools. Also, the ICSEA score for each of the schools, VCE study Score and number of enrolment."
             }
           />
         ) : null}
@@ -56,17 +49,21 @@ const SidePanel = () => {
             title={"Property"}
             label={"PROPERTY"}
             text={"Are you looking for an affordable living?"}
+            info={
+              "Property prices include the median price range of properties located in the suburb."
+            }
           />
         ) : null}
-
+        {/* 
         {choice.jobField ? (
           <SliderElement
             // text={renderText(data.jobScore)}
             title={"Employment"}
             label={"JOB"}
             text={"Is having employment opportunities nearby important to you?"}
+            
           />
-        ) : null}
+        ) : null} */}
       </div>
     </React.Fragment>
   );

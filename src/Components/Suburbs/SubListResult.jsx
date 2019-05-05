@@ -1,24 +1,59 @@
 import React, { useState } from "react";
 import { AniItem } from "./../common/AniComponent";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
-const SubListResult = ({ suburb }) => {
-  const [left, setLeft] = useState("4vw");
-  const [bottom, setBottom] = useState("10px");
+const styles = {
+  root: {
+    width: "350px",
+    height: "80px",
+    color: "black",
+    backgroundColor: "#9ccc65",
+    marginBottom: "10px",
+    "&:hover": {
+      transform: "scale(1.05)"
+    },
+    marginLeft: "4vw",
+    borderRadius: "10px",
+    boxShadow:
+      "1px 2px 3px 2px rgba(0,0,0,0.4), 0px 1px 1px 0px rgba(0,0,0,0.5), 0px 2px 1px -1px rgba(0,0,0,0.12)"
+  }
+};
+
+const SubListResult = ({ suburb, classes }) => {
   function hospitalIcon() {
     if (suburb.health.hospital === 0) return null;
     else if (suburb.health.hospital === 1)
-      return <i class="fas fa-hospital" style={{ color: "white" }} />;
+      return <i className="fas fa-h-square" />;
     else
-      return `<i class="fas fa-hospital" style={{color:"white"}} /> <i class="fas fa-plus"/>`;
+      return (
+        <>
+          <i className="fas fa-h-square" />
+          <span> {suburb.health.hospital}</span>
+        </>
+      );
   }
 
   function schoolIcon() {
     if (sumEdu(suburb.education) === 0) return null;
     else if (sumEdu(suburb.education) === 1)
-      return <i class="fas fa-book-open" />;
-    else return `<i class="fas fa-book-open"></i><i class="fas fa-plus"/>`;
+      return <i className="fas fa-graduation-cap" />;
+    else
+      return (
+        <>
+          <i className="fas fa-graduation-cap" />
+          <span> {sumEdu(suburb.education)}</span>
+        </>
+      );
+  }
+
+  function houseIcon() {
+    return (
+      <>
+        <i className="fas fa-home" />{" "}
+        <span> ${kFormatter(suburb.property.price)}</span>
+      </>
+    );
   }
 
   function sumEdu(data) {
@@ -27,6 +62,12 @@ const SubListResult = ({ suburb }) => {
       if (!isNaN(data[item])) sum += data[item];
     }
     return sum;
+  }
+
+  function kFormatter(num) {
+    return Math.abs(num) > 999
+      ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
+      : Math.sign(num) * Math.abs(num);
   }
 
   // function handleEnter() {
@@ -42,39 +83,19 @@ const SubListResult = ({ suburb }) => {
           <div
             // onMouseEnter={handleEnter}
             // onMouseLeave={handleEnter}
-            style={{
-              width: "350px",
-              height: "80px",
-              color: "black",
-              backgroundColor: "#9ccc65",
-              marginBottom: "10px",
-              marginLeft: "4vw",
-              borderRadius: "10px",
-              boxShadow:
-                "1px 2px 3px 2px rgba(0,0,0,0.4), 0px 1px 1px 0px rgba(0,0,0,0.5), 0px 2px 1px -1px rgba(0,0,0,0.12)"
-            }}
+            className={classes.root}
           >
             <h6 style={{ padding: "10px 0 0 10px" }}>
               {suburb.rank}. Suburb: {suburb.suburbName}
             </h6>
-            {hospitalIcon} {schoolIcon}
             <div className="row">
-              <div className="col s8 m8">
+              <div className="col s12 m12">
                 <p>
                   <span style={{ padding: "0px 0 0 10px" }}>{suburb.city}</span>
-                  {/* <span style={{ paddingLeft: "15px" }}>
-                  <i class="fas fa-hospital-alt" />
-                </span> */}
+                  <span style={{ paddingLeft: "15px" }}>{hospitalIcon()}</span>
+                  <span style={{ paddingLeft: "15px" }}>{schoolIcon()}</span>
+                  <span style={{ paddingLeft: "15px" }}>{houseIcon()}</span>
                 </p>
-              </div>
-              <div className="col s2 m2">
-                {/*              
-                <Button
-                  id="detail"
-                  style={{ width: "15px", marginLeft: "30px" }}
-                >
-                  <i className="fas fa-angle-double-right fa-2x" />
-                </Button> */}
               </div>
             </div>
           </div>
@@ -84,4 +105,4 @@ const SubListResult = ({ suburb }) => {
   );
 };
 
-export default SubListResult;
+export default withStyles(styles)(SubListResult);
