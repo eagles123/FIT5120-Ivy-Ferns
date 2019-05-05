@@ -8,21 +8,19 @@ import { recReducer } from "./../reducer/recReducer";
 import CheckList from "./../common/CheckList";
 import Pagination from "../common/Pagination";
 import SearchBox from "./../common/SearchBox";
-import StyledButton from "./../common/StyleButton";
-import Button from "@material-ui/core/Button";
-import Fab from "@material-ui/core/Fab";
 import { graphql } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getSuburbsQuery } from "../../queries/queries";
 
 const Recommender = props => {
   document.title = "Recommend";
+  //initial socre
   const [scoreState, stateDispatch] = useReducer(recReducer, {
     healthScore: 2,
     educationScore: 2,
-    propertyScore: 2,
-    jobScore: 0
+    propertyScore: 2
   });
+
   const [totalcount, setTotal] = useState(0);
   //states manage pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,12 +31,6 @@ const Recommender = props => {
   //context of getting choosed field
   const { choice, choiceDispatch, setSubList } = useContext(ChoiceContext);
   const [query, setQuery] = useState("");
-
-  // use local data for development
-  // const [suburbs, setSuburbs] = useState(getallSuburbs);
-  // useEffect(() => {
-  //   setSuburbs(recommd(scoreState, suburbs));
-  // }, [scoreState]);
 
   //initialise suburb with dummny data
   const [suburbs, setSuburbs] = useState([
@@ -54,8 +46,10 @@ const Recommender = props => {
       }
     }
   ]);
+
   // //equal to componentDidMount to update the suburbs with data from databse
   useEffect(() => {
+    console.log("Hook1");
     if (props.data.loading);
     else {
       setSuburbs(recommd(scoreState, props.data.suburbs));
@@ -68,6 +62,7 @@ const Recommender = props => {
 
   //hook to cacluate the distance when the score state is changed
   useEffect(() => {
+    console.log("Hook2");
     //caculate difference score.
     setSuburbs(recommd(scoreState, suburbs));
     setSubList(suburbs);
@@ -77,11 +72,13 @@ const Recommender = props => {
 
   //effect for pagination
   useEffect(() => {
+    console.log("Hook3");
     setPaged(paginate(suburbs, currentPage, pageSize));
   }, [scoreState, currentPage]);
 
   //effect for search box
   useEffect(() => {
+    console.log("Hook4");
     getSearchData();
   }, [query]);
 
@@ -165,17 +162,6 @@ const Recommender = props => {
         <div className="row">
           <div className="col s12 m2" style={{ marginTop: 50 }}>
             <Fade left duration={1000}>
-              {/* <Button
-                style={{
-                  color: "white",
-                  marginBottom: 30,
-                  marginLeft: 30,
-                  backgroundColor: "#3f51b5"
-                }}
-                onClick={handleBack}
-              >
-                Back
-              </Button> */}
               <CheckList choices={choices} />
             </Fade>
           </div>

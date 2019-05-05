@@ -10,8 +10,9 @@
 
 
 # production
-src/*
-public/*
+/build
+# src/*
+# public/*
 .yaml
 .env.development
 

@@ -16,7 +16,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     position: "relative",
     overflow: "auto",
-    maxHeight: "80vh"
+    maxHeight: "80vh",
+    borderRadius: "8px"
   },
   listSection: {
     backgroundColor: "inherit"

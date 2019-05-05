@@ -16,7 +16,7 @@ const CompareTable = ({ compareSuburbs }) => (
         </thead>
         <tbody>
           <tr className="price">
-            <th scope="row">Hospitals</th>
+            <th scope="row">No. of Hospitals</th>
             {compareSuburbs.map(suburb => (
               <td key={suburb._id} className="text-center">
                 {suburb.health.hospital}
@@ -24,7 +24,7 @@ const CompareTable = ({ compareSuburbs }) => (
             ))}
           </tr>
           <tr className="gp">
-            <th scope="row">General Practitioners(GPs)</th>
+            <th scope="row">No. of General Practitioners(GPs)</th>
             {compareSuburbs.map(suburb => (
               <td key={suburb._id} className="text-center">
                 <CountUp
@@ -38,7 +38,7 @@ const CompareTable = ({ compareSuburbs }) => (
             ))}
           </tr>
           <tr className="preSchool">
-            <th scope="row">Pre-School</th>
+            <th scope="row">No. of Pre-School</th>
             {compareSuburbs.map(suburb => (
               <td key={suburb._id} className="text-center">
                 {suburb.education.pre_school}
@@ -46,7 +46,7 @@ const CompareTable = ({ compareSuburbs }) => (
             ))}
           </tr>
           <tr className="priSchool">
-            <th scope="row">Primary-School</th>
+            <th scope="row">No. of Primary-School</th>
             {compareSuburbs.map(suburb => (
               <td key={suburb._id} className="text-center">
                 {suburb.education.primary_school}
@@ -54,7 +54,7 @@ const CompareTable = ({ compareSuburbs }) => (
             ))}
           </tr>
           <tr className="secSchool">
-            <th scope="row">Secondary-School</th>
+            <th scope="row">No. of Secondary-School</th>
             {compareSuburbs.map(suburb => (
               <td key={suburb._id} className="text-center">
                 {suburb.education.secondary_school}
@@ -62,12 +62,102 @@ const CompareTable = ({ compareSuburbs }) => (
             ))}
           </tr>
           <tr className="housePrice">
-            <th scope="row">Secondary-School</th>
+            <th scope="row">Medium House Price</th>
             {compareSuburbs.map(suburb => (
               <td key={suburb._id} className="text-center">
                 <CountUp
                   start={100000}
                   end={suburb.property.price}
+                  duration={1}
+                  separator=","
+                  decimals={0}
+                  prefix="$"
+                />
+              </td>
+            ))}
+          </tr>
+          <tr className="rental">
+            <th scope="row">1 Bed Flat Rent Per Week</th>
+            {compareSuburbs.map(suburb => (
+              <td key={suburb._id} className="text-center">
+                <CountUp
+                  start={0}
+                  end={suburb.property.flat1}
+                  duration={1}
+                  separator=","
+                  decimals={0}
+                  prefix="$"
+                />
+              </td>
+            ))}
+          </tr>
+          <tr className="rental">
+            <th scope="row">2 Beds Flat Rent Per Week</th>
+            {compareSuburbs.map(suburb => (
+              <td key={suburb._id} className="text-center">
+                <CountUp
+                  start={0}
+                  end={suburb.property.flat2}
+                  duration={1}
+                  separator=","
+                  decimals={0}
+                  prefix="$"
+                />
+              </td>
+            ))}
+          </tr>
+          <tr className="rental">
+            <th scope="row">3 Beds Flat Rent Per Week</th>
+            {compareSuburbs.map(suburb => (
+              <td key={suburb._id} className="text-center">
+                <CountUp
+                  start={0}
+                  end={suburb.property.flat3}
+                  duration={1}
+                  separator=","
+                  decimals={0}
+                  prefix="$"
+                />
+              </td>
+            ))}
+          </tr>
+          <tr className="rental">
+            <th scope="row">2 Beds House Rent Per Week</th>
+            {compareSuburbs.map(suburb => (
+              <td key={suburb._id} className="text-center">
+                <CountUp
+                  start={0}
+                  end={suburb.property.house2}
+                  duration={1}
+                  separator=","
+                  decimals={0}
+                  prefix="$"
+                />
+              </td>
+            ))}
+          </tr>
+          <tr className="rental">
+            <th scope="row">3 Beds House Rent Per Week</th>
+            {compareSuburbs.map(suburb => (
+              <td key={suburb._id} className="text-center">
+                <CountUp
+                  start={0}
+                  end={suburb.property.house3}
+                  duration={1}
+                  separator=","
+                  decimals={0}
+                  prefix="$"
+                />
+              </td>
+            ))}
+          </tr>
+          <tr className="rental">
+            <th scope="row">4 Beds Flat Rent Per Week</th>
+            {compareSuburbs.map(suburb => (
+              <td key={suburb._id} className="text-center">
+                <CountUp
+                  start={0}
+                  end={suburb.property.house4}
                   duration={1}
                   separator=","
                   decimals={0}

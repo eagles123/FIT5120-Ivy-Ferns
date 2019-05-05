@@ -31,8 +31,6 @@ function Compare({ data, client, match }) {
 
   //hook to fetch new data and to delet the suburb from the compareSuburbs list
   useEffect(() => {
-    console.log(checked.length);
-    console.log(tempList.length);
     if (checked.length > tempList.length) {
       tempList = checked;
       client
@@ -55,6 +53,7 @@ function Compare({ data, client, match }) {
 
   return (
     <div className="container-fluid">
+      <h4>Compare Suburbs</h4>
       <div className="row">
         <div className="col s2 m2">
           <CompareList
@@ -63,7 +62,7 @@ function Compare({ data, client, match }) {
             handelCheck={handelCheck}
           />
         </div>
-        <div className="col s9 m9 offset=m1">
+        <div className="col s9 m9" style={{ marginLeft: "50px" }}>
           <CompareTable compareSuburbs={compareSuburbs} />
         </div>
       </div>
