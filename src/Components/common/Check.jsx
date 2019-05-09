@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Like extends Component {
+class Check extends Component {
   render() {
     let classes = "fa fa-2x fa-check-circle";
     if (!this.props.liked) classes += "-o";
@@ -15,4 +15,4 @@ class Like extends Component {
   }
 }
 
-export default Like;
+export default Check;

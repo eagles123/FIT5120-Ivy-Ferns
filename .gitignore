@@ -8,8 +8,10 @@
 # testing
 /coverage
 
+
 # production
 /build
+.yaml
 
 # misc
 .DS_Store

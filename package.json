@@ -19,6 +19,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
     "react-spring": "^8.0.19",
+    "react-swipeable-views": "^0.13.1",
     "styled-components": "^4.2.0"
   },
   "scripts": {
@@ -27,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "https://sturdy-dogfish-236900.appspot.com",
   "eslintConfig": {
     "extends": "react-app"
   },
