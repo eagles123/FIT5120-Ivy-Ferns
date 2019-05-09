@@ -1,3 +1,4 @@
+/* The navigation bar code is implemented below */
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBarLinks from "./NavBarLinks";
@@ -9,7 +10,8 @@ const NavBar = () => {
       {/* <nav style={{ backgroundColor: "#2d6161" }}> */}
       <nav className="navbar" style={{ backgroundColor: "white" }}>
         <div className="container">
-          <a href="/" className="brand-logo">
+          <a href="/" className="brand-logo"> 
+          {/* The icon IvyFerns defined */}
             <img src={"icon1.png"} alt="" />
           </a>
           <NavBarLinks />

@@ -1,3 +1,5 @@
+
+/* Set your Preferences web page being implemented below which is now excluded from our current system */
 import React, { useState, useEffect, useContext, useReducer } from "react";
 import CustomButton from "../common/CustomButtons";
 import { ChoiceContext } from "../context/ParameterContext";

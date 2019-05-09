@@ -1,3 +1,4 @@
+/* Error page implemented below*/
 import React from "react";
 import NavBar from "./NavBar";
 

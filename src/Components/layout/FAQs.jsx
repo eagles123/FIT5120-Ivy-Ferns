@@ -1,3 +1,4 @@
+/* The Frequently Asked Questions for users facing problem using the website*/
 import React from "react";
 import NavBar from "./NavBar";
 import ExpandList from "../common/ExpandList";
@@ -25,32 +26,32 @@ export default function FAQs() {
           </li>
         </ol> */}
         <ExpandList
-          question={"1. How do I find the suburb according to my preferences?"}
+          question={"1. How do I find the suburb according to my preferences?"} /* First Question */
           response={
             "Click on the ‘Get Started’ button on the Home Page> another page having a list of four areas pops up> check/uncheck your priorities> click on Submit button>a page signifying level of importance opens up> check/uncheck your filters>click on Submit button> A recommended list of suburbs will appear."
-          }
+          }  /* First Answer */
         />
         <ExpandList
-          question={"2. Can I change my preferences once they are chosen?"}
+          question={"2. Can I change my preferences once they are chosen?"}  /* Second Question*/
           response={
             "Land up to the page which has level of importance criteria. Select/unselect the importance level for the dimension required. The resultant suburb list will appear."
-          }
+          }  /* Second Answer */
         />
         <ExpandList
           question={
-            "3. How do I choose the level of importance for each of my preferences?"
-          }
+            "3. How do I choose the level of importance for each of my preferences?"  
+          }    /* Third Question */
           response={
             "Go to the page which has level of importance for each dimension. You will see various questions and a slider with each of them having 3 signifiers. Scroll the slider towards your desired requirement and you can choose the level of preference. And the spellings for the preference when you directly click submit"
-          }
+          }   /*Third Answer */
         />
         <ExpandList
           question={
             "4. Why are the same areas being reflected after changing the preferences?"
-          }
+          } /* Fourth Question */
           response={
             "The suburb list is displayed according to your chosen preference and level of importance criteria. If you are getting the same list for your chosen preferences, this means they are the ones that abide your input criterion. If you wish to see another list, you can choose different level of importance for the chosen dimensions or maybe different dimensions."
-          }
+          }   /* Fourth Answer */
         />
       </div>
       <div style={{ height: "10em" }} />

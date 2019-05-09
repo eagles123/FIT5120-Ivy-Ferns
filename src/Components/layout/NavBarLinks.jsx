@@ -1,3 +1,4 @@
+/* The navbar links titled Home, Pick A Suburb, FAQ's and About Us defined below*/
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -8,6 +9,7 @@ const NavBarLinks = () => {
         <li>
           <a style={{ color: "black" }} className="nav-item nav-link" href="/">
             Home
+            { /* Home navbar link implemented */}
           </a>
         </li>
         <li>
@@ -17,6 +19,7 @@ const NavBarLinks = () => {
             to="/intro"
           >
             Pick Suburb
+            { /* Pick A suburb navbar link implemented */}
           </NavLink>
         </li>
 
@@ -27,6 +30,7 @@ const NavBarLinks = () => {
             to="/about"
           >
             About Us
+            { /* About us navbar link implemented */}
           </NavLink>
         </li>
 
@@ -37,6 +41,7 @@ const NavBarLinks = () => {
             to="/faqs"
           >
             FAQ
+            {/* FAQ navbar link implemented */}
           </NavLink>
         </li>
       </ul>

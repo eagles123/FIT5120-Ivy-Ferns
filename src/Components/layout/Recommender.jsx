@@ -1,3 +1,4 @@
+/* Code for choosing preferences and picking a ranked suburb implemented */
 import React, { useState, useReducer, useEffect, useContext } from "react";
 import SidePanel from "./SidePanel";
 import SuburbList from "../Suburbs/SuburbList";
@@ -14,7 +15,7 @@ import { gql } from "apollo-boost";
 import { graphql } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const getSuburbsQuery = gql`
+const getSuburbsQuery = gql` 
   {
     suburbs {
       _id
@@ -29,6 +30,7 @@ const getSuburbsQuery = gql`
     }
   }
 `;
+/* Scores for health, education and property defined.*/
 const Recommender = props => {
   const [scoreState, stateDispatch] = useReducer(recReducer, {
     healthScore: 0,
@@ -38,6 +40,7 @@ const Recommender = props => {
   });
 
   //use local data for development
+  /* Calling function for getting ranked suburbs according to user-preferences*/
   const [suburbs, setSuburbs] = useState(getallSuburbs);
   useEffect(() => {
     setSuburbs(recommd(scoreState, suburbs));
@@ -77,12 +80,12 @@ const Recommender = props => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(4);
   const [pagedSub, setPaged] = useState(
-    paginate(suburbs, currentPage, pageSize)
+    paginate(suburbs, currentPage, pageSize) /* Pagination function for paging the Ranked Suburb List*/ 
   );
   const { choice, choiceDispatch } = useContext(ChoiceContext);
   const [query, setQuery] = useState("");
 
-  //cacluate the distance when the state is changed
+  //caculuate the distance when the state is changed
   useEffect(() => {
     //caculate difference score.
     setSuburbs(recommd(scoreState, suburbs));
@@ -90,12 +93,12 @@ const Recommender = props => {
     // setInitialSuburb(initialSuburb);
   }, [scoreState]);
 
-  //effect for pagination
+  // code for effect for pagination
   useEffect(() => {
     setPaged(paginate(suburbs, currentPage, pageSize));
   }, [scoreState, currentPage]);
 
-  //effect for search box
+  //code for effect for search box
   useEffect(() => {
     getSearchData();
   }, [query]);
@@ -104,16 +107,18 @@ const Recommender = props => {
     setQuery(query);
   }
 
-  //dispatch actions to show sliders at Recommder
+  //dispatch actions to show sliders at Recommender
+  //Health slider implemented
   function choseHealth() {
     choiceDispatch({ type: "HEALTHFIELD", payload: !choice.healthField });
     stateDispatch({ type: "RESETHEALTH" });
   }
-
+   // Education slider implemented
   function choseEdu() {
     choiceDispatch({ type: "EDUCATIONFIELD", payload: !choice.educationField });
     stateDispatch({ type: "RESETEDU" });
   }
+  //property slider implemented
   function choseProp() {
     choiceDispatch({ type: "PROPERTYFIELD", payload: !choice.propertyField });
     stateDispatch({ type: "RESETPROP" });
@@ -122,6 +127,7 @@ const Recommender = props => {
     choiceDispatch({ type: "JOBFIELD", payload: !choice.jobField });
     stateDispatch({ type: "RESETJOB" });
   }
+  //Search a suburb by name in the Search box from the ranked suburb list.
   function getSearchData() {
     let filtered = suburbs;
     if (query)
@@ -131,7 +137,7 @@ const Recommender = props => {
     setTotal(filtered.length);
     return setPaged(paginate(filtered, currentPage, pageSize));
   }
-
+  //function to handle a change in the page from pagination option
   function handlePageChange(page) {
     setCurrentPage(page);
   }
@@ -139,7 +145,7 @@ const Recommender = props => {
   function toPage(page) {
     setCurrentPage(page);
   }
-
+  // function for handling the immediate previous and next page from the pagination option.
   function handlePreNext(flag, pages) {
     let temp = currentPage;
     if (flag && currentPage > 1) temp--;
@@ -178,6 +184,7 @@ const Recommender = props => {
                 </Fade>
               </ParameterContext.Provider>
             </div>
+            {/* Ranked suburbs handled from search boxes */}
             <div className="col s12 m4" style={{ marginTop: 18 }}>
               <Fade right duration={1000}>
                 <h5 style={{ textAlign: "center" }}>Ranked Suburbs</h5>
@@ -185,6 +192,7 @@ const Recommender = props => {
                 {suburbs.length === 0 ? null : (
                   <SuburbList suburbs={pagedSub} choice={choice} />
                 )}
+                { /* Pagination components implemented*/}
                 <Pagination
                   itemNumber={totalcount}
                   pageSize={pageSize}

@@ -1,3 +1,4 @@
+/*HomePage layout components being defined here */
 import React, { Component, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
@@ -18,7 +19,7 @@ export default function HomePageTwo() {
             Your browser does not support the video tag.
           </video> */}
         <div
-          className="jarallax text parallax-3"
+          className="jarallax text parallax-3"     /* Adding the main landing video on the Home page */
           data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
         >
           <p style={{ marginBottom: "0px" }}>Planning to move to</p>
