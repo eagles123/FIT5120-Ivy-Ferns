@@ -95,6 +95,7 @@ export const getSuburbByIdQuery = gql`
       }
       property {
         price
+        rent_all
         flat1
         flat1_avg
         flat2

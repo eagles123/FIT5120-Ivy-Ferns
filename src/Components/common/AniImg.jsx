@@ -1,11 +1,11 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
 
-export default function AniI({ img, handleOpen }) {
+export default function AniImg({ img, handleOpen, handleClose }) {
   const pulsing = keyframes`
-    0% {transform: scale(1.1);}
-    50% {transform: scale(0.9);}
-     100% {transform: scale(1.1);}
+    0% {transform: scale(1);}
+    50% {transform: scale(0.8);}
+     100% {transform: scale(1);}
    `;
 
   const Container = styled.span`
@@ -37,7 +37,8 @@ export default function AniI({ img, handleOpen }) {
         <img
           src={img}
           alt=""
-          onClick={handleOpen}
+          onMouseEnter={handleOpen}
+          onMouseLeave={handleClose}
           style={{ cursor: "pointer" }}
         />
       </Container>

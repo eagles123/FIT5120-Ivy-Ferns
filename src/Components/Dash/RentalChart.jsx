@@ -1,5 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
+import ReactTooltip from "react-tooltip";
 
 export default class RentalChart extends React.Component {
   constructor(props) {
@@ -13,6 +14,11 @@ export default class RentalChart extends React.Component {
             dataLabels: {
               position: "top"
             }
+          }
+        },
+        chart: {
+          toolbar: {
+            show: false
           }
         },
         dataLabels: {
@@ -102,15 +108,48 @@ export default class RentalChart extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h6 style={{ textAlign: "center" }}>Rental Price Per Week</h6>
+        <h6 style={{ textAlign: "center", paddingTop: 10 }}>
+          Rental Price Per Week
+          <span>
+            {" "}
+            <i
+              className="fas fa-info-circle"
+              data-tip
+              data-for="rentalTool"
+              style={{
+                cursor: "pointer",
+                color: "#2962ff",
+                position: "relative",
+                zIndex: 0
+              }}
+            />
+          </span>
+          <ReactTooltip
+            place="bottom"
+            id="rentalTool"
+            type="info"
+            effect="solid"
+          >
+            <p style={{ width: "250px", textAlign: "left" }}>
+              The graph shows the weekly rental price in dollars for each type
+              of property for the suburb involved and the average rental price
+              for the suburb’s Local Government Area.
+            </p>
+          </ReactTooltip>
+        </h6>
         <div id="chart" style={{ opacity: "1" }}>
           <Chart
             options={this.state.options}
             series={this.state.series}
             type="bar"
-            height="350"
+            height="400"
+            width="95%"
+            style={{ marginLeft: "10px" }}
           />
         </div>
+        <p style={{ fontSize: "10px", textAlign: "right" }}>
+          *Last Updated: 2018
+        </p>
       </React.Fragment>
     );
   }

@@ -13,46 +13,61 @@ const SidePanel = () => {
   // }
   return (
     <React.Fragment>
-      <div style={{ margin: 50 }}>
+      <h4>Set Your Preferences</h4>
+      <div style={{ margin: 20 }}>
         {choice.healthField ? (
-          <SliderElement
-            key={String(choice.healthField)}
-            // text={renderText(data.healthScore)}
-            title={"Health Care"}
-            label={"HEALTH"}
-            text={
-              "How much do you care about having a hospital and/or a General Practitioner (G.P.) near you? "
-            }
-            info={
-              "Health Care includes information about the number of hospitals and number of General Practitioners in the particular Suburb."
-            }
-          />
+          <>
+            <i className="fas fa-hospital-symbol fa-lg" />{" "}
+            <SliderElement
+              key={String(choice.healthField)}
+              // text={renderText(data.healthScore)}
+              title={"Health Care"}
+              label={"HEALTH"}
+              text={
+                "How important is it for you to have healthcare facilities in your suburb? "
+              }
+              infoTitle={"Health Care"}
+              info={
+                "It includes information about the total number of hospitals and general practitioners located in the suburbs. It also includes the information about the approximate number of hospital beds located in the suburb."
+              }
+            />
+          </>
         ) : null}
 
         {choice.educationField ? (
-          <SliderElement
-            // text={renderText(data.educationScore)}
-            title={"Education"}
-            label={"EDUCATION"}
-            text={
-              "How important is it for you to have an educational institution nearby?"
-            }
-            info={
-              "Educational Institutions include information about pre-primary schools, primary schools and secondary schools. Also, the ICSEA score for each of the schools, VCE study Score and number of enrolment."
-            }
-          />
+          <>
+            <i className="fas fa-graduation-cap fa-lg" />{" "}
+            <SliderElement
+              // text={renderText(data.educationScore)}
+              title={"Education"}
+              label={"EDUCATION"}
+              text={
+                "How important is it for you to have educational institutions in your suburb?"
+              }
+              infoTitle={"Educational Institutions"}
+              info={
+                "It includes information about the total number of preschool, primary schools and secondary schools in a suburb. The Index of Community Socio-Educational Advantage (ICSEA) score for primary and secondary schools and the Victorian Certificate of Education (VCE) study score for secondary schools have also been included in the information."
+              }
+            />
+          </>
         ) : null}
 
         {choice.propertyField ? (
-          <SliderElement
-            // text={renderText(data.propertyScore)}
-            title={"Property"}
-            label={"PROPERTY"}
-            text={"Are you looking for an affordable living?"}
-            info={
-              "Property prices include the median price range of properties located in the suburb."
-            }
-          />
+          <>
+            <i className="fas fa-home fa-lg" />{" "}
+            <SliderElement
+              // text={renderText(data.propertyScore)}
+              title={"Property"}
+              label={"PROPERTY"}
+              text={
+                "How important is it for you to have cheaper housing options in your suburb?"
+              }
+              infoTitle={"Property"}
+              info={
+                "It includes suburb-specific information about both the median house price and rental prices, which are separated by number of bedrooms"
+              }
+            />
+          </>
         ) : null}
         {/* 
         {choice.jobField ? (

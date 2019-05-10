@@ -4,6 +4,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import ReactTooltip from "react-tooltip";
 
 export default class SchoolChart extends React.Component {
   constructor(props) {
@@ -22,6 +23,11 @@ export default class SchoolChart extends React.Component {
             dataLabels: {
               position: "top"
             }
+          }
+        },
+        chart: {
+          toolbar: {
+            show: false
           }
         },
         dataLabels: {
@@ -123,53 +129,6 @@ export default class SchoolChart extends React.Component {
     });
   }
 
-  // setPrimarySchool() {
-  //   let cat = [];
-  //   let newSeris = [{ name: "", data: [] }, { name: "", data: [] }];
-  //   // console.log(series[1].data);
-  //   this.state.primary_school.map(school => {
-  //     cat.push(school.school_name);
-  //     newSeris[0].name = "ICSEA";
-  //     newSeris[0].data.push(school.icsea);
-  //     newSeris[1].name = "LAG_Average";
-  //     newSeris[1].data.push(school.lga_average);
-  //   });
-  //   this.setState({
-  //     series: newSeris,
-  //     options: {
-  //       ...this.state.options,
-  //       xaxis: {
-  //         ...this.state.options.xaxis,
-  //         categories: cat
-  //       }
-  //     }
-  //   });
-  // }
-
-  // setSecondarySchool(serisone, seristwo) {
-  //   let cat = [];
-  //   let newSeris = [{ name: "", data: [] }, { name: "", data: [] }];
-
-  //   // console.log(series[1].data);
-  //   this.state.secondary_school.map(school => {
-  //     cat.push(school.school_name);
-  //     newSeris[0].name = "ICSEA";
-  //     newSeris[0].data.push(school.icsea);
-  //     newSeris[1].data.push(school.lga_average);
-  //     newSeris[1].name = "LAG_Average";
-  //   });
-  //   this.setState({
-  //     series: newSeris,
-  //     options: {
-  //       ...this.state.options,
-  //       xaxis: {
-  //         ...this.state.options.xaxis,
-  //         categories: cat
-  //       }
-  //     }
-  //   });
-  // }
-
   handleSchoolChange = event => {
     this.setState({ choice: event.target.value });
     if (event.target.value === "Primary")
@@ -248,8 +207,37 @@ export default class SchoolChart extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h6 style={{ textAlign: "center" }}>School Statistics</h6>
-        <FormControl style={{ minWidth: 90, height: "6vh", marginLeft: "6vw" }}>
+        <h6 style={{ textAlign: "center", paddingTop: 10 }}>
+          School Statistics
+          <span>
+            {" "}
+            <i
+              className="fas fa-info-circle"
+              data-tip
+              data-for="schoolTool"
+              style={{
+                cursor: "pointer",
+                color: "#2962ff",
+                position: "relative",
+                zIndex: 0
+              }}
+            />
+          </span>
+          <ReactTooltip
+            place="bottom"
+            id="schoolTool"
+            type="info"
+            effect="solid"
+          >
+            <p style={{ width: "250px", textAlign: "left" }}>
+              The graph shows the primary and secondary schools located in this
+              suburb. The ICSEA Score and enrolment of both secondary and
+              primary schools are shown as compared to the average scores of the
+              LGA. Secondary schools also have a VCE score and an LGA average.
+            </p>
+          </ReactTooltip>
+        </h6>
+        <FormControl style={{ minWidth: 90, height: "6vh", marginLeft: "30%" }}>
           <InputLabel>School Type</InputLabel>
           <Select value={this.state.choice} onChange={this.handleSchoolChange}>
             {this.state.primary_school === 0 ? null : (
@@ -295,7 +283,11 @@ export default class SchoolChart extends React.Component {
               type="bar"
               height="350"
               width="95%"
+              style={{ marginLeft: "10px" }}
             />
+            <p style={{ fontSize: "10px", textAlign: "right" }}>
+              *Last Updated: 2018
+            </p>
           </div>
         )}
       </React.Fragment>

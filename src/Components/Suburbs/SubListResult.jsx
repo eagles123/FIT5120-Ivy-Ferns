@@ -7,7 +7,6 @@ const styles = {
   root: {
     width: "350px",
     height: "80px",
-    color: "black",
     backgroundColor: "#9ccc65",
     marginBottom: "10px",
     "&:hover": {
@@ -79,27 +78,64 @@ const SubListResult = ({ suburb, classes }) => {
   return (
     <div className="col s12 m12">
       <AniItem className="item">
-        <Link to={`dashboard/${suburb._id}`} key={suburb._id}>
-          <div
-            // onMouseEnter={handleEnter}
-            // onMouseLeave={handleEnter}
-            className={classes.root}
+        <div
+          // onMouseEnter={handleEnter}
+          // onMouseLeave={handleEnter}
+          className={classes.root}
+          id="suburbList"
+        >
+          <Link
+            to={`dashboard/${suburb._id}`}
+            key={suburb._id}
+            style={{ color: "black" }}
           >
             <h6 style={{ padding: "10px 0 0 10px" }}>
               {suburb.rank}. Suburb: {suburb.suburbName}
             </h6>
             <div className="row">
-              <div className="col s12 m12">
+              <div className="col s5 m5">
                 <p>
-                  <span style={{ padding: "0px 0 0 10px" }}>{suburb.city}</span>
-                  <span style={{ paddingLeft: "15px" }}>{hospitalIcon()}</span>
-                  <span style={{ paddingLeft: "15px" }}>{schoolIcon()}</span>
-                  <span style={{ paddingLeft: "15px" }}>{houseIcon()}</span>
+                  <span style={{ padding: "0px 0 0 10px" }}>
+                    {suburb.city}
+                    {/* <span style={{ paddingLeft: "15px" }}>
+                      {hospitalIcon()}
+                    </span>
+                    <span style={{ paddingLeft: "15px" }}>{schoolIcon()}</span>
+                    <span style={{ paddingLeft: "15px" }}>{houseIcon()}</span> */}
+
+                    {/* <div className="round">
+                      <div id="cta">
+                        <span
+                          style={{ color: "black" }}
+                          className="arrow primera next "
+                        />
+                        <span className="arrow segunda next " />
+                      </div>
+                    </div> */}
+                  </span>
                 </p>
               </div>
+              <div className="col s2 m2 offset-m4">
+                <span id="explore" style={{ fontSize: "30px" }}>
+                  »
+                </span>
+              </div>
+              {/* <div className="col s5 m5">
+                <div class="animated-arrow">
+                  <span class="the-arrow -left">
+                    <span class="shaft" />
+                  </span>
+                  <span class="main">
+                    <span class="text">Explore More</span>
+                    <span class="the-arrow -right">
+                      <span class="shaft" />
+                    </span>
+                  </span>
+                </div>
+              </div> */}
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </AniItem>
     </div>
   );

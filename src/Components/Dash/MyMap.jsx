@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+import { legendReducer } from "./../reducer/legendReducer";
 import { withApollo } from "react-apollo";
 import { getNeighbourThings } from "../../queries/queries";
 import {
@@ -6,25 +7,35 @@ import {
   Switch,
   FormGroup,
   FormControlLabel,
-  FormControl,
-  InputLabel,
-  Select,
-  Input,
-  MenuItem,
-  ListItemText
+  Collapse,
+  ListItem,
+  ListItemText,
+  Fab,
+  Tooltip
 } from "@material-ui/core";
+import ReactTooltip from "react-tooltip";
 import Axios from "axios";
+
 //gloabl varibles
 let map;
 let newinfoWindow;
 let tempNeighbour = [];
 function MyMap({ data, neighbours, client }) {
-  const [choice, setChoice] = useState([
-    "Hospital",
-    "Pre-School",
-    "Primary School",
-    "Secondary School"
-  ]);
+  const [check, setCheck] = useState(false);
+  //state to control to show icon and legends
+  const [legend, dispatchLegend] = useReducer(legendReducer, {
+    hospital: true,
+    preSchool: true,
+    primary: true,
+    secondary: true
+  });
+
+  // const [choice, setChoice] = useState([
+  //   "Hospital",
+  //   "Pre-School",
+  //   "Primary School",
+  //   "Secondary School"
+  // ]);
   //const for markers
   const [hospitalMarker, setHospitals] = useState([]);
   const [preMarkers, setPreMarkers] = useState([]);
@@ -46,7 +57,7 @@ function MyMap({ data, neighbours, client }) {
 
   let obj = {};
   let google = {};
-  let legend;
+
   let temphosMarkers = [];
   let temppreMarkers = [];
   let temppriMarkers = [];
@@ -126,14 +137,14 @@ function MyMap({ data, neighbours, client }) {
 
   //hook to show and hide icons
   useEffect(() => {
-    if (choice.includes("Hospital")) {
+    if (legend.hospital) {
       for (let item in hospitalMarker) hospitalMarker[item].setVisible(true);
       for (let item in neigHosMarker) neigHosMarker[item].setVisible(true);
     } else {
       for (let item in hospitalMarker) hospitalMarker[item].setVisible(false);
       for (let item in neigHosMarker) neigHosMarker[item].setVisible(false);
     }
-    if (choice.includes("Pre-School")) {
+    if (legend.preSchool) {
       for (let item in preMarkers) preMarkers[item].setVisible(true);
       for (let item in neigPre) neigPre[item].setVisible(true);
     } else {
@@ -141,7 +152,7 @@ function MyMap({ data, neighbours, client }) {
       for (let item in neigPre) neigPre[item].setVisible(false);
     }
 
-    if (choice.includes("Primary School")) {
+    if (legend.primary) {
       for (let item in priMarkers) priMarkers[item].setVisible(true);
       for (let item in neighPri) neighPri[item].setVisible(true);
     } else {
@@ -149,14 +160,14 @@ function MyMap({ data, neighbours, client }) {
       for (let item in neighPri) neighPri[item].setVisible(false);
     }
 
-    if (choice.includes("Secondary School")) {
+    if (legend.secondary) {
       for (let item in secMarkers) secMarkers[item].setVisible(true);
       for (let item in neigSec) neigSec[item].setVisible(true);
     } else {
       for (let item in secMarkers) secMarkers[item].setVisible(false);
       for (let item in neigSec) neigSec[item].setVisible(false);
     }
-  }, [choice]);
+  }, [legend]);
 
   //methods to parse prop data into required formate
 
@@ -276,63 +287,11 @@ function MyMap({ data, neighbours, client }) {
         });
       }
     }
-    //code for icon legend
-    var icons = {
-      Hospital: {
-        name: "Hospital",
-        icon: corss
-      },
-      PreSchool: {
-        name: "Pre-School",
-        icon: preSchool
-      },
-      Primary: {
-        name: "Primary School",
-        icon: primary
-      },
-      Secondary: {
-        name: "Secondary School",
-        icon: secondary
-      }
-    };
-    if (data.schools.length !== 0 || data.hosptials.length !== 0) {
-      legend = document.getElementById("legend");
-      for (var key in icons) {
-        var type = icons[key];
-        var name = type.name;
-        var icon = type.icon;
-        var div = document.createElement("div");
-        div.innerHTML = '<img src="' + icon + '"> ' + name;
-        if (div !== null) {
-          legend.appendChild(div);
-        }
-      }
-
-      map.controls[window.google.maps.ControlPosition.LEFT_TOP].push(legend);
-    }
-
-    if (data.schools.length === 0) {
-      let legendError = document.getElementById("legendError");
-      let div = document.createElement("div");
-      div.innerHTML = `<p>No Schools in the Suburb</p>`;
-      if (div !== null) {
-        legendError.appendChild(div);
-      }
-      map.controls[window.google.maps.ControlPosition.LEFT_TOP].push(
-        legendError
-      );
-    } else if (data.hosptials.length === 0) {
-      let legendError = document.getElementById("legendError");
-      let div = document.createElement("div");
-      div.innerHTML = `<p>No Hospitals in the Suburb</p>`;
-      if (div !== null) {
-        legendError.appendChild(div);
-      }
-      map.controls[window.google.maps.ControlPosition.LEFT_TOP].push(
-        legendError
-      );
-    }
   };
+
+  function handleCheck() {
+    setCheck(!check);
+  }
 
   function resetTemp() {
     temphosMarkers = [];
@@ -399,6 +358,46 @@ function MyMap({ data, neighbours, client }) {
     );
     window.initMap = initMap;
   }
+
+  const legends = [
+    {
+      label: "Hospital",
+      icon: corss,
+      check: legend.hospital,
+      action: checkHostpital
+    },
+    {
+      label: "Pre-School",
+      icon: preSchool,
+      check: legend.preSchool,
+      action: checkPre
+    },
+    {
+      label: "Primary School",
+      icon: primary,
+      check: legend.primary,
+      action: checkPri
+    },
+    {
+      label: "Secondary School",
+      icon: secondary,
+      check: legend.secondary,
+      action: checkSec
+    }
+  ];
+
+  function checkHostpital() {
+    dispatchLegend({ type: "Hospital", payload: !legend.hospital });
+  }
+  function checkPre() {
+    dispatchLegend({ type: "Pre-School", payload: !legend.preSchool });
+  }
+  function checkPri() {
+    dispatchLegend({ type: "Primary", payload: !legend.primary });
+  }
+  function checkSec() {
+    dispatchLegend({ type: "Secondary", payload: !legend.secondary });
+  }
   //function to addMarker
   function addMarker(
     lat,
@@ -446,46 +445,19 @@ function MyMap({ data, neighbours, client }) {
     setFetch(!fetchNeighbour);
   }
 
-  function handleCheckChange(e) {
-    setChoice(e.target.value);
-  }
+  // function handleCheckChange(e) {
+  //   setChoice(e.target.value);
+  // }
 
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div>
       <div
         className="row"
         style={{
           marginBottom: "0px"
         }}
       >
-        <div className="col s6 m6">
-          <FormControl style={{ minWidth: 120, maxWidth: 200 }}>
-            <InputLabel htmlFor="select-multiple-checkbox">Show:</InputLabel>
-            <Select
-              multiple
-              value={choice}
-              onChange={handleCheckChange}
-              input={<Input id="select-multiple-checkbox" />}
-              renderValue={selected => selected.join(", ")}
-            >
-              {[
-                "Hospital",
-                "Pre-School",
-                "Primary School",
-                "Secondary School"
-              ].map(name => (
-                <MenuItem key={name} value={name}>
-                  <Checkbox
-                    checked={choice.indexOf(name) > -1}
-                    color="primary"
-                  />
-                  <ListItemText primary={name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div className="col s5 m5 offset-m1">
+        <div className="col s6 m6 offset-m1">
           <FormGroup row>
             <FormControlLabel
               control={
@@ -499,15 +471,65 @@ function MyMap({ data, neighbours, client }) {
             />
           </FormGroup>
         </div>
+        <div className="col s2 m2 offset-m3">
+          <Tooltip title="Icon Legend" placement="right">
+            <Fab
+              size="small"
+              color="primary"
+              aria-label="Add"
+              onClick={handleCheck}
+              style={{ margin: "10px 0px 0px 0px" }}
+            >
+              <i className="fas fa-map-marked-alt" />
+            </Fab>
+          </Tooltip>
+          {/* <i
+            className="fas fa-filter fa-2x"
+            style={{
+              color: "black",
+              cursor: "pointer",
+              position: "relative",
+              zIndex: 0
+            }}
+            onClick={handleCheck}
+          /> */}
+          <div
+            style={{
+              position: "absolute",
+              backgroundColor: "white",
+              zIndex: 999
+            }}
+          >
+            <Collapse in={check}>
+              <div>
+                {legends.map(legend => (
+                  <ListItem
+                    key={legend.label}
+                    role={undefined}
+                    dense
+                    button
+                    onClick={legend.action}
+                  >
+                    <Checkbox checked={legend.check} color="primary" />{" "}
+                    <img src={legend.icon} />
+                    <ListItemText
+                      style={{ fontSize: "15px" }}
+                      primary={legend.label}
+                    />
+                  </ListItem>
+                ))}
+              </div>
+            </Collapse>
+          </div>
+        </div>
       </div>
-      <div style={{ height: "90vh", width: "100%", fontSize: "10px" }}>
+      <div style={{ height: "75vh", width: "100%", fontSize: "10px" }}>
         <div className="map" id="map" />
         <div id="legend" style={{ backgroundColor: "white", opacity: "0.8" }}>
           <div
             id="legendError"
             style={{ backgroundColor: "white", opacity: "0.8" }}
           />
-          <p>Icon Legend</p>
         </div>
         <div>
           Icons made by{" "}

@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { ChoiceContext } from "../context/ParameterContext";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import { slide as Menu } from "react-burger-menu";
 import {
   List,
   ListItem,
@@ -13,9 +14,9 @@ import {
 const styles = theme => ({
   root: {
     width: "100%",
-    maxWidth: 360,
-    marginTop: 20,
-    backgroundColor: "#80cbc4",
+    maxWidth: 350,
+    marginTop: 100,
+    backgroundColor: "#9ccc65",
     position: "relative",
     overflow: "auto",
     maxHeight: "80vh"

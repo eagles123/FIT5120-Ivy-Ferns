@@ -19,12 +19,12 @@ export default function InsertRow() {
           <ImageCard
             style={{ paddingLeft: "50px" }}
             url={"./home1.jpg"}
-            title={"Increasing Population"}
+            title={"Increasing Population in Melbourne"}
             content1={
-              "'Melbourne recorded its highest-ever net annual population increase of 125,000."
+              "Melbourne recorded its highest-ever net annual population increase of 125,000."
             }
             content2={
-              "According to predictions, Melbourne would be the most populated city of Australia by 2050 with 8 Million people."
+              "Melbourne would be the most populated city of Australia by 2050 with 8 Million people."
             }
             website={"https://storage.googleapis.com/ivypdf/Population.pdf"}
           />

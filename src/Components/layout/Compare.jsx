@@ -5,10 +5,14 @@ import { withApollo } from "react-apollo";
 import { getSuburbByIdQuery } from "../../queries/queries";
 import CompareList from "./../common/CompareList";
 import CompareTable from "./../common/CompareTable";
+import Sidebar from "react-sidebar";
+import { Fab, Tooltip } from "@material-ui/core/";
 
+const mql = window.matchMedia(`(min-width: 200px)`);
 let tempList = [];
-function Compare({ data, client, match }) {
+function Compare({ data, client, match, history }) {
   const { suburbList } = useContext(ChoiceContext);
+  const [open, setOpen] = useState(true);
 
   const [compareSuburbs, setSuburbs] = useState([]);
   //state and method to handle check list in compare
@@ -16,15 +20,24 @@ function Compare({ data, client, match }) {
   function handelCheck(value) {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
-    if (currentIndex === -1 && checked.length < 4) {
+    if (currentIndex === -1 && checked.length < 3) {
       newChecked.push(value);
-    } else if (currentIndex === -1 && checked.length === 4) {
-      alert("Three Max");
-    } else if (currentIndex !== -1 && checked.length <= 4) {
+    } else if (currentIndex === -1 && checked.length === 3) {
+      alert("Error: You can only select maximum four suburbs to compare.");
+    } else if (currentIndex !== -1 && checked.length <= 3) {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
   }
+
+  function handleOpen() {
+    setOpen(!open);
+  }
+
+  function handlePre() {
+    history.push(`/dashboard/${match.params.id}`);
+  }
+
   useEffect(() => {
     if (data.loading === false) setSuburbs([data.suburb]);
   }, [data.loading]);
@@ -39,7 +52,6 @@ function Compare({ data, client, match }) {
           variables: { id: checked[checked.length - 1] }
         })
         .then(({ data }) => {
-          console.log(data.suburb);
           const newSuburb = [...compareSuburbs];
           newSuburb.push(data.suburb);
           setSuburbs(newSuburb);
@@ -53,16 +65,53 @@ function Compare({ data, client, match }) {
 
   return (
     <div className="container-fluid">
-      <h4>Compare Suburbs</h4>
+      <h4>Compare Up to Three Suburbs</h4>
       <div className="row">
-        <div className="col s2 m2">
-          <CompareList
-            suburbList={suburbList}
-            checked={checked}
-            handelCheck={handelCheck}
+        <div className="col s1 m1">
+          <Tooltip title="Back" placement="bottom">
+            <Fab
+              size="small"
+              color="primary"
+              aria-label="Add"
+              onClick={handlePre}
+              style={{
+                margin: "10px 0px 10px 0px",
+                zIndex: 1
+              }}
+            >
+              <i className="fas fa-arrow-left" />
+            </Fab>
+          </Tooltip>
+          <p />
+          <Tooltip title="Compare Suburbs" placement="bottom">
+            <Fab
+              size="small"
+              color="primary"
+              aria-label="Add"
+              onClick={handleOpen}
+              style={{
+                margin: "10px 0px 10px 0px",
+                position: "absolute",
+                zIndex: 1
+              }}
+            >
+              <i className="fas fa-bars" />
+            </Fab>
+          </Tooltip>
+          <Sidebar
+            sidebar={
+              <CompareList
+                suburbList={suburbList}
+                checked={checked}
+                handelCheck={handelCheck}
+              />
+            }
+            open={open}
+            onSetOpen={handleOpen}
+            styles={{ sidebar: { background: "#9ccc65" } }}
           />
         </div>
-        <div className="col s9 m9" style={{ marginLeft: "50px" }}>
+        <div className="col s10 m10">
           <CompareTable compareSuburbs={compareSuburbs} />
         </div>
       </div>

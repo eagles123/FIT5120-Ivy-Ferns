@@ -6,14 +6,14 @@ const NavBar = () => {
   return (
     <div className="navbar-fixed">
       {/* <nav style={{ backgroundColor: "#2d6161" }}> */}
-      <nav className="navbar" style={{ backgroundColor: "white" }}>
-        <div className="container row">
-          <div>
-            <a href="/" className="brand-logo">
+      <nav className="nav" style={{ backgroundColor: "white" }}>
+        <div className=" container row">
+          <div className="col s3s m3">
+            <a href="/">
               <img src={"icon1.png"} alt="" />
             </a>
           </div>
-          <div>
+          <div className="col s9 m9">
             <NavBarLinks />
           </div>
         </div>

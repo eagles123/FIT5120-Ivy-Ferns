@@ -1,6 +1,16 @@
 import React from "react";
 import ExpandList from "../common/ExpandList";
 import PageFooter from "./Footer";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemPanel,
+  AccordionItemButton
+} from "react-accessible-accordion";
+
+// Demo styles, see 'Styles' section below for some notes on use.
+import "react-accessible-accordion/dist/fancy-example.css";
 
 export default function FAQs() {
   return (
@@ -11,44 +21,62 @@ export default function FAQs() {
         </h3>
         <hr />
         <br />
-        <ExpandList
-          question={"How do I find the suburb according to my preferences?"}
-          response={
-            "Click on the ‘Get Started’ button on the Home Page> another page having a list of four areas pops up> check/uncheck your priorities> click on Submit button>a page signifying level of importance opens up> check/uncheck your filters>click on Submit button> A recommended list of suburbs will appear."
-          }
-        />
-        <ExpandList
-          question={"Can I change my preferences once they are chosen?"}
-          response={
-            "You can reselect the preference by going to “Set your Preferences” page or Go to page where you select your level of importance through sliders. There is a filter option which contains “By preference”. You can choose or change any previous preference from that filter."
-          }
-        />
-        <ExpandList
-          question={
-            "How do I choose the level of importance for each of my preferences?"
-          }
-          response={
-            "Go to the page where you select your level of importance through slider. You will see various questions and a slider with each of them having 3 signifiers. Scroll the slider towards your desired requirement and you can choose the level of preference."
-          }
-        />
-        <ExpandList
-          question={
-            "Why the same ranking of the suburbs is being shown even after changing the Preferences?"
-          }
-          response={
-            "The suburb list is displayed according to your chosen preference and level of importance criteria. If you are getting the same list for your chosen preferences, this means they are the ones that abide your input criterion. If you wish to see another list, you can choose different level of importance for the chosen preferences or maybe different preferences on a whole."
-          }
-        />
-        <ExpandList
-          question={
-            "I am not aware what the preference “Educational Institutions” mean?"
-          }
-          response={
-            "Go to the page “Set your Preferences”. Click on the tooltip icon which will display a textbox containing information as to what Educational institutions entails."
-          }
-        />
+        <Accordion allowMultipleExpanded={true}>
+          <AccordionItem>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                "How do I find the suburb according to my preferences?"
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel style={{ backgroundColor: "white" }}>
+              <p>Click on the ‘Get Started’ button on the home page</p>
+              <p>
+                Uncheck or check any of the filters in the ‘Filter by:’ box as
+                preferred.{" "}
+              </p>
+              <p>Adjust the sliders based on the questions</p>
+              <p>The recommended suburbs list will appear on the right</p>
+            </AccordionItemPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                Is there an error when the same suburbs are shown after changing
+                my preferences?
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel style={{ backgroundColor: "white" }}>
+              <p>
+                No, certain suburbs have more education and health facilities,
+                and therefore they naturally rank higher than others. This is
+                the reason why they often appear near the top of the list.
+              </p>
+            </AccordionItemPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                What factors are taken into consideration for each of the three
+                areas, Healthcare, Education and Property?
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel style={{ backgroundColor: "white" }}>
+              <p>
+                Hovering over the tooltip icon{" "}
+                {
+                  <i
+                    className="fas fa-info-circle fa-lg"
+                    style={{ color: "#2962ff" }}
+                  />
+                }{" "}
+                gives further information about the factors involved for each
+                area.
+              </p>
+            </AccordionItemPanel>
+          </AccordionItem>
+        </Accordion>
       </div>
-      <div style={{ height: "10em" }} />
+      <div style={{ height: "20em" }} />
       <PageFooter />
     </React.Fragment>
   );

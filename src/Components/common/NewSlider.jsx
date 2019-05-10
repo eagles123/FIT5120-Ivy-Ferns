@@ -59,7 +59,7 @@ class NewSlider extends React.Component {
               style={{
                 height: 10,
                 color: "black",
-                fontSize: "13px",
+                fontSize: "12px",
                 textAlign: "center",
                 marginTop: "0px",
                 paddingTop: "0px",
@@ -89,7 +89,7 @@ class NewSlider extends React.Component {
               style={{
                 height: 10,
                 color: "black",
-                fontSize: "13px",
+                fontSize: "12px",
                 textAlign: "center",
                 marginTop: "0px",
                 paddingTop: "0px"

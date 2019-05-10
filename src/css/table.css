@@ -10,6 +10,7 @@ table {
 
 tr > td,
 tr > th {
+  width: 30px;
   padding-top: 18px;
   padding-bottom: 18px;
   text-align: center;
@@ -26,11 +27,13 @@ th[scope="row"] {
 }
 
 thead {
+  width: 30px;
   font-size: 20px;
   color: #393c45;
   font-weight: normal;
 }
 
 .thead-default th {
+  width: 30px;
   background-color: #fff;
 }

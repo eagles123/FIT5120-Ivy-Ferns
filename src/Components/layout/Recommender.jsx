@@ -5,12 +5,14 @@ import { ParameterContext, ChoiceContext } from "../context/ParameterContext";
 import { Fade } from "react-reveal";
 import { recommd, paginate } from "../services/recommend";
 import { recReducer } from "./../reducer/recReducer";
+import { cityReducer } from "./../reducer/cityReducer";
 import CheckList from "./../common/CheckList";
 import Pagination from "../common/Pagination";
 import SearchBox from "./../common/SearchBox";
 import { withApollo } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getSuburbsQuery } from "../../queries/queries";
+import PageFooter from "./Footer";
 
 const Recommender = props => {
   document.title = "Recommend";
@@ -19,6 +21,12 @@ const Recommender = props => {
     healthScore: 2,
     educationScore: 2,
     propertyScore: 2
+  });
+
+  const [city, cityDispatch] = useReducer(cityReducer, {
+    geelong: true,
+    ballarat: true,
+    bendigo: true
   });
 
   const [totalcount, setTotal] = useState(0);
@@ -46,19 +54,6 @@ const Recommender = props => {
       }
     }
   ]);
-
-  // //equal to componentDidMount to update the suburbs with data from databse
-  // useEffect(() => {
-  //   console.log("Hook1");
-  //   if (props.data.loading);
-  //   else {
-  //     setSuburbs(recommd(scoreState, props.data.suburbs));
-
-  //     setTotal(suburbs.length);
-  //     setSubList(suburbs);
-  //     setPaged(paginate(suburbs, currentPage, pageSize));
-  //   }
-  // }, [suburbs.length, props.data.loading]);
 
   useEffect(() => {
     props.client
@@ -92,8 +87,13 @@ const Recommender = props => {
 
   //effect for search box
   useEffect(() => {
-    getSearchData();
+    getSearchSuburb();
   }, [query]);
+
+  //effect to filter by city
+  useEffect(() => {
+    filterSuburbByCity();
+  }, [city]);
 
   function handleSearch(query) {
     setQuery(query);
@@ -128,11 +128,21 @@ const Recommender = props => {
       stateDispatch({ type: "RESETPROP" });
     }
   }
+
+  function choseGeelong() {
+    cityDispatch({ type: "Geelong", payload: !city.geelong });
+  }
+  function choseBallarat() {
+    cityDispatch({ type: "Ballarat", payload: !city.ballarat });
+  }
+  function choseBendigo() {
+    cityDispatch({ type: "Bendigo", payload: !city.bendigo });
+  }
   // function choseJob() {
   //   choiceDispatch({ type: "JOBFIELD", payload: !choice.jobField });
   //   stateDispatch({ type: "RESETJOB" });
   // }
-  function getSearchData() {
+  function getSearchSuburb() {
     let filtered = suburbs;
     if (query)
       filtered = suburbs.filter(s =>
@@ -148,6 +158,20 @@ const Recommender = props => {
   //function to set to a page
   function toPage(page) {
     setCurrentPage(page);
+  }
+
+  //function to filter by city
+  function filterSuburbByCity() {
+    let filtered = suburbs;
+    if (city.geelong && cities.ballarat && city.bendigo) filtered = suburbs;
+    else if (city.geelong === false)
+      filtered = suburbs.filter(s => s.city !== "Greater Geelong");
+    else if (city.ballarat === false)
+      filtered = suburbs.filter(s => s.city !== "Ballarat");
+    else if (city.bendigo === false)
+      filtered = suburbs.filter(s => s.city !== "Greater Bendigo");
+    setTotal(filtered.length);
+    return setPaged(paginate(filtered, currentPage, pageSize));
   }
 
   function handlePreNext(flag, pages) {
@@ -167,18 +191,25 @@ const Recommender = props => {
     { label: "Education", chose: choice.educationField, action: choseEdu },
     { label: "Property", chose: choice.propertyField, action: choseProp }
   ];
+
+  const cities = [
+    { label: "Geelong", select: city.geelong, action: choseGeelong },
+    { label: "Ballarat", select: city.ballarat, action: choseBallarat },
+    { label: "Bendigo", select: city.bendigo, action: choseBendigo }
+  ];
+
   // const l
   return (
     <div className="recpage">
       <div className="recommender container-fluid">
         <div className="container" />
         <div className="row">
-          <div className="col s12 m2" style={{ marginTop: 50 }}>
+          <div className="col s12 m2" style={{ marginTop: 50, marginLeft: 50 }}>
             <Fade left duration={1000}>
-              <CheckList choices={choices} />
+              <CheckList choices={choices} cities={cities} />
             </Fade>
           </div>
-          <div className="col s12 m4 offset-m1 ">
+          <div className="col s12 m4 offset-m1">
             <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
               <Fade bottom duration={1000}>
                 <SidePanel />
@@ -187,18 +218,19 @@ const Recommender = props => {
           </div>
           <div className="col s12 m4" style={{ marginTop: 18 }}>
             <Fade right duration={1000}>
-              <SearchBox value={query} onChange={handleSearch} />
-
-              <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
               {suburbs.length === 1 ? (
                 <div
                   className="container"
-                  style={{ paddingLeft: 100, marginTop: 100 }}
+                  style={{ paddingLeft: 100, marginTop: 200 }}
                 >
                   <CircularProgress />
                 </div>
               ) : (
-                <SuburbList suburbs={pagedSub} choice={choice} />
+                <>
+                  <SearchBox value={query} onChange={handleSearch} />
+                  <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
+                  <SuburbList suburbs={pagedSub} choice={choice} city={city} />
+                </>
               )}
               <Pagination
                 itemNumber={totalcount}

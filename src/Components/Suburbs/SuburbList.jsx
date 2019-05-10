@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SubListResult from "./SubListResult";
 import { AniUl } from "./../common/AniComponent";
 
-const SuburList = ({ suburbs, choice }) => {
+const SuburList = ({ suburbs, choice, city }) => {
   const Container = styled.div`
     border-radius: 10px;
     height: 470px;
@@ -47,8 +47,27 @@ const SuburList = ({ suburbs, choice }) => {
     if (suburbs.length === 0)
       return (
         <Container>
-          <h4 style={{ paddingTop: "100px", textAlign: "center" }}>
+          <h4
+            style={{ color: "black", paddingTop: "100px", textAlign: "center" }}
+          >
             There is no such suburb...
+          </h4>
+        </Container>
+      );
+  }
+
+  function checkCity(city) {
+    if (
+      city.geelong === false &&
+      city.ballarat === false &&
+      city.bendigo === false
+    )
+      return (
+        <Container>
+          <h4
+            style={{ color: "black", paddingTop: "100px", textAlign: "center" }}
+          >
+            Please Choose At Least One City!
           </h4>
         </Container>
       );
@@ -56,11 +75,9 @@ const SuburList = ({ suburbs, choice }) => {
 
   return (
     <React.Fragment>
-      {choice.healthField ||
-      choice.educationField ||
-      choice.propertyField ||
-      choice.jobField ? (
-        checkSuburb(suburbs) || (
+      {choice.healthField || choice.educationField || choice.propertyField ? (
+        checkSuburb(suburbs) ||
+        checkCity(city) || (
           <AniUl className="slidebar" pose={isOpen ? "open" : "closed"}>
             {data.map(d => (
               //change to _id when deploy

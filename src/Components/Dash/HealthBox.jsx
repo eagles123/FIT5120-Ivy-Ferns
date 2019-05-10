@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import AniImg from "../common/AniImg";
-import { AniUl, DashItem } from "./../common/AniComponent";
-import Rodal from "rodal";
-import "rodal/lib/rodal.css";
+import Grow from "@material-ui/core/Grow";
 
 export default function HealthBox({ data }) {
   const [isOpen, setOpen] = useState(false);
@@ -17,62 +15,40 @@ export default function HealthBox({ data }) {
 
   return (
     <div className="content" style={{ paddingTop: "10px", marginTop: "10px" }}>
-      <AniImg img={"/health.png"} handleOpen={handleOpen} />
-      {/* <img
-        src={}
-        alt=""
-        onClick={handleOpen}
-        style={{ cursor: "pointer" }}
-      /> */}
-      <h6>Health Care</h6>
-
-      <Rodal
-        visible={isOpen}
-        onClose={handleClose}
-        width={700}
-        height={500}
-        animation={"door"}
+      <div style={{ margin: "0 auto" }}>
+        <AniImg
+          img={"/health.png"}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+        />
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 100,
+          marginTop: "-15px",
+          marginLeft: "-15px"
+        }}
       >
-        <AniUl pose={isOpen ? "open" : "closed"}>
-          <DashItem className="dashitem">
-            <div className="row">
-              <div className="icon col s4 m4">
-                <img className="responsive" src={"/hosp.png"} alt="" />
-              </div>
-              <div className="col s7 m7 offset-m1">
-                <p style={{ textAlign: "center" }}>No. of Hospitals:</p>
-                <p style={{ textAlign: "center" }}>{hospital}</p>
-              </div>
-            </div>
-          </DashItem>
-
-          <DashItem className="dashitem">
-            <div className="row">
-              <div className="icon col s4 m4">
-                <img className="responsive" src={"/gps.png"} alt="" />
-              </div>
-              <div className="col s7 m7 offset-m1">
-                <p style={{ textAlign: "center" }}>
-                  No. of General practitioners(GPs)
-                </p>
-                <p style={{ textAlign: "center" }}>{gps}</p>
-              </div>
-            </div>
-          </DashItem>
-
-          <DashItem className="dashitem">
-            <div className="row">
-              <div className="icon col s4 m4">
-                <img className="responsive" src={"/bed.png"} alt="" />
-              </div>
-              <div className="col s7 m7 offset-m1">
-                <p style={{ textAlign: "center" }}>No. of Hospital beds</p>
-                <p style={{ textAlign: "center" }}>{beds}</p>
-              </div>
-            </div>
-          </DashItem>
-        </AniUl>
-      </Rodal>
+        <Grow in={isOpen}>
+          <div style={{ backgroundColor: "#ffcc80", borderRadius: "10px" }}>
+            {" "}
+            <p style={{ textAlign: "left", paddingLeft: 10, paddingTop: 10 }}>
+              {" "}
+              Hospitals: {hospital}
+            </p>
+            <p style={{ textAlign: "left", paddingLeft: 10, paddingRight: 10 }}>
+              {" "}
+              General practitioners(GPs): {gps}{" "}
+            </p>
+            <p style={{ textAlign: "left", paddingLeft: 10 }}>
+              {" "}
+              Hospital beds: {beds}
+            </p>{" "}
+          </div>
+        </Grow>
+      </div>
+      <h6>Health Care</h6>
     </div>
   );
 }

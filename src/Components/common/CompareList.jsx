@@ -13,10 +13,11 @@ const styles = theme => ({
   root: {
     width: "100%",
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    marginTop: 100,
+    backgroundColor: "#9ccc65",
     position: "relative",
     overflow: "auto",
-    maxHeight: "80vh",
+    maxHeight: "140vh",
     borderRadius: "8px"
   },
   listSection: {

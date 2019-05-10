@@ -1,8 +1,7 @@
+/* global $ */
 import React, { useState, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
-import { Link } from "react-router-dom";
 import PageFooter from "./Footer";
-import Script from "react-load-script";
 import UpIcon from "@material-ui/icons/KeyboardArrowUp";
 import SecondRow from "../common/SecondRow";
 import InsertRow from "../common/InsertRow";
@@ -11,12 +10,23 @@ import { animateScroll as scroll } from "react-scroll";
 import MyVideo from "./../common/MyVideo";
 
 export default function HomePageTwo() {
+  // const [position, setPosition] = useState();
+  // //show and hide scroll to top
+  // const [show, setShow] = useState(false);
   // useEffect(() => {
-  //   window.location.reload();
-  // }, []);
+  //   const setFromEvent = e => setPosition(window.pageYOffset);
+  //   window.addEventListener("scroll", setPosition);
+
+  //   if (window.pageYOffset < 500) setShow(false);
+  //   if (window.pageYOffset > 500) setShow(true);
+  //   return () => {
+  //     window.removeEventListener("scroll", setPosition);
+  //   };
+  // }, [position]);
   function handleScorll() {
     scroll.scrollTo(700);
   }
+
   return (
     <React.Fragment>
       <div className="home">
@@ -54,27 +64,22 @@ export default function HomePageTwo() {
 
             <div className="secondRow">
               <SecondRow />
-
               <Fab
-                color="secondary"
+                color="primary"
                 aria-label="Edit"
                 style={{
-                  marginLeft: "90%",
+                  marginLeft: "95%",
                   marginBottom: "1%",
-                  backgroundColor: "#4caf50"
+                  // position: "fixed",
+                  zIndex: 100
                 }}
                 onClick={() => scroll.scrollToTop()}
               >
                 <UpIcon>edit_icon</UpIcon>
               </Fab>
-
-              {/* <i
-                className="fas fa-angle-double-up fa-4x"
-                onClick={() => scroll.scrollToTop()}
-                style={{ cursor: "pointer" }}
-              /> */}
             </div>
           </div>
+
           <PageFooter />
         </div>
       </div>

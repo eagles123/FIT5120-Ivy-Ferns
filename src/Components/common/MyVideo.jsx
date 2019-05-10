@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
+import { jarallax, jarallaxElement, jarallaxVideo } from "jarallax";
+import ReactDOM from "react-dom";
+import $ from "jquery";
+window.$ = $;
 
 export default class MyVideo extends Component {
-  componentDidMount() {
-    // window.location.reload();
-  }
   render() {
     return (
       <div
         className="jarallax text parallax-3 col s12 m12"
-        // data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
-        data-jarallax-video="mp4:./file.mp4"
+        data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
+
+        // data-jarallax-video="mp4:./file.mp4"
       >
-        <p style={{ marginBottom: "0px" }}>Looking to move to</p>
-        <p style={{ paddingTop: "0px", marginTop: "0px" }}>
+        <p style={{ marginBottom: "0px", fontSize: "45px" }}>
+          Looking to move to
+        </p>
+        <p style={{ paddingTop: "0px", marginTop: "0px", fontSize: "40px" }}>
           Geelong, Ballarat or Bendigo?
         </p>
         <Link to="/recommend">

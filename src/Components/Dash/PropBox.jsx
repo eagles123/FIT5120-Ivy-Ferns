@@ -1,22 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import CountUp from "react-countup";
+import AniImg from "../common/AniImg";
+import Grow from "@material-ui/core/Grow";
 
 export default function PropBox({ data }) {
-  let price = data.price;
+  const [isOpen, setOpen] = useState(false);
+
+  const { price, rent_all } = data;
+  function handleOpen() {
+    setOpen(true);
+  }
+  function handleClose() {
+    setOpen(false);
+  }
   return (
     <div className="content" style={{ paddingTop: "10px", marginTop: "10px" }}>
-      <img src={"/property.png"} alt="" />
-      <div>
-        <h6>House Price</h6>
-        <CountUp
-          start={0}
-          end={price}
-          duration={1.4}
-          separator=","
-          decimals={0}
-          prefix="Medium: $"
-        />
+      <AniImg
+        img={"/property.png"}
+        handleOpen={handleOpen}
+        handleClose={handleClose}
+      />
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 100,
+          marginTop: "-15px",
+          marginLeft: "-15px"
+        }}
+      >
+        <Grow in={isOpen}>
+          <div style={{ backgroundColor: "#ffcc80", borderRadius: "10px" }}>
+            {" "}
+            <p
+              style={{
+                textAlign: "left",
+                paddingLeft: 10,
+                paddingTop: 10,
+                paddingRight: 10
+              }}
+            >
+              {
+                <CountUp
+                  start={0}
+                  end={price}
+                  duration={1}
+                  separator=","
+                  decimals={0}
+                  prefix="Medium Property Price: $"
+                />
+              }
+            </p>
+            <p style={{ textAlign: "left", paddingLeft: 10 }}>
+              {" "}
+              Medium Rental Price: ${rent_all}
+            </p>
+          </div>
+        </Grow>
       </div>
+      <h6>House Price</h6>
     </div>
   );
 }

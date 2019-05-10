@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const NavBarLinks = () => {
   return (
     <div>
-      <ul className="right">
+      <ul id="nav-mobile" className="right">
         <li>
           <a style={{ color: "black" }} className="nav-item nav-link" href="/">
             {/* <NavLink

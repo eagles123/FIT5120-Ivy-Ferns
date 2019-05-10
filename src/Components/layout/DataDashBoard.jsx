@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { graphql } from "react-apollo";
 import { getSuburbByIdQuery } from "../../queries/queries";
 import DashList from "../Dash/DashList";
@@ -8,16 +8,24 @@ import PropBox from "../Dash/PropBox";
 // import JobBox from "../Dash/JobBox";
 import SchoolChart from "../Dash/SchoolChart";
 import MyMap from "./../Dash/MyMap";
-import StyledButton from "./../common/StyleButton";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import RentalChart from "./../Dash/RentalChart";
+import Sidebar from "react-sidebar";
+import { Fab, CircularProgress, Tooltip } from "@material-ui/core/";
+import Carousel from "nuka-carousel";
+import ReactTooltip from "react-tooltip";
 
 function DataDashBoard(props) {
   const [neighbours, setNeighbours] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [slideIndex, setIndex] = useState(0);
 
   //const to pass neighoubr hospitals and school to MyMap
   function handlePre() {
     props.history.push("/recommend");
+  }
+
+  function handleOpen() {
+    setOpen(!open);
   }
 
   //set neibours list from fetched data
@@ -26,53 +34,163 @@ function DataDashBoard(props) {
       setNeighbours(props.data.suburb.neighbours[0].neighbour);
   }, [props.data.loading]);
 
+  console.log(slideIndex);
+
   //fetch neighbour hospitals and schools on click
 
   return props.data.loading ? (
-    <div className="container" style={{ margin: "0 auto" }}>
-      <CircularProgress style={{ marginTop: "40vh", marginLeft: "30vw" }} />
+    <div
+      className="container dashboard"
+      style={{ margin: "0 auto", height: "800px" }}
+    >
+      <CircularProgress style={{ marginTop: "40vh", marginLeft: "50vw" }} />
     </div>
   ) : (
     <div className="container-fluid dashboard">
+      <Sidebar
+        sidebar={<DashList props={props} index={props.match.params.id} />}
+        open={open}
+        onSetOpen={handleOpen}
+        styles={{ sidebar: { background: "#9ccc65" } }}
+      />
       <div className="row">
-        <div className="col s12 m2">
-          <StyledButton onClick={handlePre}>Back</StyledButton>
-
-          <StyledButton
+        <div style={{ position: "absolute", marginLeft: 10 }}>
+          <Tooltip title="Back" placement="right">
+            <Fab
+              size="small"
+              color="primary"
+              aria-label="Add"
+              onClick={handlePre}
+              style={{ margin: "20px 0px 0px 0px" }}
+            >
+              <i className="fas fa-arrow-left" />
+            </Fab>
+          </Tooltip>
+          <p>
+            <Tooltip title="Suburb List" placement="right">
+              <Fab
+                size="small"
+                color="primary"
+                aria-label="Add"
+                onClick={handleOpen}
+                style={{ margin: "10px 0px 0px 0px" }}
+              >
+                <i className="fas fa-bars" />
+              </Fab>
+            </Tooltip>
+          </p>
+          <p>
+            <Tooltip title="Compare">
+              <Fab
+                size="small"
+                color="primary"
+                aria-label="Add"
+                onClick={() =>
+                  props.history.push(`/compare/${props.match.params.id}`)
+                }
+                style={{ margin: "10px 0px 0px 0px" }}
+              >
+                <i className="fas fa-balance-scale" />
+              </Fab>
+            </Tooltip>
+          </p>
+          {/* <Button
+            variant="contained"
+            color="primary"
             onClick={() =>
               props.history.push(`/compare/${props.match.params.id}`)
             }
           >
             Compare
-          </StyledButton>
-
-          <DashList props={props} index={props.match.params.id} />
+          </Button> */}
         </div>
-        <div className="col s12 m5 ">
-          <h4 style={{ textAlign: "center", marginTop: "50px" }}>
+        <div className="col s12 m5" style={{ marginLeft: 50, zIndex: 0 }}>
+          <h4
+            style={{
+              textAlign: "center",
+              marginTop: "30px",
+              marginLeft: "-50px",
+              paddingLeft: "-50px"
+            }}
+          >
             {props.data.suburb.suburbName}, {props.data.suburb.city}
+            <span>
+              {" "}
+              <i
+                className="fas fa-info-circle"
+                data-tip="mapTool"
+                data-for="mapTool"
+                style={{
+                  cursor: "pointer",
+                  color: "#2962ff",
+                  position: "relative",
+                  zIndex: 0
+                }}
+              />
+            </span>
+            <ReactTooltip place="right" id="mapTool" type="info" effect="solid">
+              <p style={{ width: "250px", textAlign: "left" }}>
+                The map shows the hospitals and schools available in this
+                suburb. The approximate number of hospital beds in a hospital
+                can be viewed by clicking on that respective hospital icon. You
+                can also access the website of the hospitals and schools shown
+                on the map by clicking on their respective names. The
+                neighbouring hospitals and schools are visible by selecting the
+                option “Neighbouring Hospitals and Schools”.
+              </p>
+            </ReactTooltip>
           </h4>
           <MyMap data={props.data.suburb} neighbours={neighbours} />
         </div>
-        <div className="col s12 m5 ">
+        <div className="col s12 m6 " style={{ marginLeft: 20 }}>
           <div className="row">
-            <div className="boardbox col s2 m4">
+            <div className="boardbox col s2 m4 ">
               <HealthBox data={props.data.suburb.health} />
             </div>
             <div className="boardbox col s2 m4 ">
               <EdBox data={props.data.suburb.education} />
             </div>
-            <div className="boardbox col s2 m4">
+            <div className="boardbox col s2 m4 ">
               <PropBox data={props.data.suburb.property} />
             </div>
           </div>
+          <h5 style={{ textAlign: "center" }}>School & Rental Statistics</h5>
           <div style={{ backgroundColor: "rgba(220,220,220, .4)" }}>
-            <SchoolChart data={props.data.suburb.schools} />
+            <Carousel
+              slideIndex={slideIndex}
+              afterSlide={slideIndex => {
+                setIndex(slideIndex);
+              }}
+              renderBottomCenterControls={null}
+              renderCenterLeftControls={({ previousSlide }) =>
+                slideIndex === 0 ? null : (
+                  <Tooltip title="School Stats" placement="top">
+                    <i
+                      className="fas fa-chevron-circle-left fa-lg"
+                      onClick={previousSlide}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </Tooltip>
+                )
+              }
+              renderCenterRightControls={({ nextSlide }) =>
+                slideIndex === 1 ? null : (
+                  <Tooltip title="Rental Stats" placement="top">
+                    <i
+                      className="fas fa-chevron-circle-right fa-lg"
+                      onClick={nextSlide}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </Tooltip>
+                )
+              }
+            >
+              <SchoolChart data={props.data.suburb.schools} />
+              <RentalChart data={props.data.suburb.property} />
+            </Carousel>
           </div>
           <br />
-          <div style={{ backgroundColor: "rgba(220,220,220, .4)" }}>
-            <RentalChart data={props.data.suburb.property} />
-          </div>
+
           {/* <JobChart /> */}
         </div>
       </div>

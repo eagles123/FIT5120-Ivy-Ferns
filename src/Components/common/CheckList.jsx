@@ -12,7 +12,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 export default function CheckList(props) {
-  const { choices } = props;
+  const { choices, cities } = props;
   const [perference, setperference] = useState(true);
   const [Lga, setLga] = useState(false);
 
@@ -77,7 +77,7 @@ export default function CheckList(props) {
         </List>
       </Collapse>
 
-      {/* <ListItem button onClick={handleLga} style={{ color: "black" }}>
+      <ListItem button onClick={handleLga} style={{ color: "black" }}>
         <ListItemText
           disableTypography
           inset
@@ -88,25 +88,25 @@ export default function CheckList(props) {
       </ListItem>
       <Collapse in={Lga} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {["Geelong", "Ballarat", "Bendigo"].map(choice => (
+          {cities.map(choice => (
             <ListItem
-              key={choice}
+              key={choice.label}
               role={undefined}
               dense
               button
-              onClick={choice}
+              onClick={choice.action}
             >
-              <Checkbox checked={choice.chose} />
+              <Checkbox checked={choice.select} color="primary" />
               <ListItemText
                 //disableTypography to make text white
                 disableTypography
-                primary={choice}
+                primary={choice.label}
                 style={{ fontSize: "13px", color: "black" }}
               />
             </ListItem>
           ))}
         </List>
-      </Collapse> */}
+      </Collapse>
     </List>
   );
 }
