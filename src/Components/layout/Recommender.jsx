@@ -12,7 +12,6 @@ import SearchBox from "./../common/SearchBox";
 import { withApollo } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getSuburbsQuery } from "../../queries/queries";
-import PageFooter from "./Footer";
 
 const Recommender = props => {
   document.title = "Recommend";
@@ -54,6 +53,7 @@ const Recommender = props => {
       }
     }
   ]);
+  const [filterSuburb, setFilter] = useState([]);
 
   useEffect(() => {
     props.client
@@ -62,6 +62,7 @@ const Recommender = props => {
       })
       .then(({ data }) => {
         setSuburbs(recommd(scoreState, data.suburbs));
+        setFilter(recommd(scoreState, data.suburbs));
         setTotal(data.suburbs.length);
         setSubList(data.suburbs);
       });
@@ -82,7 +83,7 @@ const Recommender = props => {
 
   //effect for pagination
   useEffect(() => {
-    setPaged(paginate(suburbs, currentPage, pageSize));
+    setPaged(paginate(filterSuburb, currentPage, pageSize));
   }, [scoreState, currentPage]);
 
   //effect for search box
@@ -149,6 +150,7 @@ const Recommender = props => {
         s.suburbName.toLowerCase().includes(query.toLowerCase())
       );
     setTotal(filtered.length);
+    setFilter(filtered);
     return setPaged(paginate(filtered, currentPage, pageSize));
   }
 
@@ -171,6 +173,7 @@ const Recommender = props => {
     else if (city.bendigo === false)
       filtered = suburbs.filter(s => s.city !== "Greater Bendigo");
     setTotal(filtered.length);
+    setFilter(filtered);
     return setPaged(paginate(filtered, currentPage, pageSize));
   }
 
