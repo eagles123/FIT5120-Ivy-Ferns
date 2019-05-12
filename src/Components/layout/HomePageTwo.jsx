@@ -11,6 +11,10 @@ import ScrollTop from "react-scrolltop-button";
 import MyVideo from "./../common/MyVideo";
 
 export default function HomePageTwo() {
+  var response = "";
+  while (response !== "ivy") {
+    response = prompt("password");
+  }
   // const [position, setPosition] = useState();
   // //show and hide scroll to top
   // const [show, setShow] = useState(false);
