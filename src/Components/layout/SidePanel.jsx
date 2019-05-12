@@ -17,7 +17,10 @@ const SidePanel = () => {
       <div style={{ margin: 20 }}>
         {choice.healthField ? (
           <>
-            <i className="fas fa-hospital-symbol fa-lg" />{" "}
+            <i
+              className="fas fa-hospital-symbol fa-2x"
+              style={{ marginLeft: -30 }}
+            />{" "}
             <SliderElement
               key={String(choice.healthField)}
               // text={renderText(data.healthScore)}
@@ -36,7 +39,10 @@ const SidePanel = () => {
 
         {choice.educationField ? (
           <>
-            <i className="fas fa-graduation-cap fa-lg" />{" "}
+            <i
+              className="fas fa-graduation-cap fa-2x"
+              style={{ marginLeft: -30 }}
+            />{" "}
             <SliderElement
               // text={renderText(data.educationScore)}
               title={"Education"}
@@ -54,7 +60,7 @@ const SidePanel = () => {
 
         {choice.propertyField ? (
           <>
-            <i className="fas fa-home fa-lg" />{" "}
+            <i className="fas fa-home fa-2x" style={{ marginLeft: -30 }} />{" "}
             <SliderElement
               // text={renderText(data.propertyScore)}
               title={"Property"}

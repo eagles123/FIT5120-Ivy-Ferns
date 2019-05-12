@@ -4,14 +4,7 @@ import ImageCard from "./ImageCard";
 export default function InsertRow() {
   return (
     <div className="sssection container">
-      <h4
-        style={{
-          color: "black",
-          fontFamily: "Merriweather"
-        }}
-      >
-        Why Should You Move?
-      </h4>
+      <h4>Why Should You Move?</h4>
       <hr style={{ width: "90%" }} />
       <br />
       <div className="row" id="insertRow">

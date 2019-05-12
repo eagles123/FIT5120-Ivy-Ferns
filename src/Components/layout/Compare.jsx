@@ -7,6 +7,7 @@ import CompareList from "./../common/CompareList";
 import CompareTable from "./../common/CompareTable";
 import Sidebar from "react-sidebar";
 import { Fab, Tooltip } from "@material-ui/core/";
+import PageFooter from "./Footer";
 
 const mql = window.matchMedia(`(min-width: 200px)`);
 let tempList = [];
@@ -65,21 +66,17 @@ function Compare({ data, client, match, history }) {
 
   return (
     <div className="container-fluid">
-      <h4>Compare Up to Three Suburbs</h4>
       <div className="row">
         <div className="col s1 m1">
-          <Tooltip title="Back" placement="bottom">
+          <Tooltip title="Back" placement="right">
             <Fab
-              size="small"
+              variant="extended"
               color="primary"
               aria-label="Add"
               onClick={handlePre}
-              style={{
-                margin: "10px 0px 10px 0px",
-                zIndex: 1
-              }}
+              style={{ margin: "20px 0px 0px 0px", zIndex: 1 }}
             >
-              <i className="fas fa-arrow-left" />
+              Back
             </Fab>
           </Tooltip>
           <p />
@@ -104,6 +101,7 @@ function Compare({ data, client, match, history }) {
                 suburbList={suburbList}
                 checked={checked}
                 handelCheck={handelCheck}
+                handleOpen={handleOpen}
               />
             }
             open={open}
@@ -112,9 +110,11 @@ function Compare({ data, client, match, history }) {
           />
         </div>
         <div className="col s10 m10">
+          <h4>Compare Up to Three Suburbs</h4>
           <CompareTable compareSuburbs={compareSuburbs} />
         </div>
       </div>
+      <PageFooter />
     </div>
   );
 }

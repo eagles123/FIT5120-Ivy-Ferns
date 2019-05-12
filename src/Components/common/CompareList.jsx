@@ -6,7 +6,9 @@ import {
   ListItem,
   ListItemText,
   Checkbox,
-  Typography
+  Typography,
+  ListSubheader,
+  Fab
 } from "@material-ui/core";
 
 const styles = theme => ({
@@ -30,10 +32,22 @@ const styles = theme => ({
 });
 
 function CompareList(props) {
-  const { classes, suburbList, checked, handelCheck } = props;
+  const { classes, suburbList, checked, handelCheck, handleOpen } = props;
 
   return (
     <List className={classes.root} subheader={<li />}>
+      <ListSubheader style={{ fontSize: "20px" }}>
+        Select up to 3 Suburbs{" "}
+        <Fab
+          size="small"
+          color="primary"
+          aria-label="Add"
+          onClick={handleOpen}
+          style={{ margin: "10px 0px 10px 20px" }}
+        >
+          <i className="fas fa-arrow-left" />
+        </Fab>
+      </ListSubheader>
       {suburbList.map(suburb => (
         <li key={`section-${suburb._id}`} className={classes.listSection}>
           <ul className={classes.ul}>

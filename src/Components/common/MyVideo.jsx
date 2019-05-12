@@ -11,9 +11,8 @@ export default class MyVideo extends Component {
     return (
       <div
         className="jarallax text parallax-3 col s12 m12"
-        data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
-
-        // data-jarallax-video="mp4:./file.mp4"
+        // data-jarallax-video="https://youtu.be/iBxYAjCUqvg"
+        data-jarallax-video="mp4:./file.mp4"
       >
         <p style={{ marginBottom: "0px", fontSize: "45px" }}>
           Looking to move to
@@ -45,7 +44,7 @@ export default class MyVideo extends Component {
           style={{
             textAlign: "center",
             cursor: "pointer",
-            marginTop: "10vh"
+            marginTop: "20vh"
           }}
           onClick={this.props.handleScorll}
         >

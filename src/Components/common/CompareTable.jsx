@@ -11,7 +11,10 @@ function CompareTable({ compareSuburbs }) {
             <tr>
               <th />
               {compareSuburbs.map(suburb => (
-                <th key={suburb._id}>{suburb.suburbName}</th>
+                <th key={suburb._id}>
+                  {suburb.suburbName}
+                  <p style={{ textAlign: "center" }}>({suburb.city})</p>
+                </th>
               ))}
             </tr>
           </thead>
@@ -19,10 +22,10 @@ function CompareTable({ compareSuburbs }) {
           <tbody>
             <tr>
               <td align="center" colspan={compareSuburbs.length + 1}>
-                Health Care
+                <h5 style={{ fontWeight: "bold" }}>Health Care</h5>
               </td>
             </tr>
-            <tr className="price">
+            <tr className="hospitals">
               <th scope="row">Hospitals</th>
               {compareSuburbs.map(suburb => (
                 <td key={suburb._id} className="text-center">
@@ -44,9 +47,17 @@ function CompareTable({ compareSuburbs }) {
                 </td>
               ))}
             </tr>
+            <tr className="capacity">
+              <th scope="row">Hospital Capacity</th>
+              {compareSuburbs.map(suburb => (
+                <td key={suburb._id} className="text-center">
+                  {suburb.health.beds}
+                </td>
+              ))}
+            </tr>
             <tr>
               <td align="center" colSpan={compareSuburbs.length + 1}>
-                Education
+                <h6 style={{ fontWeight: "bold" }}>Education</h6>
               </td>
             </tr>
             <tr className="preSchool">
@@ -75,7 +86,7 @@ function CompareTable({ compareSuburbs }) {
             </tr>
             <tr>
               <td align="center" colSpan={compareSuburbs.length + 1}>
-                Proerty/Rental Price
+                <h6 style={{ fontWeight: "bold" }}>Property /Rental Price</h6>
               </td>
             </tr>
             <tr className="housePrice">

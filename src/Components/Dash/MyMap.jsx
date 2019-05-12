@@ -13,7 +13,6 @@ import {
   Fab,
   Tooltip
 } from "@material-ui/core";
-import ReactTooltip from "react-tooltip";
 import Axios from "axios";
 
 //gloabl varibles
@@ -457,7 +456,7 @@ function MyMap({ data, neighbours, client }) {
           marginBottom: "0px"
         }}
       >
-        <div className="col s6 m6 offset-m1">
+        <div className="col s6 m6">
           <FormGroup row>
             <FormControlLabel
               control={
@@ -467,18 +466,18 @@ function MyMap({ data, neighbours, client }) {
                   color="primary"
                 />
               }
-              label="Neighbour Hospitals & Schools"
+              label="Neighbouring Hospitals & Schools"
             />
           </FormGroup>
         </div>
-        <div className="col s2 m2 offset-m3">
-          <Tooltip title="Icon Legend" placement="right">
+        <div className="col s2 m2 offset-m4">
+          <Tooltip title="Map Legend" placement="right">
             <Fab
               size="small"
               color="primary"
               aria-label="Add"
               onClick={handleCheck}
-              style={{ margin: "10px 0px 0px 0px" }}
+              style={{ margin: "10px 0px 10px 0px" }}
             >
               <i className="fas fa-map-marked-alt" />
             </Fab>

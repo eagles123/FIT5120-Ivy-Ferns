@@ -2,13 +2,13 @@ import React, { useState, useContext } from "react";
 import { ChoiceContext } from "../context/ParameterContext";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { slide as Menu } from "react-burger-menu";
 import {
   List,
   ListItem,
   ListItemText,
   Typography,
-  ListSubheader
+  ListSubheader,
+  Fab
 } from "@material-ui/core";
 
 const styles = theme => ({
@@ -34,14 +34,25 @@ const styles = theme => ({
 });
 //need to change key property to _id
 function DashList(props) {
-  const { classes, index } = props;
+  const { classes, index, handleOpen } = props;
   const { suburbList } = useContext(ChoiceContext);
 
   const [selectedIndex, setIndex] = useState(index);
 
   return (
     <List className={classes.root} subheader={<li />}>
-      <ListSubheader style={{ fontSize: "20px" }}>Ranked Suburbs</ListSubheader>
+      <ListSubheader style={{ fontSize: "20px" }}>
+        Ranked Suburbs{" "}
+        <Fab
+          size="small"
+          color="primary"
+          aria-label="Add"
+          onClick={handleOpen}
+          style={{ margin: "10px 0px 10px 20px" }}
+        >
+          <i className="fas fa-arrow-left" />
+        </Fab>
+      </ListSubheader>
       {suburbList.map(suburb => (
         <li key={`section-${suburb._id}`} className={classes.listSection}>
           <ul className={classes.ul}>

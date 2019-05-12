@@ -46,13 +46,13 @@ export default function PropBox({ data }) {
                   duration={1}
                   separator=","
                   decimals={0}
-                  prefix="Medium Property Price: $"
+                  prefix="Median Property Price: $"
                 />
               }
             </p>
             <p style={{ textAlign: "left", paddingLeft: 10 }}>
               {" "}
-              Medium Rental Price: ${rent_all}
+              Median Rental Price: ${rent_all}
             </p>
           </div>
         </Grow>

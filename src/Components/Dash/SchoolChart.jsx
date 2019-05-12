@@ -286,7 +286,7 @@ export default class SchoolChart extends React.Component {
               style={{ marginLeft: "10px" }}
             />
             <p style={{ fontSize: "10px", textAlign: "right" }}>
-              *Last Updated: 2018
+              Last Updated: 2018
             </p>
           </div>
         )}

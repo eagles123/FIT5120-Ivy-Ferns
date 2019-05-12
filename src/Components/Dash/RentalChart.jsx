@@ -109,7 +109,7 @@ export default class RentalChart extends React.Component {
     return (
       <React.Fragment>
         <h6 style={{ textAlign: "center", paddingTop: 10 }}>
-          Rental Price Per Week
+          Rental Price Per Week (AUD)
           <span>
             {" "}
             <i
@@ -148,7 +148,7 @@ export default class RentalChart extends React.Component {
           />
         </div>
         <p style={{ fontSize: "10px", textAlign: "right" }}>
-          *Last Updated: 2018
+          Last Updated: 2018
         </p>
       </React.Fragment>
     );

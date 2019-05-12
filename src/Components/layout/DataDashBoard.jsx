@@ -13,6 +13,8 @@ import Sidebar from "react-sidebar";
 import { Fab, CircularProgress, Tooltip } from "@material-ui/core/";
 import Carousel from "nuka-carousel";
 import ReactTooltip from "react-tooltip";
+import StyledButton from "./../common/StyleButton";
+import PageFooter from "./Footer";
 
 function DataDashBoard(props) {
   const [neighbours, setNeighbours] = useState([]);
@@ -34,7 +36,13 @@ function DataDashBoard(props) {
       setNeighbours(props.data.suburb.neighbours[0].neighbour);
   }, [props.data.loading]);
 
-  console.log(slideIndex);
+  useEffect(() => {
+    setIndex(0);
+  }, [props.data.loading]);
+
+  function handleCompare() {
+    props.history.push(`/compare/${props.match.params.id}`);
+  }
 
   //fetch neighbour hospitals and schools on click
 
@@ -48,7 +56,13 @@ function DataDashBoard(props) {
   ) : (
     <div className="container-fluid dashboard">
       <Sidebar
-        sidebar={<DashList props={props} index={props.match.params.id} />}
+        sidebar={
+          <DashList
+            props={props}
+            index={props.match.params.id}
+            handleOpen={handleOpen}
+          />
+        }
         open={open}
         onSetOpen={handleOpen}
         styles={{ sidebar: { background: "#9ccc65" } }}
@@ -57,13 +71,13 @@ function DataDashBoard(props) {
         <div style={{ position: "absolute", marginLeft: 10 }}>
           <Tooltip title="Back" placement="right">
             <Fab
-              size="small"
+              variant="extended"
               color="primary"
               aria-label="Add"
               onClick={handlePre}
               style={{ margin: "20px 0px 0px 0px" }}
             >
-              <i className="fas fa-arrow-left" />
+              Back
             </Fab>
           </Tooltip>
           <p>
@@ -76,21 +90,6 @@ function DataDashBoard(props) {
                 style={{ margin: "10px 0px 0px 0px" }}
               >
                 <i className="fas fa-bars" />
-              </Fab>
-            </Tooltip>
-          </p>
-          <p>
-            <Tooltip title="Compare">
-              <Fab
-                size="small"
-                color="primary"
-                aria-label="Add"
-                onClick={() =>
-                  props.history.push(`/compare/${props.match.params.id}`)
-                }
-                style={{ margin: "10px 0px 0px 0px" }}
-              >
-                <i className="fas fa-balance-scale" />
               </Fab>
             </Tooltip>
           </p>
@@ -144,14 +143,27 @@ function DataDashBoard(props) {
         </div>
         <div className="col s12 m6 " style={{ marginLeft: 20 }}>
           <div className="row">
-            <div className="boardbox col s2 m4 ">
+            <div className="boardbox col s3 m3 ">
               <HealthBox data={props.data.suburb.health} />
             </div>
-            <div className="boardbox col s2 m4 ">
+            <div className="boardbox col s3 m3 ">
               <EdBox data={props.data.suburb.education} />
             </div>
-            <div className="boardbox col s2 m4 ">
+            <div className="boardbox col s3 m3 ">
               <PropBox data={props.data.suburb.property} />
+            </div>
+            <div className="boardbox col s3 m3 ">
+              <Tooltip title="Compare with other Suburbs">
+                <Fab
+                  variant="extended"
+                  color="primary"
+                  aria-label="Add"
+                  onClick={handleCompare}
+                  style={{ margin: "35px 0px 0px 0px" }}
+                >
+                  Compare
+                </Fab>
+              </Tooltip>
             </div>
           </div>
           <h5 style={{ textAlign: "center" }}>School & Rental Statistics</h5>
@@ -194,6 +206,7 @@ function DataDashBoard(props) {
           {/* <JobChart /> */}
         </div>
       </div>
+      <PageFooter />
     </div>
   );
 }

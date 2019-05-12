@@ -27,7 +27,7 @@ const App = () => {
   const [suburbList, setSubList] = useState(() => {
     let value;
     try {
-      value = JSON.parse(window.localStorage.getItem("suburb") || "0");
+      value = JSON.parse(window.localStorage.getItem("suburb") || []);
     } catch (e) {
       console.log(e);
     }

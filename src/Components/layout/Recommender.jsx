@@ -12,15 +12,32 @@ import SearchBox from "./../common/SearchBox";
 import { withApollo } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getSuburbsQuery } from "../../queries/queries";
+import PageFooter from "./Footer";
 
 const Recommender = props => {
-  document.title = "Recommend";
+  // document.title = "Recommend";
   //initial socre
-  const [scoreState, stateDispatch] = useReducer(recReducer, {
-    healthScore: 2,
-    educationScore: 2,
-    propertyScore: 2
-  });
+  function inital() {
+    let value;
+    try {
+      value = JSON.parse(window.sessionStorage.getItem("score")) || {
+        healthScore: 2,
+        educationScore: 2,
+        propetyScore: 2
+      };
+    } catch (e) {
+      console.log(e);
+    }
+    return value;
+  }
+
+  const [scoreState, stateDispatch] = useReducer(recReducer, inital());
+
+  useEffect(() => {
+    window.sessionStorage.setItem("score", JSON.stringify(scoreState));
+  }, [scoreState]);
+
+  console.log(scoreState);
 
   const [city, cityDispatch] = useReducer(cityReducer, {
     geelong: true,
@@ -248,6 +265,7 @@ const Recommender = props => {
           </div>
         </div>
       </div>
+      <PageFooter />
     </div>
   );
 };

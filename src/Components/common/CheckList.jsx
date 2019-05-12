@@ -36,7 +36,7 @@ export default function CheckList(props) {
       }
       style={{
         width: "100%",
-        maxWidth: "280px",
+        maxWidth: "300px",
         // backgroundColor: "#d4e157",
         backgroundColor: "#9ccc65",
         borderRadius: "10px"
@@ -81,7 +81,7 @@ export default function CheckList(props) {
         <ListItemText
           disableTypography
           inset
-          primary="City"
+          primary="Local Government Area"
           style={{ fontSize: "13px", color: "black" }}
         />
         {Lga ? <ExpandLessIcon /> : <ExpandMoreIcon />}

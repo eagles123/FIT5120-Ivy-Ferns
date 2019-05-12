@@ -5,7 +5,7 @@ export default function PageFooter() {
     <React.Fragment>
       <footer>
         <div className="row">
-          <div className="col s12 m5 offset-m5">
+          <div className="col s12 m3 offset-m4">
             <p style={{ fontSize: "10px" }}>
               Copyright @ IvyFerns – Building Comfort in Regional Victoria
             </p>

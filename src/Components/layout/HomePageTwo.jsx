@@ -1,5 +1,5 @@
 /* global $ */
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import PageFooter from "./Footer";
 import UpIcon from "@material-ui/icons/KeyboardArrowUp";
@@ -7,6 +7,7 @@ import SecondRow from "../common/SecondRow";
 import InsertRow from "../common/InsertRow";
 import { jarallax, jarallaxElement, jarallaxVideo } from "jarallax";
 import { animateScroll as scroll } from "react-scroll";
+import ScrollTop from "react-scrolltop-button";
 import MyVideo from "./../common/MyVideo";
 
 export default function HomePageTwo() {
@@ -27,6 +28,10 @@ export default function HomePageTwo() {
     scroll.scrollTo(700);
   }
 
+  // useEffect(() => {
+  //   localStorage.removeItem("score");
+  // });
+
   return (
     <React.Fragment>
       <div className="home">
@@ -41,21 +46,6 @@ export default function HomePageTwo() {
           </video> */}
           <div className="col s12 m12">
             <MyVideo handleScorll={handleScorll} />
-
-            {/* <div
-            className="container"
-            style={{
-              position: "relative",
-              paddingTop: "10px",
-              paddingBottom: "30px",
-              width: "24px",
-              height: "24px"
-            }}
-          >
-            <div className="chevron" />
-            <div className="chevron" />
-            <div className="chevron" />
-          </div> */}
             <div style={{ textAlign: "center", marginBottom: "40px" }} />
             {/* <FirstRow /> */}
             <div className="insertRow">
@@ -64,7 +54,7 @@ export default function HomePageTwo() {
 
             <div className="secondRow">
               <SecondRow />
-              <Fab
+              {/* <Fab
                 color="primary"
                 aria-label="Edit"
                 style={{
@@ -76,9 +66,19 @@ export default function HomePageTwo() {
                 onClick={() => scroll.scrollToTop()}
               >
                 <UpIcon>edit_icon</UpIcon>
-              </Fab>
+              </Fab> */}
             </div>
           </div>
+          <ScrollTop
+            text="Back to Top"
+            distance={200}
+            breakpoint={2000}
+            style={{ backgroundColor: "#3f51b5", border: "0px" }}
+            className="scroll-your-role"
+            speed={1000}
+            target={75}
+            icon={<UpIcon>edit_icon</UpIcon>}
+          />
 
           <PageFooter />
         </div>
