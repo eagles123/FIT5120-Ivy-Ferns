@@ -14,7 +14,10 @@ export default function HealthBox({ data }) {
   }
 
   return (
-    <div className="content" style={{ paddingTop: "10px", marginTop: "10px" }}>
+    <div
+      className="content"
+      style={{ paddingTop: "10px", marginTop: "10px", textAlign: "center" }}
+    >
       <div style={{ margin: "0 auto" }}>
         <AniImg
           img={"/health.png"}

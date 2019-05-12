@@ -12,7 +12,7 @@ function CompareTable({ compareSuburbs }) {
               <th />
               {compareSuburbs.map(suburb => (
                 <th key={suburb._id}>
-                  {suburb.suburbName}
+                  <h5 style={{ fontWeight: "bold" }}>{suburb.suburbName}</h5>
                   <p style={{ textAlign: "center" }}>({suburb.city})</p>
                 </th>
               ))}

@@ -14,7 +14,10 @@ export default function PropBox({ data }) {
     setOpen(false);
   }
   return (
-    <div className="content" style={{ paddingTop: "10px", marginTop: "10px" }}>
+    <div
+      className="content"
+      style={{ paddingTop: "10px", marginTop: "10px", textAlign: "center" }}
+    >
       <AniImg
         img={"/property.png"}
         handleOpen={handleOpen}
