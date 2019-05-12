@@ -204,6 +204,45 @@ export default class SchoolChart extends React.Component {
       return this.state.secondary_school.length === 0;
   }
 
+  renderNodata() {
+    if (
+      this.state.primary_school.length === 0 &&
+      this.state.secondary_school.length === 0
+    )
+      return (
+        <div>
+          <img
+            style={{ marginLeft: "10%", width: "80%", height: "80%" }}
+            src={"/both.jpg"}
+          />
+        </div>
+      );
+    else if (
+      this.state.primary_school.length === 0 &&
+      this.state.secondary_school.length !== 0
+    )
+      return (
+        <div>
+          <img
+            style={{ marginLeft: "10%", width: "80%", height: "80%" }}
+            src={"/primaryNodata.jpg"}
+          />
+        </div>
+      );
+    else if (
+      this.state.secondary_school.length === 0 &&
+      this.state.primary_school.length !== 0
+    )
+      return (
+        <div>
+          <img
+            style={{ marginLeft: "10%", width: "80%", height: "80%" }}
+            src={"/secondaryNodata.jpg"}
+          />
+        </div>
+      );
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -271,10 +310,7 @@ export default class SchoolChart extends React.Component {
           </Select>
         </FormControl>
         {this.handleEmpty() ? (
-          <img
-            style={{ marginTop: "20px", marginLeft: "20px" }}
-            src={"/nodata.jpg"}
-          />
+          this.renderNodata()
         ) : (
           <div id="chart">
             <Chart
