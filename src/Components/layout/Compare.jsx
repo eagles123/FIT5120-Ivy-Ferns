@@ -24,7 +24,7 @@ function Compare({ data, client, match, history }) {
     if (currentIndex === -1 && checked.length < 3) {
       newChecked.push(value);
     } else if (currentIndex === -1 && checked.length === 3) {
-      alert("Error: You can only select maximum four suburbs to compare.");
+      alert("Error: You can only select maximum three suburbs to compare.");
     } else if (currentIndex !== -1 && checked.length <= 3) {
       newChecked.splice(currentIndex, 1);
     }

@@ -67,7 +67,7 @@ const SuburList = ({ suburbs, choice, city }) => {
           <h4
             style={{ color: "black", paddingTop: "100px", textAlign: "center" }}
           >
-            Please Choose At Least One City!
+            Please Choose At Least One Local Government Area!
           </h4>
         </Container>
       );

@@ -179,15 +179,54 @@ const Recommender = props => {
   }
 
   //function to filter by city
+  // function filterSuburbByCity() {
+  //   let filtered = suburbs;
+  //   if (city.geelong && cities.ballarat && city.bendigo) filtered = suburbs;
+  //   else if (city.geelong === false)
+  //     filtered = suburbs.filter(s => s.city !== "Greater Geelong");
+  //   else if (city.ballarat === false)
+  //     filtered = suburbs.filter(s => s.city !== "Ballarat");
+  //   else if (city.bendigo === false)
+  //     filtered = suburbs.filter(s => s.city !== "Greater Bendigo");
+  //   setTotal(filtered.length);
+  //   setFilter(filtered);
+  //   return setPaged(paginate(filtered, currentPage, pageSize));
+  // }
+
+  //function to filter by city
   function filterSuburbByCity() {
     let filtered = suburbs;
-    if (city.geelong && cities.ballarat && city.bendigo) filtered = suburbs;
-    else if (city.geelong === false)
-      filtered = suburbs.filter(s => s.city !== "Greater Geelong");
-    else if (city.ballarat === false)
-      filtered = suburbs.filter(s => s.city !== "Ballarat");
-    else if (city.bendigo === false)
-      filtered = suburbs.filter(s => s.city !== "Greater Bendigo");
+    if (city.geelong && city.ballarat && city.bendigo) {
+      filtered = suburbs;
+    } else {
+      if (city.geelong === false)
+        filtered = suburbs.filter(s => s.city !== "Greater Geelong");
+      if (city.ballarat === false)
+        filtered = suburbs.filter(s => s.city !== "Ballarat");
+      if (city.bendigo === false)
+        filtered = suburbs.filter(s => s.city !== "Greater Bendigo");
+      if (
+        city.geelong === false &&
+        city.ballarat === false &&
+        city.bendigo === true
+      ) {
+        filtered = suburbs.filter(s => s.city == "Greater Bendigo");
+      }
+      if (
+        city.geelong === false &&
+        city.ballarat === true &&
+        city.bendigo === false
+      ) {
+        filtered = suburbs.filter(s => s.city == "Ballarat");
+      }
+      if (
+        city.geelong === true &&
+        city.ballarat === false &&
+        city.bendigo === false
+      ) {
+        filtered = suburbs.filter(s => s.city == "Greater Geelong");
+      }
+    }
     setTotal(filtered.length);
     setFilter(filtered);
     return setPaged(paginate(filtered, currentPage, pageSize));

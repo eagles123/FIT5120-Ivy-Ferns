@@ -88,7 +88,7 @@ function DataDashBoard(props) {
                 color="primary"
                 aria-label="Add"
                 onClick={handleOpen}
-                style={{ margin: "10px 0px 0px 0px" }}
+                style={{ margin: "55px 0px 0px 0px" }}
               >
                 <i className="fas fa-bars" />
               </Fab>
@@ -144,13 +144,13 @@ function DataDashBoard(props) {
         </div>
         <div className="col s12 m6 " style={{ marginLeft: 20 }}>
           <div className="row">
-            <div className="boardbox col s3 m3 ">
+            <div className="boardbox col s3 m2 offset-m1">
               <HealthBox data={props.data.suburb.health} />
             </div>
-            <div className="boardbox col s3 m3 ">
+            <div className="boardbox col s3 m2 offset-m1">
               <EdBox data={props.data.suburb.education} />
             </div>
-            <div className="boardbox col s3 m3 ">
+            <div className="boardbox col s3 m2 offset-m1">
               <PropBox data={props.data.suburb.property} />
             </div>
             <div className="boardbox col s3 m2 offset-m1 ">
@@ -160,7 +160,7 @@ function DataDashBoard(props) {
                   color="primary"
                   aria-label="Add"
                   onClick={handleCompare}
-                  style={{ margin: "35px 0px 0px 0px", width: "100px" }}
+                  style={{ margin: "20px 0px 0px 0px", width: "100px" }}
                 >
                   Compare
                 </Fab>

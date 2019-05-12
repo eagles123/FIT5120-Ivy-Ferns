@@ -90,7 +90,7 @@ function CompareTable({ compareSuburbs }) {
               </td>
             </tr>
             <tr className="housePrice">
-              <th scope="row">Medium House Price</th>
+              <th scope="row">Median House Price</th>
               {compareSuburbs.map(suburb => (
                 <td key={suburb._id} className="text-center">
                   <CountUp
