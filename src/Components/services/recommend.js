@@ -2,6 +2,7 @@
 import _ from "lodash";
 
 export function distance(scoreState, suburb) {
+  // console.log(scoreState);
   let healthDiff;
   if (scoreState.healthScore === 0) healthDiff = 0;
   else

@@ -57,7 +57,7 @@ function CompareTable({ compareSuburbs }) {
             </tr>
             <tr>
               <td align="center" colSpan={compareSuburbs.length + 1}>
-                <h6 style={{ fontWeight: "bold" }}>Education</h6>
+                <h5 style={{ fontWeight: "bold" }}>Education</h5>
               </td>
             </tr>
             <tr className="preSchool">
@@ -86,7 +86,7 @@ function CompareTable({ compareSuburbs }) {
             </tr>
             <tr>
               <td align="center" colSpan={compareSuburbs.length + 1}>
-                <h6 style={{ fontWeight: "bold" }}>Property /Rental Price</h6>
+                <h5 style={{ fontWeight: "bold" }}>Property /Rental Price</h5>
               </td>
             </tr>
             <tr className="housePrice">

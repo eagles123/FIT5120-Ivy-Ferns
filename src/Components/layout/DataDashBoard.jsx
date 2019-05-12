@@ -75,9 +75,10 @@ function DataDashBoard(props) {
               color="primary"
               aria-label="Add"
               onClick={handlePre}
-              style={{ margin: "20px 0px 0px 0px" }}
+              style={{ margin: "20px 0px 0px 0px", width: "100px" }}
             >
-              Back
+              {" "}
+              Back{" "}
             </Fab>
           </Tooltip>
           <p>
@@ -152,14 +153,14 @@ function DataDashBoard(props) {
             <div className="boardbox col s3 m3 ">
               <PropBox data={props.data.suburb.property} />
             </div>
-            <div className="boardbox col s3 m3 ">
+            <div className="boardbox col s3 m2 offset-m1 ">
               <Tooltip title="Compare with other Suburbs">
                 <Fab
                   variant="extended"
                   color="primary"
                   aria-label="Add"
                   onClick={handleCompare}
-                  style={{ margin: "35px 0px 0px 0px" }}
+                  style={{ margin: "35px 0px 0px 0px", width: "100px" }}
                 >
                   Compare
                 </Fab>

@@ -4,8 +4,8 @@ export default function SecondRow() {
   return (
     <div className="sssection container">
       <h4>How We Help You?</h4>
-      <br />
       <hr style={{ width: "90%" }} />
+      <br />
       <div>
         <br />
         <div style={{ height: "70vh", width: "60vw", margin: "0 auto" }}>

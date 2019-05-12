@@ -23,7 +23,7 @@ const Recommender = props => {
       value = JSON.parse(window.sessionStorage.getItem("score")) || {
         healthScore: 2,
         educationScore: 2,
-        propetyScore: 2
+        propertyScore: 2
       };
     } catch (e) {
       console.log(e);
@@ -36,8 +36,6 @@ const Recommender = props => {
   useEffect(() => {
     window.sessionStorage.setItem("score", JSON.stringify(scoreState));
   }, [scoreState]);
-
-  console.log(scoreState);
 
   const [city, cityDispatch] = useReducer(cityReducer, {
     geelong: true,
@@ -65,11 +63,12 @@ const Recommender = props => {
       rating: {
         healthScore: 0.0,
         educationScore: 0.0,
-        propetyScore: 0.0,
-        jobScore: 0.0
+        propertyScore: 0.0
       }
     }
   ]);
+
+  // console.log(suburbs);
   const [filterSuburb, setFilter] = useState([]);
 
   useEffect(() => {
