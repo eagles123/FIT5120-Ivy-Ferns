@@ -1,5 +1,5 @@
 /* global $ */
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import PageFooter from "./Footer";
 import UpIcon from "@material-ui/icons/KeyboardArrowUp";
@@ -9,8 +9,15 @@ import { jarallax, jarallaxElement, jarallaxVideo } from "jarallax";
 import { animateScroll as scroll } from "react-scroll";
 import ScrollTop from "react-scrolltop-button";
 import MyVideo from "./../common/MyVideo";
+import Script from "react-load-script";
+import { Link } from "react-router-dom";
+import HomeVideo from "./../common/HomeVideo";
 
 export default function HomePageTwo() {
+  // if (performance.navigation.type == 2) {
+  //   document.location.reload(true);
+  // }
+
   // var response = "";
   // while (response !== "ivy") {
   //   response = prompt("password");
@@ -18,23 +25,11 @@ export default function HomePageTwo() {
   // const [position, setPosition] = useState();
   // //show and hide scroll to top
   // const [show, setShow] = useState(false);
-  // useEffect(() => {
-  //   const setFromEvent = e => setPosition(window.pageYOffset);
-  //   window.addEventListener("scroll", setPosition);
 
-  //   if (window.pageYOffset < 500) setShow(false);
-  //   if (window.pageYOffset > 500) setShow(true);
-  //   return () => {
-  //     window.removeEventListener("scroll", setPosition);
-  //   };
-  // }, [position]);
+  //function to handle "know more"
   function handleScorll() {
     scroll.scrollTo(700);
   }
-
-  // useEffect(() => {
-  //   localStorage.removeItem("score");
-  // });
 
   return (
     <React.Fragment>
@@ -50,6 +45,7 @@ export default function HomePageTwo() {
           </video> */}
           <div className="col s12 m12">
             <MyVideo handleScorll={handleScorll} />
+            {/* <HomeVideo /> */}
             <div style={{ textAlign: "center", marginBottom: "40px" }} />
             {/* <FirstRow /> */}
             <div className="insertRow">

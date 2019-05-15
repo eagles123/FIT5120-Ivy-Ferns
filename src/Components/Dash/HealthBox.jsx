@@ -48,6 +48,9 @@ export default function HealthBox({ data }) {
               {" "}
               Hospital beds: {beds}
             </p>{" "}
+            <p style={{ textAlign: "center" }}>
+              (See details in the map below)
+            </p>
           </div>
         </Grow>
       </div>

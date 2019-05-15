@@ -29,12 +29,6 @@ function MyMap({ data, neighbours, client }) {
     secondary: true
   });
 
-  // const [choice, setChoice] = useState([
-  //   "Hospital",
-  //   "Pre-School",
-  //   "Primary School",
-  //   "Secondary School"
-  // ]);
   //const for markers
   const [hospitalMarker, setHospitals] = useState([]);
   const [preMarkers, setPreMarkers] = useState([]);
@@ -49,19 +43,21 @@ function MyMap({ data, neighbours, client }) {
   const [fetchNeighbour, setFetch] = useState(false);
   const city = data.city;
   const suburbName = data.suburbName;
-  //
+
+  //const for the neibours markers
   const [neigHosp, setNeiHosp] = useState([]);
   const [neigSchool, setNeiSchool] = useState([]);
   const [count, setCount] = useState(0);
 
+  //temperate varible to hold data
   let obj = {};
   let google = {};
-
   let temphosMarkers = [];
   let temppreMarkers = [];
   let temppriMarkers = [];
   let tempsecMarkers = [];
 
+  //aquire the icon images
   const corss = require("../../assets/cross.png");
   const primary = require("../../assets/primary.png");
   const preSchool = require("../../assets/pre.png");
@@ -77,10 +73,6 @@ function MyMap({ data, neighbours, client }) {
         })
         .then(({ data }) => {
           data.suburbsByName.map(item => {
-            // temphos = temphos.concat(item.hosptials);
-            // tempschool = ["fuck"];
-            // console.log(tempschool);
-
             if (
               item !== null &&
               item.hosptials !== null &&
@@ -94,8 +86,8 @@ function MyMap({ data, neighbours, client }) {
     }
     setCount(count + 1);
   }, [neighbours]);
-  //hook to populate neigbour hospital and school data
 
+  //hook to populate neigbour hospital and school data
   useEffect(() => {
     if (fetchNeighbour) {
       neigHosp.map(data => {
@@ -169,8 +161,8 @@ function MyMap({ data, neighbours, client }) {
   }, [legend]);
 
   //methods to parse prop data into required formate
-
   useEffect(() => {
+    // fetch from google api
     Axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
       params: {
         address: `${suburbName} ${city} VIC`,
@@ -181,6 +173,7 @@ function MyMap({ data, neighbours, client }) {
         google = response;
       })
       .then(function() {
+        // fetch data from openstreet api
         Axios.get("https://nominatim.openstreetmap.org/search", {
           params: {
             q: `${suburbName} ${city} VIC`,
@@ -203,7 +196,6 @@ function MyMap({ data, neighbours, client }) {
       });
 
     //call from openstreetmap api
-
     setNeiHosp([]);
     setNeiSchool([]);
   }, []);
@@ -212,12 +204,14 @@ function MyMap({ data, neighbours, client }) {
   const initMap = () => {
     if (google.data !== null) {
       map = new window.google.maps.Map(document.getElementById("map"), {
+        //set center
         center: {
           lat: parseFloat(google.data.results[0].geometry.location.lat),
           lng: parseFloat(google.data.results[0].geometry.location.lng)
         },
         zoom: 12
       });
+      //if not getting center from google api then use open street api, because opend street api data is not accurate.
     } else if (google.data.results === null && obj.data !== null) {
       map = new window.google.maps.Map(document.getElementById("map"), {
         center: {
@@ -288,6 +282,7 @@ function MyMap({ data, neighbours, client }) {
     }
   };
 
+  //open map legend
   function handleCheck() {
     setCheck(!check);
   }
@@ -298,6 +293,7 @@ function MyMap({ data, neighbours, client }) {
     temppriMarkers = [];
     tempsecMarkers = [];
   }
+
   function addSchoolMarkers(schoolList, infoWindow) {
     schoolList.map(data => {
       if (data.school_type === "Preschool") {
@@ -339,7 +335,7 @@ function MyMap({ data, neighbours, client }) {
       }
     });
   }
-
+  //load google map script
   function loadScript(url) {
     let index = window.document.getElementsByTagName("script")[0];
     let script = window.document.createElement("script");
@@ -349,6 +345,7 @@ function MyMap({ data, neighbours, client }) {
     index.parentNode.insertBefore(script, index);
   }
 
+  //load google map
   function loadMap() {
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${
@@ -358,6 +355,7 @@ function MyMap({ data, neighbours, client }) {
     window.initMap = initMap;
   }
 
+  //legends to display
   const legends = [
     {
       label: "Hospital",
@@ -443,10 +441,6 @@ function MyMap({ data, neighbours, client }) {
   function handleNeighbour() {
     setFetch(!fetchNeighbour);
   }
-
-  // function handleCheckChange(e) {
-  //   setChoice(e.target.value);
-  // }
 
   return (
     <div>

@@ -36,7 +36,7 @@ export default function CheckList(props) {
       }
       style={{
         width: "100%",
-        maxWidth: "300px",
+        maxWidth: "350px",
         // backgroundColor: "#d4e157",
         backgroundColor: "#9ccc65",
         borderRadius: "10px"

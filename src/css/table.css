@@ -1,5 +1,5 @@
 table {
-  background-color: #fff;
+  background-color: #dcedc8;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 13px 21px -5px rgba(0, 0, 0, 0.05);
@@ -20,7 +20,7 @@ th[scope="row"] {
   font-size: 18px;
   color: #393c45;
   font-weight: normal;
-  background-color: #f9f9f9;
+  background-color: #dcedc8;
   border: 1px solid #eee;
   text-align: left;
   padding-left: 45px;
@@ -35,5 +35,5 @@ thead {
 
 .thead-default th {
   width: 30px;
-  background-color: #fff;
+  background-color: #dcedc8;
 }

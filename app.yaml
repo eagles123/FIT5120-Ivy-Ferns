@@ -1,5 +1,7 @@
 runtime: nodejs
 env: flex
+manual_scaling:
+  instances: 5
 
 handlers:
 - url: /(.*\.(html|css|js|jpg|png|ico|svg}))$
@@ -10,3 +12,6 @@ handlers:
   static_files: public/index.html
   upload: public/index.html
 
+env_variables:
+  REACT_APP_MAPkEY: "AIzaSyDKNw45VT92V-NWTQokK03QedFFJxVYono"
+  REACT_APP_URL: "https://sturdy-dogfish-236900.appspot.com"

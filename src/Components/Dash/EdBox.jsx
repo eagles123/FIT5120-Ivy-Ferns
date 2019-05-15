@@ -46,6 +46,9 @@ export default function EdBox({ data }) {
               {" "}
               Secondary-School: {secondary_school}
             </p>{" "}
+            <p style={{ textAlign: "center" }}>
+              (See details in the graph & map below)
+            </p>
           </div>
         </Grow>
       </div>

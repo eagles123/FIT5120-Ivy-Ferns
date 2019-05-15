@@ -68,7 +68,7 @@ function NewSlider(props) {
             Less Important
           </p>
         </div>
-        <div className="col s2 m2 offset-m8">
+        <div className="col s2 m2 offset-m8 offset-s8">
           <p
             style={{
               height: 10,

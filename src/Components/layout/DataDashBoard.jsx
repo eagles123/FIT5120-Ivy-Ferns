@@ -13,10 +13,9 @@ import Sidebar from "react-sidebar";
 import { Fab, CircularProgress, Tooltip } from "@material-ui/core/";
 import Carousel from "nuka-carousel";
 import ReactTooltip from "react-tooltip";
-import StyledButton from "./../common/StyleButton";
-import PageFooter from "./Footer";
 
 function DataDashBoard(props) {
+  //initialise the state
   const [neighbours, setNeighbours] = useState([]);
   const [open, setOpen] = useState(false);
   const [slideIndex, setIndex] = useState(0);
@@ -26,6 +25,7 @@ function DataDashBoard(props) {
     props.history.push("/recommend");
   }
 
+  //handle list open
   function handleOpen() {
     setOpen(!open);
   }
@@ -36,6 +36,7 @@ function DataDashBoard(props) {
       setNeighbours(props.data.suburb.neighbours[0].neighbour);
   }, [props.data.loading]);
 
+  //reset the slide index when come back to the data dashboard
   useEffect(() => {
     setIndex(0);
   }, [props.data.loading]);
@@ -45,7 +46,6 @@ function DataDashBoard(props) {
   }
 
   //fetch neighbour hospitals and schools on click
-
   return props.data.loading ? (
     <div
       className="container dashboard"
@@ -75,7 +75,7 @@ function DataDashBoard(props) {
               color="primary"
               aria-label="Add"
               onClick={handlePre}
-              style={{ margin: "20px 0px 0px 0px", width: "100px" }}
+              style={{ margin: "20px 0px 0px 0px", width: "6vw" }}
             >
               {" "}
               Back{" "}
@@ -94,15 +94,6 @@ function DataDashBoard(props) {
               </Fab>
             </Tooltip>
           </p>
-          {/* <Button
-            variant="contained"
-            color="primary"
-            onClick={() =>
-              props.history.push(`/compare/${props.match.params.id}`)
-            }
-          >
-            Compare
-          </Button> */}
         </div>
         <div className="col s12 m5" style={{ marginLeft: 50, zIndex: 0 }}>
           <h4
@@ -136,7 +127,8 @@ function DataDashBoard(props) {
                 can also access the website of the hospitals and schools shown
                 on the map by clicking on their respective names. The
                 neighbouring hospitals and schools are visible by selecting the
-                option “Neighbouring Hospitals and Schools”.
+                option “Neighbouring Hospitals and Schools”, and they cover the
+                hospitals and schools located in three of the nearest suburbs.
               </p>
             </ReactTooltip>
           </h4>
@@ -160,7 +152,7 @@ function DataDashBoard(props) {
                   color="primary"
                   aria-label="Add"
                   onClick={handleCompare}
-                  style={{ margin: "20px 0px 0px 0px", width: "100px" }}
+                  style={{ margin: "20px 0px 0px 0px", width: "7vw" }}
                 >
                   Compare
                 </Fab>
@@ -207,7 +199,6 @@ function DataDashBoard(props) {
           {/* <JobChart /> */}
         </div>
       </div>
-      <PageFooter />
     </div>
   );
 }

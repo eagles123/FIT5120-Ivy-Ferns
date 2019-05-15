@@ -32,19 +32,20 @@ const Recommender = props => {
   }
 
   const [scoreState, stateDispatch] = useReducer(recReducer, inital());
-
+  //store the score to seesion storage
   useEffect(() => {
     window.sessionStorage.setItem("score", JSON.stringify(scoreState));
   }, [scoreState]);
 
+  //initialise the city choice option with dispatch
   const [city, cityDispatch] = useReducer(cityReducer, {
     geelong: true,
     ballarat: true,
     bendigo: true
   });
 
-  const [totalcount, setTotal] = useState(0);
   //states manage pagination
+  const [totalcount, setTotal] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(4);
   const [pagedSub, setPaged] = useState(
@@ -68,9 +69,8 @@ const Recommender = props => {
     }
   ]);
 
-  // console.log(suburbs);
   const [filterSuburb, setFilter] = useState([]);
-
+  //hook to get data from backend and initialise the page
   useEffect(() => {
     props.client
       .query({
@@ -84,6 +84,7 @@ const Recommender = props => {
       });
   }, []);
 
+  //hook to triger when suburbs changes
   useEffect(() => {
     setPaged(paginate(suburbs, currentPage, pageSize));
   }, [suburbs]);
@@ -116,7 +117,7 @@ const Recommender = props => {
     setQuery(query);
   }
 
-  //dispatch actions to show sliders at Recommder
+  //dispatch actions to choose sliders and city filter at Recommder page
   function choseHealth() {
     if (choice.healthField === true) {
       choiceDispatch({ type: "HEALTHFIELD", payload: false });
@@ -126,7 +127,6 @@ const Recommender = props => {
       stateDispatch({ type: "RESETHEALTH" });
     }
   }
-
   function choseEdu() {
     if (choice.educationField === true) {
       choiceDispatch({ type: "EDUCATIONFIELD", payload: false });
@@ -179,21 +179,6 @@ const Recommender = props => {
   }
 
   //function to filter by city
-  // function filterSuburbByCity() {
-  //   let filtered = suburbs;
-  //   if (city.geelong && cities.ballarat && city.bendigo) filtered = suburbs;
-  //   else if (city.geelong === false)
-  //     filtered = suburbs.filter(s => s.city !== "Greater Geelong");
-  //   else if (city.ballarat === false)
-  //     filtered = suburbs.filter(s => s.city !== "Ballarat");
-  //   else if (city.bendigo === false)
-  //     filtered = suburbs.filter(s => s.city !== "Greater Bendigo");
-  //   setTotal(filtered.length);
-  //   setFilter(filtered);
-  //   return setPaged(paginate(filtered, currentPage, pageSize));
-  // }
-
-  //function to filter by city
   function filterSuburbByCity() {
     let filtered = suburbs;
     if (city.geelong && city.ballarat && city.bendigo) {
@@ -210,21 +195,21 @@ const Recommender = props => {
         city.ballarat === false &&
         city.bendigo === true
       ) {
-        filtered = suburbs.filter(s => s.city == "Greater Bendigo");
+        filtered = suburbs.filter(s => s.city === "Greater Bendigo");
       }
       if (
         city.geelong === false &&
         city.ballarat === true &&
         city.bendigo === false
       ) {
-        filtered = suburbs.filter(s => s.city == "Ballarat");
+        filtered = suburbs.filter(s => s.city === "Ballarat");
       }
       if (
         city.geelong === true &&
         city.ballarat === false &&
         city.bendigo === false
       ) {
-        filtered = suburbs.filter(s => s.city == "Greater Geelong");
+        filtered = suburbs.filter(s => s.city === "Greater Geelong");
       }
     }
     setTotal(filtered.length);
@@ -232,16 +217,13 @@ const Recommender = props => {
     return setPaged(paginate(filtered, currentPage, pageSize));
   }
 
+  //function to hanle preives page and next page for the ranked suburb list
   function handlePreNext(flag, pages) {
     let temp = currentPage;
     if (flag && currentPage > 1) temp--;
     if (flag === false && currentPage < pages.length) temp++;
     setCurrentPage(temp);
   }
-
-  // function handleBack() {
-  //   props.history.push("/intro");
-  // }
 
   //actions pass to CheckList component
   const choices = [
@@ -258,53 +240,62 @@ const Recommender = props => {
 
   // const l
   return (
-    <div className="recpage">
-      <div className="recommender container-fluid">
-        <div className="container" />
-        <div className="row">
-          <div className="col s12 m2" style={{ marginTop: 50, marginLeft: 50 }}>
-            <Fade left duration={1000}>
-              <CheckList choices={choices} cities={cities} />
-            </Fade>
-          </div>
-          <div className="col s12 m4 offset-m1">
-            <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
-              <Fade bottom duration={1000}>
-                <SidePanel />
+    <>
+      <div className="recpage">
+        <div className="recommender container-fluid">
+          <div className="container" />
+          <div className="row">
+            <div
+              className="col s12 m2"
+              style={{ marginTop: 50, marginLeft: 50 }}
+            >
+              <Fade left duration={1000}>
+                <CheckList choices={choices} cities={cities} />
               </Fade>
-            </ParameterContext.Provider>
-          </div>
-          <div className="col s12 m4" style={{ marginTop: 18 }}>
-            <Fade right duration={1000}>
-              {suburbs.length === 1 ? (
-                <div
-                  className="container"
-                  style={{ paddingLeft: 100, marginTop: 200 }}
-                >
-                  <CircularProgress />
-                </div>
-              ) : (
-                <>
-                  <SearchBox value={query} onChange={handleSearch} />
-                  <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
-                  <SuburbList suburbs={pagedSub} choice={choice} city={city} />
-                </>
-              )}
-              <Pagination
-                itemNumber={totalcount}
-                pageSize={pageSize}
-                onPageChange={handlePageChange}
-                currentPage={currentPage}
-                onPreNext={handlePreNext}
-                toPage={toPage}
-                choice={choice}
-              />
-            </Fade>
+            </div>
+            <div className="col s12 m4 offset-m1">
+              <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
+                <Fade bottom duration={1000}>
+                  <SidePanel />
+                </Fade>
+              </ParameterContext.Provider>
+            </div>
+            <div className="col s12 m4" style={{ marginTop: 18 }}>
+              <Fade right duration={1000}>
+                {suburbs.length === 1 ? (
+                  <div
+                    className="container"
+                    style={{ paddingLeft: 100, marginTop: 200 }}
+                  >
+                    <CircularProgress />
+                  </div>
+                ) : (
+                  <>
+                    <SearchBox value={query} onChange={handleSearch} />
+                    <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
+                    <SuburbList
+                      suburbs={pagedSub}
+                      choice={choice}
+                      city={city}
+                    />
+                  </>
+                )}
+                <Pagination
+                  itemNumber={totalcount}
+                  pageSize={pageSize}
+                  onPageChange={handlePageChange}
+                  currentPage={currentPage}
+                  onPreNext={handlePreNext}
+                  toPage={toPage}
+                  choice={choice}
+                />
+              </Fade>
+            </div>
           </div>
         </div>
       </div>
       <PageFooter />
-    </div>
+    </>
   );
 };
 // export default graphql(getSuburbsQuery)(Recommender);

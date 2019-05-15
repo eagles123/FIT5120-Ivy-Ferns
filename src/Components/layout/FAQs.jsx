@@ -15,7 +15,7 @@ import "react-accessible-accordion/dist/fancy-example.css";
 export default function FAQs() {
   return (
     <React.Fragment>
-      <div className="container" style={{ marginTop: 100, height: "100%" }}>
+      <div className="container" style={{ minHeight: "30vh" }}>
         <h3 style={{ textAlign: "center" }}>
           Frequently Asked Questions (FAQs)
         </h3>

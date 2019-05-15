@@ -49,7 +49,7 @@ export default function PropBox({ data }) {
                   duration={1}
                   separator=","
                   decimals={0}
-                  prefix="Median Property Price: $"
+                  prefix="Median House Price: $"
                 />
               }
             </p>
@@ -57,10 +57,13 @@ export default function PropBox({ data }) {
               {" "}
               Median Rental Price: ${rent_all}
             </p>
+            <p style={{ textAlign: "center" }}>
+              (See details in the graph below)
+            </p>
           </div>
         </Grow>
       </div>
-      <h6>House Price</h6>
+      <h6>Property</h6>
     </div>
   );
 }

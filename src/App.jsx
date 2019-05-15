@@ -27,7 +27,7 @@ const App = () => {
   const [suburbList, setSubList] = useState(() => {
     let value;
     try {
-      value = JSON.parse(window.localStorage.getItem("suburb") || []);
+      value = JSON.parse(window.sessionStorage.getItem("suburb") || []);
     } catch (e) {
       console.log(e);
     }
@@ -35,7 +35,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    window.localStorage.setItem("suburb", JSON.stringify(suburbList));
+    window.sessionStorage.setItem("suburb", JSON.stringify(suburbList));
   }, [suburbList]);
 
   const client = new ApolloClient({

@@ -7,7 +7,6 @@ import CompareList from "./../common/CompareList";
 import CompareTable from "./../common/CompareTable";
 import Sidebar from "react-sidebar";
 import { Fab, Tooltip } from "@material-ui/core/";
-import PageFooter from "./Footer";
 
 const mql = window.matchMedia(`(min-width: 200px)`);
 let tempList = [];
@@ -114,7 +113,6 @@ function Compare({ data, client, match, history }) {
           <CompareTable compareSuburbs={compareSuburbs} />
         </div>
       </div>
-      <PageFooter />
     </div>
   );
 }
