@@ -39,7 +39,6 @@ export default function HomePageTwo() {
           </video> */}
           <div className="col s12 m12">
             <MyVideo handleScorll={handleScorll} />
-            {/* <HomeVideo /> */}
             <div style={{ textAlign: "center", marginBottom: "40px" }} />
             {/* <FirstRow /> */}
             <div className="insertRow">
