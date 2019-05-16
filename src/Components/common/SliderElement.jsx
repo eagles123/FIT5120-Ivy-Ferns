@@ -17,7 +17,6 @@ export default function SliderElement({ title, label, text, infoTitle, info }) {
         />
       </span>
       <ReactTooltip place="right" id={info} type="info" effect="solid">
-        <h6>{infoTitle}</h6>
         <p style={{ width: "250px", textAlign: "left" }}>{info}</p>
       </ReactTooltip>
       <p style={{ paddingTop: "0px", fontSize: "14px" }}>{text}</p>

@@ -12,7 +12,6 @@ import SearchBox from "./../common/SearchBox";
 import { withApollo } from "react-apollo";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getSuburbsQuery } from "../../queries/queries";
-import PageFooter from "./Footer";
 
 const Recommender = props => {
   // document.title = "Recommend";
@@ -272,7 +271,11 @@ const Recommender = props => {
                 ) : (
                   <>
                     <SearchBox value={query} onChange={handleSearch} />
-                    <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs</h5>
+                    <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs </h5>
+                    <span style={{ marginLeft: "5vw" }}>
+                      (Click on suburb to view more details)
+                    </span>
+
                     <SuburbList
                       suburbs={pagedSub}
                       choice={choice}
@@ -294,7 +297,6 @@ const Recommender = props => {
           </div>
         </div>
       </div>
-      <PageFooter />
     </>
   );
 };

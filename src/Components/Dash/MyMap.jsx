@@ -450,9 +450,10 @@ function MyMap({ data, neighbours, client }) {
           marginBottom: "0px"
         }}
       >
-        <div className="col s6 m6">
+        <div className="col s6 m6" style={{ paddingTop: "10px" }}>
           <FormGroup row>
             <FormControlLabel
+              style={{ fontFamily: "Merriweather" }}
               control={
                 <Switch
                   checked={fetchNeighbour}
@@ -464,17 +465,20 @@ function MyMap({ data, neighbours, client }) {
             />
           </FormGroup>
         </div>
-        <div className="col s2 m2 offset-m4">
+        <div className="col s3 m3 offset-m3">
           <Tooltip title="Map Legend" placement="right">
-            <Fab
-              size="small"
-              color="primary"
-              aria-label="Add"
-              onClick={handleCheck}
-              style={{ margin: "10px 0px 10px 0px" }}
-            >
-              <i className="fas fa-map-marked-alt" />
-            </Fab>
+            <>
+              <Fab
+                size="small"
+                color="primary"
+                aria-label="Add"
+                onClick={handleCheck}
+                style={{ margin: "10px 0px 10px 0px" }}
+              >
+                <i className="fas fa-map-marked-alt" />
+              </Fab>{" "}
+              <span style={{ fontSize: "0.875rem" }}>Map Filter</span>
+            </>
           </Tooltip>
           {/* <i
             className="fas fa-filter fa-2x"
@@ -516,7 +520,7 @@ function MyMap({ data, neighbours, client }) {
           </div>
         </div>
       </div>
-      <div style={{ height: "75vh", width: "100%", fontSize: "10px" }}>
+      <div style={{ height: "67vh", width: "100%", fontSize: "10px" }}>
         <div className="map" id="map" />
         <div id="legend" style={{ backgroundColor: "white", opacity: "0.8" }}>
           <div

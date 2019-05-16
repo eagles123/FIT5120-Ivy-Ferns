@@ -8,7 +8,6 @@ import CompareTable from "./../common/CompareTable";
 import Sidebar from "react-sidebar";
 import { Fab, Tooltip } from "@material-ui/core/";
 
-const mql = window.matchMedia(`(min-width: 200px)`);
 let tempList = [];
 function Compare({ data, client, match, history }) {
   const { suburbList } = useContext(ChoiceContext);
@@ -67,15 +66,15 @@ function Compare({ data, client, match, history }) {
     <div className="container-fluid">
       <div className="row">
         <div className="col s1 m1">
-          <Tooltip title="Back" placement="right">
+          <Tooltip title="Back" placement="bottom">
             <Fab
-              variant="extended"
+              size="small"
               color="primary"
               aria-label="Add"
               onClick={handlePre}
               style={{ margin: "20px 0px 0px 0px", zIndex: 1 }}
             >
-              Back
+              <i className="fas fa-arrow-left" />
             </Fab>
           </Tooltip>
           <p />
@@ -91,7 +90,7 @@ function Compare({ data, client, match, history }) {
                 zIndex: 1
               }}
             >
-              <i className="fas fa-bars" />
+              <i className="fas fa-tasks fa-lg" />
             </Fab>
           </Tooltip>
           <Sidebar
@@ -109,7 +108,7 @@ function Compare({ data, client, match, history }) {
           />
         </div>
         <div className="col s10 m10">
-          <h4>Compare Up to Three Suburbs</h4>
+          <h4 style={{ fontSize: "35px" }}>Compare Up to Three Suburbs</h4>
           <CompareTable compareSuburbs={compareSuburbs} />
         </div>
       </div>

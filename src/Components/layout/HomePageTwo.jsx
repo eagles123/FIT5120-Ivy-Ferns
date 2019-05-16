@@ -1,17 +1,11 @@
-/* global $ */
-import React, { useState, useEffect } from "react";
-import Fab from "@material-ui/core/Fab";
+import React from "react";
 import PageFooter from "./Footer";
 import UpIcon from "@material-ui/icons/KeyboardArrowUp";
 import SecondRow from "../common/SecondRow";
 import InsertRow from "../common/InsertRow";
-import { jarallax, jarallaxElement, jarallaxVideo } from "jarallax";
 import { animateScroll as scroll } from "react-scroll";
 import ScrollTop from "react-scrolltop-button";
 import MyVideo from "./../common/MyVideo";
-import Script from "react-load-script";
-import { Link } from "react-router-dom";
-import HomeVideo from "./../common/HomeVideo";
 
 export default function HomePageTwo() {
   // if (performance.navigation.type == 2) {
@@ -72,11 +66,16 @@ export default function HomePageTwo() {
           <ScrollTop
             text="Back to Top"
             distance={200}
-            breakpoint={2000}
-            style={{ backgroundColor: "#3f51b5", border: "0px" }}
+            breakpoint={900}
+            style={{
+              backgroundColor: "#2979ff",
+              border: "0px",
+              zIndex: 10,
+              right: 3
+            }}
             className="scroll-your-role"
             speed={1000}
-            target={75}
+            target={0}
             icon={<UpIcon>edit_icon</UpIcon>}
           />
 

@@ -14,7 +14,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 export default function CheckList(props) {
   const { choices, cities } = props;
   const [perference, setperference] = useState(true);
-  const [Lga, setLga] = useState(false);
+  const [Lga, setLga] = useState(true);
 
   function handlePreference() {
     setperference(!perference);
@@ -29,7 +29,12 @@ export default function CheckList(props) {
       subheader={
         <ListSubheader
           component="div"
-          style={{ fontSize: "17px", color: "black", borderRadius: "10px" }}
+          style={{
+            fontSize: "17px",
+            color: "black",
+            borderRadius: "10px",
+            fontFamily: "Merriweather"
+          }}
         >
           Filter By:
         </ListSubheader>
@@ -45,13 +50,17 @@ export default function CheckList(props) {
       <ListItem
         button
         onClick={handlePreference}
-        style={{ color: "black", borderRadius: "10px" }}
+        style={{
+          color: "black",
+          borderRadius: "10px",
+          fontFamily: "Merriweather"
+        }}
       >
         <ListItemText
           disableTypography
           inset
           primary="Preference"
-          style={{ fontSize: "13px" }}
+          style={{ fontSize: "13px", fontFamily: "Merriweather" }}
         />
         {perference ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>
@@ -81,7 +90,7 @@ export default function CheckList(props) {
         <ListItemText
           disableTypography
           inset
-          primary="Local Government Area"
+          primary="Local Gov. Area"
           style={{ fontSize: "13px", color: "black" }}
         />
         {Lga ? <ExpandLessIcon /> : <ExpandMoreIcon />}

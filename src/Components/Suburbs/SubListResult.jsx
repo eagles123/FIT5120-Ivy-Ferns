@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AniItem } from "./../common/AniComponent";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
@@ -20,40 +20,40 @@ const styles = {
 };
 
 const SubListResult = ({ suburb, classes }) => {
-  function hospitalIcon() {
-    if (suburb.health.hospital === 0) return null;
-    else if (suburb.health.hospital === 1)
-      return <i className="fas fa-h-square" />;
-    else
-      return (
-        <>
-          <i className="fas fa-h-square" />
-          <span> {suburb.health.hospital}</span>
-        </>
-      );
-  }
+  // function hospitalIcon() {
+  //   if (suburb.health.hospital === 0) return null;
+  //   else if (suburb.health.hospital === 1)
+  //     return <i className="fas fa-h-square" />;
+  //   else
+  //     return (
+  //       <>
+  //         <i className="fas fa-h-square" />
+  //         <span> {suburb.health.hospital}</span>
+  //       </>
+  //     );
+  // }
 
-  function schoolIcon() {
-    if (sumEdu(suburb.education) === 0) return null;
-    else if (sumEdu(suburb.education) === 1)
-      return <i className="fas fa-graduation-cap" />;
-    else
-      return (
-        <>
-          <i className="fas fa-graduation-cap" />
-          <span> {sumEdu(suburb.education)}</span>
-        </>
-      );
-  }
+  // function schoolIcon() {
+  //   if (sumEdu(suburb.education) === 0) return null;
+  //   else if (sumEdu(suburb.education) === 1)
+  //     return <i className="fas fa-graduation-cap" />;
+  //   else
+  //     return (
+  //       <>
+  //         <i className="fas fa-graduation-cap" />
+  //         <span> {sumEdu(suburb.education)}</span>
+  //       </>
+  //     );
+  // }
 
-  function houseIcon() {
-    return (
-      <>
-        <i className="fas fa-home" />{" "}
-        <span> ${kFormatter(suburb.property.price)}</span>
-      </>
-    );
-  }
+  // function houseIcon() {
+  //   return (
+  //     <>
+  //       <i className="fas fa-home" />{" "}
+  //       <span> ${kFormatter(suburb.property.price)}</span>
+  //     </>
+  //   );
+  // }
 
   function sumEdu(data) {
     let sum = 0;

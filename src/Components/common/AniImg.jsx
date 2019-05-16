@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
 
-export default function AniImg({ img, handleOpen, handleClose }) {
+export default function AniImg({ img, handleOpen, handleClose, isOpen }) {
   const pulsing = keyframes`
     0% {transform: scale(1);}
     50% {transform: scale(0.8);}
@@ -21,7 +21,7 @@ export default function AniImg({ img, handleOpen, handleClose }) {
     }
 
     ${props =>
-      true &&
+      !isOpen &&
       css`
         img {
           stroke: white;
@@ -30,7 +30,6 @@ export default function AniImg({ img, handleOpen, handleClose }) {
         }
       `}
   `;
-
   return (
     <React.Fragment>
       <Container>

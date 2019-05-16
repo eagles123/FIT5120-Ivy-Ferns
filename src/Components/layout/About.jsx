@@ -16,7 +16,7 @@ export default function About() {
           </h6>
           <br />
           <iframe
-            src="https://www.youtube.com/embed/nR4r3vfdnT4"
+            src="https://www.youtube.com/embed/nR4r3vfdnT4?rel=0"
             width="100%"
             height="600"
             frameBorder="1"

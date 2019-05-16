@@ -10,7 +10,7 @@ export default function SecondRow() {
         <br />
         <div style={{ height: "70vh", width: "60vw", margin: "0 auto" }}>
           <iframe
-            src="https://www.youtube.com/embed/t_aOBekcqdQ"
+            src="https://www.youtube.com/embed/t_aOBekcqdQ?rel=0"
             width="100%"
             height="100%"
             frameBorder="1"

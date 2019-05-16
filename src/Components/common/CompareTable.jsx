@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../css/table.css";
 import CountUp from "react-countup";
-// let data = {
-//   hosptial: [],
-//   gps: [],
-//   beds: [],
-//   pre: [],
-//   pri: [],
-//   sec: [],
-//   house: [],
-//   onef: [],
-//   twof: [],
-//   thref: [],
-//   twoh: [],
-//   threeh: [],
-//   fourh: []
-// };
+import { Link } from "react-router-dom";
+
 function CompareTable({ compareSuburbs }) {
   const [hospital, setHos] = useState([]);
   const [gps, setGp] = useState([]);
@@ -82,6 +69,11 @@ function CompareTable({ compareSuburbs }) {
     else return false;
   }
 
+  function isMin(number, list) {
+    if (number === Math.min(...list)) return true;
+    else return false;
+  }
+
   function checkAllSame(list) {
     if ([...new Set(list)].length === 1) return false;
     else return true;
@@ -95,7 +87,23 @@ function CompareTable({ compareSuburbs }) {
               <th />
               {compareSuburbs.map(suburb => (
                 <th key={suburb._id}>
-                  <h6 style={{ fontWeight: "bold" }}>{suburb.suburbName}</h6>
+                  <Link
+                    to={{
+                      pathname: `/dashboard/${suburb._id}`
+                    }}
+                    key={suburb._id}
+                    style={{ color: "black" }}
+                  >
+                    <h6
+                      style={{
+                        fontWeight: "bold",
+                        position: "relative",
+                        zIndex: 100
+                      }}
+                    >
+                      {suburb.suburbName}
+                    </h6>
+                  </Link>
                   <p style={{ textAlign: "center", fontSize: "15px" }}>
                     ({suburb.city})
                   </p>
@@ -117,12 +125,10 @@ function CompareTable({ compareSuburbs }) {
                 isMax(suburb.health.hospital, hospital) &&
                 suburb.health.hospital > 0 &&
                 checkAllSame(hospital) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    >{suburb.health.hospital}
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
+                      {suburb.health.hospital}
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -138,12 +144,10 @@ function CompareTable({ compareSuburbs }) {
                 isMax(suburb.health.gps, gps) &&
                 suburb.health.gps > 0 &&
                 checkAllSame(gps) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    {suburb.health.gps}
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
+                      {suburb.health.gps}
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -159,12 +163,10 @@ function CompareTable({ compareSuburbs }) {
                 isMax(suburb.health.beds, beds) &&
                 suburb.health.beds > 0 &&
                 checkAllSame(beds) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    {suburb.health.beds}
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
+                      {suburb.health.beds}
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -185,12 +187,10 @@ function CompareTable({ compareSuburbs }) {
                 isMax(suburb.education.pre_school, pre) &&
                 suburb.education.pre_school > 0 &&
                 checkAllSame(pre) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    {suburb.education.pre_school}
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
+                      {suburb.education.pre_school}
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -206,12 +206,10 @@ function CompareTable({ compareSuburbs }) {
                 isMax(suburb.education.primary_school, pri) &&
                 suburb.education.primary_school > 0 &&
                 checkAllSame(pri) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    {suburb.education.primary_school}
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
+                      {suburb.education.primary_school}
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -227,12 +225,10 @@ function CompareTable({ compareSuburbs }) {
                 isMax(suburb.education.secondary_school, sec) &&
                 suburb.education.secondary_school > 0 &&
                 checkAllSame(sec) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    {suburb.education.secondary_school}
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
+                      {suburb.education.secondary_school}
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -250,22 +246,21 @@ function CompareTable({ compareSuburbs }) {
               <th scope="row">Median House Price</th>
               {compareSuburbs.map(suburb =>
                 house.length > 1 &&
-                isMax(suburb.property.price, house) &&
+                isMin(suburb.property.price, house) &&
                 suburb.property.price > 0 &&
                 checkAllSame(house) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    <CountUp
-                      start={100000}
-                      end={suburb.property.price}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                      prefix="$"
-                    />
+                  <td key={suburb._id} className="text-center">
+                    <h5 style={{ fontWeight: "bold" }}>
+                      <CountUp
+                        style={{ fontSize: "20px" }}
+                        start={100000}
+                        end={suburb.property.price}
+                        duration={1}
+                        separator=","
+                        decimals={0}
+                        prefix="$"
+                      />
+                    </h5>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -285,22 +280,21 @@ function CompareTable({ compareSuburbs }) {
               <th scope="row">1 Bed Flat Per Week</th>
               {compareSuburbs.map(suburb =>
                 onef.length > 1 &&
-                isMax(suburb.property.flat1, onef) &&
+                isMin(suburb.property.flat1, onef) &&
                 suburb.property.flat1 > 0 &&
                 checkAllSame(onef) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    <CountUp
-                      start={0}
-                      end={suburb.property.flat1}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                      prefix="$"
-                    />
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold" }}>
+                      <CountUp
+                        style={{ fontSize: "20px" }}
+                        start={0}
+                        end={suburb.property.flat1}
+                        duration={1}
+                        separator=","
+                        decimals={0}
+                        prefix="$"
+                      />
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -320,22 +314,21 @@ function CompareTable({ compareSuburbs }) {
               <th scope="row">2 Beds Flat Per Week</th>
               {compareSuburbs.map(suburb =>
                 twof.length > 1 &&
-                isMax(suburb.property.flat2, twof) &&
+                isMin(suburb.property.flat2, twof) &&
                 suburb.property.flat2 > 0 &&
                 checkAllSame(twof) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    <CountUp
-                      start={0}
-                      end={suburb.property.flat2}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                      prefix="$"
-                    />
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold" }}>
+                      <CountUp
+                        style={{ fontSize: "20px" }}
+                        start={0}
+                        end={suburb.property.flat2}
+                        duration={1}
+                        separator=","
+                        decimals={0}
+                        prefix="$"
+                      />
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -355,22 +348,21 @@ function CompareTable({ compareSuburbs }) {
               <th scope="row">3 Beds Flat Per Week</th>
               {compareSuburbs.map(suburb =>
                 thref.length > 1 &&
-                isMax(suburb.property.flat3, thref) &&
+                isMin(suburb.property.flat3, thref) &&
                 suburb.property.flat3 > 0 &&
                 checkAllSame(thref) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    <CountUp
-                      start={0}
-                      end={suburb.property.flat3}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                      prefix="$"
-                    />
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold" }}>
+                      <CountUp
+                        style={{ fontSize: "20px" }}
+                        start={0}
+                        end={suburb.property.flat3}
+                        duration={1}
+                        separator=","
+                        decimals={0}
+                        prefix="$"
+                      />
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -390,22 +382,21 @@ function CompareTable({ compareSuburbs }) {
               <th scope="row">2 Beds House Per Week</th>
               {compareSuburbs.map(suburb =>
                 twoh.length > 1 &&
-                isMax(suburb.property.house2, twoh) &&
+                isMin(suburb.property.house2, twoh) &&
                 suburb.property.house2 > 0 &&
                 checkAllSame(twoh) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    <CountUp
-                      start={0}
-                      end={suburb.property.house2}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                      prefix="$"
-                    />
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold" }}>
+                      <CountUp
+                        style={{ fontSize: "20px" }}
+                        start={0}
+                        end={suburb.property.house2}
+                        duration={1}
+                        separator=","
+                        decimals={0}
+                        prefix="$"
+                      />
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -425,22 +416,21 @@ function CompareTable({ compareSuburbs }) {
               <th scope="row">3 Beds House Per Week</th>
               {compareSuburbs.map(suburb =>
                 threeh.length > 1 &&
-                isMax(suburb.property.house3, threeh) &&
+                isMin(suburb.property.house3, threeh) &&
                 suburb.property.house3 > 0 &&
                 checkAllSame(threeh) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    <CountUp
-                      start={0}
-                      end={suburb.property.house3}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                      prefix="$"
-                    />
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold" }}>
+                      <CountUp
+                        style={{ fontSize: "20px" }}
+                        start={0}
+                        end={suburb.property.house3}
+                        duration={1}
+                        separator=","
+                        decimals={0}
+                        prefix="$"
+                      />
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -460,22 +450,21 @@ function CompareTable({ compareSuburbs }) {
               <th scope="row">4 Beds Flat Per Week</th>
               {compareSuburbs.map(suburb =>
                 fourh.length > 1 &&
-                isMax(suburb.property.house4, fourh) &&
+                isMin(suburb.property.house4, fourh) &&
                 suburb.property.house4 > 0 &&
                 checkAllSame(fourh) ? (
-                  <td
-                    key={suburb._id}
-                    className="text-center"
-                    style={{ backgroundColor: "#e0e0e0" }}
-                  >
-                    <CountUp
-                      start={0}
-                      end={suburb.property.house4}
-                      duration={1}
-                      separator=","
-                      decimals={0}
-                      prefix="$"
-                    />
+                  <td key={suburb._id} className="text-center">
+                    <h6 style={{ fontWeight: "bold" }}>
+                      <CountUp
+                        style={{ fontSize: "20px" }}
+                        start={0}
+                        end={suburb.property.house4}
+                        duration={1}
+                        separator=","
+                        decimals={0}
+                        prefix="$"
+                      />
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">

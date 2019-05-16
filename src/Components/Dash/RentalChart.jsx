@@ -142,7 +142,7 @@ export default class RentalChart extends React.Component {
             options={this.state.options}
             series={this.state.series}
             type="bar"
-            height="400"
+            height="350"
             width="95%"
             style={{ marginLeft: "10px" }}
           />

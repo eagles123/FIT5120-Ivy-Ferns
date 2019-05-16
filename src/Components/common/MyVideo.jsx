@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
-import { jarallax, jarallaxElement, jarallaxVideo } from "jarallax";
-import ReactDOM from "react-dom";
-import $ from "jquery";
-import Script from "react-load-script";
 
 export default function MyVideo(props) {
   window.onpopstate = function(event) {
@@ -26,10 +22,10 @@ export default function MyVideo(props) {
         <Fab
           variant="extended"
           aria-label="Add"
-          color="primary"
           style={{
             height: "40px",
-            width: "150px"
+            width: "150px",
+            backgroundColor: "#2979ff"
           }}
         >
           <span

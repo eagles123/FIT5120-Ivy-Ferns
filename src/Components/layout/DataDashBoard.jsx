@@ -10,9 +10,10 @@ import SchoolChart from "../Dash/SchoolChart";
 import MyMap from "./../Dash/MyMap";
 import RentalChart from "./../Dash/RentalChart";
 import Sidebar from "react-sidebar";
-import { Fab, CircularProgress, Tooltip } from "@material-ui/core/";
+import { Fab, CircularProgress, Tooltip, Button } from "@material-ui/core/";
 import Carousel from "nuka-carousel";
 import ReactTooltip from "react-tooltip";
+import AniIcon from "./../common/AniIcon";
 
 function DataDashBoard(props) {
   //initialise the state
@@ -69,16 +70,15 @@ function DataDashBoard(props) {
       />
       <div className="row">
         <div style={{ position: "absolute", marginLeft: 10 }}>
-          <Tooltip title="Back" placement="right">
+          <Tooltip title="Back" placement="bottom">
             <Fab
-              variant="extended"
+              size="small"
               color="primary"
               aria-label="Add"
               onClick={handlePre}
-              style={{ margin: "20px 0px 0px 0px", width: "6vw" }}
+              style={{ margin: "20px 0px 0px 0px" }}
             >
-              {" "}
-              Back{" "}
+              <i className="fas fa-arrow-left" />
             </Fab>
           </Tooltip>
           <p>
@@ -88,9 +88,9 @@ function DataDashBoard(props) {
                 color="primary"
                 aria-label="Add"
                 onClick={handleOpen}
-                style={{ margin: "55px 0px 0px 0px" }}
+                style={{ margin: "10px 0px 0px 0px" }}
               >
-                <i className="fas fa-bars" />
+                <i className="fas fa-list-ol fa-lg" />
               </Fab>
             </Tooltip>
           </p>
@@ -101,7 +101,8 @@ function DataDashBoard(props) {
               textAlign: "center",
               marginTop: "30px",
               marginLeft: "-50px",
-              paddingLeft: "-50px"
+              paddingLeft: "-50px",
+              fontSize: "35px"
             }}
           >
             {props.data.suburb.suburbName}, {props.data.suburb.city}
@@ -120,7 +121,13 @@ function DataDashBoard(props) {
               />
             </span>
             <ReactTooltip place="right" id="mapTool" type="info" effect="solid">
-              <p style={{ width: "250px", textAlign: "left" }}>
+              <p
+                style={{
+                  width: "300px",
+                  textAlign: "bottom",
+                  lineHeight: "1.5em"
+                }}
+              >
                 The map shows the hospitals and schools available in this
                 suburb. The approximate number of hospital beds in a hospital
                 can be viewed by clicking on that respective hospital icon. You
@@ -147,15 +154,20 @@ function DataDashBoard(props) {
             </div>
             <div className="boardbox col s3 m2 offset-m1 ">
               <Tooltip title="Compare with other Suburbs">
-                <Fab
-                  variant="extended"
+                <Button
+                  variant="contained"
                   color="primary"
-                  aria-label="Add"
                   onClick={handleCompare}
-                  style={{ margin: "20px 0px 0px 0px", width: "7vw" }}
+                  style={{
+                    margin: "25px 0px 0px 0px",
+                    width: "10vw",
+                    backgroundColor: "#3f51b5"
+                  }}
                 >
-                  Compare
-                </Fab>
+                  <span style={{ fontSize: "20px", color: "white" }}>
+                    Compare
+                  </span>
+                </Button>
               </Tooltip>
             </div>
           </div>
@@ -169,24 +181,24 @@ function DataDashBoard(props) {
               renderBottomCenterControls={null}
               renderCenterLeftControls={({ previousSlide }) =>
                 slideIndex === 0 ? null : (
-                  <Tooltip title="School Stats" placement="top">
-                    <i
-                      className="fas fa-chevron-circle-left fa-lg"
-                      onClick={previousSlide}
-                      style={{ cursor: "pointer" }}
-                    />
-                  </Tooltip>
+                  <AniIcon
+                    animate={true}
+                    submit={false}
+                    icon={"fas fa-chevron-circle-left fa-lg"}
+                    setSlide={previousSlide}
+                    tooltip={"School Stats"}
+                  />
                 )
               }
               renderCenterRightControls={({ nextSlide }) =>
                 slideIndex === 1 ? null : (
-                  <Tooltip title="Rental Stats" placement="top">
-                    <i
-                      className="fas fa-chevron-circle-right fa-lg"
-                      onClick={nextSlide}
-                      style={{ cursor: "pointer" }}
-                    />
-                  </Tooltip>
+                  <AniIcon
+                    animate={true}
+                    submit={false}
+                    icon={"fas fa-chevron-circle-right fa-lg"}
+                    setSlide={nextSlide}
+                    tooltip={"Rental Stats"}
+                  />
                 )
               }
             >

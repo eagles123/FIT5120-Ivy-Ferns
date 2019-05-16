@@ -258,24 +258,19 @@ export default class SchoolChart extends React.Component {
                 cursor: "pointer",
                 color: "#2962ff",
                 position: "relative",
-                zIndex: 0
+                zIndex: 200
               }}
             />
           </span>
-          <ReactTooltip
-            place="bottom"
-            id="schoolTool"
-            type="info"
-            effect="solid"
-          >
-            <p style={{ width: "250px", textAlign: "left" }}>
-              The graph shows the primary and secondary schools located in this
-              suburb. The ICSEA Score and enrolment of both secondary and
-              primary schools are shown as compared to the average scores of the
-              LGA. Secondary schools also have a VCE score and an LGA average.
-            </p>
-          </ReactTooltip>
         </h6>
+        <ReactTooltip place="bottom" id="schoolTool" type="info" effect="solid">
+          <p style={{ width: "250px", textAlign: "left" }}>
+            The graph shows the primary and secondary schools located in this
+            suburb. The ICSEA Score and enrolment of both secondary and primary
+            schools are shown as compared to the average scores of the LGA.
+            Secondary schools also have a VCE score and an LGA average.
+          </p>
+        </ReactTooltip>
         <FormControl style={{ minWidth: 90, height: "6vh", marginLeft: "30%" }}>
           <InputLabel>School Type</InputLabel>
           <Select value={this.state.choice} onChange={this.handleSchoolChange}>
@@ -317,7 +312,7 @@ export default class SchoolChart extends React.Component {
               options={this.state.options}
               series={this.state.series}
               type="bar"
-              height="350"
+              height="310"
               width="95%"
               style={{ marginLeft: "10px" }}
             />

@@ -25,7 +25,7 @@ export default function FAQs() {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                "How do I find the suburb according to my preferences?"
+                How do I find the suburb according to my preferences?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel style={{ backgroundColor: "white" }}>

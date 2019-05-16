@@ -10,18 +10,6 @@ export const getSuburbsQuery = gql`
         healthScore
         educationScore
         propertyScore
-        jobScore
-      }
-      health {
-        hospital
-      }
-      education {
-        pre_school
-        primary_school
-        secondary_school
-      }
-      property {
-        price
       }
     }
   }
@@ -47,28 +35,6 @@ export const getNeighbourThings = gql`
     }
   }
 `;
-
-// export const getComparsion = gql`
-//   query($ids: [String]) {
-//     suburbsById(suburbIds: ids) {
-//       city
-//       suburbName
-//       education {
-//         pre_school
-//         primary_school
-//         secondary_school
-//       }
-//       health {
-//         hospital
-//         gps
-//         beds
-//       }
-//       property {
-//         price
-//       }
-//     }
-//   }
-// `;
 
 export const getSuburbByIdQuery = gql`
   query($id: ID) {

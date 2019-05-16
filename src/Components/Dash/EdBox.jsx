@@ -16,23 +16,30 @@ export default function EdBox({ data }) {
   return (
     <div
       className="content"
-      style={{ paddingTop: "10px", marginTop: "10px", textAlign: "center" }}
+      style={{ paddingTop: "3px", marginTop: "3px", textAlign: "center" }}
     >
       <AniImg
         img={"/education.png"}
         handleOpen={handleOpen}
         handleClose={handleClose}
+        isOpen={isOpen}
       />
       <div
         style={{
           position: "absolute",
-          zIndex: 100,
+          zIndex: 1,
           marginTop: "-15px",
           marginLeft: "-15px"
         }}
       >
         <Grow in={isOpen}>
-          <div style={{ backgroundColor: "#ffcc80", borderRadius: "10px" }}>
+          <div
+            style={{
+              backgroundColor: "#ffcc80",
+              borderRadius: "10px",
+              lineHeight: "0.9em"
+            }}
+          >
             {" "}
             <p style={{ textAlign: "left", paddingLeft: 10, paddingTop: 10 }}>
               {" "}
@@ -47,7 +54,7 @@ export default function EdBox({ data }) {
               Secondary-School: {secondary_school}
             </p>{" "}
             <p style={{ textAlign: "center" }}>
-              (See details in the graph & map below)
+              (See details in the graph below)
             </p>
           </div>
         </Grow>

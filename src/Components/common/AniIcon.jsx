@@ -1,7 +1,18 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
+import Tooltip from "@material-ui/core/Tooltip";
 
-export default function AniIcon({ animate, submit, icon, x1, y1, x2, y2 }) {
+export default function AniIcon({
+  animate,
+  submit,
+  icon,
+  setSlide,
+  tooltip,
+  x1,
+  y1,
+  x2,
+  y2
+}) {
   const move = keyframes`
   0% { 
     opacity: 1;
@@ -27,15 +38,21 @@ export default function AniIcon({ animate, submit, icon, x1, y1, x2, y2 }) {
 `;
 
   const pulsing = keyframes`
- 0% {transform: scale(1);}
-  25% {transform: scale(.97);}
-  35% {transform: scale(.9);}
-  45% {transform: scale(1.1);}
-  55% {transform: scale(.9);}
-  65% {transform: scale(1.1);}
-  75% {transform: scale(1.03);}
-  100% {transform: scale(1);}
+0% {transform: scale(1.2);}
+50% {transform: scale(0.8);}
+ 100% {transform: scale(1.2);}
 `;
+
+  //   const pulsing = keyframes`
+  //  0% {transform: scale(1);}
+  //   25% {transform: scale(.97);}
+  //   35% {transform: scale(.9);}
+  //   45% {transform: scale(1.1);}
+  //   55% {transform: scale(.9);}
+  //   65% {transform: scale(1.1);}
+  //   75% {transform: scale(1.03);}
+  //   100% {transform: scale(1);}
+  // `;
 
   const Container = styled.span`
     height: 13px;
@@ -91,7 +108,13 @@ export default function AniIcon({ animate, submit, icon, x1, y1, x2, y2 }) {
         </Container2>
       ) : (
         <Container hearted={animate}>
-          <i className={icon} />
+          <Tooltip title={tooltip} placement="top">
+            <i
+              className={icon}
+              onClick={setSlide}
+              style={{ cursor: "pointer" }}
+            />
+          </Tooltip>
         </Container>
       )}
     </React.Fragment>
