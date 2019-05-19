@@ -106,7 +106,7 @@ footer {
   background: url("/bg.jpg") no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  min-height: 92vh;
+  min-height: 91vh;
   height: auto;
   min-width: 100%;
   position: relative;
