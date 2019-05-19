@@ -194,6 +194,7 @@ function DataDashBoard(props) {
             {width < 800 ? (
               <div>
                 <SchoolChart data={props.data.suburb.schools} />
+                <br />
                 <RentalChart data={props.data.suburb.property} />
               </div>
             ) : (

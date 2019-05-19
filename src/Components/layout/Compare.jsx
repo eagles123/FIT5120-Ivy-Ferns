@@ -27,7 +27,7 @@ function Compare({ data, client, match, history }) {
   const [compareSuburbs, setSuburbs] = useState([]);
   //state and method to handle check list in compare
   const [checked, setChecked] = useState([match.params.id]);
-  function handelCheck(value) {
+  async function handelCheck(value) {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
     if (currentIndex === -1 && checked.length < 3) {
@@ -38,7 +38,7 @@ function Compare({ data, client, match, history }) {
     } else if (currentIndex !== -1 && checked.length <= 3) {
       newChecked.splice(currentIndex, 1);
     }
-    setChecked(newChecked);
+    await setChecked(newChecked);
   }
 
   function alertOpen() {
@@ -63,14 +63,17 @@ function Compare({ data, client, match, history }) {
 
   //hook to fetch new data and to delet the suburb from the compareSuburbs list
   useEffect(() => {
-    if (checked.length > tempList.length) {
+    if (
+      checked.length > tempList.length &&
+      new Set(checked).size === checked.length
+    ) {
       tempList = checked;
       client
         .query({
           query: getSuburbByIdQuery,
           variables: { id: checked[checked.length - 1] }
         })
-        .then(({ data, networkStatus }) => {
+        .then(({ data }) => {
           const newSuburb = [...compareSuburbs];
           newSuburb.push(data.suburb);
           setSuburbs(newSuburb);
@@ -81,7 +84,6 @@ function Compare({ data, client, match, history }) {
       setSuburbs(newSuburb);
     }
   }, [checked]);
-  console.log(data.loading);
 
   return data.loading ? (
     <div
