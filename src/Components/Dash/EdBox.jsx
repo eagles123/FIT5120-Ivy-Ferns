@@ -53,7 +53,7 @@ export default function EdBox({ data }) {
               {" "}
               Secondary-School: {secondary_school}
             </p>{" "}
-            <p style={{ textAlign: "center" }}>
+            <p style={{ textAlign: "left", paddingLeft: 10, paddingRight: 10 }}>
               (See details in the graph below)
             </p>
           </div>

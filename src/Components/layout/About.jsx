@@ -3,7 +3,7 @@ import PageFooter from "./Footer";
 
 export default function About() {
   return (
-    <React.Fragment>
+    <div className="about">
       <div className="container" style={{ marginTop: 100, height: "100%" }}>
         <div className="col s12 m12" style={{ textAlign: "center" }}>
           <h3>About us</h3>
@@ -34,6 +34,6 @@ export default function About() {
         </div>
       </div>
       <PageFooter />
-    </React.Fragment>
+    </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import ExpandList from "../common/ExpandList";
 import PageFooter from "./Footer";
 import {
   Accordion,
@@ -14,14 +13,14 @@ import "react-accessible-accordion/dist/fancy-example.css";
 
 export default function FAQs() {
   return (
-    <React.Fragment>
+    <div className="faq">
       <div className="container" style={{ minHeight: "30vh" }}>
         <h3 style={{ textAlign: "center" }}>
           Frequently Asked Questions (FAQs)
         </h3>
         <hr />
         <br />
-        <Accordion allowMultipleExpanded={true}>
+        <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
@@ -78,6 +77,6 @@ export default function FAQs() {
       </div>
       <div style={{ height: "23em" }} />
       <PageFooter />
-    </React.Fragment>
+    </div>
   );
 }

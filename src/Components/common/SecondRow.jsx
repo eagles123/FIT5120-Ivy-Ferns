@@ -7,8 +7,14 @@ export default function SecondRow() {
       <hr style={{ width: "90%" }} />
       <br />
       <div>
-        <br />
-        <div style={{ height: "70vh", width: "60vw", margin: "0 auto" }}>
+        <div
+          style={{
+            height: "70vh",
+            width: "60vw",
+            margin: "0 auto",
+            marginBottom: "10px"
+          }}
+        >
           <iframe
             src="https://www.youtube.com/embed/t_aOBekcqdQ?rel=0"
             width="100%"

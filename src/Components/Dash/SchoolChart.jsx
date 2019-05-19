@@ -212,7 +212,7 @@ export default class SchoolChart extends React.Component {
       return (
         <div>
           <img
-            style={{ marginLeft: "10%", width: "80%", height: "80%" }}
+            style={{ marginLeft: "15%", width: "70%", height: "auto" }}
             src={"/both.jpg"}
           />
         </div>

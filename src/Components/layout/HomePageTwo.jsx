@@ -68,6 +68,7 @@ export default function HomePageTwo() {
             breakpoint={900}
             style={{
               backgroundColor: "#2979ff",
+              fontFamily: "Merriweather",
               border: "0px",
               zIndex: 10,
               right: 3

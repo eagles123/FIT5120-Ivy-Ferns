@@ -5,6 +5,7 @@ import { withApollo } from "react-apollo";
 import { getSuburbByIdQuery } from "../../queries/queries";
 import CompareList from "./../common/CompareList";
 import CompareTable from "./../common/CompareTable";
+import ReactTooltip from "react-tooltip";
 import Sidebar from "react-sidebar";
 import {
   Fab,
@@ -144,7 +145,41 @@ function Compare({ data, client, match, history }) {
           </DialogActions>
         </Dialog>
         <div className="col s10 m10">
-          <h4 style={{ fontSize: "35px" }}>Compare Up to Three Suburbs</h4>
+          <h4 style={{ fontSize: "35px" }}>
+            Compare Up to Three Suburbs{" "}
+            <span>
+              {" "}
+              <i
+                className="fas fa-info-circle"
+                data-tip="mapTool"
+                data-for="mapTool"
+                style={{
+                  cursor: "pointer",
+                  color: "#2962ff",
+                  position: "relative",
+                  zIndex: 0
+                }}
+              />
+            </span>
+            <ReactTooltip
+              place="bottom"
+              id="mapTool"
+              type="info"
+              effect="solid"
+            >
+              <p
+                style={{
+                  width: "300px",
+                  textAlign: "bottom",
+                  lineHeight: "1.5em"
+                }}
+              >
+                It compares a maximum of three suburbs with regard to health,
+                education, and property.Also, the suburb name is clickable to
+                land on its respective page containing its detailed information.
+              </p>
+            </ReactTooltip>
+          </h4>
           <CompareTable compareSuburbs={compareSuburbs} />
         </div>
       </div>

@@ -96,7 +96,7 @@ function DataDashBoard(props) {
           </p>
         </div>
         <div className="col s12 m5" style={{ marginLeft: 50, zIndex: 0 }}>
-          <h4
+          <h5
             style={{
               textAlign: "center",
               marginTop: "30px",
@@ -138,7 +138,7 @@ function DataDashBoard(props) {
                 hospitals and schools located in three of the nearest suburbs.
               </p>
             </ReactTooltip>
-          </h4>
+          </h5>
           <MyMap data={props.data.suburb} neighbours={neighbours} />
         </div>
         <div className="col s12 m6 " style={{ marginLeft: 20 }}>

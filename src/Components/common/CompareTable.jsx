@@ -92,7 +92,6 @@ function CompareTable({ compareSuburbs }) {
                       pathname: `/dashboard/${suburb._id}`
                     }}
                     key={suburb._id}
-                    style={{ color: "black" }}
                   >
                     <h6
                       style={{
@@ -104,7 +103,14 @@ function CompareTable({ compareSuburbs }) {
                       {suburb.suburbName}
                     </h6>
                   </Link>
-                  <p style={{ textAlign: "center", fontSize: "15px" }}>
+                  <p
+                    style={{
+                      textAlign: "center",
+                      fontSize: "15px",
+                      position: "relative",
+                      zIndex: 100
+                    }}
+                  >
                     ({suburb.city})
                   </p>
                 </th>

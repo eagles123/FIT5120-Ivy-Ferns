@@ -450,7 +450,7 @@ function MyMap({ data, neighbours, client }) {
           marginBottom: "0px"
         }}
       >
-        <div className="col s6 m6" style={{ paddingTop: "10px" }}>
+        <div className="col s7 m7" style={{ paddingTop: "10px" }}>
           <FormGroup row>
             <FormControlLabel
               style={{ fontFamily: "Merriweather" }}
@@ -465,7 +465,7 @@ function MyMap({ data, neighbours, client }) {
             />
           </FormGroup>
         </div>
-        <div className="col s3 m3 offset-m3">
+        <div className="col s3 m3 offset-m2">
           <Tooltip title="Map Legend" placement="right">
             <>
               <Fab
@@ -477,7 +477,11 @@ function MyMap({ data, neighbours, client }) {
               >
                 <i className="fas fa-map-marked-alt" />
               </Fab>{" "}
-              <span style={{ fontSize: "0.875rem" }}>Map Filter</span>
+              <span
+                style={{ fontSize: "0.875rem", fontFamily: "Merriweather" }}
+              >
+                Map Filter
+              </span>
             </>
           </Tooltip>
           {/* <i
