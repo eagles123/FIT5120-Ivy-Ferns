@@ -2,8 +2,8 @@ import React from "react";
 
 export default function SecondRow() {
   return (
-    <div className="sssection container">
-      <h4>How We Help You?</h4>
+    <div className="sssection container responsive">
+      <h4 sytle={{ fontSize: "1.6em" }}>How We Help You?</h4>
       <hr style={{ width: "90%" }} />
       <br />
       <div>
@@ -11,7 +11,7 @@ export default function SecondRow() {
           style={{
             height: "70vh",
             width: "60vw",
-            minWidth: "50%",
+            minWidth: "70%",
             margin: "0 auto",
             marginBottom: "10px"
           }}

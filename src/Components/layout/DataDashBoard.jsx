@@ -112,7 +112,7 @@ function DataDashBoard(props) {
                 marginTop: "30px",
                 marginLeft: "-50px",
                 paddingLeft: "-50px",
-                fontSize: "35px"
+                fontSize: "1.9em"
               }}
             >
               {props.data.suburb.suburbName}, {props.data.suburb.city}
