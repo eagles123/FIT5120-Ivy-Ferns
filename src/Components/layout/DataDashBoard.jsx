@@ -20,6 +20,15 @@ function DataDashBoard(props) {
   const [neighbours, setNeighbours] = useState([]);
   const [open, setOpen] = useState(false);
   const [slideIndex, setIndex] = useState(0);
+  //make it resopnsive, when in mobblie get don't use carousel
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   //const to pass neighoubr hospitals and school to MyMap
   function handlePre() {
@@ -49,7 +58,7 @@ function DataDashBoard(props) {
   //fetch neighbour hospitals and schools on click
   return props.data.loading ? (
     <div
-      className="container dashboard"
+      className="container dashboard responsive"
       style={{ margin: "0 auto", height: "800px" }}
     >
       <CircularProgress style={{ marginTop: "40vh", marginLeft: "50vw" }} />
@@ -96,49 +105,57 @@ function DataDashBoard(props) {
           </p>
         </div>
         <div className="col s12 m5" style={{ marginLeft: 50, zIndex: 0 }}>
-          <h5
-            style={{
-              textAlign: "center",
-              marginTop: "30px",
-              marginLeft: "-50px",
-              paddingLeft: "-50px",
-              fontSize: "35px"
-            }}
-          >
-            {props.data.suburb.suburbName}, {props.data.suburb.city}
-            <span>
-              {" "}
-              <i
-                className="fas fa-info-circle"
-                data-tip="mapTool"
-                data-for="mapTool"
-                style={{
-                  cursor: "pointer",
-                  color: "#2962ff",
-                  position: "relative",
-                  zIndex: 0
-                }}
-              />
-            </span>
-            <ReactTooltip place="right" id="mapTool" type="info" effect="solid">
-              <p
-                style={{
-                  width: "300px",
-                  textAlign: "bottom",
-                  lineHeight: "1.5em"
-                }}
+          <div style={{ minWidth: "70%" }}>
+            <h5
+              style={{
+                textAlign: "center",
+                marginTop: "30px",
+                marginLeft: "-50px",
+                paddingLeft: "-50px",
+                fontSize: "35px"
+              }}
+            >
+              {props.data.suburb.suburbName}, {props.data.suburb.city}
+              <span>
+                {" "}
+                <i
+                  className="fas fa-info-circle"
+                  data-tip="mapTool"
+                  data-for="mapTool"
+                  style={{
+                    cursor: "pointer",
+                    color: "#2962ff",
+                    position: "relative",
+                    zIndex: 0
+                  }}
+                />
+              </span>
+              <ReactTooltip
+                place="right"
+                id="mapTool"
+                type="info"
+                effect="solid"
               >
-                The map shows the hospitals and schools available in this
-                suburb. The approximate number of hospital beds in a hospital
-                can be viewed by clicking on that respective hospital icon. You
-                can also access the website of the hospitals and schools shown
-                on the map by clicking on their respective names. The
-                neighbouring hospitals and schools are visible by selecting the
-                option “Neighbouring Hospitals and Schools”, and they cover the
-                hospitals and schools located in three of the nearest suburbs.
-              </p>
-            </ReactTooltip>
-          </h5>
+                <p
+                  style={{
+                    width: "300px",
+                    textAlign: "bottom",
+                    lineHeight: "1.5em"
+                  }}
+                >
+                  The map shows the hospitals and schools available in this
+                  suburb. The approximate number of hospital beds in a hospital
+                  can be viewed by clicking on that respective hospital icon.
+                  You can also access the website of the hospitals and schools
+                  shown on the map by clicking on their respective names. The
+                  neighbouring hospitals and schools are visible by selecting
+                  the option “Neighbouring Hospitals and Schools”, and they
+                  cover the hospitals and schools located in three of the
+                  nearest suburbs.
+                </p>
+              </ReactTooltip>
+            </h5>
+          </div>
           <MyMap data={props.data.suburb} neighbours={neighbours} />
         </div>
         <div className="col s12 m6 " style={{ marginLeft: 20 }}>
@@ -152,7 +169,7 @@ function DataDashBoard(props) {
             <div className="boardbox col s3 m2 offset-m1">
               <PropBox data={props.data.suburb.property} />
             </div>
-            <div className="boardbox col s3 m2 offset-m1 ">
+            <div className="boardbox responsive col s3 m2 offset-m1 ">
               <Tooltip title="Compare with other Suburbs">
                 <Button
                   variant="contained"
@@ -161,6 +178,7 @@ function DataDashBoard(props) {
                   style={{
                     margin: "25px 0px 0px 0px",
                     width: "10vw",
+                    minWidth: "100%",
                     backgroundColor: "#3f51b5"
                   }}
                 >
@@ -173,39 +191,47 @@ function DataDashBoard(props) {
           </div>
           <h5 style={{ textAlign: "center" }}>School & Rental Statistics</h5>
           <div style={{ backgroundColor: "rgba(220,220,220, .4)" }}>
-            <Carousel
-              style={{ height: "61vh" }}
-              slideIndex={slideIndex}
-              afterSlide={slideIndex => {
-                setIndex(slideIndex);
-              }}
-              renderBottomCenterControls={null}
-              renderCenterLeftControls={({ previousSlide }) =>
-                slideIndex === 0 ? null : (
-                  <AniIcon
-                    animate={true}
-                    submit={false}
-                    icon={"fas fa-chevron-circle-left fa-lg"}
-                    setSlide={previousSlide}
-                    tooltip={"School Stats"}
-                  />
-                )
-              }
-              renderCenterRightControls={({ nextSlide }) =>
-                slideIndex === 1 ? null : (
-                  <AniIcon
-                    animate={true}
-                    submit={false}
-                    icon={"fas fa-chevron-circle-right fa-lg"}
-                    setSlide={nextSlide}
-                    tooltip={"Rental Stats"}
-                  />
-                )
-              }
-            >
-              <SchoolChart data={props.data.suburb.schools} />
-              <RentalChart data={props.data.suburb.property} />
-            </Carousel>
+            {width < 800 ? (
+              <div>
+                <SchoolChart data={props.data.suburb.schools} />
+                <RentalChart data={props.data.suburb.property} />
+              </div>
+            ) : (
+              <Carousel
+                cellAlign="center"
+                style={{ height: "61vh" }}
+                slideIndex={slideIndex}
+                afterSlide={slideIndex => {
+                  setIndex(slideIndex);
+                }}
+                renderBottomCenterControls={null}
+                renderCenterLeftControls={({ previousSlide }) =>
+                  slideIndex === 0 ? null : (
+                    <AniIcon
+                      animate={true}
+                      submit={false}
+                      icon={"fas fa-chevron-circle-left fa-lg"}
+                      setSlide={previousSlide}
+                      tooltip={"School Stats"}
+                    />
+                  )
+                }
+                renderCenterRightControls={({ nextSlide }) =>
+                  slideIndex === 1 ? null : (
+                    <AniIcon
+                      animate={true}
+                      submit={false}
+                      icon={"fas fa-chevron-circle-right fa-lg"}
+                      setSlide={nextSlide}
+                      tooltip={"Rental Stats"}
+                    />
+                  )
+                }
+              >
+                <SchoolChart data={props.data.suburb.schools} />
+                <RentalChart data={props.data.suburb.property} />
+              </Carousel>
+            )}
           </div>
           <br />
 

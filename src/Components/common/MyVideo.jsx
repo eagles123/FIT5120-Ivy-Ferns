@@ -42,7 +42,7 @@ export default function MyVideo(props) {
         style={{
           textAlign: "center",
           cursor: "pointer",
-          marginTop: "20vh"
+          marginTop: "10vh"
         }}
         onClick={props.handleScorll}
       >

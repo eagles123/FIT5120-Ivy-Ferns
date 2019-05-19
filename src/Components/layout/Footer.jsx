@@ -15,6 +15,36 @@ export default function PageFooter() {
                 have been taken from wix.com, pixabay.com, unsplash.com and
                 fontawesome.com
               </p>
+              <div style={{ fontSize: "10px" }}>
+                Icons used in Map made by{" "}
+                <a href="https://www.freepik.com/" title="Freepik">
+                  Freepik
+                </a>{" "}
+                from{" "}
+                <a href="https://www.flaticon.com/" title="Flaticon">
+                  www.flaticon.com
+                </a>{" "}
+                &{" "}
+                <a
+                  href="https://www.flaticon.com/authors/icongeek26"
+                  title="Icongeek26"
+                >
+                  Icongeek26
+                </a>{" "}
+                from{" "}
+                <a href="https://www.flaticon.com/" title="Flaticon">
+                  www.flaticon.com
+                </a>{" "}
+                is licensed by{" "}
+                <a
+                  href="http://creativecommons.org/licenses/by/3.0/"
+                  title="Creative Commons BY 3.0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CC 3.0 BY
+                </a>
+              </div>
             </div>
           </div>
         </div>

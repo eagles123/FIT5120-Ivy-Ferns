@@ -1,3 +1,4 @@
+//reducer to for chose which perference in the recommender page
 export const choiceReducer = (choice, action) => {
   switch (action.type) {
     case "HEALTHFIELD":

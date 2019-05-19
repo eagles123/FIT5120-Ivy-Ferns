@@ -11,6 +11,7 @@ export default function SecondRow() {
           style={{
             height: "70vh",
             width: "60vw",
+            minWidth: "50%",
             margin: "0 auto",
             marginBottom: "10px"
           }}

@@ -526,52 +526,12 @@ function MyMap({ data, neighbours, client }) {
       </div>
       <div style={{ height: "67vh", width: "auto%", fontSize: "10px" }}>
         <div className="map" id="map" />
+
         <div id="legend" style={{ backgroundColor: "white", opacity: "0.8" }}>
           <div
             id="legendError"
             style={{ backgroundColor: "white", opacity: "0.8" }}
           />
-        </div>
-        <div>
-          Icons made by{" "}
-          <a href="https://www.freepik.com/" title="Freepik">
-            Freepik
-          </a>{" "}
-          from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            www.flaticon.com
-          </a>{" "}
-          is licensed by{" "}
-          <a
-            href="http://creativecommons.org/licenses/by/3.0/"
-            title="Creative Commons BY 3.0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CC 3.0 BY
-          </a>
-        </div>
-        <div>
-          Icons made by{" "}
-          <a
-            href="https://www.flaticon.com/authors/icongeek26"
-            title="Icongeek26"
-          >
-            Icongeek26
-          </a>{" "}
-          from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            www.flaticon.com
-          </a>{" "}
-          is licensed by{" "}
-          <a
-            href="http://creativecommons.org/licenses/by/3.0/"
-            title="Creative Commons BY 3.0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CC 3.0 BY
-          </a>
         </div>
       </div>
     </div>

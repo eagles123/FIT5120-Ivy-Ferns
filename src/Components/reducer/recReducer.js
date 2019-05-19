@@ -1,3 +1,4 @@
+//reducer for set different scores
 export const recReducer = (state, action) => {
   switch (action.type) {
     case "HEALTH":

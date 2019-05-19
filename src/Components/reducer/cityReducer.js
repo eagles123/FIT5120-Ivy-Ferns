@@ -1,3 +1,4 @@
+//reducer for choosing city at recommender page
 export const cityReducer = (state, action) => {
   switch (action.type) {
     case "Geelong":
