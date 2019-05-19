@@ -6,13 +6,22 @@ import { getSuburbByIdQuery } from "../../queries/queries";
 import CompareList from "./../common/CompareList";
 import CompareTable from "./../common/CompareTable";
 import Sidebar from "react-sidebar";
-import { Fab, Tooltip } from "@material-ui/core/";
+import {
+  Fab,
+  Button,
+  Tooltip,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from "@material-ui/core/";
 
 let tempList = [];
 function Compare({ data, client, match, history }) {
   const { suburbList } = useContext(ChoiceContext);
   const [open, setOpen] = useState(true);
-
+  const [alert, setAlert] = useState(false);
   const [compareSuburbs, setSuburbs] = useState([]);
   //state and method to handle check list in compare
   const [checked, setChecked] = useState([match.params.id]);
@@ -22,11 +31,20 @@ function Compare({ data, client, match, history }) {
     if (currentIndex === -1 && checked.length < 3) {
       newChecked.push(value);
     } else if (currentIndex === -1 && checked.length === 3) {
-      alert("Error: You can only select maximum three suburbs to compare.");
+      // alert("Error: You can only select maximum three suburbs to compare.");
+      alertOpen();
     } else if (currentIndex !== -1 && checked.length <= 3) {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
+  }
+
+  function alertOpen() {
+    setAlert(true);
+  }
+
+  function alertClose() {
+    setAlert(false);
   }
 
   function handleOpen() {
@@ -63,7 +81,7 @@ function Compare({ data, client, match, history }) {
   }, [checked]);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid comparemain">
       <div className="row">
         <div className="col s1 m1">
           <Tooltip title="Back" placement="bottom">
@@ -107,6 +125,24 @@ function Compare({ data, client, match, history }) {
             styles={{ sidebar: { background: "#9ccc65" } }}
           />
         </div>
+        <Dialog
+          open={alert}
+          onClose={alertClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Error!"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              You can only select maximum three suburbs to compare.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={alertClose} color="primary">
+              Ok
+            </Button>
+          </DialogActions>
+        </Dialog>
         <div className="col s10 m10">
           <h4 style={{ fontSize: "35px" }}>Compare Up to Three Suburbs</h4>
           <CompareTable compareSuburbs={compareSuburbs} />

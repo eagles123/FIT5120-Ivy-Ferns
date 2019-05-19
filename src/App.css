@@ -106,7 +106,6 @@ footer {
   background: url("/bg.jpg") no-repeat;
   min-height: 100%;
   min-width: 100%;
-
   background-attachment: fixed;
   background-size: cover;
 }
@@ -404,6 +403,25 @@ p {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+.compare {
+  max-width: 100%;
+  height: auto;
+}
+
+.comparemain {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  background: url("/bg.jpg") no-repeat;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: auto;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /* #im {

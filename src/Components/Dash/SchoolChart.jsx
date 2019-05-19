@@ -312,7 +312,7 @@ export default class SchoolChart extends React.Component {
               options={this.state.options}
               series={this.state.series}
               type="bar"
-              height="310"
+              height="320"
               width="95%"
               style={{ marginLeft: "10px" }}
             />

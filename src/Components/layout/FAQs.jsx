@@ -76,7 +76,7 @@ export default function FAQs() {
           </AccordionItem>
         </Accordion>
       </div>
-      <div style={{ height: "20em" }} />
+      <div style={{ height: "23em" }} />
       <PageFooter />
     </React.Fragment>
   );

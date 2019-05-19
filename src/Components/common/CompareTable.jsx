@@ -128,6 +128,7 @@ function CompareTable({ compareSuburbs }) {
                   <td key={suburb._id} className="text-center">
                     <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
                       {suburb.health.hospital}
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -138,7 +139,7 @@ function CompareTable({ compareSuburbs }) {
               )}
             </tr>
             <tr className="gp">
-              <th scope="row">General Practitioners(GPs)</th>
+              <th scope="row">General Practitioners (GPs)</th>
               {compareSuburbs.map(suburb =>
                 gps.length > 1 &&
                 isMax(suburb.health.gps, gps) &&
@@ -147,6 +148,7 @@ function CompareTable({ compareSuburbs }) {
                   <td key={suburb._id} className="text-center">
                     <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
                       {suburb.health.gps}
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -166,6 +168,7 @@ function CompareTable({ compareSuburbs }) {
                   <td key={suburb._id} className="text-center">
                     <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
                       {suburb.health.beds}
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -190,6 +193,7 @@ function CompareTable({ compareSuburbs }) {
                   <td key={suburb._id} className="text-center">
                     <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
                       {suburb.education.pre_school}
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -209,6 +213,7 @@ function CompareTable({ compareSuburbs }) {
                   <td key={suburb._id} className="text-center">
                     <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
                       {suburb.education.primary_school}
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -228,6 +233,7 @@ function CompareTable({ compareSuburbs }) {
                   <td key={suburb._id} className="text-center">
                     <h6 style={{ fontWeight: "bold", fontSize: "20px" }}>
                       {suburb.education.secondary_school}
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -250,7 +256,7 @@ function CompareTable({ compareSuburbs }) {
                 suburb.property.price > 0 &&
                 checkAllSame(house) ? (
                   <td key={suburb._id} className="text-center">
-                    <h5 style={{ fontWeight: "bold" }}>
+                    <h6 style={{ fontWeight: "bold" }}>
                       <CountUp
                         style={{ fontSize: "20px" }}
                         start={100000}
@@ -260,7 +266,8 @@ function CompareTable({ compareSuburbs }) {
                         decimals={0}
                         prefix="$"
                       />
-                    </h5>
+                      <sup>*</sup>
+                    </h6>
                   </td>
                 ) : (
                   <td key={suburb._id} className="text-center">
@@ -294,6 +301,7 @@ function CompareTable({ compareSuburbs }) {
                         decimals={0}
                         prefix="$"
                       />
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -328,6 +336,7 @@ function CompareTable({ compareSuburbs }) {
                         decimals={0}
                         prefix="$"
                       />
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -362,6 +371,7 @@ function CompareTable({ compareSuburbs }) {
                         decimals={0}
                         prefix="$"
                       />
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -396,6 +406,7 @@ function CompareTable({ compareSuburbs }) {
                         decimals={0}
                         prefix="$"
                       />
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -430,6 +441,7 @@ function CompareTable({ compareSuburbs }) {
                         decimals={0}
                         prefix="$"
                       />
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (
@@ -464,6 +476,7 @@ function CompareTable({ compareSuburbs }) {
                         decimals={0}
                         prefix="$"
                       />
+                      <sup>*</sup>
                     </h6>
                   </td>
                 ) : (

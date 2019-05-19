@@ -4,7 +4,10 @@ import { NavLink } from "react-router-dom";
 const NavBarLinks = () => {
   return (
     <div>
-      <ul id="nav-mobile" className="right">
+      <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+        <i className="material-icons">menu</i>
+      </a>
+      <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li>
           <a style={{ color: "black" }} className="nav-item nav-link" href="/">
             {/* <NavLink
