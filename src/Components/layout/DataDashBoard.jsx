@@ -174,6 +174,7 @@ function DataDashBoard(props) {
           <h5 style={{ textAlign: "center" }}>School & Rental Statistics</h5>
           <div style={{ backgroundColor: "rgba(220,220,220, .4)" }}>
             <Carousel
+              style={{ height: "61vh" }}
               slideIndex={slideIndex}
               afterSlide={slideIndex => {
                 setIndex(slideIndex);

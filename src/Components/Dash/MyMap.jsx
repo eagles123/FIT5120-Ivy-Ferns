@@ -524,7 +524,7 @@ function MyMap({ data, neighbours, client }) {
           </div>
         </div>
       </div>
-      <div style={{ height: "67vh", width: "100%", fontSize: "10px" }}>
+      <div style={{ height: "67vh", width: "auto%", fontSize: "10px" }}>
         <div className="map" id="map" />
         <div id="legend" style={{ backgroundColor: "white", opacity: "0.8" }}>
           <div

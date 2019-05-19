@@ -501,6 +501,9 @@ function CompareTable({ compareSuburbs }) {
             </tr>
           </tbody>
         </table>
+        <div className="right">
+          <sup>*</sup>Best figure for the parameter
+        </div>
       </div>
     </div>
   );

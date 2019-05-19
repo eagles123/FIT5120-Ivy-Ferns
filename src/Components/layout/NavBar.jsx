@@ -2,16 +2,14 @@ import React from "react";
 import NavBarLinks from "./NavBarLinks";
 
 const NavBar = () => {
-  //change color here
+  const icon = require("../../assets/icon.png");
   return (
     <div className="navbar-fixed">
       {/* <nav style={{ backgroundColor: "#2d6161" }}> */}
       <nav className="nav" style={{ backgroundColor: "white" }}>
         <div className=" container row">
           <div className="col s3s m3">
-            <a href="/">
-              <img src={"icon1.png"} alt="" />
-            </a>
+            <img src={icon} alt="" />
           </div>
           <div className="col s9 m9">
             <NavBarLinks />
