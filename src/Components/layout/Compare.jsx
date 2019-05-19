@@ -15,7 +15,8 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
+  CircularProgress
 } from "@material-ui/core/";
 
 let tempList = [];
@@ -69,7 +70,7 @@ function Compare({ data, client, match, history }) {
           query: getSuburbByIdQuery,
           variables: { id: checked[checked.length - 1] }
         })
-        .then(({ data }) => {
+        .then(({ data, networkStatus }) => {
           const newSuburb = [...compareSuburbs];
           newSuburb.push(data.suburb);
           setSuburbs(newSuburb);
@@ -80,8 +81,16 @@ function Compare({ data, client, match, history }) {
       setSuburbs(newSuburb);
     }
   }, [checked]);
+  console.log(data.loading);
 
-  return (
+  return data.loading ? (
+    <div
+      className="container dashboard responsive"
+      style={{ margin: "0 auto", height: "800px" }}
+    >
+      <CircularProgress style={{ marginTop: "40vh", marginLeft: "50vw" }} />
+    </div>
+  ) : (
     <div className="container-fluid comparemain">
       <div className="row">
         <div className="col s1 m1">
