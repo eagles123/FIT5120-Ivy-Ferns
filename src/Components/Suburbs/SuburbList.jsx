@@ -50,7 +50,7 @@ const SuburList = ({ suburbs, choice, city }) => {
           <h4
             style={{ color: "black", paddingTop: "100px", textAlign: "center" }}
           >
-            There is no such suburb...
+            Sorry, we couldn’t find this suburb...
           </h4>
         </Container>
       );

@@ -5,7 +5,7 @@ export default function InsertRow() {
   return (
     <>
       <div className="sssection container responsive">
-        <h4 style={{ fontSize: "1.6em" }}>Why Should You Move?</h4>
+        <h4 style={{ fontSize: "1.6em" }}>Why Should You Choose to Move?</h4>
         <hr style={{ width: "90%" }} />
         <br />
       </div>

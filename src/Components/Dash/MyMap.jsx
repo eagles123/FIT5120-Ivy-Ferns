@@ -475,12 +475,12 @@ function MyMap({ data, neighbours, client }) {
                 onClick={handleCheck}
                 style={{ margin: "10px 0px 10px 0px" }}
               >
-                <i className="fas fa-map-marked-alt" />
+                <i className="fas fa-filter" />
               </Fab>{" "}
               <span
                 style={{ fontSize: "0.875rem", fontFamily: "Merriweather" }}
               >
-                Map Filter
+                Legend Filter
               </span>
             </>
           </Tooltip>
