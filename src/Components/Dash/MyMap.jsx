@@ -465,7 +465,7 @@ function MyMap({ data, neighbours, client }) {
             />
           </FormGroup>
         </div>
-        <div className="col s3 m3 offset-m2">
+        <div className="col s3 m4 offset-m1">
           <Tooltip title="Map Legend" placement="right">
             <>
               <Fab

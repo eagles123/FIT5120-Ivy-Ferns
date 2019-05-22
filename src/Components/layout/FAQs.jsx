@@ -83,7 +83,7 @@ export default function FAQs() {
           />
           <AccordionComponent
             question={
-              "Why do I receive information on the data dashboard about schools when I uncheck ‘Education’ on the ‘Pick a Suburb’ page."
+              "Why do I receive information on the data dashboard about schools when I uncheck ‘Education’ on the ‘Pick a Suburb’ page?"
             }
             answer={
               "The best suburbs often have access to multiple services and due to the format of the data dashboard, school data will always be shown if it is available."
