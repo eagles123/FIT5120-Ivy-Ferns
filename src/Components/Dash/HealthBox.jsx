@@ -55,7 +55,7 @@ export default function HealthBox({ data }) {
           </div>
         </Grow>
       </div>
-      <h6>Health Care</h6>
+      <h6 style={{ fontSize: "1vw" }}>Health Care</h6>
     </div>
   );
 }

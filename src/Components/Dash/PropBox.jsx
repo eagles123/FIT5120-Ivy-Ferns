@@ -64,7 +64,7 @@ export default function PropBox({ data }) {
           </div>
         </Grow>
       </div>
-      <h6>Property</h6>
+      <h6 style={{ fontSize: "1vw" }}>Property</h6>
     </div>
   );
 }

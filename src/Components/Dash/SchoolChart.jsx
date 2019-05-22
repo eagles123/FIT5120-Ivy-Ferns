@@ -213,10 +213,10 @@ export default class SchoolChart extends React.Component {
         <div>
           <img
             style={{
-              marginLeft: "10%",
-              marginTop: "1%",
-              width: "80%",
-              height: "350px"
+              marginLeft: "15%",
+              marginTop: "5%",
+              width: "65%",
+              height: "300px"
             }}
             src={"/both.jpg"}
           />
@@ -230,10 +230,10 @@ export default class SchoolChart extends React.Component {
         <div>
           <img
             style={{
-              marginLeft: "10%",
-              marginTop: "1%",
-              width: "80%",
-              height: "350px"
+              marginLeft: "15%",
+              marginTop: "5%",
+              width: "65%",
+              height: "300px"
             }}
             src={"/primaryNodata.jpg"}
           />
@@ -247,10 +247,10 @@ export default class SchoolChart extends React.Component {
         <div>
           <img
             style={{
-              marginLeft: "10%",
-              marginTop: "1%",
-              width: "80%",
-              height: "350px"
+              marginLeft: "15%",
+              marginTop: "5%",
+              width: "65%",
+              height: "300px"
             }}
             src={"/secondaryNodata.jpg"}
           />

@@ -59,7 +59,7 @@ export default function EdBox({ data }) {
           </div>
         </Grow>
       </div>
-      <h6>Education</h6>
+      <h6 style={{ fontSize: "1vw" }}>Education</h6>
     </div>
   );
 }

@@ -156,7 +156,11 @@ function DataDashBoard(props) {
               </ReactTooltip>
             </h5>
           </div>
-          <MyMap data={props.data.suburb} neighbours={neighbours} />
+          <MyMap
+            data={props.data.suburb}
+            neighbours={neighbours}
+            style={{ width: "100%", height: "auto" }}
+          />
         </div>
         <div className="col s12 m6 " style={{ marginLeft: 20 }}>
           <div className="row">

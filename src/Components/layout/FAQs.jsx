@@ -7,7 +7,6 @@ import {
   AccordionItemPanel,
   AccordionItemButton
 } from "react-accessible-accordion";
-
 // Demo styles, see 'Styles' section below for some notes on use.
 import "react-accessible-accordion/dist/fancy-example.css";
 import AccordionComponent from "./../common/AccordionComponent";
@@ -83,7 +82,7 @@ export default function FAQs() {
           />
           <AccordionComponent
             question={
-              "Why do I receive information on the data dashboard about schools when I uncheck ‘Education’ on the ‘Pick a Suburb’ page?"
+              "Why do I receive information on the data dashboard about preferences that I have not selected on the ‘Pick a Suburb’ page?"
             }
             answer={
               "The best suburbs often have access to multiple services and due to the format of the data dashboard, school data will always be shown if it is available."

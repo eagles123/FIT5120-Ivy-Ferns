@@ -525,8 +525,10 @@ function MyMap({ data, neighbours, client }) {
       <div
         style={{
           width: "100%",
+          minHeight: "100%",
           height: "70vh",
-          fontSize: "10px"
+          fontSize: "10px",
+          position: "relative"
         }}
       >
         <div className="map" id="map" />
