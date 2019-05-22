@@ -273,7 +273,7 @@ const Recommender = props => {
                     <SearchBox value={query} onChange={handleSearch} />
                     <h5 style={{ marginLeft: "5vw" }}>Ranked Suburbs </h5>
                     <span style={{ marginLeft: "5vw", fontSize: "13px" }}>
-                      (Click on suburb to view more details and compare)
+                      (Click on a suburb to view more details and compare)
                     </span>
 
                     <SuburbList

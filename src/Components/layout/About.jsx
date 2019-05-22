@@ -24,13 +24,6 @@ export default function About() {
             allowFullScreen
             title="About Us"
           />
-          {/* <iframe
-            width="100%"
-            height="600"
-            frameBorder="1"
-            src="https://www.powtoon.com/embed/fMJZ7xjzwWT/"
-            frameborder="0"
-          /> */}
         </div>
       </div>
       <PageFooter />

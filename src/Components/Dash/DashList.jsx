@@ -14,7 +14,7 @@ const styles = theme => ({
   root: {
     width: "100%",
     maxWidth: 350,
-    marginTop: 100,
+    marginTop: 10,
     backgroundColor: "#9ccc65",
     position: "relative",
     overflow: "auto",
@@ -25,6 +25,7 @@ const styles = theme => ({
   },
   ul: {
     backgroundColor: "inherit",
+    marginTop: 0,
     padding: 0
   },
   inline: {

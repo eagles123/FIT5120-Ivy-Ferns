@@ -453,7 +453,7 @@ function MyMap({ data, neighbours, client }) {
         <div className="col s7 m7" style={{ paddingTop: "10px" }}>
           <FormGroup row>
             <FormControlLabel
-              style={{ fontFamily: "Merriweather" }}
+              style={{ fontFamily: "Merriweather", fontSize: "12px" }}
               control={
                 <Switch
                   checked={fetchNeighbour}
@@ -477,9 +477,7 @@ function MyMap({ data, neighbours, client }) {
               >
                 <i className="fas fa-filter" />
               </Fab>{" "}
-              <span
-                style={{ fontSize: "0.875rem", fontFamily: "Merriweather" }}
-              >
+              <span style={{ fontSize: "12px", fontFamily: "Merriweather" }}>
                 Legend Filter
               </span>
             </>
