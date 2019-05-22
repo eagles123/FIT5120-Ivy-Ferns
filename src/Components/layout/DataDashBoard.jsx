@@ -200,7 +200,7 @@ function DataDashBoard(props) {
             ) : (
               <Carousel
                 cellAlign="center"
-                style={{ height: "100%" }}
+                style={{ width: "100%", height: "auto" }}
                 slideIndex={slideIndex}
                 afterSlide={slideIndex => {
                   setIndex(slideIndex);
