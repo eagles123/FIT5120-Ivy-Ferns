@@ -22,6 +22,7 @@ function DataDashBoard(props) {
   const [slideIndex, setIndex] = useState(0);
   //make it resopnsive, when in mobblie get don't use carousel
   const [width, setWidth] = useState(window.innerWidth);
+  //event lisenter to get size of window.
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);

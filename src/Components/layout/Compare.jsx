@@ -21,11 +21,14 @@ import {
 
 let tempList = [];
 function Compare({ data, client, match, history }) {
+  //get the same suburblist from ChoiceContext to render on the compareList
   const { suburbList } = useContext(ChoiceContext);
+  //initialise other states to hanlde if compare list is open and if show alert
   const [open, setOpen] = useState(true);
   const [alert, setAlert] = useState(false);
+  //list to hold up to three sububrs that chosen to be compared
   const [compareSuburbs, setSuburbs] = useState([]);
-  //state and method to handle check list in compare
+  //state and method to handle check list in compare limit the choice to max 3 suburbs
   const [checked, setChecked] = useState([match.params.id]);
   async function handelCheck(value) {
     const currentIndex = checked.indexOf(value);
@@ -40,7 +43,7 @@ function Compare({ data, client, match, history }) {
     }
     await setChecked(newChecked);
   }
-
+  //functions to opend and close alert
   function alertOpen() {
     setAlert(true);
   }
@@ -49,6 +52,7 @@ function Compare({ data, client, match, history }) {
     setAlert(false);
   }
 
+  //function to open and close compare list
   function handleOpen() {
     setOpen(!open);
   }
@@ -57,6 +61,7 @@ function Compare({ data, client, match, history }) {
     history.push(`/dashboard/${match.params.id}`);
   }
 
+  //when first land this page, get first suburb from database and put it into the list.
   useEffect(() => {
     if (data.loading === false) setSuburbs([data.suburb]);
   }, [data.loading]);

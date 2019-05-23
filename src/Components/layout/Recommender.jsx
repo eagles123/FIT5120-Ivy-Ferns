@@ -15,7 +15,8 @@ import { getSuburbsQuery } from "../../queries/queries";
 
 const Recommender = props => {
   // document.title = "Recommend";
-  //initial socre
+
+  //initial socre, if there are score store in seesionStorage read from there, if not initialise the score to 2,2,2
   function inital() {
     let value;
     try {
@@ -30,6 +31,7 @@ const Recommender = props => {
     return value;
   }
 
+  //initilised score and set the dispatch
   const [scoreState, stateDispatch] = useReducer(recReducer, inital());
   //store the score to seesion storage
   useEffect(() => {
@@ -154,10 +156,13 @@ const Recommender = props => {
   function choseBendigo() {
     cityDispatch({ type: "Bendigo", payload: !city.bendigo });
   }
+
+  //from old feature, keep in case need to bring it back
   // function choseJob() {
   //   choiceDispatch({ type: "JOBFIELD", payload: !choice.jobField });
   //   stateDispatch({ type: "RESETJOB" });
   // }
+  //function to filter suburb based on the query, responsible to the search box
   function getSearchSuburb() {
     let filtered = suburbs;
     if (query)
@@ -169,6 +174,7 @@ const Recommender = props => {
     return setPaged(paginate(filtered, currentPage, pageSize));
   }
 
+  //funciton to handle change page in the pagination
   function handlePageChange(page) {
     setCurrentPage(page);
   }
@@ -249,18 +255,21 @@ const Recommender = props => {
               style={{ marginTop: 50, marginLeft: 50 }}
             >
               <Fade left duration={1000}>
+                {/* Component of CheckList */}
                 <CheckList choices={choices} cities={cities} />
               </Fade>
             </div>
             <div className="col s12 m4 offset-m1">
               <ParameterContext.Provider value={{ stateDispatch, scoreState }}>
                 <Fade bottom duration={1000}>
+                  {/* componemt of the slider handle the score change*/}
                   <SidePanel />
                 </Fade>
               </ParameterContext.Provider>
             </div>
             <div className="col s12 m4" style={{ marginTop: 18 }}>
               <Fade right duration={1000}>
+                {/* if the suburb is not loaded from databse render a circularprogress */}
                 {suburbs.length === 1 ? (
                   <div
                     className="container"

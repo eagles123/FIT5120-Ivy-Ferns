@@ -43,15 +43,6 @@ function DashList(props) {
     <List className={classes.root} subheader={<li />}>
       <ListSubheader style={{ fontSize: "20px" }}>
         Ranked Suburbs{" "}
-        {/* <Fab
-          size="small"
-          color="primary"
-          aria-label="Add"
-          onClick={handleOpen}
-          style={{ margin: "10px 0px 10px 20px" }}
-        >
-          <i className="fas fa-times" />
-        </Fab> */}
         <i
           className="fas fa-times-circle"
           onClick={handleOpen}
@@ -97,32 +88,3 @@ DashList.propTypes = {
 };
 
 export default withStyles(styles)(DashList);
-
-// export default function DashList() {
-//   const { suburbList } = useContext(ChoiceContext);
-//   return (
-//     <List subheader={<li />}>
-//       {suburbList.map(suburb => (
-//         <li key={suburb.}>
-//           <ul>
-//             {suburbList.map(item => (
-//               <ListItem key={suburb.suburbName} button>
-//                 <ListItemText
-//                   primary={`Suburb: ${suburb.suburbName}`}
-//                   secondary={
-//                     <React.Fragment>
-//                       <Typography component="span" color="textPrimary">
-//                         {suburb.city}
-//                       </Typography>
-//                       {`Ranked No. ${suburb.rank}`}
-//                     </React.Fragment>
-//                   }
-//                 />
-//               </ListItem>
-//             ))}
-//           </ul>
-//         </li>
-//       ))}
-//     </List>
-//   );
-// }
