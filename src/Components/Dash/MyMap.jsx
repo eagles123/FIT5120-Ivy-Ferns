@@ -482,16 +482,6 @@ function MyMap({ data, neighbours, client }) {
               </span>
             </>
           </Tooltip>
-          {/* <i
-            className="fas fa-filter fa-2x"
-            style={{
-              color: "black",
-              cursor: "pointer",
-              position: "relative",
-              zIndex: 0
-            }}
-            onClick={handleCheck}
-          /> */}
           <div
             style={{
               position: "absolute",

@@ -112,7 +112,7 @@ const Recommender = props => {
   //effect to filter by city
   useEffect(() => {
     filterSuburbByCity();
-  }, [city]);
+  }, [city, scoreState]);
 
   function handleSearch(query) {
     setQuery(query);
