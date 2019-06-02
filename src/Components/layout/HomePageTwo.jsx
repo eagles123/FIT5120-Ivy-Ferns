@@ -9,7 +9,7 @@ import MyVideo from "./../common/MyVideo";
 
 export default function HomePageTwo() {
   var response = "";
-  while (response !== "ivy") {
+  while (response !== process.env.REACT_APP_KEY) {
     response = prompt("password");
   }
   //function to handle "know more" scroll to position 700
