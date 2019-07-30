@@ -1,68 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1.1Project Overview
+Victoria has been recognized as the fastest growing state in Australia, and the city dwellings are out powering the regional ones (Bracks & Mcnamara, 2018).1Paying heed to the fluctuating and stringent migration policies by the Australian Government, people are forced to consider regional areas as their option for residence (2018).2Studies have further revealed that there is approximately a 65% increase in property prices in Melbourne during the past 5 years, which is expected to experience a further upsurge, thus making thehousing affordability as one of the potential issues faced by individuals of Victoria (Yardney, 2018).3To address the above rising concerns, our solution aims to provide a “comprehensive web-driven platform” for existing residents/migrants planning to move to Regional Victoria, which would help them view and compare the best suburb, based on their preferences. Research states that regional cities such as Geelong, Bendigo and Ballarat are more liveable in comparison to the other areas of Victoria (Worrall, 2018).4Thus, our platform primarily focuses on the surrounding areas of these most rapidly growing and developing regional areas of Victoria i.e. Greater Bendigo area, Ballarat and Greater Geelong area.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1.2Target Audience, potential stakeholders and sponsors
+For this project, we are aiming to primarily focus on families, currently residing or migrating to Victoria, and more specifically those who are now looking to move to suburbs located in Greater Geelong, Greater Bendigo and City of Ballarat.6Thus, the potential stakeholders for the project are the team members of Ivy Ferns, the target audience, studio mentors and industry mentors. The Department of Immigration and Border Protection, Victoria State Government and Local Councils of the targeted areas, have been identified as the potential sponsors for this project.
+1.3 SolutionT
+he current state of policies for migrants coming to Australia is set to change, and thus our target audience is searching for finding the most suitable suburb that meets their family’s needs. Therefore, we plan to help these migrants and the existing residents looking to move to Regional Victoria. The idea is to provide them with a ranked list of suburbs that would be dynamically updated based on the preferences of the user. Our solution further aims to provide the option to the users to compare the two suburbs that they are confused about to decide upon their most preferred choice. The information being accessed by the user is based on their own preferences, and thus the data accessed by them is secure and reliable as it is backed by the data provided by the Victorian Government.
