@@ -2,7 +2,7 @@ import React from "react";
 import NavBarLinks from "./NavBarLinks";
 
 const NavBar = () => {
-  const icon = require("../../assets/icon.png");
+  const icon = require("../../assets/language.png");
   return (
     <div className="navbar-fixed">
       {/* <nav style={{ backgroundColor: "#2d6161" }}> */}
